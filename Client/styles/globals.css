@@ -1,0 +1,77 @@
+/** @format */
+
+body {
+	background-color: black;
+	color: white;
+	padding: 0;
+	margin: 0;
+	font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+#main-section {
+	display: flex;
+	width: 100vw;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 20vh;
+}
+
+#main-section h1 {
+	font-size: 4rem;
+}
+
+#form-section {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 2vw;
+}
+
+#form-section input {
+	padding: 1vw;
+	border-radius: 2rem;
+	width: 20vw;
+	font-size: 1.2rem;
+	outline: none;
+	border: none;
+}
+
+#form-section button {
+	padding: 1vw;
+	border-radius: 2rem;
+	font-size: 1.2rem;
+	border: none;
+}
+
+#alert-message {
+	font-size: 2.75rem;
+	text-align: center;
+}
+
+#example p {
+	max-width: 70vw;
+	font-size: 2rem;
+	text-align: center;
+	letter-spacing: 0.05rem;
+}
+
+.tracker-bars {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	margin-bottom: 1rem;
+}
+
+.tracker-bars li {
+	width: 5rem;
+	height: 1.5rem;
+	margin: 1vw;
+	border-radius: 4rem;
+	background-color: rgb(66, 66, 66);
+	list-style: none;
+}
+
+.tracker-bars li.green {
+	background-color: rgb(121, 186, 121);
+	z-index: 10;
+}
