@@ -1788,5 +1788,201 @@
 		"definition": "happening by chance, often lucky.",
 		"example": "Their fortuitous encounter in the airport lounge led to a lucrative partnership.",
 		"fullDefinition": "Fortuitous refers to events occurring accidentally or without deliberate planning; while strictly neutral, it frequently carries a positive connotation of beneficial coincidence."
+	},
+	"Eminence": {
+		"definition": "great fame or recognized superiority.",
+		"example": "The scientist’s eminence in the field of genetics was acknowledged worldwide.",
+		"fullDefinition": "Eminence refers to a position of high distinction, honor, or renown, especially within a particular profession or sphere of activity."
+	},
+	"Tumultuous": {
+		"definition": "marked by confusion, excitement, or disorder.",
+		"example": "The stock market had a tumultuous day, swinging wildly in both directions.",
+		"fullDefinition": "Tumultuous describes situations or events characterized by loud noise, chaos, or emotional upheaval."
+	},
+	"Eccentric": {
+		"definition": "unconventional and slightly strange.",
+		"example": "His eccentric wardrobe choices always turned heads at the office.",
+		"fullDefinition": "Eccentric refers to behavior, ideas, or appearance that deviates noticeably from accepted norms, often in a quirky or whimsical way."
+	},
+	"Trifling": {
+		"definition": "unimportant or trivial.",
+		"example": "They spent hours arguing over a trifling detail in the contract.",
+		"fullDefinition": "Trifling describes something of little worth, significance, or consequence."
+	},
+	"Affability": {
+		"definition": "the quality of being friendly and approachable.",
+		"example": "Her affability made new employees feel at ease on their first day.",
+		"fullDefinition": "Affability denotes a warm, pleasant manner that fosters easy social interaction and approachability."
+	},
+	"Incongruous": {
+		"definition": "not in harmony with surroundings; out of place.",
+		"example": "The neon sign looked incongruous on the historic brick façade.",
+		"fullDefinition": "Incongruous describes elements that are inconsistent, incompatible, or lacking proper correspondence with their context."
+	},
+	"Acumen": {
+		"definition": "keen insight or shrewd judgment.",
+		"example": "Her business acumen helped the startup reach profitability in record time.",
+		"fullDefinition": "Acumen is the quickness and accuracy of perception or discernment that enables sound, strategic decisions."
+	},
+	"Erroneous": {
+		"definition": "containing error; incorrect.",
+		"example": "The report was withdrawn after several erroneous statistics were discovered.",
+		"fullDefinition": "Erroneous refers to beliefs, statements, or data that are factually wrong or based on false assumptions."
+	},
+	"Scathing": {
+		"definition": "severely critical or scornful.",
+		"example": "The critic wrote a scathing review that demolished the play’s reputation.",
+		"fullDefinition": "Scathing remarks or writings express harsh condemnation or biting ridicule."
+	},
+	"Miserliness": {
+		"definition": "extreme unwillingness to spend money.",
+		"example": "His miserliness kept the house in disrepair despite his sizable savings.",
+		"fullDefinition": "Miserliness is a stingy, parsimonious attitude marked by an excessive, often unhealthy, hoarding of wealth."
+	},
+	"Illiberality": {
+		"definition": "narrow-mindedness or lack of generosity.",
+		"example": "The policy’s illiberality stifled open discussion on the campus.",
+		"fullDefinition": "Illiberality can denote either intolerance of differing views or a grudging reluctance to share wealth or opportunities."
+	},
+	"Thrift": {
+		"definition": "wise and economical management of money or resources.",
+		"example": "Thanks to years of thrift, she retired comfortably at fifty.",
+		"fullDefinition": "Thrift involves disciplined saving and prudent spending aimed at long-term financial stability."
+	},
+	"Inordinately": {
+		"definition": "to an excessive or disproportionate degree.",
+		"example": "The project became inordinately expensive after repeated delays.",
+		"fullDefinition": "Inordinately is an adverb stressing that something surpasses reasonable limits in amount, extent, or intensity."
+	},
+	"Mercurial": {
+		"definition": "subject to sudden, unpredictable mood changes.",
+		"example": "The CEO’s mercurial temperament kept the board constantly on edge.",
+		"fullDefinition": "Mercurial refers to people or situations characterized by rapid shifts in emotion or mind, reminiscent of the swiftly moving planet Mercury."
+	},
+	"Plutocratic": {
+		"definition": "relating to the power of the wealthy.",
+		"example": "Critics argued that the tax code was tilted toward plutocratic interests.",
+		"fullDefinition": "Plutocratic systems grant disproportionate influence to those with great economic resources, effectively making wealth a basis of political power."
+	},
+	"Novelty": {
+		"definition": "the quality of being new or original.",
+		"example": "The novelty of virtual reality attracted curious consumers.",
+		"fullDefinition": "Novelty highlights freshness or originality, often driving interest because something has not been seen or experienced before."
+	},
+	"Injudicious": {
+		"definition": "showing poor judgment; unwise.",
+		"example": "His injudicious comment alienated potential investors.",
+		"fullDefinition": "Injudicious decisions lack foresight or prudence, frequently leading to negative consequences."
+	},
+	"Belies": {
+		"definition": "gives a false impression of; contradicts.",
+		"example": "Her calm smile belies the stress she feels inside.",
+		"fullDefinition": "To belie is to disguise or misrepresent the true nature of something, creating a discrepancy between appearance and reality."
+	},
+	"Imperiously": {
+		"definition": "commandingly, with arrogant authority.",
+		"example": "She waved imperiously for silence before announcing the verdict.",
+		"fullDefinition": "Imperiously is an adverb describing actions done in a domineering, overbearing manner befitting an absolute ruler."
+	},
+	"Forbidding": {
+		"definition": "unfriendly or threatening in appearance.",
+		"example": "Dark clouds cast a forbidding shadow over the mountains.",
+		"fullDefinition": "Forbidding environments or expressions appear hostile or dangerous, discouraging approach or engagement."
+	},
+	"Ample": {
+		"definition": "more than adequate; plentiful.",
+		"example": "The backpack offers ample storage for a weekend trip.",
+		"fullDefinition": "Ample emphasizes generous sufficiency or abundance in size, quantity, or capacity."
+	},
+	"Taciturnity": {
+		"definition": "habitual silence or reserve.",
+		"example": "His taciturnity made casual conversation feel like an interrogation.",
+		"fullDefinition": "Taciturnity is a personality trait marked by minimal speech and reluctance to engage in verbal exchange."
+	},
+	"Volubility": {
+		"definition": "fluency and ease in speaking; talkativeness.",
+		"example": "Her volubility turned a short briefing into an hour-long lecture.",
+		"fullDefinition": "Volubility describes rapid, flowing speech that can be either engagingly articulate or excessively loquacious."
+	},
+	"Pellucidity": {
+		"definition": "extreme clarity or transparency.",
+		"example": "The pellucidity of his prose made complex ideas accessible.",
+		"fullDefinition": "Pellucidity can refer to literal transparency—allowing light to pass through—or figurative lucidity in thought and expression."
+	},
+	"Intractible": {
+		"definition": "hard to control or deal with.",
+		"example": "The software bug proved intractible despite multiple patches.",
+		"fullDefinition": "Intractible (more commonly spelled intractable) denotes problems, materials, or personalities that resist management, solution, or reform."
+	},
+	"Penitential": {
+		"definition": "expressing remorse or penitence.",
+		"example": "He offered a penitential apology to the victims’ families.",
+		"fullDefinition": "Penitential attitudes or practices involve acknowledging wrongdoing and seeking moral or religious atonement."
+	},
+	"Intrinsic": {
+		"definition": "belonging naturally; essential.",
+		"example": "Trust is intrinsic to any healthy relationship.",
+		"fullDefinition": "Intrinsic qualities are inherent to an object or concept, arising from its very nature rather than external factors."
+	},
+	"Frivolity": {
+		"definition": "lack of seriousness; light-heartedness.",
+		"example": "The meeting’s tone of frivolity frustrated those eager for concrete decisions.",
+		"fullDefinition": "Frivolity describes behavior or speech that treats serious matters with levity or engages in carefree fun without weighty purpose."
+	},
+	"Prodigality": {
+		"definition": "reckless extravagance in spending.",
+		"example": "His prodigality during college left him with massive debt.",
+		"fullDefinition": "Prodigality denotes lavish, often wasteful expenditure of resources, especially money, without regard for future need."
+	},
+	"Prolixity": {
+		"definition": "tedious length or wordiness.",
+		"example": "The contract’s prolixity obscured its key provisions.",
+		"fullDefinition": "Prolixity refers to an excessive use of words that can dull clarity and exhaust readers or listeners."
+	},
+	"Peripheral": {
+		"definition": "on the edge; of secondary importance.",
+		"example": "Cybersecurity was once peripheral to the project but is now central.",
+		"fullDefinition": "Peripheral describes elements situated at a boundary or playing a supporting, non-core role in a system or discussion."
+	},
+
+	"Hackneyed": {
+		"definition": "overused and therefore trite.",
+		"example": "The film relied on hackneyed tropes rather than original storytelling.",
+		"fullDefinition": "Hackneyed ideas, phrases, or narratives have lost impact through repeated, uncreative use."
+	},
+	"Novel": {
+		"definition": "new and not resembling anything formerly known.",
+		"example": "The startup introduced a novel solution to water scarcity.",
+		"fullDefinition": "Novel emphasizes originality or unprecedented nature, distinguishing something from established or conventional forms."
+	},
+	"Aloof": {
+		"definition": "emotionally or physically distant.",
+		"example": "She remained aloof during the festivities, rarely joining the conversation.",
+		"fullDefinition": "Aloof behavior suggests cool detachment or reserve, often perceived as disinterest or superiority."
+	},
+	"Placid": {
+		"definition": "calm and peaceful; not easily upset.",
+		"example": "The placid lake reflected the mountains like a mirror.",
+		"fullDefinition": "Placid describes serene environments or temperaments characterized by quiet stability and gentle composure."
+	},
+	"Restive": {
+		"definition": "unable to remain still; impatient under restriction.",
+		"example": "The audience grew restive as the keynote speaker ran overtime.",
+		"fullDefinition": "Restive can denote physical agitation or figurative resistance to control, constraints, or delays."
+	},
+	"Vociferous": {
+		"definition": "loudly and forcefully vocal.",
+		"example": "A vociferous crowd demanded immediate reforms.",
+		"fullDefinition": "Vociferous describes individuals or groups expressing opinions or demands with noisy energy and volume."
+	},
+	"Indecorous": {
+		"definition": "not in keeping with accepted standards of propriety.",
+		"example": "His indecorous jokes during the memorial service shocked everyone.",
+		"fullDefinition": "Indecorous actions breach social or moral decorum, appearing improper or unseemly in context."
+	},
+	"Unseemly": {
+		"definition": "inappropriate or improper for the circumstances.",
+		"example": "Their loud celebration was unseemly given the somber occasion.",
+		"fullDefinition": "Unseemly behavior violates expected manners or etiquette, making it socially or morally objectionable."
 	}
 }

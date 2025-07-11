@@ -143,13 +143,17 @@ body {
 #overlay table {
 	width: 100%;
 	border-spacing: 0;
-	font-size: 1.25rem;
+	font-size: 2rem;
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	border-collapse: collapse;
 }
 
 #overlay table tr {
 	padding: 0;
+}
+
+#overlay table tr:hover {
+	background-color: #141414;
 }
 
 #overlay table td {
