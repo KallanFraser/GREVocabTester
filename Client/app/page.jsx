@@ -9,74 +9,74 @@ import vocabData from "../src/data/gre_combined.json";
 export default function Index() {
 	const allKeys = Object.keys(vocabData);
 
-	// state for the current 4-word pool and which index is the correct one
+	// state for which word we’re on
+	const [currentIndex, setCurrentIndex] = useState(0);
+	// the 4-word pool for this question
 	const [activeSubset, setActiveSubset] = useState([]);
+	// which button in the subset is correct
 	const [correctIndex, setCorrectIndex] = useState(0);
-
-	// status of each button: "default" | "correct" | "incorrect"
+	// button status: "default" | "correct" | "incorrect"
 	const [buttonStatus, setButtonStatus] = useState(Array(4).fill("default"));
 
-	// util: returns an integer in [0…max)
-	function cryptoInt(max) {
-		const array = new Uint32Array(1);
-		window.crypto.getRandomValues(array);
-		// modulo bias is negligible here unless max is huge
-		return array[0] % max;
+	// pick 3 random distractors (not including the quiz word)
+	function pickDistractors(excludeKey) {
+		const others = allKeys.filter((k) => k !== excludeKey);
+		// simple Fisher–Yates shuffle
+		for (let i = others.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[others[i], others[j]] = [others[j], others[i]];
+		}
+		return others.slice(0, 3);
 	}
 
-	// pick a fresh subset of 4 distinct words, choose one as the quiz word
-	function pickNewWordAndSubset() {
-		const keys = [...allKeys];
-
-		// Fisher-Yates using cryptoInt
-		for (let i = keys.length - 1; i > 0; i--) {
-			const j = cryptoInt(i + 1);
-			[keys[i], keys[j]] = [keys[j], keys[i]];
+	// build the subset for the current quiz word
+	function buildSubset() {
+		const quizWord = allKeys[currentIndex];
+		const variants = [quizWord, ...pickDistractors(quizWord)];
+		// shuffle
+		for (let i = variants.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[variants[i], variants[j]] = [variants[j], variants[i]];
 		}
-
-		const subset = keys.slice(0, 4);
-		const correctIdx = cryptoInt(4);
-
-		setActiveSubset(subset);
-		setCorrectIndex(correctIdx);
+		setActiveSubset(variants);
+		setCorrectIndex(variants.findIndex((w) => w === quizWord));
 		setButtonStatus(Array(4).fill("default"));
 	}
 
-	// on mount, initialize
+	// initialize on mount
 	useEffect(() => {
-		pickNewWordAndSubset();
+		buildSubset();
 	}, []);
 
-	// handle user clicking an answer
 	const handleAnswer = (idx) => {
-		// ignore clicks while waiting to advance
 		if (buttonStatus.some((s) => s !== "default")) return;
 
 		const isCorrect = idx === correctIndex;
 		const newStatus = ["default", "default", "default", "default"];
-		if (isCorrect) {
-			newStatus[idx] = "correct";
-		} else {
-			newStatus[idx] = "incorrect";
-			newStatus[correctIndex] = "correct";
-		}
+		newStatus[idx] = isCorrect ? "correct" : "incorrect";
+		if (!isCorrect) newStatus[correctIndex] = "correct";
+
 		setButtonStatus(newStatus);
 
-		// after 2s, move on
 		setTimeout(() => {
-			pickNewWordAndSubset();
+			// advance index (looping back)
+			setCurrentIndex((ci) => {
+				const next = ci + 1 < allKeys.length ? ci + 1 : 0;
+				return next;
+			});
+			// rebuild for the new index
+			buildSubset();
 		}, 2000);
 	};
 
-	// current quiz word
-	const quizWord = activeSubset.length > 0 ? activeSubset[correctIndex] : "Loading...";
+	const quizWord = activeSubset.length ? activeSubset[correctIndex] : "Loading...";
 
 	return (
 		<div id="main-section" style={{ textAlign: "center", padding: "2rem" }}>
 			<div id="current-word" style={{ marginBottom: "1rem" }}>
 				<h1>{quizWord}</h1>
 				<h2>
-					Word #{allKeys.indexOf(quizWord) + 1} / {allKeys.length}
+					Word #{currentIndex + 1} / {allKeys.length}
 				</h2>
 			</div>
 
