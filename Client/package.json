@@ -7,7 +7,7 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"sort:vocab": "node scripts/sortGRE.js"
+		"sort:vocab": "node scripts/sort-gre-combined.js"
 	},
 	"keywords": [],
 	"author": "",
