@@ -10,9 +10,6 @@ import "../styles/globals.css";
 import vocabData from "../src/data/gre_combined.json";
 import stringSimilarity from "string-similarity";
 
-import fs from "fs";
-import path from "path";
-
 /*------------------------------------------------------------------------------
                                     Main
 -------------------------------------------------------------------------------*/
