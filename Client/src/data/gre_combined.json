@@ -2259,5 +2259,1140 @@
 		"definition": "kindness; harmlessness.",
 		"example": "Her benignity toward strangers was renowned.",
 		"fullDefinition": "Benignity is gentle goodwill or a condition that poses no threat, the opposite of malignancy."
+	},
+	"Modicum": {
+		"definition": "a small or moderate amount.",
+		"example": "She showed only a modicum of interest in the project.",
+		"fullDefinition": "A modicum is a limited or modest amount of something, often implying that it is barely sufficient."
+	},
+	"Schism": {
+		"definition": "a split or division within a group.",
+		"example": "The theological schism divided the congregation.",
+		"fullDefinition": "A schism is a formal separation or division between groups, typically caused by conflicting beliefs or opinions."
+	},
+	"Venal": {
+		"definition": "open to bribery; corrupt.",
+		"example": "Journalists exposed the venal practices of certain officials.",
+		"fullDefinition": "Venal describes a willingness to engage in corrupt or dishonest behavior, often for personal gain."
+	},
+	"Entrenched": {
+		"definition": "firmly established and hard to change.",
+		"example": "Entrenched traditions can resist modernization.",
+		"fullDefinition": "Entrenched refers to attitudes, practices, or structures that are deeply rooted and resistant to alteration."
+	},
+	"Scrupulous": {
+		"definition": "extremely careful and moral.",
+		"example": "Her scrupulous research left no detail unchecked.",
+		"fullDefinition": "Scrupulous describes someone who acts with great attention to detail and strict adherence to ethical principles."
+	},
+	"Condescension": {
+		"definition": "an attitude of patronizing superiority.",
+		"example": "His tone of condescension alienated his colleagues.",
+		"fullDefinition": "Condescension is the act of treating others as inferior, showing a superior or patronizing attitude."
+	},
+	"Fiascoes": {
+		"definition": "complete failures.",
+		"example": "Several ill-conceived products turned into costly fiascoes.",
+		"fullDefinition": "Fiascoes are events that result in total, often humiliating failure, usually due to mismanagement."
+	},
+	"Conceivably": {
+		"definition": "possibly; within the realm of possibility.",
+		"example": "It could conceivably rain later today.",
+		"fullDefinition": "Conceivably means something can be imagined or believed to be possible, though not certain."
+	},
+	"Rancor": {
+		"definition": "bitter resentment or ill will.",
+		"example": "He spoke without rancor despite their past disagreements.",
+		"fullDefinition": "Rancor is deep-seated, long-term bitterness or hostility between individuals or groups."
+	},
+	"Excoriate": {
+		"definition": "to criticize severely.",
+		"example": "Reviewers excoriated the novel for its poor plot.",
+		"fullDefinition": "To excoriate is to denounce or berate someone or something harshly and publicly."
+	},
+	"Lambast": {
+		"definition": "to criticize harshly.",
+		"example": "The editorial lambasted the new policy for its flaws.",
+		"fullDefinition": "To lambast is to reprimand or assault verbally with strong criticism."
+	},
+	"Beguile": {
+		"definition": "to charm or deceive.",
+		"example": "He beguiled the audience with witty anecdotes.",
+		"fullDefinition": "To beguile is to attract or enchant someone in a deceptive manner, often with charm."
+	},
+	"Limpid": {
+		"definition": "clear and transparent.",
+		"example": "The stream’s limpid waters revealed the pebbles beneath.",
+		"fullDefinition": "Limpid describes something completely clear and free from obscurity, whether liquid or presentation."
+	},
+	"Parsimonious": {
+		"definition": "unwilling to spend; stingy.",
+		"example": "The parsimonious landlord refused to make basic repairs.",
+		"fullDefinition": "Parsimonious characterizes a reluctance to spend money or use resources, often to an extreme degree."
+	},
+	"Avidity": {
+		"definition": "eager enthusiasm; keen interest.",
+		"example": "She read the novel with great avidity, finishing it in one day.",
+		"fullDefinition": "Avidity refers to intense enthusiasm or keenness in pursuing an interest or activity."
+	},
+	"Staunchness": {
+		"definition": "the quality of being loyal and steadfast.",
+		"example": "His staunchness in defending his friends was admirable.",
+		"fullDefinition": "Staunchness denotes unwavering loyalty and firm commitment to someone or something."
+	},
+	"Apathetic": {
+		"definition": "showing little or no emotion or interest.",
+		"example": "The audience remained apathetic during the performance.",
+		"fullDefinition": "Apathetic describes a lack of feeling, interest, or concern about matters others find important."
+	},
+	"Jettison": {
+		"definition": "to discard or abandon.",
+		"example": "The crew jettisoned excess cargo to lighten the load.",
+		"fullDefinition": "To jettison is to throw or drop something unwanted or burdensome from a vessel or aircraft, or figuratively abandon it."
+	},
+	"Overweening": {
+		"definition": "excessively arrogant; presumptuous.",
+		"example": "His overweening confidence led him to underestimate the competition.",
+		"fullDefinition": "Overweening describes an attitude of extreme self-confidence or arrogance, often leading to negative consequences."
+	},
+	"Countervailing": {
+		"definition": "offsetting in influence or effect.",
+		"example": "They introduced discounts as countervailing measures against rising costs.",
+		"fullDefinition": "Countervailing refers to actions or forces that serve to counteract or neutralize another influence or effect."
+	},
+	"Nebulous": {
+		"definition": "vague; ill-defined.",
+		"example": "His nebulous explanation confused everyone.",
+		"fullDefinition": "Nebulous describes something lacking a clear shape, form, or boundaries, often used for unclear ideas or statements."
+	},
+	"Rambling": {
+		"definition": "long and digressive; aimless.",
+		"example": "Her rambling story lost the listeners' interest.",
+		"fullDefinition": "Rambling refers to speech or writing that moves aimlessly from one topic to another without clear structure."
+	},
+	"Iconographic": {
+		"definition": "relating to visual symbols or images.",
+		"example": "The museum’s exhibit featured iconographic analysis of medieval icons.",
+		"fullDefinition": "Iconographic pertains to the visual representation and symbolism used in art or media to convey meaning."
+	},
+	"Amenable": {
+		"definition": "willing to agree or comply.",
+		"example": "She was amenable to the team’s suggestions.",
+		"fullDefinition": "Amenable describes a readiness to be influenced or controlled by others, showing openness to suggestions."
+	},
+	"Refutation": {
+		"definition": "the act of proving something false.",
+		"example": "He presented a refutation of the opposing theory.",
+		"fullDefinition": "Refutation is the process of disproving a claim or argument by providing counter-evidence or reasoning."
+	},
+	"Allusion": {
+		"definition": "an indirect reference.",
+		"example": "The poem contains an allusion to Shakespeare’s sonnets.",
+		"fullDefinition": "An allusion is a subtle or indirect reference to a person, event, or work, enriching the meaning without explicit mention."
+	},
+	"Feasible": {
+		"definition": "practicable; achievable.",
+		"example": "They developed a feasible plan within the budget constraints.",
+		"fullDefinition": "Feasible refers to something capable of being done or carried out within existing constraints."
+	},
+	"Remedial": {
+		"definition": "intended to correct or improve.",
+		"example": "The student attended a remedial math course to catch up.",
+		"fullDefinition": "Remedial describes actions or measures designed to correct deficiencies or improve a skill or condition."
+	},
+	"Benign": {
+		"definition": "harmless; gentle.",
+		"example": "The tumor was found to be benign and required no further treatment.",
+		"fullDefinition": "Benign describes something that is not harmful in effect, often gentle or mild in nature."
+	},
+	"Ruinous": {
+		"definition": "causing great destruction or loss.",
+		"example": "The flood had ruinous effects on the village’s infrastructure.",
+		"fullDefinition": "Ruinous refers to something that brings about severe damage, loss, or collapse."
+	},
+	"Sham": {
+		"definition": "a deceptive imitation; fake.",
+		"example": "The certificate turned out to be a sham.",
+		"fullDefinition": "A sham is something that falsely appears to be genuine, used to deceive or defraud."
+	},
+	"Unpremeditated": {
+		"definition": "not planned in advance; spontaneous.",
+		"example": "Her apology was unpremeditated but sincere.",
+		"fullDefinition": "Unpremeditated describes actions done without prior planning or consideration."
+	},
+	"Impetuously": {
+		"definition": "acting without thought or care.",
+		"example": "He impetuously agreed to the challenge and later regretted it.",
+		"fullDefinition": "Impetuously means acting on sudden impulse, without careful thought or planning."
+	},
+	"Ploddingly": {
+		"definition": "in a slow, laborious manner.",
+		"example": "She worked ploddingly through the lengthy report.",
+		"fullDefinition": "Ploddingly describes moving or working in a slow, steady, and often tedious way."
+	},
+	"Sporadically": {
+		"definition": "occurring at irregular intervals.",
+		"example": "The alarms rang sporadically throughout the night.",
+		"fullDefinition": "Sporadically refers to events happening occasionally and unpredictably."
+	},
+	"Clerical": {
+		"definition": "related to office work or clergy.",
+		"example": "She was hired for clerical duties in the legal department.",
+		"fullDefinition": "Clerical pertains to administrative office tasks or, in another context, duties performed by clergy."
+	},
+	"Cerebral": {
+		"definition": "intellectual; brain-oriented.",
+		"example": "His approach to the problem was highly cerebral.",
+		"fullDefinition": "Cerebral describes activities or people characterized by deep thought and intellectual rigor."
+	},
+	"Crestfallen": {
+		"definition": "dejected; disappointed.",
+		"example": "He looked crestfallen when he heard the bad news.",
+		"fullDefinition": "Crestfallen denotes a state of being visibly sad or dispirited after a disappointment."
+	},
+	"Ecstatic": {
+		"definition": "overwhelmingly joyful.",
+		"example": "She was ecstatic upon receiving the award.",
+		"fullDefinition": "Ecstatic describes a feeling or expression of intense, often overwhelming, happiness or excitement."
+	},
+	"Disgruntled": {
+		"definition": "angry or dissatisfied.",
+		"example": "The disgruntled employees voiced their complaints at the meeting.",
+		"fullDefinition": "Disgruntled refers to someone who is discontented and resentful about a situation."
+	},
+	"Humdrum": {
+		"definition": "lacking variety; dull.",
+		"example": "He longed to escape his humdrum routine.",
+		"fullDefinition": "Humdrum describes something monotonous and uninteresting due to sameness or routine."
+	},
+	"Immured": {
+		"definition": "enclosed or confined.",
+		"example": "The prisoners were immured behind the thick walls.",
+		"fullDefinition": "Immured means to be locked in or confined within a space, often against one’s will."
+	},
+	"Dispassionate": {
+		"definition": "impartial; calm.",
+		"example": "A dispassionate judge must weigh evidence objectively.",
+		"fullDefinition": "Dispassionate describes an approach devoid of strong emotion, ensuring fairness and objectivity."
+	},
+	"Imprudent": {
+		"definition": "rash; lacking good judgment.",
+		"example": "It was imprudent to invest all his savings at once.",
+		"fullDefinition": "Imprudent refers to actions taken without careful thought, often leading to negative consequences."
+	},
+	"Curtail": {
+		"definition": "to shorten or reduce.",
+		"example": "Budget cuts will curtail many planned projects.",
+		"fullDefinition": "To curtail is to cut short, diminish, or impose limits on something."
+	},
+	"Accord": {
+		"definition": "an agreement or harmony.",
+		"example": "The nations reached an accord on trade tariffs.",
+		"fullDefinition": "Accord is a formal agreement or a state of reconciliation and harmony between parties."
+	},
+	"Manacled": {
+		"definition": "handcuffed or restrained.",
+		"example": "The suspect was manacled before being transported.",
+		"fullDefinition": "Manacled describes someone who is physically bound, typically with handcuffs or chains."
+	},
+	"Lionized": {
+		"definition": "treated as a celebrity.",
+		"example": "After the discovery, he was lionized by the scientific community.",
+		"fullDefinition": "To lionize is to give someone public attention and approval, elevating them to celebrity status."
+	},
+	"Axiomatic": {
+		"definition": "self-evident; unquestionable.",
+		"example": "It is axiomatic that water is essential for life.",
+		"fullDefinition": "Axiomatic describes a proposition that is accepted as true without proof because it is obvious."
+	},
+	"Canonical": {
+		"definition": "according to recognized rules or standards.",
+		"example": "His work is considered part of the canonical literature.",
+		"fullDefinition": "Canonical refers to texts, works, or practices that are officially accepted and authoritative."
+	},
+	"Ennui": {
+		"definition": "boredom; listlessness.",
+		"example": "She felt a deep ennui during the long, uneventful summer.",
+		"fullDefinition": "Ennui is a feeling of weariness and dissatisfaction arising from lack of occupation or excitement."
+	},
+	"Extemporaneous": {
+		"definition": "done without preparation; spontaneous.",
+		"example": "He delivered an extemporaneous speech that impressed the audience.",
+		"fullDefinition": "Extemporaneous refers to actions or remarks carried out on the spur of the moment, without prior planning."
+	},
+	"Fulminate": {
+		"definition": "to loudly criticize or denounce.",
+		"example": "They fulminated against the new policy at the town hall.",
+		"fullDefinition": "To fulminate is to express vehement protest or criticism, often explosively."
+	},
+	"Martial": {
+		"definition": "related to war or the military.",
+		"example": "The ceremony featured martial music and drills.",
+		"fullDefinition": "Martial pertains to warfare and armed forces, including tactics and military discipline."
+	},
+	"Neologism": {
+		"definition": "a newly coined word or expression.",
+		"example": "The tech industry introduces neologisms frequently.",
+		"fullDefinition": "Neologism refers to a newly invented term or phrase not yet fully accepted into common usage."
+	},
+	"Noxious": {
+		"definition": "harmful; poisonous.",
+		"example": "The factory emitted noxious fumes into the air.",
+		"fullDefinition": "Noxious describes substances or influences that are physically or morally harmful."
+	},
+	"Obtuse": {
+		"definition": "slow to understand; blunt.",
+		"example": "His obtuse response frustrated his teammates.",
+		"fullDefinition": "Obtuse refers to a lack of sharpness of intellect or sensitivity, often blunt or insensitive."
+	},
+	"Paean": {
+		"definition": "a song of praise or triumph.",
+		"example": "The poem is a paean to the beauty of nature.",
+		"fullDefinition": "Paean is an enthusiastic expression of praise, joy, or thanksgiving."
+	},
+	"Perfidy": {
+		"definition": "treachery; betrayal.",
+		"example": "He was punished for his perfidy against the crown.",
+		"fullDefinition": "Perfidy is a deliberate breach of trust or faith, an act of deceit or treason."
+	},
+	"Prattle": {
+		"definition": "to talk at length foolishly.",
+		"example": "They prattled on about trivial matters.",
+		"fullDefinition": "To prattle is to speak in a simple-minded, inconsequential, and often repetitive way."
+	},
+	"Perspicacious": {
+		"definition": "having keen insight.",
+		"example": "Her perspicacious comments clarified the debate.",
+		"fullDefinition": "Perspicacious describes someone able to grasp complex ideas quickly and accurately."
+	},
+	"Predilection": {
+		"definition": "a strong preference.",
+		"example": "He has a predilection for spicy food.",
+		"fullDefinition": "Predilection refers to a preexisting liking or inclination toward something."
+	},
+	"Prescience": {
+		"definition": "knowledge of events before they happen.",
+		"example": "Her prescience about market trends proved invaluable.",
+		"fullDefinition": "Prescience is the ability to foresee future events or developments."
+	},
+	"Qualms": {
+		"definition": "feelings of doubt or unease.",
+		"example": "He had qualms about accepting the risky offer.",
+		"fullDefinition": "Qualms are sudden, uneasy feelings of doubt or worry about one’s actions or decisions."
+	},
+	"Solicitous": {
+		"definition": "showing concern or care.",
+		"example": "Her solicitous nature comforted the grieving family.",
+		"fullDefinition": "Solicitous describes a caring and attentive attitude, marked by concern for someone’s well-being."
+	},
+	"Sordid": {
+		"definition": "morally degraded; filthy.",
+		"example": "The report revealed the politician’s sordid dealings.",
+		"fullDefinition": "Sordid refers to actions or situations that are unethical, wicked, or dirty in a moral sense."
+	},
+	"Stupefy": {
+		"definition": "to astonish; stun.",
+		"example": "The magician’s trick stupefied the audience.",
+		"fullDefinition": "To stupefy is to make someone unable to think or feel properly due to shock or amazement."
+	},
+	"Accolade": {
+		"definition": "an award or honor.",
+		"example": "She received an accolade for her groundbreaking research.",
+		"fullDefinition": "An accolade is a formal recognition or expression of praise bestowed for achievement or merit."
+	},
+	"Adulation": {
+		"definition": "excessive admiration or praise.",
+		"example": "He basked in the adulation of his fans.",
+		"fullDefinition": "Adulation is overwhelming or exaggerated praise or flattery, often insincere."
+	},
+	"Bucolic": {
+		"definition": "relating to rural life.",
+		"example": "They enjoyed a bucolic retreat in the countryside.",
+		"fullDefinition": "Bucolic describes pastoral, rural settings or the idyllic simplicity of country life."
+	},
+	"Canon": {
+		"definition": "accepted body of work or laws.",
+		"example": "His novel is now considered part of the literary canon.",
+		"fullDefinition": "Canon refers to works or principles officially accepted as authoritative in a field or institution."
+	},
+	"Chary": {
+		"definition": "cautiously hesitant.",
+		"example": "Investors were chary of the untested startup.",
+		"fullDefinition": "Chary describes a wary or guarded approach, reluctant to take risks."
+	},
+	"Complaisance": {
+		"definition": "willingness to please.",
+		"example": "Her complaisance made her a popular host.",
+		"fullDefinition": "Complaisance is the quality of being agreeable and eager to accommodate others’ wishes."
+	},
+	"Culpable": {
+		"definition": "deserving blame.",
+		"example": "He was found culpable for the accident.",
+		"fullDefinition": "Culpable refers to being legally or morally responsible for wrongdoing."
+	},
+	"Dearth": {
+		"definition": "a scarcity or lack.",
+		"example": "There was a dearth of affordable housing.",
+		"fullDefinition": "Dearth indicates an insufficient supply or shortage of something needed."
+	},
+	"Discretion": {
+		"definition": "judgment in speech or action.",
+		"example": "Use discretion when sharing sensitive information.",
+		"fullDefinition": "Discretion is the ability to make responsible decisions and maintain confidentiality or tact."
+	},
+	"Emollient": {
+		"definition": "soothing or softening.",
+		"example": "The lotion had an emollient effect on her skin.",
+		"fullDefinition": "Emollient describes substances or actions that soften and soothe, especially skin."
+	},
+	"Exonerate": {
+		"definition": "to clear from blame.",
+		"example": "The evidence exonerated her of all charges.",
+		"fullDefinition": "To exonerate is to officially absolve someone of fault or wrongdoing."
+	},
+	"Fallacy": {
+		"definition": "a false belief or argument.",
+		"example": "The notion that money guarantees happiness is a fallacy.",
+		"fullDefinition": "A fallacy is a mistaken idea or flawed argument based on unsound reasoning."
+	},
+	"Furtive": {
+		"definition": "sly; secretive.",
+		"example": "She cast a furtive glance at the confidential file.",
+		"fullDefinition": "Furtive describes actions done stealthily to avoid notice or suspicion."
+	},
+	"Impecunious": {
+		"definition": "having little or no money.",
+		"example": "The impecunious student took on a second job to pay tuition.",
+		"fullDefinition": "Impecunious refers to a state of poverty or lack of funds."
+	},
+	"Incipient": {
+		"definition": "beginning to develop.",
+		"example": "They detected incipient signs of recovery.",
+		"fullDefinition": "Incipient describes something in its early stages that is starting to emerge."
+	},
+	"Inveigle": {
+		"definition": "to persuade by flattery or deceit.",
+		"example": "He inveigled his way into the exclusive club.",
+		"fullDefinition": "To inveigle is to entice or trick someone into doing something through charm or deception."
+	},
+	"Odious": {
+		"definition": "extremely hateful or repulsive.",
+		"example": "The dictator’s policies were widely regarded as odious.",
+		"fullDefinition": "Odious describes something deserving intense dislike or disgust."
+	},
+	"Penurious": {
+		"definition": "penny-pinching; impoverished.",
+		"example": "His penurious habits made saving difficult.",
+		"fullDefinition": "Penurious refers to extreme frugality or a state of severe poverty."
+	},
+	"Peruse": {
+		"definition": "to read thoroughly.",
+		"example": "She perused the contract before signing.",
+		"fullDefinition": "To peruse is to examine or read something with great care and attention."
+	},
+	"Preen": {
+		"definition": "to groom oneself; pride oneself.",
+		"example": "He preened before the mirror before the interview.",
+		"fullDefinition": "To preen is to tidy or primp oneself and display pride in appearance."
+	},
+	"Putrefy": {
+		"definition": "to rot and emit foul odor.",
+		"example": "The carcass began to putrefy in the sun.",
+		"fullDefinition": "To putrefy is to undergo decomposition, resulting in foul smell and decay."
+	},
+	"Quaff": {
+		"definition": "to drink heartily.",
+		"example": "They quaffed ale at the festival.",
+		"fullDefinition": "To quaff is to drink a beverage, especially alcohol, with hearty enjoyment."
+	},
+	"Redoubtable": {
+		"definition": "formidable; inspiring respect.",
+		"example": "She is a redoubtable opponent in debate.",
+		"fullDefinition": "Redoubtable describes someone worthy of fear or respect due to their abilities."
+	},
+	"Squalid": {
+		"definition": "extremely dirty or wretched.",
+		"example": "They lived in squalid conditions after the disaster.",
+		"fullDefinition": "Squalid refers to environments that are neglected, filthy, and morally degraded."
+	},
+	"Urbane": {
+		"definition": "suave; refined in manner.",
+		"example": "His urbane charm impressed the guests.",
+		"fullDefinition": "Urbane describes a polished and courteous style typical of sophisticated city dwellers."
+	},
+	"Vilify": {
+		"definition": "to speak ill of; defame.",
+		"example": "Opponents vilified her in the press.",
+		"fullDefinition": "To vilify is to slander or malign someone, portraying them in a negative light."
+	},
+	"Archaic": {
+		"definition": "outdated; ancient.",
+		"example": "The manuscript contained archaic language.",
+		"fullDefinition": "Archaic describes words, customs, or objects from an earlier period that are no longer in common use."
+	},
+	"Evanescent": {
+		"definition": "vanishing quickly; fleeting.",
+		"example": "The sunset’s beauty was evanescent.",
+		"fullDefinition": "Evanescent refers to something that fades or disappears rapidly, like a vapor or feeling."
+	},
+	"Fervent": {
+		"definition": "intensely passionate.",
+		"example": "He gave a fervent speech on equality.",
+		"fullDefinition": "Fervent describes strong, heartfelt enthusiasm or conviction."
+	},
+	"Germane": {
+		"definition": "relevant and appropriate.",
+		"example": "Her comments were germane to the discussion.",
+		"fullDefinition": "Germane refers to matters that are closely related and pertinent to the topic."
+	},
+	"Halcyon": {
+		"definition": "calm; prosperous.",
+		"example": "They remembered the halcyon days of youth.",
+		"fullDefinition": "Halcyon describes a past period of peace, happiness, and success."
+	},
+	"Hegemony": {
+		"definition": "leadership or dominance, especially by one group.",
+		"example": "The empire’s hegemony shaped regional politics.",
+		"fullDefinition": "Hegemony refers to predominant influence or authority exercised by one entity over others."
+	},
+	"Idolatrous": {
+		"definition": "worshipping idols; blindly devoted.",
+		"example": "His idolatrous admiration for celebrities was excessive.",
+		"fullDefinition": "Idolatrous describes excessive adoration or reverence, often uncritical, toward an object or person."
+	},
+	"Luminous": {
+		"definition": "emitting light; bright.",
+		"example": "The luminous moon guided their path.",
+		"fullDefinition": "Luminous refers to something that gives off light or glows in the dark."
+	},
+	"Opprobium": {
+		"definition": "public disgrace or shame.",
+		"example": "The politician faced opprobium after the scandal.",
+		"fullDefinition": "Opprobium is harsh criticism or contempt directed toward someone as a result of shameful conduct."
+	},
+	"Pedagogy": {
+		"definition": "the art or science of teaching.",
+		"example": "Her course on pedagogy transformed how she approached instruction.",
+		"fullDefinition": "Pedagogy refers to the methods and principles used in educating and instructing students."
+	},
+	"Pine": {
+		"definition": "to yearn intensely for.",
+		"example": "She pined for her childhood home while studying abroad.",
+		"fullDefinition": "To pine is to feel deep longing or grief for something absent or lost."
+	},
+	"Pith": {
+		"definition": "the core or essence.",
+		"example": "He captured the pith of the argument in one sentence.",
+		"fullDefinition": "Pith is the central or most important part of a subject or message."
+	},
+	"Pithy": {
+		"definition": "concise and meaningful.",
+		"example": "Her pithy remark summed up the issue perfectly.",
+		"fullDefinition": "Pithy describes language that is brief yet full of substance and impact."
+	},
+	"Polemical": {
+		"definition": "controversial; argumentative.",
+		"example": "His polemical essay ignited vigorous debate.",
+		"fullDefinition": "Polemical refers to writing or speech intended to dispute or refute a specific opinion or doctrine."
+	},
+	"Querulous": {
+		"definition": "complaining; irritable.",
+		"example": "The querulous customer demanded a refund for trivial reasons.",
+		"fullDefinition": "Querulous describes someone prone to petulant complaints and grumbling."
+	},
+	"Rancorous": {
+		"definition": "marked by bitter resentment.",
+		"example": "Their rancorous feud lasted for decades.",
+		"fullDefinition": "Rancorous describes feelings of deep-seated bitterness and ongoing hostility."
+	},
+	"Succinct": {
+		"definition": "brief and to the point.",
+		"example": "She gave a succinct overview of the project.",
+		"fullDefinition": "Succinct describes communication expressed clearly and concisely without wasted words."
+	},
+	"Surfeit": {
+		"definition": "an excessive amount.",
+		"example": "There was a surfeit of snacks at the party.",
+		"fullDefinition": "Surfeit refers to an overabundant supply or indulgence beyond what is needed."
+	},
+	"Aggrandize": {
+		"definition": "to increase in power or status.",
+		"example": "He aggrandized his role in the company to impress investors.",
+		"fullDefinition": "To aggrandize is to make greater in power, rank, or reputation, often through exaggeration."
+	},
+	"Astringent": {
+		"definition": "harshly sharp or severe.",
+		"example": "His astringent critique improved the manuscript significantly.",
+		"fullDefinition": "Astringent describes language or treatment that is severe and cutting in tone."
+	},
+	"Contiguous": {
+		"definition": "touching or adjacent.",
+		"example": "The two properties were contiguous, sharing a common fence.",
+		"fullDefinition": "Contiguous refers to things that are in direct contact or next to each other without interruption."
+	},
+	"Derision": {
+		"definition": "ridicule or mockery.",
+		"example": "Her proposal was met with derision from the skeptics.",
+		"fullDefinition": "Derision is the act of treating someone or something with scornful ridicule."
+	},
+	"Dilettante": {
+		"definition": "a superficial amateur.",
+		"example": "He was a dilettante in literature, never taking it seriously.",
+		"fullDefinition": "Dilettante describes someone who engages in an art or field lightly without real commitment or mastery."
+	},
+	"Proclivity": {
+		"definition": "a natural inclination.",
+		"example": "She has a proclivity for solving complex puzzles.",
+		"fullDefinition": "Proclivity is a predisposition or habitual inclination toward a particular thing or behavior."
+	},
+	"Quotidian": {
+		"definition": "ordinary; everyday.",
+		"example": "He found poetry in the quotidian moments of life.",
+		"fullDefinition": "Quotidian refers to something occurring every day or very commonly."
+	},
+	"Rarefy": {
+		"definition": "to make thinner or less dense.",
+		"example": "The mountaintop air rarefies as you ascend.",
+		"fullDefinition": "To rarefy is to reduce density or intensity, making something more refined or thin."
+	},
+	"Refulgent": {
+		"definition": "shining brightly.",
+		"example": "The refulgent sun rose over the horizon.",
+		"fullDefinition": "Refulgent describes something that emits a brilliant or radiant light."
+	},
+	"Renege": {
+		"definition": "to go back on a promise.",
+		"example": "They reneged on their offer at the last minute.",
+		"fullDefinition": "To renege is to fail to fulfill a commitment or break a promise."
+	},
+	"Sedulous": {
+		"definition": "diligent and persistent.",
+		"example": "Her sedulous research led to groundbreaking findings.",
+		"fullDefinition": "Sedulous describes someone who shows dedication and careful perseverance in tasks."
+	},
+	"Spendthrift": {
+		"definition": "one who spends wastefully.",
+		"example": "The spendthrift squandered his inheritance on luxuries.",
+		"fullDefinition": "Spendthrift refers to a person who spends money extravagantly and recklessly."
+	},
+	"Tout": {
+		"definition": "to publicly praise or promote.",
+		"example": "The company touted its latest innovation at the expo.",
+		"fullDefinition": "To tout is to advertise or speak highly of something to attract attention or business."
+	},
+	"Trenchant": {
+		"definition": "incisive and forceful.",
+		"example": "Her trenchant analysis cut through the confusion.",
+		"fullDefinition": "Trenchant describes language or thinking that is sharp, clear, and effective."
+	},
+	"Unfeigned": {
+		"definition": "genuine; sincere.",
+		"example": "He expressed unfeigned gratitude for the help he received.",
+		"fullDefinition": "Unfeigned describes an emotion or reaction that is honest and not pretended."
+	},
+	"Untenable": {
+		"definition": "not defensible; impossible to maintain.",
+		"example": "The argument was rendered untenable by the new evidence.",
+		"fullDefinition": "Untenable refers to a position or state that cannot be justified or sustained."
+	},
+	"Variegated": {
+		"definition": "varied in appearance; multicolored.",
+		"example": "The variegated fabric brightened the room.",
+		"fullDefinition": "Variegated describes something that has different colors or marks in irregular patterns."
+	},
+	"Vexation": {
+		"definition": "annoyance; frustration.",
+		"example": "He sighed in vexation at the constant interruptions.",
+		"fullDefinition": "Vexation is the state of being irritated or distressed by little annoyances."
+	},
+	"Alloy": {
+		"definition": "a mixture of metals.",
+		"example": "Brass is an alloy of copper and zinc.",
+		"fullDefinition": "Alloy is a substance made by combining two or more metals to improve strength or durability."
+	},
+	"August": {
+		"definition": "majestic; dignified.",
+		"example": "The august presence of the judge commanded silence.",
+		"fullDefinition": "August describes someone or something that inspires reverence and admiration through grandeur."
+	},
+	"Arrest": {
+		"definition": "to stop or seize.",
+		"example": "The police arrested the suspect without incident.",
+		"fullDefinition": "To arrest is to bring something to a halt or take a person into custody."
+	},
+	"Broach": {
+		"definition": "to introduce a subject.",
+		"example": "She broached the sensitive issue with tact.",
+		"fullDefinition": "To broach is to raise or begin discussion of a topic, often one that is delicate."
+	},
+	"Brook": {
+		"definition": "to tolerate or endure.",
+		"example": "He would brook no criticism of his methods.",
+		"fullDefinition": "To brook means to accept or allow something, especially dissent or objection."
+	},
+	"Cardinal": {
+		"definition": "fundamental; primary.",
+		"example": "Trust is a cardinal principle in any relationship.",
+		"fullDefinition": "Cardinal describes something of chief importance or essential significance."
+	},
+	"Chauvinist": {
+		"definition": "one showing excessive loyalty or bias.",
+		"example": "He was branded a chauvinist after his sexist remarks.",
+		"fullDefinition": "Chauvinist refers to a person with an obsessive devotion to a cause or group, often with prejudice against others."
+	},
+	"Die": {
+		"definition": "to cease living.",
+		"example": "Many flowers die without sufficient water.",
+		"fullDefinition": "To die is to stop living or functioning; to pass from life to death."
+	},
+	"Essay": {
+		"definition": "a short written composition on a topic.",
+		"example": "She submitted her essay on climate change.",
+		"fullDefinition": "An essay is a brief piece of writing that explores or argues a specific theme or idea."
+	},
+	"Exact": {
+		"definition": "precise; accurate.",
+		"example": "Please give the exact dimensions of the room.",
+		"fullDefinition": "Exact describes something characterized by complete correctness and strict precision."
+	},
+	"Fell": {
+		"definition": "terrible; deadly.",
+		"example": "They faced a fell threat in the dark forest.",
+		"fullDefinition": "Fell describes something fierce, cruel, or lethal in nature."
+	},
+	"Flag": {
+		"definition": "to lose strength or energy; to droop.",
+		"example": "His enthusiasm began to flag after hours of continuous work.",
+		"fullDefinition": "To flag is to grow weak or tired, losing vigor or intensity over time."
+	},
+	"Ford": {
+		"definition": "to cross a body of water by wading.",
+		"example": "They forded the shallow river at dawn.",
+		"fullDefinition": "To ford is to traverse a stream or river at a shallow point on foot or in a vehicle."
+	},
+	"Grouse": {
+		"definition": "to complain or grumble.",
+		"example": "She groused about the long wait for her appointment.",
+		"fullDefinition": "To grouse is to voice dissatisfaction or complaints in a peevish or persistent manner."
+	},
+	"Guy": {
+		"definition": "to mock or ridicule.",
+		"example": "They guyed him mercilessly for his outlandish tie.",
+		"fullDefinition": "To guy is to make fun of someone through taunts or jeers, often in a teasing way."
+	},
+	"List": {
+		"definition": "to lean or tilt to one side.",
+		"example": "The old ship listed dangerously in the stormy seas.",
+		"fullDefinition": "To list is to lean or tip, especially of a vessel tilting under uneven weight or pressure."
+	},
+	"Lumber": {
+		"definition": "to move in a slow, heavy, awkward way.",
+		"example": "The bear lumbered across the clearing at dawn.",
+		"fullDefinition": "To lumber is to walk or move clumsily and ponderously, often because of size or burden."
+	},
+	"Meet": {
+		"definition": "appropriate or fitting.",
+		"example": "It is meet that we honor our traditions today.",
+		"fullDefinition": "Meet describes something suitable, proper, or in accordance with circumstances."
+	},
+	"Mince": {
+		"definition": "to cut into very small pieces.",
+		"example": "She minced the garlic finely for the sauce.",
+		"fullDefinition": "To mince is to chop or grind food into small bits using a knife or food processor."
+	},
+	"Occult": {
+		"definition": "hidden; beyond ordinary understanding.",
+		"example": "He studied occult symbols in ancient manuscripts.",
+		"fullDefinition": "Occult pertains to mystical or supernatural forces and practices hidden from common knowledge."
+	},
+	"Pedestrian": {
+		"definition": "lacking excitement; dull.",
+		"example": "The lecture was pedestrian and failed to engage the audience.",
+		"fullDefinition": "Pedestrian describes something commonplace or unimaginative, devoid of stimulation or interest."
+	},
+	"Pied": {
+		"definition": "having patches of two or more colors.",
+		"example": "The pied horse had a striking black-and-white coat.",
+		"fullDefinition": "Pied refers to an irregular pattern of contrasting colors, especially patches or spots."
+	},
+	"Pluck": {
+		"definition": "spirited courage; determination.",
+		"example": "She showed pluck by volunteering to lead the rescue mission.",
+		"fullDefinition": "Pluck denotes bravery and resolute courage in the face of difficulty or danger."
+	},
+	"Rail": {
+		"definition": "to complain or protest strongly.",
+		"example": "He railed against the unfair policies in his speech.",
+		"fullDefinition": "To rail is to express bitter or vehement criticism or denunciation."
+	},
+	"Rent": {
+		"definition": "torn; split apart.",
+		"example": "The rent pages of the book revealed hidden notes.",
+		"fullDefinition": "Rent describes something that has been torn or ripped, creating an opening or split."
+	},
+	"Quail": {
+		"definition": "to shrink back in fear; to cower.",
+		"example": "She quailed at the thought of speaking before the crowd.",
+		"fullDefinition": "To quail is to recoil or show fear, often visibly shrinking away."
+	},
+	"Qualify": {
+		"definition": "to limit or modify a statement.",
+		"example": "He qualified his praise with a few criticisms.",
+		"fullDefinition": "To qualify is to add conditions or reservations that reduce the scope or strength of something."
+	},
+	"Scurvy": {
+		"definition": "despicable; morally contemptible.",
+		"example": "They called his underhanded tactics scurvy.",
+		"fullDefinition": "Scurvy is used to describe actions or people deserving of contempt or disgust."
+	},
+	"Stand": {
+		"definition": "to tolerate or endure.",
+		"example": "I cannot stand the constant noise any longer.",
+		"fullDefinition": "To stand is to bear or endure something unpleasant without giving in."
+	},
+	"Steep": {
+		"definition": "to soak in liquid to extract flavor.",
+		"example": "Steep the tea bag in hot water for three minutes.",
+		"fullDefinition": "To steep is to immerse solid substance in a liquid so that flavor or properties are extracted."
+	},
+	"Strut": {
+		"definition": "to walk with a proud, confident gait.",
+		"example": "He strutted into the room like he owned it.",
+		"fullDefinition": "To strut is to swagger or parade oneself with exaggerated confidence."
+	},
+	"Tender": {
+		"definition": "to offer formally or present.",
+		"example": "She tendered her resignation to the board.",
+		"fullDefinition": "To tender is to present something officially for acceptance or consideration."
+	},
+	"Table": {
+		"definition": "to postpone consideration of.",
+		"example": "They tabled the motion until next week.",
+		"fullDefinition": "To table is to defer discussion or action on an item, often in a formal meeting context."
+	},
+	"Waffle": {
+		"definition": "to speak or write evasively.",
+		"example": "He waffled when asked for a clear plan.",
+		"fullDefinition": "To waffle is to be indecisive or to fail to commit to a position, often by equivocation."
+	},
+	"Wag": {
+		"definition": "a witty or mischievous person.",
+		"example": "The office wag lightened the mood with clever quips.",
+		"fullDefinition": "Wag refers to someone known for humorously teasing or making witty remarks."
+	},
+	"Adumbrate": {
+		"definition": "to foreshadow or outline vaguely.",
+		"example": "The opening chapter adumbrates themes of loss and redemption.",
+		"fullDefinition": "To adumbrate is to give a faint or partial indication of something to come."
+	},
+	"Anathema": {
+		"definition": "someone or something intensely disliked.",
+		"example": "Corruption is anathema to honest officials.",
+		"fullDefinition": "Anathema is a person or thing accursed or detested, often eliciting strong aversion."
+	},
+	"Anodyne": {
+		"definition": "inoffensive; soothing.",
+		"example": "His anodyne remarks calmed the tense room.",
+		"fullDefinition": "Anodyne describes something that relieves pain or soothes, either physically or emotionally."
+	},
+	"Apogee": {
+		"definition": "the highest point; climax.",
+		"example": "The athlete’s victory marked the apogee of her career.",
+		"fullDefinition": "Apogee is the farthest or highest point in development or achievement."
+	},
+	"Apostate": {
+		"definition": "one who abandons a belief or cause.",
+		"example": "He was labeled an apostate after renouncing his former faith.",
+		"fullDefinition": "An apostate is someone who forsakes their religion, party, or cause."
+	},
+	"Apotheosis": {
+		"definition": "the perfect example; elevation to divine status.",
+		"example": "Many view Beethoven’s Ninth as the apotheosis of symphonic music.",
+		"fullDefinition": "Apotheosis is the elevation of someone or something to the highest rank or divine status."
+	},
+	"Asperity": {
+		"definition": "harshness of tone or manner.",
+		"example": "The critic’s asperity stung the young author.",
+		"fullDefinition": "Asperity denotes severity or roughness in speech, temper, or manner."
+	},
+	"Asseverate": {
+		"definition": "to affirm or declare solemnly.",
+		"example": "She asseverated her commitment to the project.",
+		"fullDefinition": "To asseverate is to state something earnestly and with conviction."
+	},
+	"Augury": {
+		"definition": "an omen or sign of what will happen.",
+		"example": "Black cats are sometimes viewed as an augury of bad luck.",
+		"fullDefinition": "Augury is the practice of interpreting omens or signs to predict future events."
+	},
+	"Calumniate": {
+		"definition": "to slander or make false statements.",
+		"example": "Rivals tried to calumniate her reputation in the press.",
+		"fullDefinition": "To calumniate is to defame someone by spreading malicious untruths."
+	},
+	"Captious": {
+		"definition": "tending to find fault; nitpicking.",
+		"example": "His captious remarks annoyed the entire team.",
+		"fullDefinition": "Captious describes an inclination to raise petty objections and find trivial faults."
+	},
+	"Cavo;": {
+		"definition": "to raise frivolous objections.",
+		"example": "He continually cavoed at every minor detail during the meeting.",
+		"fullDefinition": "To cavo; is to object unnecessarily over trivial matters, akin to quibbling."
+	},
+	"Celerity": {
+		"definition": "swiftness of movement.",
+		"example": "She completed the assignment with remarkable celerity.",
+		"fullDefinition": "Celerity refers to quickness or rapidity in action or motion."
+	},
+	"Chimera": {
+		"definition": "a fanciful illusion; an unattainable dream.",
+		"example": "The idea of a perfect society remains a chimera.",
+		"fullDefinition": "A chimera is a mental creation or vision that is hoped for but is illusory or impossible to achieve."
+	},
+	"Contumacious": {
+		"definition": "willfully disobedient or rebellious.",
+		"example": "The contumacious student refused to comply with the rules.",
+		"fullDefinition": "Contumacious describes stubborn resistance to authority or defiance of orders."
+	},
+	"Denouement": {
+		"definition": "the final resolution of a story.",
+		"example": "The novel’s denouement tied up all loose plot threads.",
+		"fullDefinition": "Denouement is the part of a narrative in which the strands of the plot are drawn together and matters are explained."
+	},
+	"Descry": {
+		"definition": "to catch sight of; to discover.",
+		"example": "From the hilltop, they descried smoke rising in the valley.",
+		"fullDefinition": "To descry is to perceive or detect something that is difficult to see by looking carefully."
+	},
+	"Desuetude": {
+		"definition": "a state of disuse or inactivity.",
+		"example": "Many ancient customs fell into desuetude over centuries.",
+		"fullDefinition": "Desuetude denotes a condition in which something is no longer practiced or used; disuse."
+	},
+	"Diaphanous": {
+		"definition": "light, delicate, and translucent.",
+		"example": "She wore a diaphanous gown that fluttered in the breeze.",
+		"fullDefinition": "Diaphanous describes fabric or material so fine that it allows light to pass through."
+	},
+	"Ecomium": {
+		"definition": "a formal expression of high praise.",
+		"example": "The committee delivered an ecomium to the retiring professor.",
+		"fullDefinition": "An ecomium is a laudatory speech or piece of writing that publicly praises someone or something."
+	},
+	"Eschew": {
+		"definition": "to deliberately avoid or abstain from.",
+		"example": "She eschewed social media during exam week to focus on studying.",
+		"fullDefinition": "To eschew is to intentionally refrain from using, engaging in, or enjoying something considered undesirable."
+	},
+	"Execrate": {
+		"definition": "to feel or express great loathing for.",
+		"example": "He execrated the injustice he witnessed in the courtroom.",
+		"fullDefinition": "To execrate is to denounce or curse something with intense hatred or disgust."
+	},
+	"Exegesis": {
+		"definition": "critical explanation or interpretation of a text.",
+		"example": "Her exegesis of the ancient manuscript revealed hidden meanings.",
+		"fullDefinition": "Exegesis is a detailed analytical interpretation of a written work, especially a religious text."
+	},
+	"Expiate": {
+		"definition": "to atone for or make amends.",
+		"example": "He sought to expiate his mistake by volunteering for community service.",
+		"fullDefinition": "To expiate is to make reparation or seek forgiveness for wrongdoing through actions or rituals."
+	},
+	"Extirpate": {
+		"definition": "to destroy completely; eradicate.",
+		"example": "Efforts to extirpate the invasive species intensified last spring.",
+		"fullDefinition": "To extirpate is to remove or destroy something entirely, leaving no trace behind."
+	},
+	"Fractious": {
+		"definition": "irritable and quarrelsome.",
+		"example": "The fractious team members argued over every detail.",
+		"fullDefinition": "Fractious describes people prone to causing trouble or being difficult to manage."
+	},
+	"Heterodox": {
+		"definition": "not conforming to accepted beliefs.",
+		"example": "Her heterodox theories challenged the academic consensus.",
+		"fullDefinition": "Heterodox describes opinions or practices that deviate from established or orthodox standards."
+	},
+	"Imbroglio": {
+		"definition": "a confusing or embarrassing situation.",
+		"example": "The diplomatic imbroglio threatened to escalate into conflict.",
+		"fullDefinition": "An imbroglio is a complex and awkward misunderstanding or entanglement."
+	},
+	"Indefatigable": {
+		"definition": "untiring; persistent.",
+		"example": "Her indefatigable energy kept the project on track.",
+		"fullDefinition": "Indefatigable describes someone who continues tirelessly without showing signs of fatigue."
+	},
+	"Ineluctable": {
+		"definition": "inevitable; impossible to avoid.",
+		"example": "Aging is an ineluctable part of life.",
+		"fullDefinition": "Ineluctable refers to something that cannot be evaded or prevented."
+	},
+	"Inimitable": {
+		"definition": "impossible to imitate; unique.",
+		"example": "His inimitable style made his work instantly recognizable.",
+		"fullDefinition": "Inimitable describes qualities or characteristics so distinctive they cannot be duplicated."
+	},
+	"Insouciant": {
+		"definition": "casual; unconcerned.",
+		"example": "She gave an insouciant shrug when asked about the deadline.",
+		"fullDefinition": "Insouciant describes a lighthearted lack of concern or indifference."
+	},
+	"Inveterate": {
+		"definition": "habitual; deeply ingrained.",
+		"example": "He was an inveterate reader, always with a book in hand.",
+		"fullDefinition": "Inveterate describes a long-established habit or interest that is unlikely to change."
+	},
+	"Jejune": {
+		"definition": "dull; naive and simplistic.",
+		"example": "Critics dismissed the film as jejune and uninspired.",
+		"fullDefinition": "Jejune refers to something that is lacking in maturity, depth, or interest."
+	},
+	"Lubricious": {
+		"definition": "lewd or lascivious.",
+		"example": "The novel was condemned for its lubricious content.",
+		"fullDefinition": "Lubricious describes something intended to arouse sexual desire in a way considered inappropriate."
+	},
+	"Medicant": {
+		"definition": "begging; dependent on alms.",
+		"example": "The medicant traveled village to village seeking donations for his monastery.",
+		"fullDefinition": "Medicant describes the practice of begging for charitable donations, often for religious purposes."
+	},
+	"Meretricious": {
+		"definition": "attractive but lacking real value.",
+		"example": "The display’s meretricious glitter masked its poor craftsmanship.",
+		"fullDefinition": "Meretricious describes something that is superficially attractive but devoid of true worth or integrity."
+	},
+	"Minatory": {
+		"definition": "threatening; menacing.",
+		"example": "The letter’s minatory tone worried the entire staff.",
+		"fullDefinition": "Minatory refers to expressions or gestures that convey a threat of harm."
+	},
+	"Nadir": {
+		"definition": "the lowest point.",
+		"example": "After the scandal, the company’s reputation hit its nadir.",
+		"fullDefinition": "Nadir is the point of greatest adversity or despair in a situation."
+	},
+	"Nonplussed": {
+		"definition": "perplexed; unsure how to respond.",
+		"example": "He was nonplussed by the unexpected question.",
+		"fullDefinition": "Nonplussed describes a state of complete bewilderment or bafflement."
+	},
+	"Obstreperous": {
+		"definition": "noisy and difficult to control.",
+		"example": "The obstreperous children disrupted the ceremony.",
+		"fullDefinition": "Obstreperous describes behavior that is unruly and resistant to authority."
+	},
+	"Ossified": {
+		"definition": "hardened; rigidly fixed.",
+		"example": "The organization’s ossified policies stifled innovation.",
+		"fullDefinition": "Ossified refers to beliefs or structures that have become inflexible and unchanging."
+	},
+	"Palliate": {
+		"definition": "to relieve without curing.",
+		"example": "The treatment palliated her pain but did not address the cause.",
+		"fullDefinition": "To palliate is to reduce the severity of symptoms without eliminating their underlying cause."
+	},
+	"Panegyric": {
+		"definition": "a formal expression of praise.",
+		"example": "The ambassador’s panegyric honored the visiting dignitary.",
+		"fullDefinition": "Panegyric is an elaborate public speech or written text that praises someone or something highly."
+	},
+	"Pellucid": {
+		"definition": "transparently clear.",
+		"example": "Her pellucid prose made the argument easy to follow.",
+		"fullDefinition": "Pellucid describes language or expression that is so clear it is easily understood."
+	},
+	"Peroration": {
+		"definition": "the concluding part of a speech.",
+		"example": "He saved his strongest points for the peroration.",
+		"fullDefinition": "Peroration is the final section of an oration intended to reinforce the speaker’s message and persuade the audience."
+	},
+	"Plangent": {
+		"definition": "loud and mournful.",
+		"example": "The plangent toll of the church bell echoed through the empty streets.",
+		"fullDefinition": "Plangent describes sounds that are resonant, deep, and often plaintively expressive."
+	},
+	"Prolix": {
+		"definition": "excessively wordy.",
+		"example": "Reviewers criticized the manuscript for its prolix narrative.",
+		"fullDefinition": "Prolix describes writing or speech that uses more words than necessary, leading to tedious length."
+	},
+	"Peurile": {
+		"definition": "childishly silly or trivial.",
+		"example": "His puerile jokes fell flat with the adults.",
+		"fullDefinition": "Puerile describes behavior or remarks that are juvenile, lacking in maturity or seriousness."
+	},
+	"Puissance": {
+		"definition": "great power or influence.",
+		"example": "The queen’s political puissance shaped the history of her kingdom.",
+		"fullDefinition": "Puissance refers to the capacity to exert strength, authority, or influence effectively."
+	},
+	"Pusillanimious": {
+		"definition": "lacking courage; cowardly.",
+		"example": "His pusillanimious refusal to defend his friend drew their scorn.",
+		"fullDefinition": "Pusillanimious describes someone who is easily intimidated and unwilling to face challenges."
+	},
+	"Remonstrate": {
+		"definition": "to protest or object strongly.",
+		"example": "They remonstrated with the committee about the unfair rules.",
+		"fullDefinition": "To remonstrate is to present objections or complaints earnestly and forcefully."
+	},
+	"Salacious": {
+		"definition": "lustful or obscene.",
+		"example": "The tabloid reveled in salacious rumors about the celebrity.",
+		"fullDefinition": "Salacious describes content intended to arouse sexual interest in an indecent or scandalous way."
+	},
+	"Salutary": {
+		"definition": "beneficial; healthful.",
+		"example": "The doctor’s warnings had a salutary effect on his lifestyle choices.",
+		"fullDefinition": "Salutary refers to something that promotes well-being or improvement, often by preventing harm."
+	},
+	"Saturnine": {
+		"definition": "gloomy; sullen.",
+		"example": "His saturnine demeanor made the party feel somber.",
+		"fullDefinition": "Saturnine describes a person or mood that is dark, brooding, and morose."
+	},
+	"Sententious": {
+		"definition": "given to moralizing in a pompous way.",
+		"example": "Her sententious remarks alienated the audience.",
+		"fullDefinition": "Sententious refers to speech or writing that is terse, pithy, and often overly moralistic."
+	},
+	"Stentorian": {
+		"definition": "extremely loud and powerful.",
+		"example": "The coach’s stentorian shout echoed across the field.",
+		"fullDefinition": "Stentorian describes a voice or sound that is loud, clear, and commanding."
+	},
+	"Stygian": {
+		"definition": "dark and foreboding.",
+		"example": "They navigated the stygian corridors of the abandoned castle.",
+		"fullDefinition": "Stygian refers to something that is deeply dark, gloomy, or hellish in character."
+	},
+	"Tendentious": {
+		"definition": "biased; promoting a specific agenda.",
+		"example": "The commentator’s tendentious analysis angered viewers.",
+		"fullDefinition": "Tendentious describes content intended to advance a particular viewpoint, often unfairly or one-sided."
+	},
+	"Timorous": {
+		"definition": "easily frightened; timid.",
+		"example": "The timorous kitten hid under the couch during the storm.",
+		"fullDefinition": "Timorous describes someone who is nervous and hesitant due to fear."
+	},
+	"Tyro": {
+		"definition": "a beginner or novice.",
+		"example": "As a tyro in photography, she practiced every weekend.",
+		"fullDefinition": "Tyro refers to someone new to a field or activity, lacking experience or expertise."
+	},
+	"Vitiate": {
+		"definition": "to weaken or spoil.",
+		"example": "The constant interruptions vitiated the meeting’s effectiveness.",
+		"fullDefinition": "To vitiate is to impair the quality, value, or effectiveness of something."
+	},
+	"Voluble": {
+		"definition": "talkative; fluent of speech.",
+		"example": "Her voluble commentary kept the discussion lively.",
+		"fullDefinition": "Voluble describes someone who speaks easily and at length with a steady flow of words."
 	}
 }
