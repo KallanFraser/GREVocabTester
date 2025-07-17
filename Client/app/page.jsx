@@ -66,7 +66,7 @@ export default function Index() {
 			});
 			// rebuild for the new index
 			buildSubset();
-		}, 2000);
+		}, 1200);
 	};
 
 	const quizWord = activeSubset.length ? activeSubset[correctIndex] : "Loading...";
