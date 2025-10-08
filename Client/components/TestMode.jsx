@@ -73,6 +73,12 @@ export default function TestMode({ onBack }) {
 		if (typeof window === "undefined") return;
 		yesSound.current = new Audio("/sounds/yesmp3.mp3");
 		noSound.current = new Audio("/sounds/nomp3.mp3");
+
+		// 10% volume
+		[yesSound.current, noSound.current].forEach((a) => {
+			a.volume = 0.1;
+			a.preload = "auto";
+		});
 	}, []);
 
 	useEffect(() => {
