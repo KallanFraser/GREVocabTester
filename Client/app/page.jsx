@@ -5,7 +5,7 @@
 /*------------------------------------------------------------------------------
                                     Imports
 -------------------------------------------------------------------------------*/
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useMemo } from "react";
 import "../styles/globals.css";
 import vocabData from "../src/data/gre_combined.json";
 import stringSimilarity from "string-similarity";
@@ -14,119 +14,114 @@ import stringSimilarity from "string-similarity";
                                     Main
 -------------------------------------------------------------------------------*/
 export default function Index() {
-	const allKeys = Object.keys(vocabData); //array of all the keys
-	const [activeKeys, setActiveKeys] = useState(() => new Set(Object.keys(vocabData)));
+	const allKeys = Object.keys(vocabData);
 
-	// — Sound Effects —
+	// — Sets & Refs —
+	const [activeKeys, setActiveKeys] = useState(() => new Set(allKeys));
 	const yesSound = useRef(null);
 	const noSound = useRef(null);
 
 	// — State —
 	const [activeSubset, setActiveSubset] = useState([]);
 	const [masteryCounts, setMasteryCounts] = useState({});
-	const [trackerItems, setTrackerItems] = useState([]);
-
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [currentWord, setCurrentWord] = useState("");
 	const [currentDefinition, setCurrentDefinition] = useState("");
 	const [currentExample, setCurrentExample] = useState("");
 	const [currentFullDefinition, setCurrentFullDefinition] = useState("");
-
 	const [inputValue, setInputValue] = useState("");
 	const [alertMessage, setAlertMessage] = useState("");
-
 	const [showOverlay, setShowOverlay] = useState(false);
 	const [showPopup, setShowPopup] = useState(false);
 
-	useEffect(() => {
-		const keys = Object.keys(vocabData);
-		setActiveKeys(new Set(keys));
+	/*-------------------------------- Helpers --------------------------------*/
+	const sanitize = (s) => (s ? s.replaceAll('"', "") : "");
 
-		// Initialize audio on client only
-		if (typeof window !== "undefined") {
-			const yes = new Audio("/sounds/yesmp3.mp3");
-			yes.preload = "auto";
-			yesSound.current = yes;
+	const pickRandomIndex = (len) => Math.floor(Math.random() * len);
 
-			const no = new Audio("/sounds/nomp3.mp3");
-			no.preload = "auto";
-			noSound.current = no;
-		}
-	}, []);
-
-	useEffect(() => {
-		if (!activeKeys || activeKeys.size < 5) return;
-
-		const keys = Array.from(activeKeys);
-		const subset = Array.from({ length: 5 }, () => keys[Math.floor(Math.random() * keys.length)]);
-
-		setActiveSubset(subset);
-		setMasteryCounts({});
-
-		const firstIdx = Math.floor(Math.random() * subset.length);
-		const word = subset[firstIdx];
-
-		setCurrentIndex(firstIdx);
-		setCurrentWord(word);
-		setCurrentDefinition(vocabData[word].definition);
-		setCurrentExample(vocabData[word].example.replaceAll('"', ""));
-		setCurrentFullDefinition(vocabData[word].fullDefinition.replaceAll('"', ""));
-	}, [activeKeys]);
-
-	// — Helper Function —
-	// Threshold = success on accuracy threshold 0.6 = 60% acceptance
-	function isMatch(input, target, threshold = 0.6) {
-		const score = stringSimilarity.compareTwoStrings(
-			input.trim().toLowerCase(),
-			target.trim().toLowerCase()
-		);
-		return score >= threshold;
-	}
-
-	// — Helper Function —
-	// Picks a new word from the current subset
-	const pickNewWord = () => {
-		let idx = Math.floor(Math.random() * activeSubset.length);
-		while (currentWord === activeSubset[idx]) {
-			idx = Math.floor(Math.random() * activeSubset.length);
-		}
-		const word = activeSubset[idx];
-		setCurrentIndex(idx);
-		setCurrentWord(word);
-		setCurrentDefinition(vocabData[word].definition);
-		setCurrentExample(vocabData[word].example.replaceAll('"', ""));
-		setCurrentFullDefinition(vocabData[word].fullDefinition.replaceAll('"', ""));
+	const subsetFromKeys = (keysSet) => {
+		const keys = Array.from(keysSet);
+		return Array.from({ length: 5 }, () => keys[pickRandomIndex(keys.length)]);
 	};
 
-	// — Helper Function —
-	// Handles user submission
+	const setCurrentByWord = (word, idx = null) => {
+		const data = vocabData[word] || {};
+		setCurrentIndex(idx ?? activeSubset.indexOf(word));
+		setCurrentWord(word);
+		setCurrentDefinition(data.definition || "");
+		setCurrentExample(sanitize(data.example));
+		setCurrentFullDefinition(sanitize(data.fullDefinition));
+	};
+
+	const resetGameFromActive = () => {
+		const subset = subsetFromKeys(activeKeys);
+		setActiveSubset(subset);
+		setMasteryCounts({});
+		const firstIdx = pickRandomIndex(subset.length);
+		setCurrentByWord(subset[firstIdx], firstIdx);
+	};
+
+	// Threshold = success on accuracy threshold 0.6 = 60% acceptance
+	const isMatch = (input, target, threshold = 0.6) => {
+		const score = stringSimilarity.compareTwoStrings(input.trim().toLowerCase(), target.trim().toLowerCase());
+		return score >= threshold;
+	};
+
+	const pickNewWord = () => {
+		if (!activeSubset.length) return;
+		let idx = pickRandomIndex(activeSubset.length);
+		if (activeSubset.length > 1) {
+			while (activeSubset[idx] === currentWord) idx = pickRandomIndex(activeSubset.length);
+		}
+		setCurrentByWord(activeSubset[idx], idx);
+	};
+
+	/*------------------------------ Effects ----------------------------------*/
+	// Initialize audio on client only
+	useEffect(() => {
+		if (typeof window === "undefined") return;
+		yesSound.current = new Audio("/sounds/yesmp3.mp3");
+		noSound.current = new Audio("/sounds/nomp3.mp3");
+	}, []);
+
+	// Reset game when the active key set changes (and has enough items)
+	useEffect(() => {
+		if (activeKeys && activeKeys.size >= 5) resetGameFromActive();
+	}, [activeKeys]);
+
+	// Derived tracker items (no need to store in state)
+	const trackerItems = useMemo(() => {
+		const greenCount = Math.min(masteryCounts[currentWord] || 0, 4);
+		const redCount = 4 - greenCount;
+		return [
+			...Array.from({ length: greenCount }, (_, i) => <li key={`g${i}`} className="green"></li>),
+			...Array.from({ length: redCount }, (_, i) => <li key={`r${i}`}></li>),
+		];
+	}, [masteryCounts, currentWord]);
+
+	/*------------------------------- Handlers --------------------------------*/
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		const correctDef = vocabData[currentWord]?.definition || "";
 
-		const correctDef = vocabData[currentWord].definition;
 		if (isMatch(inputValue, correctDef)) {
 			setAlertMessage("✅ Correct! ✅");
 
-			// — Sound Effect —
-			const yes = yesSound.current;
-			if (yes) {
-				yes.currentTime = 0;
-				yes.play().catch(console.error);
+			if (yesSound.current) {
+				yesSound.current.currentTime = 0;
+				yesSound.current.play().catch(console.error);
 			}
 
 			setMasteryCounts((prev) => {
-				const updated = { ...prev };
-				updated[currentWord] = (updated[currentWord] || 0) + 1;
+				const updated = { ...prev, [currentWord]: (prev[currentWord] || 0) + 1 };
 
-				// After 4 correct in a row, replace word in subset
-				if (updated[currentWord] >= 4) {
+				if (updated[currentWord] >= 4 && activeSubset.length) {
 					const keys = Array.from(activeKeys);
-					const newWord = keys[Math.floor(Math.random() * keys.length)];
-
-					const newSubset = [...activeSubset];
-					newSubset[currentIndex] = newWord;
-					setActiveSubset(newSubset);
-					updated[newWord] = 0;
+					const newWord = keys[pickRandomIndex(keys.length)];
+					const nextSubset = [...activeSubset];
+					nextSubset[currentIndex] = newWord;
+					setActiveSubset(nextSubset);
+					updated[newWord] = updated[newWord] || 0;
 				}
 
 				return updated;
@@ -137,13 +132,11 @@ export default function Index() {
 				pickNewWord();
 			}, 1500);
 		} else {
-			setAlertMessage(`❌ ${vocabData[currentWord].definition} ❌`);
+			setAlertMessage(`❌ ${correctDef} ❌`);
 
-			// — Sound Effect —
-			const no = noSound.current;
-			if (no) {
-				no.currentTime = 0;
-				no.play().catch(console.error);
+			if (noSound.current) {
+				noSound.current.currentTime = 0;
+				noSound.current.play().catch(console.error);
 			}
 
 			setMasteryCounts((prev) => ({ ...prev, [currentWord]: 0 }));
@@ -152,77 +145,35 @@ export default function Index() {
 		setInputValue("");
 	};
 
-	// — Update tracker items whenever masteryCounts or currentWord changes —
-	useEffect(() => {
-		const currentCount = masteryCounts[currentWord] || 0;
-		const greenCount = Math.min(currentCount, 4);
-		const redCount = 4 - greenCount;
-		const items = [
-			...Array.from({ length: greenCount }, (_, i) => <li key={`g${i}`} className="green"></li>),
-			...Array.from({ length: redCount }, (_, i) => <li key={`r${i}`}></li>),
-		];
-		setTrackerItems(items);
-	}, [masteryCounts, currentWord]);
-
 	const overlay = () => {
 		const handleCheckboxChange = (word) => (event) => {
-			console.log("Before:", activeKeys);
-
 			setActiveKeys((prev) => {
 				const updated = new Set(prev);
-				if (event.target.checked) {
-					updated.add(word);
-				} else {
-					updated.delete(word);
-				}
+				event.target.checked ? updated.add(word) : updated.delete(word);
 				return updated;
 			});
-		};
-
-		const buttonsSection = () => {
-			return (
-				<div className="buttons-section">
-					<button onClick={checkAllBoxes}>Select All</button>
-					<button onClick={handleDoneClick}>Done</button>
-					<button onClick={deselectAllBoxes}>Deselect All</button>
-				</div>
-			);
 		};
 
 		const handleDoneClick = () => {
 			if (activeKeys.size < 5) {
 				setShowPopup(true);
-				setTimeout(() => {
-					setShowPopup(false);
-				}, 2000); // 2 seconds
-			} else {
-				const keys = Array.from(activeKeys);
-				const subset = Array.from({ length: 5 }, () => keys[Math.floor(Math.random() * keys.length)]);
-
-				setActiveSubset(subset);
-				setMasteryCounts({});
-
-				const firstIdx = Math.floor(Math.random() * subset.length);
-				const word = subset[firstIdx];
-
-				setCurrentIndex(firstIdx);
-				setCurrentWord(word);
-				setCurrentDefinition(vocabData[word].definition);
-				setCurrentExample(vocabData[word].example.replaceAll('"', ""));
-				setCurrentFullDefinition(vocabData[word].fullDefinition.replaceAll('"', ""));
-
-				setShowOverlay(false);
+				setTimeout(() => setShowPopup(false), 2000);
+				return;
 			}
+			resetGameFromActive();
+			setShowOverlay(false);
 		};
 
-		const checkAllBoxes = () => {
-			const allKeys = Object.keys(vocabData);
-			setActiveKeys(new Set(allKeys));
-		};
+		const checkAllBoxes = () => setActiveKeys(new Set(allKeys));
+		const deselectAllBoxes = () => setActiveKeys(new Set());
 
-		const deselectAllBoxes = () => {
-			setActiveKeys(new Set());
-		};
+		const buttonsSection = () => (
+			<div className="buttons-section">
+				<button onClick={checkAllBoxes}>Select All</button>
+				<button onClick={handleDoneClick}>Done</button>
+				<button onClick={deselectAllBoxes}>Deselect All</button>
+			</div>
+		);
 
 		return (
 			<div id="overlay-container">
@@ -230,21 +181,19 @@ export default function Index() {
 				<div id="overlay">
 					<table>
 						<tbody>
-							{Object.entries(vocabData).map(
-								([word, { definition, example, fullDefinition }]) => (
-									<tr key={word}>
-										<td className="word-data">{word}</td>
-										<td>
-											<input
-												className="word-checkbox"
-												type="checkbox"
-												checked={activeKeys.has(word)}
-												onChange={handleCheckboxChange(word)}
-											/>
-										</td>
-									</tr>
-								)
-							)}
+							{Object.keys(vocabData).map((word) => (
+								<tr key={word}>
+									<td className="word-data">{word}</td>
+									<td>
+										<input
+											className="word-checkbox"
+											type="checkbox"
+											checked={activeKeys.has(word)}
+											onChange={handleCheckboxChange(word)}
+										/>
+									</td>
+								</tr>
+							))}
 						</tbody>
 					</table>
 				</div>
@@ -253,6 +202,7 @@ export default function Index() {
 		);
 	};
 
+	/*--------------------------------- JSX -----------------------------------*/
 	return (
 		<div id="main-section">
 			{showPopup && (
