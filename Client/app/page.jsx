@@ -10,6 +10,20 @@ import LearnMode from "../components/LearnMode";
 export default function Page() {
 	const [mode, setMode] = useState(null);
 
+	// Open a mode if it's in the URL, e.g. /?mode=test
+	useEffect(() => {
+		const params = new URLSearchParams(window.location.search);
+		const m = params.get("mode");
+		if (m === "test" || m === "practice" || m === "learn") {
+			setMode(m);
+			// Optional: clean the URL after opening
+			const url = new URL(window.location.href);
+			url.searchParams.delete("mode");
+			url.searchParams.delete("from");
+			window.history.replaceState({}, "", url.toString());
+		}
+	}, []);
+
 	// Keyboard shortcuts: 1 = Normal, 2 = Flash, 3 = Random
 	useEffect(() => {
 		const map = { 1: "test", 2: "practice", 3: "learn" };
@@ -96,6 +110,13 @@ export default function Page() {
 					<div className="tile-title">Random Flash</div>
 					<div className="tile-sub">shuffled recall</div>
 				</button>
+			</section>
+
+			{/* Popular Wordpacks CTA */}
+			<section className="packs-cta" aria-label="Popular wordpacks">
+				<a className="packs-cta__btn" href="/wordpacks">
+					View popular wordpacks
+				</a>
 			</section>
 
 			{/* Mini explains */}

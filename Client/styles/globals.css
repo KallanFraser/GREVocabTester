@@ -782,3 +782,260 @@ body {
 .popup-message {
 	border: 1px solid rgba(234, 87, 70, 0.28);
 }
+<<<<<<< Updated upstream
+=======
+
+/* ==== Donate (scoped to home) ==== */
+#home-landing .donate {
+	width: min(760px, 92%);
+	margin: 28px auto 64px;
+	text-align: center;
+	z-index: 1;
+}
+#home-landing .donate__title {
+	margin: 0 0 4px 0;
+	font-size: clamp(1.4rem, 3.5vw, 2rem);
+	background: linear-gradient(92deg, #fff 0%, #ffd6cc 35%, #ffc5bc 65%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: white;
+}
+#home-landing .donate__sub {
+	margin: 0 0 12px 0;
+	color: var(--muted);
+	font-size: 0.98rem;
+}
+#home-landing .donate__row {
+	display: inline-grid;
+	grid-template-columns: repeat(3, minmax(90px, 1fr));
+	gap: 10px;
+}
+#home-landing .donate__btn {
+	display: inline-block;
+	padding: 0.85rem 1.2rem;
+	border-radius: 999px;
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.05));
+	color: #fff;
+	text-decoration: none;
+	font-weight: 800;
+	transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+	backdrop-filter: blur(6px);
+}
+#home-landing .donate__btn:hover {
+	transform: translateY(-2px);
+	border-color: rgba(234, 87, 70, 0.45);
+	box-shadow: 0 8px 28px rgba(234, 87, 70, 0.22);
+}
+#home-landing .donate__btn--accent {
+	background: linear-gradient(180deg, rgba(234, 87, 70, 0.28), rgba(234, 87, 70, 0.14));
+	border-color: rgba(234, 87, 70, 0.45);
+}
+#home-landing .donate__tiny {
+	margin: 10px 0 0 0;
+	color: var(--muted);
+	font-size: 0.85rem;
+}
+
+@media (max-width: 520px) {
+	#home-landing .donate__row {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Tighten space between Donate and Footer */
+#home-landing .donate {
+	margin-bottom: 20px; /* was 64px */
+}
+
+#home-landing .home-footer {
+	margin-top: 12px; /* was 28px */
+}
+
+/* (optional) tighten the tiny line under buttons */
+#home-landing .donate__tiny {
+	margin-top: 6px; /* was 10px */
+}
+
+/* --- Wordpacks CTA (home) --- */
+#home-landing .packs-cta {
+	display: grid;
+	place-items: center;
+	margin: 8px 0 0;
+}
+#home-landing .packs-cta__btn {
+	display: inline-block;
+	padding: 0.8rem 1.2rem;
+	border-radius: 999px;
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.05));
+	color: #fff;
+	text-decoration: none;
+	font-weight: 800;
+	transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+	backdrop-filter: blur(6px);
+}
+#home-landing .packs-cta__btn:hover {
+	transform: translateY(-2px);
+	border-color: rgba(234, 87, 70, 0.45);
+	box-shadow: 0 8px 28px rgba(234, 87, 70, 0.22);
+}
+
+/* ================== Wordpacks marketplace ================== */
+#wordpacks {
+	position: relative;
+	min-height: 100dvh;
+	padding: clamp(16px, 3vw, 32px);
+	display: grid;
+	gap: 18px;
+}
+
+#wordpacks .mesh {
+	position: absolute;
+	inset: -25vmax;
+	background: radial-gradient(60vmax 50vmax at 15% 25%, rgba(234, 87, 70, 0.28), transparent 60%),
+		radial-gradient(60vmax 50vmax at 85% 35%, rgba(100, 181, 255, 0.18), transparent 60%);
+	filter: blur(36px);
+	animation: wp-drift 18s ease-in-out infinite alternate;
+	z-index: -1;
+}
+@keyframes wp-drift {
+	0% {
+		transform: translate(-2%, -1%) scale(1.02);
+	}
+	100% {
+		transform: translate(2%, 1%) scale(1.06);
+	}
+}
+
+#wordpacks .wp-header {
+	width: min(1100px, 96%);
+	margin: 0 auto;
+}
+#wordpacks .wp-header h1 {
+	margin: 4px 0;
+	font-size: clamp(1.8rem, 5vw, 2.6rem);
+	background: linear-gradient(92deg, #fff 0%, #ffd6cc 35%, #ffc5bc 65%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+#wordpacks .wp-header .sub {
+	margin: 0 0 12px 0;
+	color: var(--muted);
+}
+#wordpacks .search {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 10px;
+}
+#wordpacks .search input {
+	padding: 0.8rem 1rem;
+	border-radius: 14px;
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	background: rgba(0, 0, 0, 0.35);
+	color: var(--text);
+	outline: none;
+}
+#wordpacks .search .back {
+	display: inline-grid;
+	place-items: center;
+	padding: 0.8rem 1rem;
+	border-radius: 14px;
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	color: #fff;
+	text-decoration: none;
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.05));
+}
+
+/* grid */
+#wordpacks .grid {
+	width: min(1100px, 96%);
+	margin: 6px auto 24px;
+	display: grid;
+	gap: 12px;
+	grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 1100px) {
+	#wordpacks .grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media (max-width: 680px) {
+	#wordpacks .grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* card */
+#wordpacks .card {
+	padding: 14px;
+	border-radius: 18px;
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.06));
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	box-shadow: var(--shadow-1);
+}
+#wordpacks .card__top {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	align-items: start;
+	gap: 10px;
+}
+#wordpacks .title {
+	margin: 0;
+	font-size: 1.1rem;
+}
+#wordpacks .desc {
+	margin: 6px 0 10px;
+	color: var(--muted);
+}
+#wordpacks .like {
+	border-radius: 999px;
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	background: linear-gradient(180deg, rgba(234, 87, 70, 0.28), rgba(234, 87, 70, 0.14));
+	color: #fff;
+	padding: 0.4rem 0.7rem;
+	cursor: pointer;
+}
+
+/* meta + actions */
+#wordpacks .meta {
+	display: flex;
+	gap: 6px;
+	margin: 4px 0 10px;
+	flex-wrap: wrap;
+}
+#wordpacks .chip {
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	border-radius: 999px;
+	padding: 0.24rem 0.5rem;
+	font-size: 0.85rem;
+	background: rgba(255, 255, 255, 0.06);
+}
+#wordpacks .chip--muted {
+	color: var(--muted);
+}
+
+#wordpacks .row {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+#wordpacks .btn {
+	padding: 0.65rem 0.95rem;
+	border-radius: 14px;
+	cursor: pointer;
+	color: #fff;
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.06));
+}
+#wordpacks .btn--ghost {
+	background: transparent;
+	border-color: rgba(255, 255, 255, 0.18);
+}
+#wordpacks .empty {
+	text-align: center;
+	color: var(--muted);
+	padding: 24px 0;
+}
+>>>>>>> Stashed changes

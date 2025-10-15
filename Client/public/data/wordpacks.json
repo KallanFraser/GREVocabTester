@@ -1,0 +1,28 @@
+[
+	{
+		"id": "roots-starters",
+		"title": "Greek/Latin Roots — Starters",
+		"desc": "Core roots that unlock dozens of GRE words. Great warm-up pack.",
+		"indices": [
+			3, 7, 12, 19, 24, 31, 45, 58, 70, 88, 91, 102, 118, 130, 142, 155, 166, 172, 181, 199, 205, 219,
+			230, 241, 255
+		],
+		"likes": 42
+	},
+	{
+		"id": "high-yield-20",
+		"title": "High-Yield 20",
+		"desc": "The 20 words I saw on 3 practice tests. Tight + brutal.",
+		"indices": [5, 22, 29, 33, 46, 60, 63, 79, 82, 97, 111, 126, 143, 152, 167, 176, 189, 207, 226, 248],
+		"likes": 37
+	},
+	{
+		"id": "tone-shifters",
+		"title": "Tone Shifters",
+		"desc": "Words that flip sentence tone—perfect for tricky SC.",
+		"indices": [
+			2, 9, 18, 21, 27, 36, 39, 55, 68, 74, 86, 95, 107, 124, 138, 149, 164, 175, 188, 214, 233
+		],
+		"likes": 28
+	}
+]
