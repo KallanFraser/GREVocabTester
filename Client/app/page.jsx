@@ -16,116 +16,88 @@ export default function Page() {
 
 	return (
 		<main id="home-landing">
-			{/* Animated backdrop (pure CSS) */}
 			<div className="home-bg" aria-hidden="true" />
 
-			{/* Hero */}
-			<section className="home-hero">
+			{/* HERO — compact, punchy */}
+			<section className="home-hero home-hero--v2">
 				<div className="home-hero__content">
 					<div className="home-hero__eyebrow">GRE Vocab Trainer</div>
-					<h1 className="home-hero__title">
-						Go from <span>zero</span> to <span>161 vibes</span>.
+
+					<h1 className="home-hero__title home-hero__title--gradient">
+						Ace the vocab
+						<span className="home-badge">161 in 2 weeks</span>
 					</h1>
-					<p className="home-hero__subtitle">
-						800+ words. Three modes. Smart forgiveness. Mastery bars. Built to grind fast and
-						actually stick.
-					</p>
 
-					<div className="home-cta-row">
-						<button className="home-btn home-btn--primary" onClick={() => setMode("test")}>
-							Start Normal Mode
-						</button>
-						<button className="home-btn" onClick={() => setMode("practice")}>
-							Flash Cards
-						</button>
-						<button className="home-btn" onClick={() => setMode("learn")}>
-							Flash Cards (Random)
-						</button>
-					</div>
+					<p className="home-hero__subtitle">800+ words. Smart forgiveness. Mastery that sticks.</p>
 
-					<div className="home-kbd">
-						Tip: press <kbd>/</kbd> to focus the input in Normal Mode, then <kbd>Enter</kbd>.
+					<div className="home-hero__pills" aria-hidden="true">
+						<span>4× to master</span>
+						<span>~80% typo leeway</span>
+						<span>pick your set</span>
 					</div>
 				</div>
 
-				{/* Banner art */}
-				<div className="home-hero__media">
+				<div className="home-hero__media home-hero__media--frame">
 					<img
-						className="home-banner"
+						className="home-banner home-banner--float"
 						src="/images/GRETesterBanner.png"
-						alt="GRE SCORE banner with A+ cards"
+						alt="GRE SCORE banner"
 						decoding="async"
 					/>
 				</div>
 			</section>
 
-			{/* Value strip */}
-			<section className="home-strip">
-				<div className="home-chip">
-					<span className="home-chip__big">800+</span>
-					<span className="home-chip__label">Words</span>
-				</div>
-				<div className="home-chip">
-					<span className="home-chip__big">4×</span>
-					<span className="home-chip__label">Mastery to pass</span>
-				</div>
-				<div className="home-chip">
-					<span className="home-chip__big">~80%</span>
-					<span className="home-chip__label">Typo forgiveness</span>
-				</div>
-				<div className="home-chip">
-					<span className="home-chip__big">Pick</span>
-					<span className="home-chip__label">Your word set</span>
-				</div>
+			{/* Mode picker */}
+			<section className="home-modes" aria-label="Choose a mode">
+				<button className="mode-card mode-card--primary" onClick={() => setMode("test")}>
+					<div className="mode-emoji" aria-hidden>
+						🎯
+					</div>
+					<div className="mode-title">Normal Mode</div>
+					<div className="mode-sub">5-word loop · master 4×</div>
+				</button>
+
+				<button className="mode-card" onClick={() => setMode("practice")}>
+					<div className="mode-emoji" aria-hidden>
+						🧠
+					</div>
+					<div className="mode-title">Flash Cards</div>
+					<div className="mode-sub">ordered drill</div>
+				</button>
+
+				<button className="mode-card" onClick={() => setMode("learn")}>
+					<div className="mode-emoji" aria-hidden>
+						🎲
+					</div>
+					<div className="mode-title">Random Flash</div>
+					<div className="mode-sub">shuffled recall</div>
+				</button>
 			</section>
 
-			{/* Feature cards */}
-			<section className="home-grid">
+			{/* Mini details */}
+			<section className="home-grid home-grid--compact">
 				<article className="home-card">
-					<h3>Normal Mode</h3>
-					<p>
-						Five-word subset that evolves as you master terms. Get one right 4× in a row and it
-						rotates out. Miss? Bars reset. It’s honest.
-					</p>
-					<button className="home-card__btn" onClick={() => setMode("test")}>
-						Run it →
-					</button>
+					<h3>Why Normal?</h3>
+					<p>Small loop, fast reps, honest resets.</p>
 				</article>
-
 				<article className="home-card">
-					<h3>Flash Cards</h3>
-					<p>
-						Clean left-to-right pass through the full list. Great for drilling new sets or warming
-						up before a test block.
-					</p>
-					<button className="home-card__btn" onClick={() => setMode("practice")}>
-						Drill →
-					</button>
+					<h3>Why Flash?</h3>
+					<p>Clean end-to-end ramp. Perfect warm-up.</p>
 				</article>
-
 				<article className="home-card">
-					<h3>Random Flash</h3>
-					<p>Same flash vibe, fully shuffled. Perfect for spaced recall without patterns.</p>
-					<button className="home-card__btn" onClick={() => setMode("learn")}>
-						Shuffle →
-					</button>
+					<h3>Why Random?</h3>
+					<p>Break patterns. Recall without cues.</p>
 				</article>
-
 				<article className="home-card home-card--accent">
 					<h3>Focused Sets</h3>
-					<p>
-						Pick the exact words you want to train. Build a cram pack for weak spots in seconds.
-					</p>
-					<button className="home-card__btn" onClick={() => setMode("test")}>
-						Select in-app →
-					</button>
+					<p>Build a cram pack in seconds.</p>
 				</article>
 			</section>
 
-			{/* Social proof / minimal flex */}
+			{/* Footer note — small logo */}
 			<section className="home-footnote">
 				<img className="home-logo" src="/images/GREWebsiteLogo.png" alt="GRE logo" />
-				<p>Built to grind. No fluff. If you’re serious about scoring, this is the move.</p>
+				<p>Built to grind. No fluff.</p>
 			</section>
 		</main>
 	);
