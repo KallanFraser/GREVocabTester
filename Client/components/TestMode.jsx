@@ -3,6 +3,7 @@
 
 import React, { useEffect, useState, useRef, useMemo } from "react";
 import "../styles/globals.css";
+import "../styles/menu.css";
 import vocabData from "../src/data/gre_combined.json";
 import stringSimilarity from "string-similarity";
 
@@ -55,7 +56,10 @@ export default function TestMode({ onBack }) {
 
 	// Threshold = success on accuracy threshold 0.6 = 60% acceptance
 	const isMatch = (input, target, threshold = 0.6) => {
-		const score = stringSimilarity.compareTwoStrings(input.trim().toLowerCase(), target.trim().toLowerCase());
+		const score = stringSimilarity.compareTwoStrings(
+			input.trim().toLowerCase(),
+			target.trim().toLowerCase()
+		);
 		return score >= threshold;
 	};
 
@@ -67,6 +71,90 @@ export default function TestMode({ onBack }) {
 		}
 		setCurrentByWord(activeSubset[idx], idx);
 	};
+
+	// Hydrate selected words from marketplace (if present)
+	useEffect(() => {
+		if (typeof window === "undefined") return;
+		try {
+			const raw = localStorage.getItem("marketplaceWordpack");
+			if (!raw) return;
+
+			const indices = JSON.parse(raw);
+			const picked = [];
+			for (const idx of indices) {
+				const k = allKeys[idx];
+				if (k && vocabData[k]) picked.push(k);
+			}
+
+			// ensure we have at least 5; if not, top up randomly (non-duplicates)
+			if (picked.length > 0) {
+				const need = Math.max(0, 5 - picked.length);
+				if (need > 0) {
+					const pool = allKeys.filter((w) => !picked.includes(w));
+					for (let i = 0; i < need && pool.length; i++) {
+						const r = Math.floor(Math.random() * pool.length);
+						picked.push(pool.splice(r, 1)[0]);
+					}
+				}
+				setActiveKeys(new Set(picked));
+			}
+		} catch {
+			// ignore bad JSON
+		} finally {
+			// don’t re-apply next time
+			localStorage.removeItem("marketplaceWordpack");
+		}
+	}, []);
+
+	// URL-driven wordpack: /play/test?pack=1,5,9  OR  /play/test?id=high-yield-20
+	useEffect(() => {
+		if (typeof window === "undefined") return;
+		const params = new URLSearchParams(window.location.search);
+		const packCsv = params.get("pack");
+		const packId = params.get("id");
+
+		async function applyFromId(id) {
+			try {
+				const res = await fetch("/data/wordpacks.json", { cache: "no-store" });
+				const list = await res.json();
+				const found = Array.isArray(list) ? list.find((p) => p.id === id) : null;
+				if (!found) return;
+				hydrateFromIndices(found.indices);
+			} catch {
+				/* silent */
+			}
+		}
+
+		function hydrateFromIndices(indices) {
+			const picked = [];
+			for (const idx of indices) {
+				const k = allKeys[idx];
+				if (k && vocabData[k]) picked.push(k);
+			}
+			if (picked.length === 0) return;
+
+			// top up to 5 if needed
+			const need = Math.max(0, 5 - picked.length);
+			if (need > 0) {
+				const pool = allKeys.filter((w) => !picked.includes(w));
+				for (let i = 0; i < need && pool.length; i++) {
+					const r = Math.floor(Math.random() * pool.length);
+					picked.push(pool.splice(r, 1)[0]);
+				}
+			}
+			setActiveKeys(new Set(picked));
+		}
+
+		if (packCsv) {
+			const indices = packCsv
+				.split(",")
+				.map((s) => parseInt(s.trim(), 10))
+				.filter((n) => Number.isFinite(n) && n >= 0 && n < allKeys.length);
+			if (indices.length) hydrateFromIndices(indices);
+		} else if (packId) {
+			applyFromId(packId);
+		}
+	}, []);
 
 	/*------------------------------ Effects ----------------------------------*/
 	useEffect(() => {
@@ -244,11 +332,15 @@ export default function TestMode({ onBack }) {
 
 			<div id="feedback-section">
 				<section id="full-definition">
-					{currentFullDefinition && alertMessage !== "✅ Correct! ✅" && alertMessage !== "" && <p>{currentFullDefinition}</p>}
+					{currentFullDefinition && alertMessage !== "✅ Correct! ✅" && alertMessage !== "" && (
+						<p>{currentFullDefinition}</p>
+					)}
 				</section>
 
 				<section id="example">
-					{currentExample && alertMessage !== "✅ Correct! ✅" && alertMessage !== "" && <p>{currentExample}</p>}
+					{currentExample && alertMessage !== "✅ Correct! ✅" && alertMessage !== "" && (
+						<p>{currentExample}</p>
+					)}
 				</section>
 			</div>
 
