@@ -1,123 +1,166 @@
 /** @format */
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
-import "../../styles/globals.css";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation"; // ⬅️ add this
+import "../../styles/wordpacks.css";
 
-const DATA_URL = "/data/wordpacks.json";
-
-/** Local likes are stored per id in localStorage under key "wp_likes:{id}" */
-const getLocalLikes = (id) => Number(localStorage.getItem(`wp_likes:${id}`) || 0);
-const bumpLocalLike = (id) => {
-	const cur = getLocalLikes(id);
-	localStorage.setItem(`wp_likes:${id}`, String(cur + 1));
-	return cur + 1;
-};
+const LEDGER_KEY = "wp_upvote_ledger_v2";
+const PACK_KEY = "marketplaceWordpack"; // ⬅️ same key TestMode reads
 
 export default function WordpacksPage() {
+	const router = useRouter(); // ⬅️ init router
+
 	const [packs, setPacks] = useState([]);
-	const [query, setQuery] = useState("");
+	const [loading, setLoading] = useState(true);
+	const [err, setErr] = useState(null);
+	const [ledger, setLedger] = useState({});
+
+	useEffect(() => {
+		try {
+			const raw = localStorage.getItem(LEDGER_KEY);
+			setLedger(raw ? JSON.parse(raw) : {});
+		} catch {
+			setLedger({});
+		}
+	}, []);
 
 	useEffect(() => {
 		let alive = true;
-		fetch(DATA_URL, { cache: "no-store" })
-			.then((r) => r.json())
-			.then((data) => {
+		(async () => {
+			try {
+				setLoading(true);
+				setErr(null);
+				const res = await fetch("/data/wordpacks.json", { cache: "no-store" });
+				if (!res.ok) throw new Error(`fetch failed: ${res.status}`);
+				const json = await res.json();
 				if (!alive) return;
-				setPacks(Array.isArray(data) ? data : []);
-			})
-			.catch(() => setPacks([]));
+
+				const cleaned = (Array.isArray(json) ? json : []).map((p) => ({
+					id: String(p.id),
+					title: String(p.title ?? ""),
+					desc: String(p.desc ?? ""),
+					likes: Number(p.likes ?? 0),
+					// ⬇️ ensure indices are valid integers within range-ish
+					indices: Array.isArray(p.indices)
+						? p.indices.map((n) => parseInt(n, 10)).filter((n) => Number.isFinite(n) && n >= 0)
+						: [],
+					createdAt: p.createdAt ?? null,
+				}));
+				cleaned.sort((a, b) => b.likes - a.likes || a.title.localeCompare(b.title));
+				setPacks(cleaned);
+			} catch (e) {
+				setErr(e?.message || "Failed to load packs");
+			} finally {
+				if (alive) setLoading(false);
+			}
+		})();
 		return () => {
 			alive = false;
 		};
 	}, []);
 
-	const enriched = useMemo(() => {
-		return packs
-			.map((p) => {
-				const local = typeof window !== "undefined" ? getLocalLikes(p.id) : 0;
-				return { ...p, totalLikes: (p.likes || 0) + local };
-			})
-			.filter((p) => {
-				const q = query.trim().toLowerCase();
-				if (!q) return true;
-				return p.title.toLowerCase().includes(q) || (p.desc || "").toLowerCase().includes(q);
-			})
-			.sort((a, b) => b.totalLikes - a.totalLikes);
-	}, [packs, query]);
-
-	const onLike = (id) => {
-		bumpLocalLike(id);
-		// trigger re-compute
-		setPacks((prev) => [...prev]);
+	const onUpvote = (id) => {
+		if (ledger[id]) return; // one like per user (client-side)
+		setPacks((prev) => prev.map((p) => (p.id === id ? { ...p, likes: (p.likes || 0) + 1 } : p)));
+		const next = { ...ledger, [id]: true };
+		setLedger(next);
+		try {
+			localStorage.setItem(LEDGER_KEY, JSON.stringify(next));
+		} catch {}
+		// TODO: POST to API if needed
 	};
 
-	const copyIndices = async (indices) => {
+	// ⬇️ This is the key change: stash indices + route to TestMode
+	const onOpenPack = (pack) => {
 		try {
-			await navigator.clipboard.writeText(JSON.stringify(indices));
-			alert("Copied indices to clipboard ✅");
+			// Let TestMode pre-check these words in the overlay & subset
+			localStorage.setItem(PACK_KEY, JSON.stringify(pack.indices || []));
+		} catch {}
+		// Prefer lightweight query by id (TestMode will fetch /data/wordpacks.json)
+		const url = `/play/test?id=${encodeURIComponent(pack.id)}`;
+		try {
+			router.push(url);
 		} catch {
-			alert("Could not copy indices 😅");
+			// Fallback if router is unavailable for any reason
+			window.location.href = url;
 		}
 	};
 
-	const saveForApp = (pack) => {
-		localStorage.setItem("marketplaceWordpack", JSON.stringify(pack.indices));
-		// jump straight into Normal Mode
-		window.location.href = "/?mode=test&from=wordpacks";
-	};
-
 	return (
-		<main id="wordpacks">
-			<div className="mesh" aria-hidden="true" />
+		<main id="wordpacks" className="wp-tight">
+			<div className="mesh" />
+
 			<header className="wp-header">
-				<h1>Popular wordpacks</h1>
-				<p className="sub">Student-made subsets. Sorted by love.</p>
-				<div className="search">
-					<input
-						type="text"
-						placeholder="Search titles or descriptions…"
-						value={query}
-						onChange={(e) => setQuery(e.target.value)}
-						aria-label="Search wordpacks"
-					/>
-					<a className="back" href="/">
-						← Back
-					</a>
-				</div>
+				<h1>Wordpacks</h1>
+				<p className="sub">Pick a pack, start drilling. Upvote the ones you vibe with.</p>
 			</header>
 
-			<section className="grid">
-				{enriched.map((p) => (
-					<article className="card" key={p.id}>
-						<div className="card__top">
-							<h3 className="title">{p.title}</h3>
-							<button className="like" title="Like this pack" onClick={() => onLike(p.id)}>
-								❤️ {p.totalLikes}
-							</button>
-						</div>
-						{p.desc && <p className="desc">{p.desc}</p>}
+			{loading ? (
+				<section className="grid">
+					<div className="empty">Loading packs…</div>
+				</section>
+			) : err ? (
+				<section className="grid">
+					<div className="empty">Error: {err}</div>
+				</section>
+			) : (
+				<section className="grid">
+					{packs.length === 0 ? (
+						<div className="empty">No packs yet.</div>
+					) : (
+						packs.map((p) => (
+							<article
+								className="card"
+								key={p.id}
+								onClick={() => onOpenPack(p)}
+								role="button"
+								tabIndex={0}
+								onKeyDown={(e) => (e.key === "Enter" ? onOpenPack(p) : null)}
+							>
+								<div className="card__top">
+									<h3 className="title">{p.title}</h3>
+									<button
+										className="like"
+										onClick={(e) => {
+											e.stopPropagation();
+											onUpvote(p.id);
+										}}
+										title={ledger[p.id] ? "Liked" : "Like"}
+										aria-pressed={!!ledger[p.id]}
+										aria-label={`${ledger[p.id] ? "Liked" : "Like"} ${p.title}`}
+									>
+										❤️ {p.likes ?? 0}
+									</button>
+								</div>
 
-						<div className="meta">
-							<span className="chip">{p.indices.length} words</span>
-							<span className="chip chip--muted">id: {p.id}</span>
-						</div>
+								<p className="desc">{p.desc}</p>
 
-						<div className="row">
-							<button className="btn" onClick={() => saveForApp(p)}>
-								Use this pack
-							</button>
-							<button className="btn btn--ghost" onClick={() => copyIndices(p.indices)}>
-								Copy indices
-							</button>
-						</div>
-					</article>
-				))}
+								<div className="meta">
+									<span className="chip">{p.indices?.length ?? 0} words</span>
+									{p.createdAt ? (
+										<span className="chip chip--muted">
+											Added {new Date(p.createdAt).toLocaleDateString()}
+										</span>
+									) : null}
+								</div>
 
-				{enriched.length === 0 && (
-					<div className="empty">No packs found. Try clearing your search.</div>
-				)}
-			</section>
+								<div className="row">
+									<button
+										className="btn"
+										onClick={(e) => {
+											e.stopPropagation();
+											onOpenPack(p);
+										}}
+									>
+										Use this pack
+									</button>
+								</div>
+							</article>
+						))
+					)}
+				</section>
+			)}
 		</main>
 	);
 }

@@ -1,0 +1,248 @@
+/**
+ * Current word card
+ *
+ * @format
+ */
+
+/* --- Red/Black ambient background (scoped to TestMode) --- */
+#main-section {
+	position: relative; /* needed for the pseudo background layer */
+}
+
+/* soft red glows over dark background */
+#main-section::before {
+	content: "";
+	position: absolute;
+	inset: -12vmax -12vmax auto -12vmax;
+	height: 40vmax;
+	z-index: -1;
+	pointer-events: none;
+	filter: blur(28px);
+	background: radial-gradient(45vmax 35vmax at 18% 25%, rgba(234, 87, 70, 0.18), transparent 60%),
+		radial-gradient(40vmax 30vmax at 82% 20%, rgba(255, 192, 177, 0.12), transparent 60%);
+	animation: coral-ambient-drift 16s ease-in-out infinite alternate;
+}
+
+/* subtle drift so it feels alive */
+@keyframes coral-ambient-drift {
+	0% {
+		transform: translate(-1%, -1%) scale(1.02);
+	}
+	100% {
+		transform: translate(1%, 1%) scale(1.05);
+	}
+}
+
+/* (optional) a hint of extra glow on the word itself */
+#current-word h1 {
+	text-shadow: 0 2px 18px rgba(123, 191, 255, 0.12), 0 0 30px rgba(234, 87, 70, 0.18);
+}
+
+#current-word {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	gap: 0.5rem;
+	padding: var(--pad);
+	background: var(--surface);
+	backdrop-filter: blur(var(--blur));
+	border: none;
+	border-radius: var(--r-lg);
+	box-shadow: var(--shadow-1);
+}
+#current-word h1 {
+	font-size: var(--fs-xxl);
+	margin: 0;
+	letter-spacing: 0.02em;
+	text-shadow: 0 2px 18px rgba(123, 191, 255, 0.12);
+}
+#current-word h2 {
+	font-size: var(--fs);
+	margin: 0;
+	color: var(--muted);
+}
+
+/* Tracker bars */
+.tracker-bars {
+	display: flex;
+	padding: 0;
+	margin: 1rem 0 0.75rem;
+	gap: 0.65rem;
+}
+.tracker-bars li {
+	width: clamp(3rem, 8vw, 5rem);
+	height: 1rem;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.18);
+	list-style: none;
+	outline: 1px solid rgba(255, 255, 255, 0.08);
+}
+.tracker-bars li.green {
+	background: var(--success);
+	outline: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* Answer section + form */
+#answer-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	gap: 1rem;
+}
+#form-section {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.8rem;
+	background: var(--surface);
+	backdrop-filter: blur(var(--blur));
+	border: none;
+	border-radius: var(--r-md);
+	padding: 0.6rem;
+	box-shadow: var(--shadow-1);
+}
+#form-section input {
+	padding: 0.9rem 1rem;
+	border-radius: var(--r-md);
+	width: min(520px, 70vw);
+	font-size: var(--fs-lg);
+	outline: none;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	background: rgba(0, 0, 0, 0.35);
+	color: var(--text);
+	transition: box-shadow 160ms ease, border-color 160ms ease;
+}
+#form-section input:focus {
+	border-color: rgba(100, 181, 255, 0.6);
+	box-shadow: 0 0 0 3px rgba(100, 181, 255, 0.25);
+}
+#form-section button {
+	padding: 0.9rem 1.1rem;
+	border-radius: var(--r-md);
+	font-size: var(--fs);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	background: rgb(54, 54, 54);
+	color: var(--text);
+	cursor: pointer;
+	transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+#form-section button:hover {
+	transform: translateY(-1px);
+	box-shadow: var(--shadow-1);
+}
+#form-section button:active {
+	transform: translateY(0);
+}
+
+/* Alerts / Feedback */
+#alert-message {
+	font-size: clamp(1.6rem, 3vw, 2.5rem);
+	text-align: center;
+	margin: 0.25rem 0 0;
+	color: var(--text);
+}
+#feedback-section {
+	font-size: clamp(1.1rem, 2.1vw, 1.35rem);
+	max-width: 900px;
+	text-align: center;
+	letter-spacing: 0.02rem;
+	color: var(--muted);
+	background: var(--surface);
+	backdrop-filter: blur(var(--blur));
+	border: none;
+	border-radius: var(--r-md);
+	padding: var(--pad);
+	box-shadow: var(--shadow-1);
+}
+#full-definition p {
+	margin: 0 0 1.25rem;
+}
+#example p {
+	margin: 0;
+}
+
+/* Shared buttons */
+.button-like,
+.answer-button {
+	padding: 1rem 1.2rem;
+	border-radius: var(--r-md);
+	border: none;
+	font-size: var(--fs);
+	background: rgba(49, 49, 49, 0.25);
+	color: var(--text);
+	cursor: pointer;
+	transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
+}
+.button-like:hover,
+.answer-button:hover {
+	transform: translateY(-1px);
+	box-shadow: var(--shadow-1);
+}
+.button-like:focus-visible,
+.answer-button:focus-visible,
+#form-section input:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(100, 181, 255, 0.25);
+	border-color: rgba(100, 181, 255, 0.6);
+}
+
+/* Answer button states */
+.answer-button.correct {
+	background: linear-gradient(180deg, rgba(126, 186, 122, 0.95), rgba(126, 186, 122, 0.8));
+	border-color: rgba(0, 0, 0, 0.2);
+	color: #0d1a0d;
+}
+.answer-button.incorrect {
+	background: linear-gradient(180deg, rgba(229, 115, 115, 0.95), rgba(229, 115, 115, 0.85));
+	border-color: rgba(0, 0, 0, 0.2);
+	color: #1a0d0d;
+}
+
+/* Multiple choice layout */
+.answer-section {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(280px, 1fr));
+	gap: 1rem;
+	width: min(980px, 92%);
+	margin: 0 auto;
+}
+.answer-section .answer-button {
+	width: 100%;
+	text-align: left;
+	white-space: normal;
+	padding: 1.1rem 1.2rem;
+	font-size: var(--fs-lg);
+	line-height: 1.45;
+	border-radius: var(--r-lg);
+}
+@media (max-width: 640px) {
+	.answer-section {
+		grid-template-columns: 1fr;
+		gap: 0.85rem;
+	}
+	.answer-section .answer-button {
+		font-size: var(--fs);
+		padding: 0.95rem 1rem;
+	}
+}
+
+/* Popup */
+.popup-overlay {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1000;
+	pointer-events: none;
+}
+.popup-message {
+	background: rgba(8, 12, 18, 0.85);
+	color: var(--text);
+	padding: 1rem 1.4rem;
+	border-radius: var(--r-md);
+	font-size: var(--fs);
+	box-shadow: var(--shadow-2);
+	border: 1px solid rgba(255, 255, 255, 0.18);
+}

@@ -1,51 +1,29 @@
 /** @format */
 "use client";
 
-import React, { useEffect, useState } from "react";
-import "../styles/globals.css";
-import TestMode from "../components/TestMode";
-import PracticeMode from "../components/PracticeMode";
-import LearnMode from "../components/LearnMode";
+import React, { useEffect } from "react";
+import "../styles/home.css";
+import "../styles/menu.css";
 
 export default function Page() {
-	const [mode, setMode] = useState(null);
-
-	// Open a mode if it's in the URL, e.g. /?mode=test
+	// keyboard: 1/2/3 jump to modes
 	useEffect(() => {
-		const params = new URLSearchParams(window.location.search);
-		const m = params.get("mode");
-		if (m === "test" || m === "practice" || m === "learn") {
-			setMode(m);
-			// Optional: clean the URL after opening
-			const url = new URL(window.location.href);
-			url.searchParams.delete("mode");
-			url.searchParams.delete("from");
-			window.history.replaceState({}, "", url.toString());
-		}
-	}, []);
-
-	// Keyboard shortcuts: 1 = Normal, 2 = Flash, 3 = Random
-	useEffect(() => {
-		const map = { 1: "test", 2: "practice", 3: "learn" };
+		const map = { 1: "/play/test", 2: "/play/practice", 3: "/play/learn" };
 		const onKey = (e) => {
-			const next = map[e.key];
-			if (next) setMode(next);
+			const url = map[e.key];
+			if (url) window.location.href = url;
 		};
 		window.addEventListener("keydown", onKey);
 		return () => window.removeEventListener("keydown", onKey);
 	}, []);
 
-	if (mode === "test") return <TestMode onBack={() => setMode(null)} />;
-	if (mode === "practice") return <PracticeMode onBack={() => setMode(null)} />;
-	if (mode === "learn") return <LearnMode onBack={() => setMode(null)} />;
-
 	return (
 		<main id="home-landing" className="coral-v1">
-			{/* Coral mesh + subtle texture */}
+			{/* bg */}
 			<div className="coral-bg" aria-hidden="true" />
 			<div className="coral-noise" aria-hidden="true" />
 
-			{/* HERO */}
+			{/* hero */}
 			<section className="coral-hero">
 				<div className="hero-copy">
 					<div className="eyebrow">GRE Vocab • built to grind</div>
@@ -56,7 +34,6 @@ export default function Page() {
 
 					<p className="hero-sub">800+ words. Smart typo forgiveness. Mastery that sticks.</p>
 
-					{/* Inline micro-proof */}
 					<ul className="hero-pills" aria-hidden="true">
 						<li>4× to master</li>
 						<li>~80% typo leeway</li>
@@ -64,6 +41,7 @@ export default function Page() {
 					</ul>
 				</div>
 
+				{/* right column = banner + CTA stacked (2 elements) */}
 				<div className="hero-media">
 					<figure className="banner-frame">
 						<img
@@ -73,53 +51,35 @@ export default function Page() {
 							decoding="async"
 						/>
 					</figure>
+
+					<div className="packs-cta packs-cta--in-hero" aria-label="Popular wordpacks">
+						<a className="packs-cta__btn" href="/wordpacks">
+							View popular wordpacks
+						</a>
+					</div>
 				</div>
 			</section>
 
-			{/* Mode tiles */}
+			{/* modes -> route links */}
 			<section className="mode-tiles" aria-label="Choose a mode">
-				<button
-					className="tile primary"
-					onClick={() => setMode("test")}
-					accessKey="1"
-					title="Normal Mode (1)"
-				>
+				<a className="tile primary" href="/play/test" title="Normal Mode (1)" accessKey="1">
 					<div className="tile-icon">🎯</div>
 					<div className="tile-title">Normal Mode</div>
 					<div className="tile-sub">5-word loop • master 4×</div>
-				</button>
-
-				<button
-					className="tile"
-					onClick={() => setMode("practice")}
-					accessKey="2"
-					title="Flash Cards (2)"
-				>
+				</a>
+				<a className="tile" href="/play/practice" title="Flash Cards (2)" accessKey="2">
 					<div className="tile-icon">🧠</div>
 					<div className="tile-title">Flash Cards</div>
 					<div className="tile-sub">ordered drill</div>
-				</button>
-
-				<button
-					className="tile"
-					onClick={() => setMode("learn")}
-					accessKey="3"
-					title="Random Flash (3)"
-				>
+				</a>
+				<a className="tile" href="/play/learn" title="Random Flash (3)" accessKey="3">
 					<div className="tile-icon">🎲</div>
 					<div className="tile-title">Random Flash</div>
 					<div className="tile-sub">shuffled recall</div>
-				</button>
-			</section>
-
-			{/* Popular Wordpacks CTA */}
-			<section className="packs-cta" aria-label="Popular wordpacks">
-				<a className="packs-cta__btn" href="/wordpacks">
-					View popular wordpacks
 				</a>
 			</section>
 
-			{/* Mini explains */}
+			{/* mini explains */}
 			<section className="explain-grid">
 				<article className="explain">
 					<h3>Why Normal?</h3>
@@ -139,7 +99,42 @@ export default function Page() {
 				</article>
 			</section>
 
-			{/* Footer */}
+			{/* donate */}
+			<section className="donate" aria-label="Support this app">
+				<h2 className="donate__title">Keep it free</h2>
+				<p className="donate__sub">Keep it free for everyone.</p>
+
+				<div className="donate__row">
+					<a
+						className="donate__btn"
+						href="https://buy.stripe.com/6oUbJ0dk20xWgUp3BkbII00"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						$3
+					</a>
+					<a
+						className="donate__btn"
+						href="https://buy.stripe.com/3cIbJ093MfsQ7jP6NwbII01"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						$5
+					</a>
+					<a
+						className="donate__btn donate__btn--accent"
+						href="https://buy.stripe.com/fZu00ifsagwUcE9efYbII02"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						$10
+					</a>
+				</div>
+
+				<p className="donate__tiny">Card • Apple Pay • Google Pay • Link</p>
+			</section>
+
+			{/* footer */}
 			<section className="home-footer">
 				<img src="/images/GREWebsiteLogo.png" alt="GRE logo" className="footer-logo" />
 				<p>Built to grind. No fluff.</p>
