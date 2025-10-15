@@ -118,6 +118,41 @@ export default function Page() {
 				</article>
 			</section>
 
+			{/* Donate (simple Stripe links) */}
+			<section className="donate" aria-label="Support this app">
+				<h2 className="donate__title">Keep it free</h2>
+				<p className="donate__sub">Support the project. Hosting costs are no fun.</p>
+
+				<div className="donate__row">
+					<a
+						className="donate__btn"
+						href="https://buy.stripe.com/6oUbJ0dk20xWgUp3BkbII00"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						$3
+					</a>
+					<a
+						className="donate__btn"
+						href="https://buy.stripe.com/3cIbJ093MfsQ7jP6NwbII01"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						$5
+					</a>
+					<a
+						className="donate__btn donate__btn--accent"
+						href="https://buy.stripe.com/fZu00ifsagwUcE9efYbII02"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						$10
+					</a>
+				</div>
+
+				<p className="donate__tiny">Card • Apple Pay • Google Pay • Link</p>
+			</section>
+
 			{/* Footer */}
 			<section className="home-footer">
 				<img src="/images/GREWebsiteLogo.png" alt="GRE logo" className="footer-logo" />
