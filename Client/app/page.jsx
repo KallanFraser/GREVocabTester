@@ -1,7 +1,7 @@
 /** @format */
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/globals.css";
 import TestMode from "../components/TestMode";
 import PracticeMode from "../components/PracticeMode";
@@ -10,93 +10,117 @@ import LearnMode from "../components/LearnMode";
 export default function Page() {
 	const [mode, setMode] = useState(null);
 
+	// Keyboard shortcuts: 1 = Normal, 2 = Flash, 3 = Random
+	useEffect(() => {
+		const map = { 1: "test", 2: "practice", 3: "learn" };
+		const onKey = (e) => {
+			const next = map[e.key];
+			if (next) setMode(next);
+		};
+		window.addEventListener("keydown", onKey);
+		return () => window.removeEventListener("keydown", onKey);
+	}, []);
+
 	if (mode === "test") return <TestMode onBack={() => setMode(null)} />;
 	if (mode === "practice") return <PracticeMode onBack={() => setMode(null)} />;
 	if (mode === "learn") return <LearnMode onBack={() => setMode(null)} />;
 
 	return (
-		<main id="home-landing">
-			<div className="home-bg" aria-hidden="true" />
+		<main id="home-landing" className="coral-v1">
+			{/* Coral mesh + subtle texture */}
+			<div className="coral-bg" aria-hidden="true" />
+			<div className="coral-noise" aria-hidden="true" />
 
-			{/* HERO — compact, punchy */}
-			<section className="home-hero home-hero--v2">
-				<div className="home-hero__content">
-					<div className="home-hero__eyebrow">GRE Vocab Trainer</div>
+			{/* HERO */}
+			<section className="coral-hero">
+				<div className="hero-copy">
+					<div className="eyebrow">GRE Vocab • built to grind</div>
 
-					<h1 className="home-hero__title home-hero__title--gradient">
-						Ace the vocab
-						<span className="home-badge">161 in 2 weeks</span>
+					<h1 className="hero-title">
+						Crush vocab. <span className="badge">161 in 2 weeks</span>
 					</h1>
 
-					<p className="home-hero__subtitle">800+ words. Smart forgiveness. Mastery that sticks.</p>
+					<p className="hero-sub">800+ words. Smart typo forgiveness. Mastery that sticks.</p>
 
-					<div className="home-hero__pills" aria-hidden="true">
-						<span>4× to master</span>
-						<span>~80% typo leeway</span>
-						<span>pick your set</span>
-					</div>
+					{/* Inline micro-proof */}
+					<ul className="hero-pills" aria-hidden="true">
+						<li>4× to master</li>
+						<li>~80% typo leeway</li>
+						<li>pick your set</li>
+					</ul>
 				</div>
 
-				<div className="home-hero__media home-hero__media--frame">
-					<img
-						className="home-banner home-banner--float"
-						src="/images/GRETesterBanner.png"
-						alt="GRE SCORE banner"
-						decoding="async"
-					/>
+				<div className="hero-media">
+					<figure className="banner-frame">
+						<img
+							src="/images/GRETesterBanner.png"
+							alt="GRE SCORE banner"
+							className="banner"
+							decoding="async"
+						/>
+					</figure>
 				</div>
 			</section>
 
-			{/* Mode picker */}
-			<section className="home-modes" aria-label="Choose a mode">
-				<button className="mode-card mode-card--primary" onClick={() => setMode("test")}>
-					<div className="mode-emoji" aria-hidden>
-						🎯
-					</div>
-					<div className="mode-title">Normal Mode</div>
-					<div className="mode-sub">5-word loop · master 4×</div>
+			{/* Mode tiles */}
+			<section className="mode-tiles" aria-label="Choose a mode">
+				<button
+					className="tile primary"
+					onClick={() => setMode("test")}
+					accessKey="1"
+					title="Normal Mode (1)"
+				>
+					<div className="tile-icon">🎯</div>
+					<div className="tile-title">Normal Mode</div>
+					<div className="tile-sub">5-word loop • master 4×</div>
 				</button>
 
-				<button className="mode-card" onClick={() => setMode("practice")}>
-					<div className="mode-emoji" aria-hidden>
-						🧠
-					</div>
-					<div className="mode-title">Flash Cards</div>
-					<div className="mode-sub">ordered drill</div>
+				<button
+					className="tile"
+					onClick={() => setMode("practice")}
+					accessKey="2"
+					title="Flash Cards (2)"
+				>
+					<div className="tile-icon">🧠</div>
+					<div className="tile-title">Flash Cards</div>
+					<div className="tile-sub">ordered drill</div>
 				</button>
 
-				<button className="mode-card" onClick={() => setMode("learn")}>
-					<div className="mode-emoji" aria-hidden>
-						🎲
-					</div>
-					<div className="mode-title">Random Flash</div>
-					<div className="mode-sub">shuffled recall</div>
+				<button
+					className="tile"
+					onClick={() => setMode("learn")}
+					accessKey="3"
+					title="Random Flash (3)"
+				>
+					<div className="tile-icon">🎲</div>
+					<div className="tile-title">Random Flash</div>
+					<div className="tile-sub">shuffled recall</div>
 				</button>
 			</section>
 
-			{/* Mini details */}
-			<section className="home-grid home-grid--compact">
-				<article className="home-card">
+			{/* Mini explains */}
+			<section className="explain-grid">
+				<article className="explain">
 					<h3>Why Normal?</h3>
-					<p>Small loop, fast reps, honest resets.</p>
+					<p>Quick reps, honest resets, visible progress every block.</p>
 				</article>
-				<article className="home-card">
+				<article className="explain">
 					<h3>Why Flash?</h3>
-					<p>Clean end-to-end ramp. Perfect warm-up.</p>
+					<p>Clean start→finish pass to ramp before a test set.</p>
 				</article>
-				<article className="home-card">
+				<article className="explain">
 					<h3>Why Random?</h3>
-					<p>Break patterns. Recall without cues.</p>
+					<p>Breaks patterns so recall sticks without cues.</p>
 				</article>
-				<article className="home-card home-card--accent">
+				<article className="explain accent">
 					<h3>Focused Sets</h3>
-					<p>Build a cram pack in seconds.</p>
+					<p>Pick exact words. Build a cram pack in seconds.</p>
 				</article>
 			</section>
 
-			{/* Footer note — small logo */}
-			<section className="home-footnote">
-				<img className="home-logo" src="/images/GREWebsiteLogo.png" alt="GRE logo" />
+			{/* Footer */}
+			<section className="home-footer">
+				<img src="/images/GREWebsiteLogo.png" alt="GRE logo" className="footer-logo" />
 				<p>Built to grind. No fluff.</p>
 			</section>
 		</main>
