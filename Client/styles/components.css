@@ -246,3 +246,15 @@
 	box-shadow: var(--shadow-2);
 	border: 1px solid rgba(255, 255, 255, 0.18);
 }
+
+/* === Phone fix: center Submit button === */
+@media (max-width: 640px) {
+	#form-section {
+		justify-content: center;
+	}
+
+	#form-section button {
+		margin: 0 auto;
+		display: block;
+	}
+}

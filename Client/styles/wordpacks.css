@@ -313,3 +313,32 @@
 	opacity: 0.55; /* was 0.80 */
 	transform: rotate(7deg) translate(-3px, -2px); /* subtler motion */
 }
+
+/* === Wordpacks: phone layout = single column list === */
+@media (max-width: 680px) {
+	#wordpacks {
+		padding: 10px 14px;
+		overflow-x: hidden;
+	}
+
+	/* one column, comfy spacing */
+	#wordpacks .grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 14px; /* space between cards */
+		width: 100%;
+		margin: 0 auto 18px;
+	}
+
+	/* make cards auto-height so they don't overlap */
+	#wordpacks .card {
+		height: auto;
+		min-height: 140px; /* safety so tiny packs still look ok */
+		width: 100%;
+	}
+
+	/* kill hover lift on touch to avoid jitter */
+	#wordpacks .card:hover {
+		transform: none;
+	}
+}
