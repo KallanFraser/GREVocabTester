@@ -155,6 +155,7 @@
 	border-radius: var(--r-md);
 	padding: var(--pad);
 	box-shadow: var(--shadow-1);
+	margin-top: -3vw;
 }
 #full-definition p {
 	margin: 0 0 1.25rem;
