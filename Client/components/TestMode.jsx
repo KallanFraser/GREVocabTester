@@ -72,6 +72,27 @@ export default function TestMode({ onBack }) {
 		setCurrentByWord(activeSubset[idx], idx);
 	};
 
+	/* === NEW: replacement picker that avoids the just-completed word and prefers words not already in the subset === */
+	const pickReplacementWord = () => {
+		const keys = Array.from(activeKeys);
+		if (!keys.length) return currentWord;
+
+		const exclusions = new Set(activeSubset);
+		exclusions.add(currentWord);
+
+		const preferred = keys.filter((k) => !exclusions.has(k));
+		const fallback = keys.filter((k) => k !== currentWord);
+		const pool = preferred.length ? preferred : fallback.length ? fallback : keys;
+
+		let choice = pool[pickRandomIndex(pool.length)];
+		if (choice === currentWord && keys.length > 1) {
+			const alt = keys.filter((k) => k !== currentWord);
+			choice = alt[pickRandomIndex(alt.length)];
+		}
+		return choice;
+	};
+	/* === END NEW === */
+
 	// Hydrate selected words from marketplace (if present)
 	useEffect(() => {
 		if (typeof window === "undefined") return;
@@ -200,12 +221,15 @@ export default function TestMode({ onBack }) {
 				const updated = { ...prev, [currentWord]: (prev[currentWord] || 0) + 1 };
 
 				if (updated[currentWord] >= 4 && activeSubset.length) {
-					const keys = Array.from(activeKeys);
-					const newWord = keys[pickRandomIndex(keys.length)];
+					/* === CHANGED: use safe replacement + reset bars to 0 === */
+					const newWord = pickReplacementWord();
 					const nextSubset = [...activeSubset];
 					nextSubset[currentIndex] = newWord;
 					setActiveSubset(nextSubset);
-					updated[newWord] = updated[newWord] || 0;
+
+					// reset the replacement's mastery so it doesn't show 4/4
+					updated[newWord] = 0;
+					/* === END CHANGE === */
 				}
 
 				return updated;

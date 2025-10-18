@@ -258,3 +258,28 @@
 		display: block;
 	}
 }
+
+/* === Keep "Choose Words" visible, push everything else up === */
+
+/* Reserve bottom space so content doesn't get hidden behind the fixed button */
+#main-section {
+	padding-bottom: clamp(96px, 12vh, 140px);
+}
+
+/* Pin the Choose Words control to the bottom center */
+#choose-words {
+	position: fixed;
+	left: 50%;
+	bottom: 16px;
+	transform: translateX(-50%);
+	z-index: 1001; /* above cards/content but below popups with 1000+ if needed */
+	width: fit-content;
+	max-width: 92vw; /* prevent overflow on small phones */
+}
+
+/* Keep the button tidy on small screens without altering your existing look */
+#choose-words button {
+	display: inline-block;
+	max-width: 100%;
+	white-space: nowrap;
+}

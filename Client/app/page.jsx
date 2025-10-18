@@ -29,7 +29,7 @@ export default function Page() {
 					<div className="eyebrow">GRE Vocab • built to grind</div>
 
 					<h1 className="hero-title">
-						Crush vocab. <span className="badge">161 in 2 weeks</span>
+						Crush vocab. <span className="badge">165 in 2 weeks</span>
 					</h1>
 
 					<p className="hero-sub">800+ words. Smart typo forgiveness. Mastery that sticks.</p>
