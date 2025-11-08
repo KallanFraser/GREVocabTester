@@ -25,28 +25,40 @@ const SEC_BASE_HEADERS = [
 	},
 ];
 
-const makeCSP = ({ dev } = { dev: false }) =>
+// prod CSP (no localhost). Dev CSP stays inside next dev server only.
+const makeCSP = () =>
 	[
 		"default-src 'self';",
 		"base-uri 'self';",
 		"form-action 'self';",
 		"img-src 'self' data: blob: https:;",
 		"font-src 'self' data: https:;",
-		`style-src 'self' 'unsafe-inline'${dev ? " http://localhost:*" : ""};`,
-		`script-src 'self'${dev ? " 'unsafe-inline' 'unsafe-eval' http://localhost:*" : " 'unsafe-inline'"};`,
-		`connect-src 'self'${dev ? " ws://localhost:* http://localhost:*" : ""};`,
+		"style-src 'self' 'unsafe-inline';",
+		"script-src 'self' 'unsafe-inline';",
+		"connect-src 'self';",
 		"frame-ancestors 'none';",
 		"object-src 'none';",
-		...(dev ? [] : ["upgrade-insecure-requests"]),
+		"upgrade-insecure-requests",
 	].join(" ");
 
 const nextConfig = {
+	// ⬇️ This is the key: emit a static site into /out
+	output: "export",
+
+	// If you used next/image anywhere, keep this for static export
+	images: { unoptimized: true },
+
 	reactStrictMode: true,
 	poweredByHeader: false,
+
+	// Note: headers() is ignored on static hosting (no Next server).
+	// We keep it for dev, but production headers are set via /public/_headers.
 	async headers() {
-		const dev = process.env.NODE_ENV !== "production";
-		const headers = [...SEC_BASE_HEADERS, { key: "Content-Security-Policy", value: makeCSP({ dev }) }];
-		return [{ source: "/:path*", headers }];
+		if (process.env.NODE_ENV !== "production") {
+			const headers = [...SEC_BASE_HEADERS, { key: "Content-Security-Policy", value: makeCSP() }];
+			return [{ source: "/:path*", headers }];
+		}
+		return [];
 	},
 };
 
