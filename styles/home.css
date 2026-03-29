@@ -44,7 +44,7 @@
 	position: relative;
 	z-index: 1;
 	width: min(1200px, 92%);
-	margin: 12vh auto 0;
+	margin: calc(64px + 8vh) auto 0; /* account for fixed navbar */
 	display: grid;
 	grid-template-columns: 1.2fr 1fr;
 	gap: clamp(2rem, 5vw, 4rem);
@@ -54,7 +54,7 @@
 @media (max-width: 900px) {
 	#home-landing.coral-v1 .coral-hero {
 		grid-template-columns: 1fr;
-		margin-top: 8vh;
+		margin-top: calc(64px + 4vh);
 		text-align: center;
 	}
 	#home-landing.coral-v1 .hero-actions {
@@ -137,6 +137,23 @@
 	transform: translateY(-2px);
 	box-shadow: 0 8px 30px rgba(234, 87, 70, 0.5);
 	background: #ff6b5b;
+}
+
+#home-landing.coral-v1 .secondary-btn {
+	color: rgba(255, 255, 255, 0.8);
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 1rem;
+	padding: 0.85rem 1.6rem;
+	border-radius: 999px;
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	background: rgba(255, 255, 255, 0.05);
+	transition: all 0.2s ease;
+}
+#home-landing.coral-v1 .secondary-btn:hover {
+	border-color: rgba(255, 255, 255, 0.3);
+	background: rgba(255, 255, 255, 0.08);
+	color: #fff;
 }
 
 #home-landing.coral-v1 .hero-pills {
@@ -245,9 +262,32 @@
 	box-shadow: 0 15px 40px rgba(234, 87, 70, 0.15);
 }
 
-#home-landing.coral-v1 .tile-icon {
-	font-size: 2.5rem;
-	filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+/* Styled letter icons (replacing emojis) */
+#home-landing.coral-v1 .tile-icon-styled {
+	width: 48px;
+	height: 48px;
+	display: grid;
+	place-items: center;
+	border-radius: 14px;
+	font-size: 1.2rem;
+	font-weight: 800;
+	letter-spacing: 0;
+	flex-shrink: 0;
+}
+#home-landing.coral-v1 .tile-icon--test {
+	background: linear-gradient(135deg, rgba(234, 87, 70, 0.25), rgba(234, 87, 70, 0.1));
+	border: 1px solid rgba(234, 87, 70, 0.35);
+	color: #ff8a7a;
+}
+#home-landing.coral-v1 .tile-icon--practice {
+	background: linear-gradient(135deg, rgba(100, 181, 255, 0.2), rgba(100, 181, 255, 0.08));
+	border: 1px solid rgba(100, 181, 255, 0.3);
+	color: #64b5ff;
+}
+#home-landing.coral-v1 .tile-icon--learn {
+	background: linear-gradient(135deg, rgba(126, 186, 122, 0.2), rgba(126, 186, 122, 0.08));
+	border: 1px solid rgba(126, 186, 122, 0.3);
+	color: #7eba7a;
 }
 #home-landing.coral-v1 .tile-title {
 	font-weight: 800;
@@ -309,14 +349,14 @@
 #home-landing .donate {
 	position: relative;
 	z-index: 1;
-	width: min(600px, 92%);
+	width: min(680px, 92%);
 	margin: 3rem auto 1rem;
 	text-align: center;
 }
 #home-landing .donate-glass {
 	background: linear-gradient(180deg, rgba(20, 20, 20, 0.7), rgba(10, 10, 10, 0.8));
 	border: 1px solid var(--glass-border);
-	padding: 2rem;
+	padding: 2.5rem 2rem;
 	border-radius: 24px;
 	backdrop-filter: blur(10px);
 }
@@ -328,39 +368,53 @@
 }
 #home-landing .donate__sub {
 	color: #888;
-	margin-bottom: 1.5rem;
+	margin-bottom: 1.8rem;
+	font-size: 0.95rem;
+	line-height: 1.5;
+	max-width: 480px;
+	margin-inline: auto;
 }
 
 #home-landing .donate__row {
-	display: flex;
-	justify-content: center;
-	gap: 1rem;
-	margin-bottom: 1rem;
-}
-#home-landing .donate__btn {
 	display: grid;
-	place-items: center;
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
-	border: 1px solid var(--glass-border);
-	background: rgba(255, 255, 255, 0.05);
+	grid-template-columns: repeat(3, 1fr);
+	gap: 0.75rem;
+	margin-bottom: 1rem;
+	max-width: 440px;
+	margin-inline: auto;
+}
+#home-landing .donate__chip {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.25rem;
+	padding: 1.1rem 0.8rem;
+	border-radius: 16px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	background: rgba(255, 255, 255, 0.04);
 	color: #fff;
-	font-weight: 700;
 	text-decoration: none;
-	transition: 0.2s;
+	transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
-#home-landing .donate__btn:hover {
-	background: var(--coral);
-	transform: scale(1.1);
-	border-color: var(--coral);
+#home-landing .donate__chip:hover {
+	transform: translateY(-2px);
+	border-color: rgba(234, 87, 70, 0.4);
+	box-shadow: 0 8px 24px rgba(234, 87, 70, 0.15);
 }
-#home-landing .donate__btn--accent {
-	border-color: rgba(234, 87, 70, 0.5);
-	color: var(--coral-light);
+#home-landing .donate__chip--accent {
+	border-color: rgba(234, 87, 70, 0.35);
+	background: rgba(234, 87, 70, 0.08);
 }
-#home-landing .donate__btn--accent:hover {
-	color: #fff;
+#home-landing .donate__amount {
+	font-size: 1.3rem;
+	font-weight: 800;
+}
+#home-landing .donate__label {
+	font-size: 0.78rem;
+	color: #888;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
 }
 #home-landing .donate__tiny {
 	font-size: 0.8rem;
@@ -371,15 +425,46 @@
 /* === Footer === */
 #home-landing.coral-v1 .home-footer {
 	z-index: 1;
-	text-align: center;
 	margin-top: auto;
-	opacity: 0.6;
+	border-top: 1px solid rgba(255, 255, 255, 0.06);
+	padding: 3rem 0 2rem;
+}
+#home-landing.coral-v1 .footer-inner {
+	width: min(1100px, 92%);
+	margin: 0 auto;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.8rem;
 }
 #home-landing.coral-v1 .footer-logo {
-	width: 48px;
-	margin-bottom: 0.5rem;
+	width: 40px;
+	opacity: 0.7;
 }
-#home-landing.coral-v1 .home-footer p {
-	font-size: 0.9rem;
-	color: #777;
+#home-landing.coral-v1 .footer-tagline {
+	font-size: 0.95rem;
+	color: #888;
+	margin: 0;
+}
+#home-landing.coral-v1 .footer-links {
+	display: flex;
+	gap: 1.5rem;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+#home-landing.coral-v1 .footer-links a {
+	color: rgba(255, 255, 255, 0.5);
+	text-decoration: none;
+	font-size: 0.88rem;
+	font-weight: 500;
+	transition: color 0.15s ease;
+}
+#home-landing.coral-v1 .footer-links a:hover {
+	color: rgba(255, 255, 255, 0.85);
+}
+#home-landing.coral-v1 .footer-copy {
+	font-size: 0.8rem;
+	color: #555;
+	margin: 0.5rem 0 0;
 }

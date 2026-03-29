@@ -3,7 +3,7 @@
 
 import "../styles/globals.css";
 import "../styles/components.css";
-import Image from "next/image";
+import Navbar from "../components/Navbar";
 
 export const metadata = {
 	title: "GRE Vocab Tester | Master 500+ Words Fast",
@@ -55,7 +55,10 @@ export default function RootLayout({ children }) {
 			<head>
 				<link rel="icon" href="/images/GREWebsiteLogo.png" />
 			</head>
-			<body>{children}</body>
+			<body>
+					<Navbar />
+					{children}
+				</body>
 		</html>
 	);
 }

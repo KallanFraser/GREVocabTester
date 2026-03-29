@@ -2,15 +2,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation"; // ⬅️ add this
 import "../../styles/wordpacks.css";
 
 const LEDGER_KEY = "wp_upvote_ledger_v2";
 const PACK_KEY = "marketplaceWordpack"; // ⬅️ same key TestMode reads
 
 export default function WordpacksPage() {
-	const router = useRouter(); // ⬅️ init router
-
 	const [packs, setPacks] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [err, setErr] = useState(null);
@@ -77,14 +74,9 @@ export default function WordpacksPage() {
 			// Let TestMode pre-check these words in the overlay & subset
 			localStorage.setItem(PACK_KEY, JSON.stringify(pack.indices || []));
 		} catch {}
-		// Prefer lightweight query by id (TestMode will fetch /data/wordpacks.json)
+		// Full page navigation to ensure proper hydration of the game page
 		const url = `/play/test?id=${encodeURIComponent(pack.id)}`;
-		try {
-			router.push(url);
-		} catch {
-			// Fallback if router is unavailable for any reason
-			window.location.href = url;
-		}
+		window.location.href = url;
 	};
 
 	return (
@@ -92,17 +84,18 @@ export default function WordpacksPage() {
 			<div className="mesh" />
 
 			<header className="wp-header">
-				<h1>Wordpacks</h1>
-				<p className="sub">Pick a pack, start drilling. Upvote the ones you vibe with.</p>
+				<h1>Word Packs</h1>
+				<p className="sub">Curated vocabulary sets built by the community. Select a pack to begin studying, or upvote your favorites.</p>
 			</header>
 
 			{loading ? (
-				<section className="grid">
-					<div className="empty">Loading packs…</div>
+				<section className="wp-status">
+					<div className="wp-spinner" aria-hidden="true" />
+					<p>Loading word packs...</p>
 				</section>
 			) : err ? (
-				<section className="grid">
-					<div className="empty">Error: {err}</div>
+				<section className="wp-status">
+					<p>Error: {err}</p>
 				</section>
 			) : (
 				<section className="grid">

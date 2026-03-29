@@ -20,6 +20,7 @@
 	position: relative;
 	min-height: 100dvh;
 	padding: 6px clamp(14px, 3vw, 28px);
+	padding-top: 72px; /* offset for fixed navbar */
 	display: grid;
 	gap: 10px;
 }
@@ -79,9 +80,7 @@
 	font-size: 0.96rem;
 	line-height: 1.15;
 	color: rgba(255, 255, 255, 0.8);
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+	max-width: 600px;
 }
 
 /* ================== Grid ================== */
@@ -283,6 +282,33 @@
 	text-align: center;
 	color: var(--wp-muted);
 	padding: 16px 0;
+}
+
+/* Loading / status state */
+#wordpacks .wp-status {
+	width: min(1100px, 96%);
+	margin: 3rem auto;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+}
+#wordpacks .wp-status p {
+	color: rgba(255, 255, 255, 0.6);
+	font-size: 1rem;
+	margin: 0;
+}
+#wordpacks .wp-spinner {
+	width: 32px;
+	height: 32px;
+	border: 3px solid rgba(255, 255, 255, 0.1);
+	border-top-color: rgba(234, 87, 70, 0.7);
+	border-radius: 50%;
+	animation: wp-spin 0.7s linear infinite;
+}
+@keyframes wp-spin {
+	to { transform: rotate(360deg); }
 }
 /* Heavily soften red accents on cards */
 #wordpacks {

@@ -27,23 +27,22 @@ export default function Page() {
 			{/* hero */}
 			<section className="coral-hero">
 				<div className="hero-copy">
-					<div className="eyebrow">GRE Vocab • built to grind</div>
+					<div className="eyebrow">GRE Vocabulary Preparation</div>
 
 					<h1 className="hero-title">
-						Crush vocab. <span className="badge">165 in 2 weeks</span>
+						Master every word. <span className="badge">800+ terms</span>
 					</h1>
 
-					<p className="hero-sub">800+ words. Smart typo forgiveness. Mastery that sticks.</p>
+					<p className="hero-sub">The adaptive vocabulary platform trusted by thousands of GRE test-takers. Typo-forgiving input, spaced mastery tracking, and three proven study modes.</p>
 
 					{/* CTA moved here - switched to Link */}
 					<div className="hero-actions">
-						<Link className="primary-btn" href="/wordpacks">
-							Browse Wordpacks
+						<a className="primary-btn" href="/play/test">
+							Start Studying
+						</a>
+						<Link className="secondary-btn" href="/wordpacks">
+							Browse Word Packs
 						</Link>
-						<ul className="hero-pills" aria-hidden="true">
-							<li>4× to master</li>
-							<li>~80% typo leeway</li>
-						</ul>
 					</div>
 				</div>
 
@@ -57,91 +56,64 @@ export default function Page() {
 
 			{/* modes -> route links (Switched to Link) */}
 			<section className="mode-tiles" aria-label="Choose a mode">
-				<Link className="tile primary" href="/play/test" title="Normal Mode (1)" accessKey="1">
+				<a className="tile primary" href="/play/test" title="Normal Mode (1)" accessKey="1">
 					<div className="tile-bg-glow"></div>
-					<div className="tile-icon">🎯</div>
+					<div className="tile-icon-styled tile-icon--test" aria-hidden="true">T</div>
 					<div className="tile-content">
 						<div className="tile-title">Normal Mode</div>
-						<div className="tile-sub">5-word loop • master 4×</div>
+						<div className="tile-sub">Type answers in a 5-word rotation. Master each word 4 times to advance.</div>
 					</div>
-				</Link>
-				<Link className="tile" href="/play/practice" title="Flash Cards (2)" accessKey="2">
-					<div className="tile-icon">🧠</div>
+				</a>
+				<a className="tile" href="/play/practice" title="Flash Cards (2)" accessKey="2">
+					<div className="tile-icon-styled tile-icon--practice" aria-hidden="true">F</div>
 					<div className="tile-content">
 						<div className="tile-title">Flash Cards</div>
-						<div className="tile-sub">Ordered drill</div>
+						<div className="tile-sub">Multiple-choice review in sequential order. Ideal for first passes.</div>
 					</div>
-				</Link>
-				<Link className="tile" href="/play/learn" title="Random Flash (3)" accessKey="3">
-					<div className="tile-icon">🎲</div>
+				</a>
+				<a className="tile" href="/play/learn" title="Random Flash (3)" accessKey="3">
+					<div className="tile-icon-styled tile-icon--learn" aria-hidden="true">R</div>
 					<div className="tile-content">
 						<div className="tile-title">Random Flash</div>
-						<div className="tile-sub">Shuffled recall</div>
+						<div className="tile-sub">Randomized multiple-choice to break pattern recognition.</div>
 					</div>
-				</Link>
+				</a>
 			</section>
 
-			{/* mini explains */}
+			{/* features */}
 			<section className="explain-grid">
 				<article className="explain">
-					<h3>Why Normal?</h3>
-					<p>Quick reps, honest resets, visible progress every block.</p>
+					<h3>Adaptive Mastery</h3>
+					<p>Each word requires 4 correct answers before it&apos;s marked as learned. Miss once and the counter resets — building durable recall.</p>
 				</article>
 				<article className="explain">
-					<h3>Why Flash?</h3>
-					<p>Clean start→finish pass to ramp before a test set.</p>
+					<h3>Typo Forgiveness</h3>
+					<p>Our string-similarity engine accepts answers within 60% accuracy, so minor spelling mistakes won&apos;t break your flow.</p>
 				</article>
 				<article className="explain">
-					<h3>Why Random?</h3>
-					<p>Breaks patterns so recall sticks without cues.</p>
+					<h3>Community Word Packs</h3>
+					<p>Browse curated sets built by other test-takers, or create your own focused study pack from our 800+ word library.</p>
 				</article>
 				<article className="explain accent">
-					<h3>Focused Sets</h3>
-					<p>Pick exact words. Build a cram pack in seconds.</p>
+					<h3>Three Study Modes</h3>
+					<p>Type-to-answer for deep encoding, sequential flashcards for review, and randomized drills for pattern-free recall.</p>
 				</article>
-			</section>
-
-			{/* Donate (Keep as <a> because these are external links to Stripe) */}
-			<section className="donate" aria-label="Support this app">
-				<div className="donate-glass">
-					<h2 className="donate__title">Keep it free</h2>
-					<p className="donate__sub">Server costs are real. Support the grind.</p>
-
-					<div className="donate__row">
-						<a
-							className="donate__btn"
-							href="https://buy.stripe.com/6oUbJ0dk20xWgUp3BkbII00"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							$3
-						</a>
-						<a
-							className="donate__btn"
-							href="https://buy.stripe.com/3cIbJ093MfsQ7jP6NwbII01"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							$5
-						</a>
-						<a
-							className="donate__btn donate__btn--accent"
-							href="https://buy.stripe.com/fZu00ifsagwUcE9efYbII02"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							$10
-						</a>
-					</div>
-					<p className="donate__tiny">Card • Apple Pay • Google Pay • Link</p>
-				</div>
 			</section>
 
 			{/* Footer */}
-			<section className="home-footer">
-				<img src="/images/GREWebsiteLogo.png" alt="GRE logo" className="footer-logo" />
-				<p>Built to grind. No fluff.</p>
-			</section>
+			<footer className="home-footer">
+				<div className="footer-inner">
+					<img src="/images/GREWebsiteLogo.png" alt="GRE Vocab Tester" className="footer-logo" />
+					<p className="footer-tagline">Vocabulary preparation for serious test-takers.</p>
+					<div className="footer-links">
+						<Link href="/wordpacks">Word Packs</Link>
+						<a href="/play/test">Normal Mode</a>
+						<a href="/play/practice">Flash Cards</a>
+						<a href="/play/learn">Random Flash</a>
+					</div>
+					<p className="footer-copy">&copy; {new Date().getFullYear()} GRE Vocab Tester. All rights reserved.</p>
+				</div>
+			</footer>
 		</main>
 	);
 }
