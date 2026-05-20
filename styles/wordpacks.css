@@ -1,290 +1,292 @@
 /** @format */
-/* ================== Wordpacks (compact, condensed) ================== */
+/* =====================================================================
+   Wordpacks — overhauled. Coral as an accent, not the dominant color.
+   Pairs with the polished home-page tile + feature-card system.
+   ===================================================================== */
 
-/* Scoped design tokens */
+/* Scoped tokens */
 #wordpacks {
-	--wp-bg-card-dark: linear-gradient(180deg, rgba(16, 8, 8, 0.92), rgba(10, 6, 6, 0.9));
-	--wp-ring-red: linear-gradient(135deg, rgba(234, 87, 70, 0.45), rgba(234, 87, 70, 0.08));
-	--wp-chip-bg: linear-gradient(180deg, rgba(234, 87, 70, 0.16), rgba(234, 87, 70, 0.1));
-	--wp-chip-bd: rgba(234, 87, 70, 0.35);
-	--wp-like-bg: linear-gradient(180deg, rgba(234, 87, 70, 0.28), rgba(234, 87, 70, 0.16));
-	--wp-like-bg-on: linear-gradient(180deg, rgba(234, 87, 70, 0.36), rgba(234, 87, 70, 0.2));
-	--wp-like-bd: rgba(234, 87, 70, 0.45);
-	--wp-like-bd-on: rgba(234, 87, 70, 0.65);
-	--wp-muted: var(--muted, #a8b0b5);
-	--wp-border: rgba(255, 255, 255, 0.14);
-	--wp-border-strong: rgba(255, 255, 255, 0.18);
-	--wp-radius: 14px;
+	--wp-radius: 16px;
 	--wp-radius-pill: 999px;
+	--wp-border: var(--glass-border, rgba(255, 255, 255, 0.08));
+	--wp-border-strong: rgba(255, 255, 255, 0.16);
+	--wp-surface: linear-gradient(180deg, rgba(24, 24, 26, 0.78), rgba(14, 14, 16, 0.85));
+	--wp-surface-hover: linear-gradient(180deg, rgba(30, 30, 32, 0.85), rgba(16, 16, 18, 0.9));
+	--wp-text: rgba(255, 255, 255, 0.96);
+	--wp-text-soft: rgba(255, 255, 255, 0.66);
+	--wp-text-muted: rgba(255, 255, 255, 0.5);
+	--wp-coral: var(--coral, #ea5746);
+	--wp-coral-light: var(--coral-light, #ff8a7a);
 
 	position: relative;
 	min-height: 100dvh;
-	padding: 6px clamp(14px, 3vw, 28px);
-	padding-top: 72px; /* offset for fixed navbar */
+	padding: 0 clamp(14px, 3vw, 28px) 32px;
+	padding-top: 88px; /* offset for fixed navbar */
 	display: grid;
 	gap: 10px;
+	color: var(--wp-text);
 }
 
-/* Soft mesh bg */
+/* ===================== Background mesh ===================== */
+/* Cool, desaturated. Just enough motion to feel alive — not warm and pulsing. */
 #wordpacks .mesh {
 	position: absolute;
-	inset: -25vmax;
+	inset: -20vmax;
 	z-index: -1;
-	background: radial-gradient(60vmax 50vmax at 15% 25%, rgba(234, 87, 70, 0.25), transparent 60%),
-		radial-gradient(60vmax 50vmax at 85% 35%, rgba(100, 181, 255, 0.16), transparent 60%);
-	filter: blur(34px);
-	animation: wp-drift 18s ease-in-out infinite alternate;
+	background:
+		radial-gradient(55vmax 45vmax at 12% 12%, rgba(100, 181, 255, 0.07), transparent 60%),
+		radial-gradient(50vmax 40vmax at 88% 88%, rgba(234, 87, 70, 0.05), transparent 60%);
+	filter: blur(56px);
+	animation: wp-drift 22s ease-in-out infinite alternate;
 }
 @keyframes wp-drift {
-	0% {
-		transform: translate(-2%, -1%) scale(1.02);
-	}
-	100% {
-		transform: translate(2%, 1%) scale(1.06);
-	}
+	0% { transform: translate(-1.5%, -1%) scale(1.02); }
+	100% { transform: translate(1.5%, 1%) scale(1.05); }
 }
 @media (prefers-reduced-motion: reduce) {
-	#wordpacks .mesh {
-		animation: none;
-	}
+	#wordpacks .mesh { animation: none; }
 }
 
-/* ================== Header (sharper, dark+red accent) ================== */
+/* ===================== Header ===================== */
 #wordpacks .wp-header {
 	width: min(1100px, 96%);
-	margin: 3vw auto 8px;
+	margin: clamp(1.5rem, 4vw, 3rem) auto 1.25rem;
+}
+#wordpacks .wp-header h1 {
+	position: relative;
+	margin: 0;
+	padding-left: 14px;
+	font-size: clamp(1.9rem, 3.5vw, 2.5rem);
+	font-weight: 800;
+	letter-spacing: -0.02em;
+	line-height: 1.05;
 	color: #fff;
 }
-/* Make the underline match the text width exactly */
-#wordpacks .wp-header h1 {
-	/* keep your existing props */
-	display: inline-block; /* shrink to text width */
-	width: max-content; /* future-proof */
-	position: relative;
-}
-
-#wordpacks .wp-header h1::after {
+/* Editorial side-bar marker — replaces the heavy underline + red glow */
+#wordpacks .wp-header h1::before {
 	content: "";
 	position: absolute;
 	left: 0;
-	bottom: -6px;
-	width: 100%; /* stretch to full word width */
-	height: 3px;
+	top: 0.18em;
+	bottom: 0.18em;
+	width: 3px;
 	border-radius: 3px;
-	background: linear-gradient(90deg, rgba(234, 87, 70, 0.9), rgba(234, 87, 70, 0.2));
-	box-shadow: 0 0 18px rgba(234, 87, 70, 0.4);
+	background: linear-gradient(to bottom, var(--wp-coral), rgba(234, 87, 70, 0.15));
 }
-
 #wordpacks .wp-header .sub {
-	margin: 10px 0 0;
-	font-size: 0.96rem;
-	line-height: 1.15;
-	color: rgba(255, 255, 255, 0.8);
-	max-width: 600px;
+	margin: 0.75rem 0 0;
+	padding-left: 14px;
+	font-size: 0.98rem;
+	line-height: 1.5;
+	color: var(--wp-text-soft);
+	max-width: 56ch;
 }
 
-/* ================== Grid ================== */
+/* ===================== Grid ===================== */
 #wordpacks .grid {
 	width: min(1100px, 96%);
-	margin: 0 auto 18px;
+	margin: 0 auto 24px;
 	display: grid;
-	gap: 10px;
+	gap: 14px;
 	grid-template-columns: repeat(3, 1fr);
 }
 @media (max-width: 1100px) {
-	#wordpacks .grid {
-		grid-template-columns: repeat(2, 1fr);
-	}
+	#wordpacks .grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 680px) {
-	#wordpacks .grid {
-		grid-template-columns: 1fr;
-	}
+	#wordpacks .grid { grid-template-columns: 1fr; }
 }
 
-/* ================== Card (dark + red) ================== */
+/* ===================== Card ===================== */
 #wordpacks .card {
 	position: relative;
-	overflow: hidden;
-	cursor: pointer;
-	padding: 12px;
-	height: 14vw;
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+	min-height: 200px;
+	padding: 1rem 1.1rem 1rem;
 	border-radius: var(--wp-radius);
-	color: #fff;
-	background: var(--wp-bg-card-dark) padding-box, var(--wp-ring-red) border-box;
-	border: 1px solid transparent;
-	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.32);
-	backdrop-filter: saturate(1.05) blur(6px);
-	transition: transform 140ms ease, box-shadow 160ms ease, background 160ms ease;
-}
-#wordpacks .card:hover {
-	transform: translateY(-2px);
-	box-shadow: 0 14px 44px rgba(0, 0, 0, 0.5), 0 10px 28px rgba(234, 87, 70, 0.16);
-	background: linear-gradient(180deg, rgba(22, 10, 10, 0.95), rgba(12, 7, 7, 0.92)) padding-box,
-		linear-gradient(135deg, rgba(234, 87, 70, 0.55), rgba(234, 87, 70, 0.12)) border-box;
-}
-#wordpacks .card:focus-visible {
-	outline: 2px solid rgba(234, 87, 70, 0.8);
-	outline-offset: 2px;
+	color: var(--wp-text);
+	background: var(--wp-surface);
+	border: 1px solid var(--wp-border);
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, 0.05),
+		0 8px 24px rgba(0, 0, 0, 0.35);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+		border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+	cursor: pointer;
+	overflow: hidden;
+	isolation: isolate;
 }
 
-/* Corner crimson glow */
+/* Subtle top-edge highlight — matches home-page tile system */
 #wordpacks .card::before {
 	content: "";
 	position: absolute;
-	top: -32%;
-	right: -32%;
-	width: 62%;
-	height: 62%;
-	background: radial-gradient(180px 130px at 50% 50%, rgba(234, 87, 70, 0.22), transparent 65%);
-	transform: rotate(10deg);
-	opacity: 0.75;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 70%;
+	height: 1px;
+	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
 	pointer-events: none;
-	transition: opacity 160ms ease, transform 200ms ease;
-}
-#wordpacks .card:hover::before {
-	opacity: 0.95;
-	transform: rotate(6deg) translate(-6px, -3px);
-}
-@media (prefers-reduced-motion: reduce) {
-	#wordpacks .card,
-	#wordpacks .card::before {
-		transition: none;
-	}
+	transition: opacity 0.25s ease, background 0.25s ease;
 }
 
-/* Top row */
+#wordpacks .card:hover {
+	transform: translateY(-3px);
+	border-color: rgba(234, 87, 70, 0.32);
+	background: var(--wp-surface-hover);
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, 0.08),
+		0 16px 38px rgba(0, 0, 0, 0.5),
+		0 0 0 1px rgba(234, 87, 70, 0.08);
+}
+#wordpacks .card:hover::before {
+	background: linear-gradient(90deg, transparent, rgba(234, 87, 70, 0.55), transparent);
+	width: 80%;
+}
+
+#wordpacks .card:focus-visible {
+	outline: var(--ring, 2px solid rgba(100, 181, 255, 0.9));
+	outline-offset: 2px;
+}
+
+/* ===================== Card content ===================== */
 #wordpacks .card__top {
 	display: grid;
 	grid-template-columns: 1fr auto;
-	align-items: center;
-	gap: 10px;
-	margin-bottom: 2px;
+	align-items: start;
+	gap: 0.75rem;
 }
 #wordpacks .title {
 	margin: 0;
-	font-size: 1.06rem;
+	font-size: 1.08rem;
 	font-weight: 700;
-	letter-spacing: 0.15px;
-	line-height: 1.15;
+	letter-spacing: -0.01em;
+	line-height: 1.25;
+	color: rgba(255, 255, 255, 0.96);
 }
 
-/* Description */
 #wordpacks .desc {
-	margin: 6px 0 8px;
-	font-size: 0.95rem;
-	line-height: 1.35;
-	color: rgba(255, 255, 255, 0.84);
+	margin: 0;
+	font-size: 0.92rem;
+	line-height: 1.5;
+	color: var(--wp-text-soft);
 	display: -webkit-box;
 	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
+	flex: 1;
 }
 
-/* Meta chips */
+/* ===================== Chips ===================== */
 #wordpacks .meta {
 	display: flex;
-	gap: 8px;
-	margin: 0 0 10px;
+	gap: 0.5rem;
 	flex-wrap: wrap;
+	margin: 0;
 }
 #wordpacks .chip {
-	position: relative;
-	padding: 0.22rem 0.58rem;
-	font-size: 0.84rem;
+	padding: 0.28rem 0.7rem;
+	font-size: 0.78rem;
+	font-weight: 500;
 	line-height: 1;
 	border-radius: var(--wp-radius-pill);
-	border: 1px solid var(--wp-chip-bd);
-	background: var(--wp-chip-bg);
-	color: rgba(255, 255, 255, 0.92);
-	box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.06);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	background: rgba(255, 255, 255, 0.035);
+	color: rgba(255, 255, 255, 0.78);
+	letter-spacing: 0;
+}
+/* Word-count chip = the primary fact, gets a quiet coral whisper */
+#wordpacks .chip:first-child {
+	border-color: rgba(234, 87, 70, 0.28);
+	background: rgba(234, 87, 70, 0.08);
+	color: rgba(255, 200, 195, 0.95);
 }
 #wordpacks .chip--muted {
-	color: rgba(255, 255, 255, 0.75);
-}
-#wordpacks .chip + .chip::before {
-	content: "";
-	position: absolute;
-	left: -6px;
-	top: 50%;
-	width: 4px;
-	height: 4px;
-	border-radius: 50%;
-	background: rgba(234, 87, 70, 0.4);
-	transform: translate(-50%, -50%);
+	color: var(--wp-text-muted);
 }
 
-/* Actions */
+/* ===================== Actions ===================== */
 #wordpacks .row {
 	display: flex;
-	gap: 10px;
+	gap: 0.6rem;
 	flex-wrap: wrap;
+	margin-top: 0.1rem;
 }
+
+/* Primary CTA — solid coral, contained shadow (no spreading red glow) */
 #wordpacks .btn {
-	position: relative;
-	padding: 0.54rem 0.9rem;
-	border-radius: 12px;
+	padding: 0.55rem 1rem;
+	border-radius: 10px;
 	color: #fff;
-	border: 1px solid rgba(234, 87, 70, 0.45);
-	background: linear-gradient(180deg, rgba(234, 87, 70, 0.26), rgba(234, 87, 70, 0.14));
-	box-shadow: 0 6px 18px rgba(234, 87, 70, 0.22);
-	transition: transform 110ms ease, border-color 140ms ease, box-shadow 140ms ease, background 140ms ease;
-}
-#wordpacks .btn::after {
-	content: "";
-	position: absolute;
-	inset: 0;
-	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
-	opacity: 0;
-	transition: opacity 160ms ease, transform 260ms ease;
+	border: 1px solid rgba(234, 87, 70, 0.55);
+	background: linear-gradient(180deg, var(--wp-coral), #d4493a);
+	box-shadow:
+		inset 0 1px 0 rgba(255, 200, 190, 0.22),
+		0 2px 10px rgba(234, 87, 70, 0.18);
+	font-weight: 600;
+	font-size: 0.9rem;
+	letter-spacing: 0;
+	cursor: pointer;
+	transition: transform 110ms ease, border-color 140ms ease,
+		box-shadow 140ms ease, background 140ms ease;
 }
 #wordpacks .btn:hover {
 	transform: translateY(-1px);
-	border-color: rgba(234, 87, 70, 0.6);
-	background: linear-gradient(180deg, rgba(234, 87, 70, 0.32), rgba(234, 87, 70, 0.18));
-	box-shadow: 0 10px 26px rgba(234, 87, 70, 0.28);
-}
-#wordpacks .btn:hover::after {
-	opacity: 0.7;
-	transform: translateX(6%);
+	background: linear-gradient(180deg, #f0654f, #de4d3d);
+	border-color: rgba(234, 87, 70, 0.75);
+	box-shadow:
+		inset 0 1px 0 rgba(255, 200, 190, 0.28),
+		0 6px 18px rgba(234, 87, 70, 0.28);
 }
 #wordpacks .btn:focus-visible {
-	outline: 2px solid rgba(234, 87, 70, 0.8);
+	outline: var(--ring, 2px solid rgba(100, 181, 255, 0.9));
 	outline-offset: 2px;
 }
 
-/* Like button */
+/* Like button — neutral at rest, coral when liked */
 #wordpacks .like {
-	padding: 0.34rem 0.6rem;
+	padding: 0.32rem 0.7rem;
 	border-radius: var(--wp-radius-pill);
-	color: #fff;
-	border: 1px solid var(--wp-like-bd);
-	background: var(--wp-like-bg);
-	box-shadow: 0 4px 14px rgba(234, 87, 70, 0.22);
-	transition: background 120ms ease, border-color 120ms ease, transform 60ms ease, box-shadow 140ms ease;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	background: rgba(255, 255, 255, 0.04);
+	color: rgba(255, 255, 255, 0.85);
+	font-size: 0.85rem;
+	font-weight: 600;
+	line-height: 1;
+	cursor: pointer;
+	transition: border-color 160ms ease, background 160ms ease,
+		color 160ms ease, transform 80ms ease;
 }
-#wordpacks .like:hover,
+#wordpacks .like:hover {
+	border-color: rgba(234, 87, 70, 0.4);
+	background: rgba(234, 87, 70, 0.08);
+	color: #fff;
+}
 #wordpacks .like[aria-pressed="true"] {
-	border-color: var(--wp-like-bd-on);
-	background: var(--wp-like-bg-on);
-	box-shadow: 0 6px 18px rgba(234, 87, 70, 0.3);
+	border-color: rgba(234, 87, 70, 0.55);
+	background: rgba(234, 87, 70, 0.15);
+	color: #fff;
 }
 #wordpacks .like:active {
-	transform: scale(0.98);
+	transform: scale(0.97);
 }
 #wordpacks .like:focus-visible {
-	outline: 2px solid rgba(234, 87, 70, 0.8);
+	outline: var(--ring, 2px solid rgba(100, 181, 255, 0.9));
 	outline-offset: 2px;
 }
 
-/* Empty state */
+/* ===================== Status states ===================== */
 #wordpacks .empty {
 	text-align: center;
-	color: var(--wp-muted);
-	padding: 16px 0;
+	color: var(--wp-text-muted);
+	padding: 1.5rem 0;
 }
 
-/* Loading / status state */
 #wordpacks .wp-status {
 	width: min(1100px, 96%);
 	margin: 3rem auto;
@@ -295,76 +297,45 @@
 	gap: 1rem;
 }
 #wordpacks .wp-status p {
-	color: rgba(255, 255, 255, 0.6);
-	font-size: 1rem;
+	color: var(--wp-text-soft);
+	font-size: 0.98rem;
 	margin: 0;
 }
 #wordpacks .wp-spinner {
-	width: 32px;
-	height: 32px;
-	border: 3px solid rgba(255, 255, 255, 0.1);
-	border-top-color: rgba(234, 87, 70, 0.7);
+	width: 30px;
+	height: 30px;
+	border: 2px solid rgba(255, 255, 255, 0.1);
+	border-top-color: var(--wp-coral);
 	border-radius: 50%;
-	animation: wp-spin 0.7s linear infinite;
+	animation: wp-spin 0.75s linear infinite;
 }
 @keyframes wp-spin {
 	to { transform: rotate(360deg); }
 }
-/* Heavily soften red accents on cards */
-#wordpacks {
-	--wp-ring-red: linear-gradient(
-		135deg,
-		rgba(234, 87, 70, 0.18),
-		rgba(234, 87, 70, 0.04)
-	); /* softer ring */
-}
 
-#wordpacks .card {
-	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28); /* less lift by default */
-}
-
-#wordpacks .card:hover {
-	/* almost no red in the hover shadow */
-	box-shadow: 0 10px 28px rgba(0, 0, 0, 0.42), 0 6px 16px rgba(234, 87, 70, 0.06);
-	background: linear-gradient(180deg, rgba(20, 10, 10, 0.94), rgba(12, 7, 7, 0.92)) padding-box,
-		linear-gradient(135deg, rgba(234, 87, 70, 0.24), rgba(234, 87, 70, 0.06)) border-box; /* ↓ ring on hover */
-}
-
-/* Corner glow: barely there */
-#wordpacks .card::before {
-	background: radial-gradient(180px 130px at 50% 50%, rgba(234, 87, 70, 0.08), transparent 68%);
-	opacity: 0.4;
-}
-#wordpacks .card:hover::before {
-	opacity: 0.55; /* was 0.80 */
-	transform: rotate(7deg) translate(-3px, -2px); /* subtler motion */
-}
-
-/* === Wordpacks: phone layout = single column list === */
+/* ===================== Mobile tuning ===================== */
 @media (max-width: 680px) {
 	#wordpacks {
-		padding: 10px 14px;
+		padding: 80px 14px 24px;
 		overflow-x: hidden;
 	}
-
-	/* one column, comfy spacing */
 	#wordpacks .grid {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 14px; /* space between cards */
-		width: 100%;
-		margin: 0 auto 18px;
+		gap: 12px;
 	}
-
-	/* make cards auto-height so they don't overlap */
 	#wordpacks .card {
-		height: auto;
-		min-height: 140px; /* safety so tiny packs still look ok */
-		width: 100%;
+		min-height: 0;
 	}
-
-	/* kill hover lift on touch to avoid jitter */
 	#wordpacks .card:hover {
-		transform: none;
+		transform: none; /* no lift on touch — feels jittery */
+	}
+}
+
+/* ===================== Reduced motion ===================== */
+@media (prefers-reduced-motion: reduce) {
+	#wordpacks .card,
+	#wordpacks .card::before,
+	#wordpacks .btn,
+	#wordpacks .like {
+		transition: none;
 	}
 }

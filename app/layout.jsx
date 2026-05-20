@@ -6,55 +6,55 @@ import "../styles/components.css";
 import Navbar from "../components/Navbar";
 
 export const metadata = {
-	title: "GRE Vocab Tester | Master 500+ Words Fast",
+	metadataBase: new URL("https://grevocabtester.com"),
+	title: "GRE Vocab Tester — Free GRE Vocabulary Practice With Active Recall",
 	description:
-		"Boost your GRE verbal score with the GRE Vocab Tester — an adaptive web app that helps you master 500+ essential GRE words through smart repetition, accuracy tracking, and flashcard learning.",
+		"Free GRE vocabulary practice built around active recall. Drill 800 high-frequency GRE words across three study modes — no signup, no paywall.",
 	keywords: [
 		"GRE vocab",
+		"GRE vocabulary practice",
+		"free GRE vocabulary",
 		"GRE preparation",
 		"GRE verbal",
 		"GRE practice app",
 		"GRE flashcards",
 		"GRE word list",
-		"GRE study tool",
+		"GRE active recall",
+		"high-frequency GRE words",
 	],
 	authors: [{ name: "Kallan Fraser" }],
 	openGraph: {
-		title: "GRE Vocab Tester | Master 500+ Words Fast",
+		title: "GRE Vocab Tester — Free GRE Vocabulary Practice With Active Recall",
 		description:
-			"Interactive GRE vocabulary trainer built to help you retain high-frequency words quickly. Practice, test, and learn smarter.",
-		url: "https://grevocabtester.onrender.com",
+			"Free GRE vocabulary practice built around active recall. Drill 800 high-frequency GRE words across three study modes — no signup, no paywall.",
+		url: "https://grevocabtester.com",
 		siteName: "GRE Vocab Tester",
 		images: [
 			{
-				url: "/images/GREWebsiteLogo.png",
+				url: "/images/og-image.png",
 				width: 1200,
 				height: 630,
-				alt: "GRE Vocab Tester Logo",
+				alt: "GRE Vocab Tester",
 			},
 		],
 		type: "website",
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "GRE Vocab Tester | Master 500+ Words Fast",
+		title: "GRE Vocab Tester — Free GRE Vocabulary Practice With Active Recall",
 		description:
-			"Learn 500+ GRE words with this adaptive, gamified study tool that tracks mastery and builds memory through repetition.",
-		images: ["/images/GREWebsiteLogo.png"],
+			"Free GRE vocabulary practice built around active recall. Drill 800 high-frequency GRE words across three study modes — no signup, no paywall.",
+		images: ["/images/og-image.png"],
 	},
 	icons: {
-		icon: "/images/GREWebsiteLogo.png",
-		shortcut: "/images/GREWebsiteLogo.png",
-		apple: "/images/GREWebsiteLogo.png",
+		icon: "/favicon.ico",
+		apple: "/apple-touch-icon.png",
 	},
 };
 
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
-			<head>
-				<link rel="icon" href="/images/GREWebsiteLogo.png" />
-			</head>
 			<body>
 					<Navbar />
 					{children}
