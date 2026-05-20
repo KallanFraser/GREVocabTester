@@ -51,8 +51,10 @@ const nextConfig = {
 	reactStrictMode: true,
 	poweredByHeader: false,
 
-	// Note: headers() is ignored on static hosting (no Next server).
-	// We keep it for dev, but production headers are set via /public/_headers.
+	// Dev-only security headers below. Production headers are NOT currently
+	// configured — `headers()` is ignored under output: "export" (no Next server
+	// runs in production). To add them on Cloudflare Pages, create a
+	// `public/_headers` file (separate task; CSP needs careful testing).
 	async headers() {
 		if (process.env.NODE_ENV !== "production") {
 			const headers = [...SEC_BASE_HEADERS, { key: "Content-Security-Policy", value: makeCSP() }];

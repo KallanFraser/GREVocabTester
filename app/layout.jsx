@@ -23,6 +23,9 @@ export const metadata = {
 		"high-frequency GRE words",
 	],
 	authors: [{ name: "Kallan Fraser" }],
+	alternates: {
+		canonical: "https://grevocabtester.com",
+	},
 	openGraph: {
 		title: "GRE Vocab Tester — Free GRE Vocabulary Practice With Active Recall",
 		description:

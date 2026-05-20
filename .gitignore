@@ -1,2 +1,26 @@
+# Next.js
 .next
+
+# Dependencies
 node_modules
+
+# Build output (Cloudflare Pages rebuilds /out on every push)
+/out
+
+# Logs
+*.log
+npm-debug.log*
+yarn-error.log*
+yarn-debug.log*
+
+# OS / editor detritus
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# Local env files
+.env
+.env*.local

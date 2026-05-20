@@ -20,6 +20,35 @@ export default function Page() {
 
 	return (
 		<main id="home-landing" className="coral-v1">
+			{/* JSON-LD structured data — WebApplication schema */}
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify({
+						"@context": "https://schema.org",
+						"@type": "WebApplication",
+						name: "GRE Vocab Tester",
+						url: "https://grevocabtester.com",
+						description:
+							"Free GRE vocabulary practice built around active recall. Drill 800 high-frequency GRE words across three study modes — no signup, no paywall.",
+						applicationCategory: "EducationalApplication",
+						operatingSystem: "Web",
+						browserRequirements: "Requires JavaScript. Requires HTML5.",
+						inLanguage: "en",
+						isAccessibleForFree: true,
+						offers: {
+							"@type": "Offer",
+							price: 0,
+							priceCurrency: "USD",
+						},
+						creator: {
+							"@type": "Person",
+							name: "Kallan Fraser",
+						},
+					}),
+				}}
+			/>
+
 			{/* bg */}
 			<div className="coral-bg" aria-hidden="true" />
 			<div className="coral-noise" aria-hidden="true" />

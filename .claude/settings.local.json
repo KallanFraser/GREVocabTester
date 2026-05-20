@@ -14,7 +14,20 @@
       "PowerShell($env:Path = \"C:\\\\Users\\\\Kallan-Daily\\\\AppData\\\\Roaming\\\\fnm\\\\node-versions\\\\v24.15.0\\\\installation;\" + $env:Path; npm run build 2>&1 | Select-String -Pattern \"\\(error|Error|✓|⨯\\)\" | Select-Object -First 30)",
       "PowerShell($env:Path = \"C:\\\\Users\\\\Kallan-Daily\\\\AppData\\\\Roaming\\\\fnm\\\\node-versions\\\\v24.15.0\\\\installation;\" + $env:Path; npm run build 2>&1 | Select-String -Pattern \"\\(error|Error|✓|⨯|✗\\)\" | Select-Object -First 20)",
       "PowerShell($env:Path = \"C:\\\\Users\\\\Kallan-Daily\\\\AppData\\\\Roaming\\\\fnm\\\\node-versions\\\\v24.15.0\\\\installation;\" + $env:Path; npm run build 2>&1 | Select-String -Pattern \"\\(error|Error|✓|⨯|✗|Linting\\)\" | Select-Object -First 20)",
-      "PowerShell(Add-Type -AssemblyName System.Drawing; $files = @\\('NormalModeScreenshot.png','FlashcardScreenshot.png','RandomFlashcardScreenshot.png'\\); foreach \\($f in $files\\) { $p = \"c:\\\\Users\\\\Kallan-Daily\\\\Documents\\\\GitHub\\\\GREVocabTester\\\\public\\\\images\\\\$f\"; $img = [System.Drawing.Image]::FromFile\\($p\\); $info = Get-Item $p; Write-Host \\(\"{0}: {1}x{2}px, {3:N1} KiB \\({4:N3} aspect\\)\" -f $f, $img.Width, $img.Height, \\($info.Length / 1024\\), \\($img.Width / $img.Height\\)\\); $img.Dispose\\(\\) })"
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $files = @\\('NormalModeScreenshot.png','FlashcardScreenshot.png','RandomFlashcardScreenshot.png'\\); foreach \\($f in $files\\) { $p = \"c:\\\\Users\\\\Kallan-Daily\\\\Documents\\\\GitHub\\\\GREVocabTester\\\\public\\\\images\\\\$f\"; $img = [System.Drawing.Image]::FromFile\\($p\\); $info = Get-Item $p; Write-Host \\(\"{0}: {1}x{2}px, {3:N1} KiB \\({4:N3} aspect\\)\" -f $f, $img.Width, $img.Height, \\($info.Length / 1024\\), \\($img.Width / $img.Height\\)\\); $img.Dispose\\(\\) })",
+      "Bash(for p *)",
+      "Read(//c/Users/Kallan-Daily/Documents/GitHub/GREVocabTester/out/**)",
+      "Bash(echo \"===lang attr===\"; grep -oE '<html [^>]*lang=\"[^\"]*\"' \"c:\\\\Users\\\\Kallan-Daily\\\\Documents\\\\GitHub\\\\GREVocabTester\\\\out\\\\index.html\" | head -1; echo \"===h1 count per page===\"; for f in index wordpacks play/test play/practice play/learn; do echo -n \"$f.html: h1=\" ; grep -oE '<h1[^>]*>' \"c:\\\\Users\\\\Kallan-Daily\\\\Documents\\\\GitHub\\\\GREVocabTester\\\\out\\\\$f.html\" 2>/dev/null | wc -l; done; echo \"===JSON-LD presence===\"; grep -c \"application/ld+json\" \"c:\\\\Users\\\\Kallan-Daily\\\\Documents\\\\GitHub\\\\GREVocabTester\\\\out\\\\index.html\" 2>&1; echo \"===robots/sitemap files===\"; ls \"c:\\\\Users\\\\Kallan-Daily\\\\Documents\\\\GitHub\\\\GREVocabTester\\\\out\\\\robots.txt\" \"c:\\\\Users\\\\Kallan-Daily\\\\Documents\\\\GitHub\\\\GREVocabTester\\\\out\\\\sitemap.xml\" 2>&1)",
+      "Read(//c/Users/Kallan-Daily/Documents/GitHub/GREVocabTester/**)",
+      "PowerShell($env:Path = \"C:\\\\Users\\\\Kallan-Daily\\\\AppData\\\\Roaming\\\\fnm\\\\node-versions\\\\v24.15.0\\\\installation;\" + $env:Path; npm run build 2>&1 | Select-String -Pattern \"\\(error|Error|✓|⨯|✗|Route\\)\" | Select-Object -First 25)",
+      "PowerShell($env:Path = \"C:\\\\Users\\\\Kallan-Daily\\\\AppData\\\\Roaming\\\\fnm\\\\node-versions\\\\v24.15.0\\\\installation;\" + $env:Path; npm run build 2>&1 | Select-String -Pattern \"\\(error|Error|✓|⨯|✗|Route|robots|sitemap\\)\" | Select-Object -First 30)",
+      "Bash(for f *)",
+      "Bash(grep -oE '<title>[^<]+|<meta name=\"description\" content=\"[^\"]{0,140}|<link rel=\"canonical\" href=\"[^\"]*\"|og:url\" content=\"[^\"]*\"' ./__TRACKED_VAR__)",
+      "Bash(git -C \"c:\\\\Users\\\\Kallan-Daily\\\\Documents\\\\GitHub\\\\GREVocabTester\" ls-files out/)",
+      "Bash(git -C \"c:\\\\Users\\\\Kallan-Daily\\\\Documents\\\\GitHub\\\\GREVocabTester\" status --short)",
+      "Bash(xargs -I{} wc -c \"{}\")",
+      "Bash(git rm *)",
+      "Bash(git add *)"
     ]
   }
 }
