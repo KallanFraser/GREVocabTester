@@ -1,4 +1,6 @@
 /** @format */
+/* Site navbar (components/Navbar.jsx). Stays fixed at 64px plus the top safe
+   area inset: pages offset their content by that height. Hidden on /play/*. */
 
 .site-nav {
 	position: fixed;
@@ -6,11 +8,13 @@
 	left: 0;
 	right: 0;
 	z-index: 200;
-	background: rgba(10, 10, 10, 0.92);
+	padding-top: env(safe-area-inset-top);
+	padding-left: env(safe-area-inset-left);
+	padding-right: env(safe-area-inset-right);
+	background: rgba(5, 5, 5, 0.6);
 	backdrop-filter: blur(24px);
 	-webkit-backdrop-filter: blur(24px);
-	border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-	box-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
+	border-bottom: 1px solid var(--line);
 }
 
 .nav-inner {
@@ -19,11 +23,11 @@
 	height: 64px;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	gap: 1.5rem;
 }
 
-/* Logo */
-.nav-logo {
+/* Logo: "GRE | Vocab Tester" */
+.site-nav .nav-logo {
 	display: flex;
 	align-items: center;
 	gap: 0;
@@ -32,9 +36,10 @@
 	font-size: 1.05rem;
 	letter-spacing: -0.02em;
 	line-height: 1;
+	white-space: nowrap;
 }
 .nav-logo-mark {
-	color: #ea5746;
+	color: var(--coral);
 }
 .nav-logo-sep {
 	color: rgba(255, 255, 255, 0.2);
@@ -46,52 +51,107 @@
 }
 
 /* Links */
-.nav-links {
+.site-nav .nav-links {
 	display: flex;
-	align-items: center;
-	gap: 2rem;
+	gap: 0.2rem;
+	margin-left: auto;
 }
-
-.nav-link {
-	color: rgba(255, 255, 255, 0.6);
+.site-nav .nav-links a {
+	position: relative;
 	text-decoration: none;
-	font-size: 0.92rem;
+	color: var(--soft);
+	font-size: 0.9rem;
 	font-weight: 500;
-	letter-spacing: 0.01em;
-	transition: color 0.15s ease;
+	padding: 0.4rem 0.7rem;
+	border-radius: 8px;
+	transition: color 0.15s ease, background 0.15s ease;
 }
-.nav-link:hover {
-	color: rgba(255, 255, 255, 0.95);
-}
-
-/* CTA */
-.nav-cta {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.35rem;
-	padding: 0.52rem 1.15rem;
-	background: #ea5746;
+.site-nav .nav-links a:hover {
 	color: #fff;
-	text-decoration: none;
-	font-weight: 700;
-	font-size: 0.88rem;
-	letter-spacing: 0.01em;
-	border-radius: 999px;
-	transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
-	box-shadow: 0 3px 14px rgba(234, 87, 70, 0.32);
+	background: rgba(255, 255, 255, 0.04);
 }
-.nav-cta:hover {
-	background: #f56555;
-	transform: translateY(-1px);
-	box-shadow: 0 6px 22px rgba(234, 87, 70, 0.48);
+.site-nav .nav-links a[aria-current="page"] {
+	color: #fff;
+}
+/* Coral underline sitting on the navbar's bottom hairline. */
+.site-nav .nav-links a[aria-current="page"]::after {
+	content: "";
+	position: absolute;
+	left: 0.7rem;
+	right: 0.7rem;
+	bottom: -13px;
+	height: 2px;
+	background: var(--coral);
+	border-radius: 2px;
 }
 
-/* Mobile: hide text links, keep CTA */
-@media (max-width: 640px) {
-	.nav-link {
+/* CTA (a .btn-p) */
+.site-nav .nav-cta {
+	padding: 0.45rem 0.9rem;
+	font-size: 0.86rem;
+	border-radius: 999px;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.site-nav a:focus-visible,
+.nav-burger:focus-visible {
+	outline: 2px solid rgba(100, 181, 255, 0.8);
+	outline-offset: 2px;
+}
+
+/* Burger and panel: small screens only */
+.nav-burger {
+	display: none;
+	margin-left: auto;
+	border: 1px solid var(--line-strong);
+	background: none;
+	border-radius: 8px;
+	width: 40px;
+	height: 36px;
+	padding: 0;
+	cursor: pointer;
+}
+.nav-burger span {
+	display: block;
+	width: 16px;
+	height: 2px;
+	background: var(--text);
+	margin: 3px auto;
+	border-radius: 2px;
+}
+.nav-panel {
+	display: none;
+}
+
+@media (max-width: 760px) {
+	.site-nav .nav-links,
+	.site-nav .nav-cta {
 		display: none;
 	}
-	.nav-links {
-		gap: 0;
+	.nav-burger {
+		display: block;
+	}
+	.nav-panel.open {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem;
+		padding: 0.5rem 1rem 1rem;
+		border-top: 1px solid var(--line);
+	}
+	.nav-panel a {
+		text-decoration: none;
+		padding: 0.7rem 0.6rem;
+		border-radius: 8px;
+		color: var(--soft);
+	}
+	.nav-panel a[aria-current="page"] {
+		color: #fff;
+		background: rgba(234, 87, 70, 0.12);
+	}
+	.nav-panel .btn-p {
+		text-align: center;
+		margin-top: 0.4rem;
+		color: #fff;
 	}
 }

@@ -1,0 +1,15 @@
+{
+	"name": "GRE Vocab Tester",
+	"short_name": "GRE Vocab",
+	"description": "Free GRE vocabulary practice built around active recall.",
+	"start_url": "/",
+	"scope": "/",
+	"display": "standalone",
+	"background_color": "#050505",
+	"theme_color": "#050505",
+	"icons": [
+		{ "src": "/favicon.ico", "sizes": "16x16 32x32 48x48", "type": "image/x-icon" },
+		{ "src": "/images/logo-128.webp", "sizes": "128x128", "type": "image/webp", "purpose": "any" },
+		{ "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "any" }
+	]
+}

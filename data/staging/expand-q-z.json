@@ -1,0 +1,1402 @@
+{
+	"Quack": {
+		"definition": "a fraud posing as a medical expert.",
+		"fullDefinition": "A quack is someone who claims medical skill or knowledge they do not have, usually to sell useless remedies to the unwary.",
+		"example": "The traveling quack sold bottles of colored water as a cure for every ailment from gout to grief.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Quagmire": {
+		"definition": "an entangling situation hard to escape.",
+		"fullDefinition": "A quagmire is a messy, complicated predicament that grows harder to get out of the longer one stays in it; literally, it is a patch of soft, boggy ground.",
+		"example": "What began as a minor border dispute became a diplomatic quagmire that consumed three administrations.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Quaint": {
+		"definition": "charmingly old-fashioned.",
+		"fullDefinition": "Quaint describes something attractively unusual or antiquated, often in a way that seems pleasantly out of step with modern life.",
+		"example": "Visitors found the village's hand-painted shop signs quaint, though residents considered them merely practical.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Quandary": {
+		"definition": "a state of uncertainty over a choice.",
+		"fullDefinition": "A quandary is a state of perplexity in which a person cannot decide between options, typically because each carries real drawbacks.",
+		"example": "Offered two fellowships on opposite coasts, the young historian found herself in a genuine quandary.",
+		"pos": "noun",
+		"tier": 1
+	},
+	"Quash": {
+		"definition": "to officially void or forcibly suppress.",
+		"fullDefinition": "To quash is to bring something to an abrupt end, either by formally annulling it, as a court does with a ruling, or by crushing it outright.",
+		"example": "The appeals court quashed the conviction after learning that key evidence had been withheld from the defense.",
+		"pos": "verb",
+		"tier": 2
+	},
+	"Quell": {
+		"definition": "to calm or subdue (unrest or fear).",
+		"fullDefinition": "To quell is to put down a disturbance or to soothe an anxiety so that it no longer threatens to spread.",
+		"example": "The governor's frank press conference did much to quell rumors that the bridge was unsafe.",
+		"pos": "verb",
+		"tier": 2
+	},
+	"Quintessential": {
+		"definition": "being the most typical example.",
+		"fullDefinition": "Quintessential describes something that embodies the defining qualities of its type so fully that it could serve as the model for the whole category.",
+		"example": "With its cramped desks and towering stacks of files, the office was the quintessential image of mid-century bureaucracy.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Quip": {
+		"definition": "a witty remark.",
+		"fullDefinition": "A quip is a brief, clever comment, often made on the spot, that is meant to amuse.",
+		"example": "The senator deflected the hostile question with a quip that drew laughter even from her opponents.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Quizzical": {
+		"definition": "showing mild puzzlement.",
+		"fullDefinition": "Quizzical describes an expression or manner that suggests gentle confusion or curiosity, sometimes with a hint of amusement.",
+		"example": "When the student proposed rewriting the entire syllabus, the professor gave him a quizzical look.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Raconteur": {
+		"definition": "a skilled teller of anecdotes.",
+		"fullDefinition": "A raconteur is a person admired for telling stories and anecdotes in an entertaining, polished way, especially in conversation.",
+		"example": "A celebrated raconteur, the retired diplomat could hold a dinner table spellbound for hours.",
+		"pos": "noun",
+		"tier": 3
+	},
+	"Rakish": {
+		"definition": "dashing in a carefree, roguish way.",
+		"fullDefinition": "Rakish describes a jaunty, stylish appearance or manner that hints at a disregard for conventional morals.",
+		"example": "He wore his hat at a rakish angle, as if to signal that the rules of the club did not apply to him.",
+		"pos": "adjective",
+		"tier": 3
+	},
+	"Ramification": {
+		"definition": "a consequence, often unforeseen.",
+		"fullDefinition": "A ramification is one of the further results that branch out from an action or decision, frequently complicating matters in ways no one anticipated.",
+		"example": "Few legislators grasped the ramifications of the tax change for small rural hospitals.",
+		"pos": "noun",
+		"tier": 1
+	},
+	"Rampant": {
+		"definition": "spreading without restraint.",
+		"fullDefinition": "Rampant describes something, usually undesirable, that grows or spreads unchecked and seemingly beyond anyone's control.",
+		"example": "Rampant speculation in the housing market eventually drove prices far beyond what local wages could support.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Rankle": {
+		"definition": "to cause lingering resentment.",
+		"fullDefinition": "To rankle is to keep irritating someone long after the original offense, like a grievance that refuses to fade.",
+		"example": "The committee's decision to pass over her proposal continued to rankle years after she left the firm.",
+		"pos": "verb",
+		"tier": 2
+	},
+	"Rapacious": {
+		"definition": "predatory in seizing what one wants.",
+		"fullDefinition": "Rapacious describes a grasping appetite for wealth or possessions that is pursued aggressively, often by exploiting or plundering others.",
+		"example": "Historians have long debated whether the trading company's rapacious agents or distant policymakers bore more blame for the famine.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Rapprochement": {
+		"definition": "a restoration of friendly relations.",
+		"fullDefinition": "A rapprochement is the re-establishment of cordial relations between parties, especially nations, after a period of hostility or estrangement.",
+		"example": "The exchange of table-tennis teams helped pave the way for a rapprochement between the two former adversaries.",
+		"pos": "noun",
+		"tier": 3
+	},
+	"Rapt": {
+		"definition": "completely absorbed or engrossed.",
+		"fullDefinition": "Rapt describes someone so wholly focused on something that they are oblivious to everything else.",
+		"example": "The children listened with rapt attention as the curator described how the mammoth had been unearthed.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Raucous": {
+		"definition": "rowdy and noisily disruptive.",
+		"fullDefinition": "Raucous describes noise or behavior that is loud, rough and unruly, like the clamor of a rowdy crowd.",
+		"example": "The council meeting grew so raucous that the chair had to suspend it until order was restored.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Raze": {
+		"definition": "to demolish completely.",
+		"fullDefinition": "To raze is to tear down a building, town or other structure entirely, leaving it level with the ground.",
+		"example": "The old textile mill was razed to make room for a riverside park.",
+		"pos": "verb",
+		"tier": 2
+	},
+	"Reactionary": {
+		"definition": "opposed to social or political change.",
+		"fullDefinition": "Reactionary describes a person or view that resists progress and often seeks a return to an earlier social or political order.",
+		"example": "Critics dismissed the pamphlet as reactionary, arguing that it longed for a hierarchy most readers had happily left behind.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Rebuff": {
+		"definition": "to turn away an offer abruptly.",
+		"fullDefinition": "To rebuff is to reject an advance, request or proposal bluntly, often in a way that leaves the other party feeling snubbed.",
+		"example": "The startup rebuffed several acquisition offers, convinced it could grow faster on its own.",
+		"pos": "verb",
+		"tier": 2
+	},
+	"Recapitulate": {
+		"definition": "to summarize the main points.",
+		"fullDefinition": "To recapitulate is to go back over the essential parts of an argument or account in condensed form, usually to reinforce them.",
+		"example": "Before taking questions, the lecturer recapitulated the three stages of her argument.",
+		"pos": "verb",
+		"tier": 2
+	},
+	"Reciprocate": {
+		"definition": "to respond in kind.",
+		"fullDefinition": "To reciprocate is to return a gesture, feeling or action with a similar one, so that the exchange runs both ways.",
+		"example": "When the neighboring state lowered its tariffs, the government quickly reciprocated.",
+		"pos": "verb",
+		"tier": 1
+	},
+	"Recrimination": {
+		"definition": "a counteraccusation.",
+		"fullDefinition": "A recrimination is an accusation made in reply to one's accuser; the plural usually describes a bitter exchange of mutual blame.",
+		"example": "The failed merger ended not with a clean break but with months of public recrimination between the two boards.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Rectify": {
+		"definition": "to put right; correct.",
+		"fullDefinition": "To rectify is to fix an error or remedy an unfair situation so that it is as it should be.",
+		"example": "The publisher promised to rectify the misattributed quotation in all future printings.",
+		"pos": "verb",
+		"tier": 1
+	},
+	"Rectitude": {
+		"definition": "moral uprightness.",
+		"fullDefinition": "Rectitude is the quality of behaving honestly and correctly according to firm moral principles.",
+		"example": "Even his political enemies conceded the judge's rectitude, though they disputed nearly every ruling he made.",
+		"pos": "noun",
+		"tier": 3
+	},
+	"Redolent": {
+		"definition": "strongly suggestive or evocative of.",
+		"fullDefinition": "Redolent describes something that calls a particular quality, time or place vividly to mind; in its literal sense it means fragrant or smelling strongly of something.",
+		"example": "The novel's opening pages are redolent of the dusty provincial towns of the author's youth.",
+		"pos": "adjective",
+		"tier": 3
+	},
+	"Redress": {
+		"definition": "remedy or compensation for a wrong.",
+		"fullDefinition": "Redress is the setting right of an injustice or grievance, typically through compensation, reform or formal acknowledgment.",
+		"example": "The displaced farmers spent a decade petitioning the government for redress.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Regale": {
+		"definition": "to entertain with stories or feasting.",
+		"fullDefinition": "To regale is to delight someone generously, whether with amusing talk or with abundant food and drink.",
+		"example": "The explorer regaled his hosts with tales of his misadventures on the ice shelf.",
+		"pos": "verb",
+		"tier": 2
+	},
+	"Reiterate": {
+		"definition": "to say again for emphasis.",
+		"fullDefinition": "To reiterate is to repeat a statement or point, often several times, so that its importance is not missed.",
+		"example": "The memo reiterated that no data could leave the laboratory without written approval.",
+		"pos": "verb",
+		"tier": 1
+	},
+	"Rejoinder": {
+		"definition": "a sharp reply.",
+		"fullDefinition": "A rejoinder is an answer to a remark or criticism, especially a quick and pointed one.",
+		"example": "Her rejoinder to the reviewer's charge of sentimentality was a single, devastating footnote.",
+		"pos": "noun",
+		"tier": 3
+	},
+	"Remiss": {
+		"definition": "negligent in one's duty.",
+		"fullDefinition": "Remiss describes someone who has carelessly failed to do what was expected or required of them.",
+		"example": "The inspector was found remiss for approving the dam without reviewing the engineers' warnings.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Renounce": {
+		"definition": "to formally give up a claim or right.",
+		"fullDefinition": "To renounce is to declare that one is abandoning a title, possession, belief or habit, often publicly and permanently.",
+		"example": "To accept the post, she had to renounce her citizenship in the country of her birth.",
+		"pos": "verb",
+		"tier": 2
+	},
+	"Replete": {
+		"definition": "abundantly supplied or filled.",
+		"fullDefinition": "Replete describes something that is full to the brim or well stocked with a particular thing.",
+		"example": "The memoir is replete with vivid sketches of the scientists who shaped the field.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Reprehensible": {
+		"definition": "deserving strong condemnation.",
+		"fullDefinition": "Reprehensible describes conduct so wrong or shameful that it merits harsh criticism.",
+		"example": "The board called the falsification of trial data reprehensible and dismissed everyone involved.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Reprieve": {
+		"definition": "a postponement of punishment.",
+		"fullDefinition": "A reprieve is a cancellation or delay of a penalty, or more broadly any temporary relief from something threatening or unpleasant.",
+		"example": "A last-minute donation gave the struggling orchestra a reprieve, though its long-term future remained uncertain.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Reprisal": {
+		"definition": "an act of retaliation.",
+		"fullDefinition": "A reprisal is an action taken against someone in return for harm they have done, often by a government or group.",
+		"example": "Witnesses were reluctant to testify for fear of reprisal from the cartel.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Repugnant": {
+		"definition": "deeply offensive; repulsive.",
+		"fullDefinition": "Repugnant describes something so distasteful that it provokes strong aversion; it can also mean incompatible with a principle.",
+		"example": "Many readers found the narrator's views repugnant, yet the novel's power depends on our seeing through his eyes.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Requisite": {
+		"definition": "required for a purpose.",
+		"fullDefinition": "Requisite describes something that is necessary for a particular goal or condition to be met.",
+		"example": "Few applicants possessed the requisite fluency in both Latin and Old Norse.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Requite": {
+		"definition": "to repay a favor or injury in kind.",
+		"fullDefinition": "To requite is to return something given or done, whether kindness, love or injury, with a response of equal measure.",
+		"example": "The poet spent decades writing to a woman who never requited his devotion.",
+		"pos": "verb",
+		"tier": 3
+	},
+	"Resignation": {
+		"definition": "passive acceptance of the inevitable.",
+		"fullDefinition": "In the GRE sense, resignation is the uncomplaining acceptance of something undesirable that one feels powerless to change.",
+		"example": "The villagers greeted news of yet another delay with weary resignation rather than anger.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Resilient": {
+		"definition": "able to recover quickly from setbacks.",
+		"fullDefinition": "Resilient describes a person, system or material that bounces back after strain, shock or difficulty.",
+		"example": "Coral reefs are more resilient than once thought, provided the water does not warm too quickly.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Respite": {
+		"definition": "a brief rest from something unpleasant.",
+		"fullDefinition": "A respite is a short interval of relief or rest from hardship, effort or distress.",
+		"example": "The cooler evenings offered only a brief respite from the drought.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Restitution": {
+		"definition": "the return of what was taken.",
+		"fullDefinition": "Restitution is the act of restoring something lost or stolen to its rightful owner, or of compensating for loss or injury.",
+		"example": "The museum agreed to make restitution by returning the looted bronzes to their country of origin.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Resurgence": {
+		"definition": "a revival after a decline.",
+		"fullDefinition": "A resurgence is a renewed rise in activity, popularity or strength following a period of dormancy.",
+		"example": "The decade saw a resurgence of interest in handwritten letters among people raised on email.",
+		"pos": "noun",
+		"tier": 1
+	},
+	"Retrograde": {
+		"definition": "moving backward or reverting.",
+		"fullDefinition": "Retrograde describes motion or change that goes in reverse, especially a return to an earlier and worse condition.",
+		"example": "Reformers condemned the new policy as a retrograde step that undid twenty years of progress.",
+		"pos": "adjective",
+		"tier": 3
+	},
+	"Reverie": {
+		"definition": "a pleasant daydream.",
+		"fullDefinition": "A reverie is a state of being lost in agreeable, wandering thoughts, cut off from one's surroundings.",
+		"example": "The ringing telephone jolted him out of his reverie about the summers of his childhood.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Ribald": {
+		"definition": "coarsely humorous; bawdy.",
+		"fullDefinition": "Ribald describes humor or language that is vulgar and irreverent, especially about sex, in a lively rather than hostile way.",
+		"example": "Scholars once omitted the ribald passages from editions of the medieval tales meant for students.",
+		"pos": "adjective",
+		"tier": 3
+	},
+	"Rigorous": {
+		"definition": "demanding strict accuracy and logic.",
+		"fullDefinition": "Rigorous describes work or methods that are meticulous and exacting, leaving little room for error or shortcuts.",
+		"example": "The drug was approved only after rigorous testing on thousands of patients.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Robust": {
+		"definition": "sturdy and strong; vigorous.",
+		"fullDefinition": "Robust describes something strongly built or healthy enough to withstand stress, or a finding that holds up under varied conditions.",
+		"example": "The correlation proved robust, surviving every alternative statistical model the reviewers proposed.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Rote": {
+		"definition": "mechanical repetition without understanding.",
+		"fullDefinition": "Rote is the routine of memorizing or performing something by sheer repetition rather than by grasping its meaning.",
+		"example": "The reformers wanted to replace rote memorization with lessons that asked students to reason through problems.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Rudimentary": {
+		"definition": "basic or undeveloped.",
+		"fullDefinition": "Rudimentary describes something at the most elementary level, whether knowledge limited to fundamentals or a structure in an early, primitive form.",
+		"example": "Despite only a rudimentary grasp of the language, the anthropologist won the trust of the village elders.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Rue": {
+		"definition": "to bitterly regret.",
+		"fullDefinition": "To rue is to feel sorrow or remorse over something one has done or allowed to happen.",
+		"example": "The general would soon rue his decision to divide his forces before the river crossing.",
+		"pos": "verb",
+		"tier": 2
+	},
+	"Ruse": {
+		"definition": "a deceptive trick.",
+		"fullDefinition": "A ruse is a piece of deception designed to mislead someone, often to gain an advantage or escape a difficulty.",
+		"example": "The fake retreat was a ruse to draw the defenders out of the fortress.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Rustic": {
+		"definition": "rural and simple in style.",
+		"fullDefinition": "Rustic describes something characteristic of the countryside, often plain, rough-hewn or unsophisticated.",
+		"example": "The inn's rustic furnishings, all hand-hewn pine, charmed guests weary of city hotels.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Saccharine": {
+		"definition": "excessively sweet or sentimental.",
+		"fullDefinition": "Saccharine describes something so sugary or mawkish, especially in emotion or tone, that it becomes cloying.",
+		"example": "The film's saccharine ending undercut the bleak honesty of everything that came before it.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Sacrosanct": {
+		"definition": "too sacred to be questioned.",
+		"fullDefinition": "Sacrosanct describes a principle, place or custom regarded as so important that it must not be criticized or interfered with.",
+		"example": "In that newsroom, the separation between editorial and advertising was treated as sacrosanct.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Sagacious": {
+		"definition": "wise and farsighted.",
+		"fullDefinition": "Sagacious describes someone with deep practical wisdom and sound judgment, especially about long-term consequences.",
+		"example": "The sagacious minister had quietly stockpiled grain years before the harvest failed.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Salient": {
+		"definition": "most noticeable or important.",
+		"fullDefinition": "Salient describes the feature of something that stands out most prominently or matters most.",
+		"example": "The report's most salient finding was that rural clinics had lost nearly half their staff.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Sanctimonious": {
+		"definition": "self-righteously moralizing.",
+		"fullDefinition": "Sanctimonious describes someone who makes a show of being morally superior to others, often hypocritically.",
+		"example": "His sanctimonious lectures on thrift rang hollow once his own expense reports came to light.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Sangfroid": {
+		"definition": "composure under pressure.",
+		"fullDefinition": "Sangfroid is the ability to stay cool and level-headed in dangerous or stressful circumstances.",
+		"example": "The pilot's sangfroid during the emergency landing was later credited with saving every passenger.",
+		"pos": "noun",
+		"tier": 3
+	},
+	"Sardonic": {
+		"definition": "grimly or scornfully mocking.",
+		"fullDefinition": "Sardonic describes humor or a manner that is bitterly mocking and cynical, often at someone else's expense.",
+		"example": "The critic's sardonic review praised the novel's binding as its finest feature.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Savant": {
+		"definition": "a person of great learning.",
+		"fullDefinition": "A savant is a scholar or expert with deep knowledge in a field; the term can also describe someone with an exceptional talent in a narrow area.",
+		"example": "The Enlightenment salons gathered savants from across Europe to debate natural philosophy.",
+		"pos": "noun",
+		"tier": 3
+	},
+	"Scintilla": {
+		"definition": "a tiny trace or amount.",
+		"fullDefinition": "A scintilla is the smallest particle or hint of something, usually used in negative statements.",
+		"example": "The prosecution failed to produce a scintilla of evidence linking the accountant to the fraud.",
+		"pos": "noun",
+		"tier": 3
+	},
+	"Scrutinize": {
+		"definition": "to examine in close detail.",
+		"fullDefinition": "To scrutinize is to inspect something carefully and critically, looking for flaws or hidden meaning.",
+		"example": "Auditors scrutinized every invoice from the final quarter before signing off on the accounts.",
+		"pos": "verb",
+		"tier": 1
+	},
+	"Scurrilous": {
+		"definition": "coarsely abusive and slanderous.",
+		"fullDefinition": "Scurrilous describes remarks or writing that attack someone's reputation with crude, insulting and often false claims.",
+		"example": "The campaign disowned the scurrilous pamphlets, though few believed it had not paid for them.",
+		"pos": "adjective",
+		"tier": 3
+	},
+	"Secular": {
+		"definition": "not connected with religion.",
+		"fullDefinition": "Secular describes matters, institutions or attitudes concerned with worldly rather than religious or spiritual affairs.",
+		"example": "The republic's founders insisted on a secular school system open to children of every faith.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Sedentary": {
+		"definition": "involving much sitting; inactive.",
+		"fullDefinition": "Sedentary describes a lifestyle, job or creature that involves little physical movement or tends to stay in one place.",
+		"example": "Researchers linked sedentary office work to a range of chronic health problems.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Sedition": {
+		"definition": "incitement to rebel against the state.",
+		"fullDefinition": "Sedition is speech or action that stirs up resistance or rebellion against a government's lawful authority.",
+		"example": "The pamphleteer was charged with sedition for urging dockworkers to defy the new tax.",
+		"pos": "noun",
+		"tier": 3
+	},
+	"Seminal": {
+		"definition": "highly influential on later work.",
+		"fullDefinition": "Seminal describes a work, idea or event so original and important that it shapes the development of what follows.",
+		"example": "Her seminal paper on gene regulation is still cited in nearly every textbook on the subject.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Sequester": {
+		"definition": "to isolate or set apart.",
+		"fullDefinition": "To sequester is to keep someone or something separated from others, as a jury kept from the news or carbon locked away in soil.",
+		"example": "The jurors were sequestered in a hotel for the duration of the high-profile trial.",
+		"pos": "verb",
+		"tier": 2
+	},
+	"Serendipity": {
+		"definition": "luck in making happy discoveries.",
+		"fullDefinition": "Serendipity is the occurrence of valuable or pleasant finds by chance, while one is looking for something else.",
+		"example": "The discovery of penicillin is often cited as a triumph of serendipity as much as of method.",
+		"pos": "noun",
+		"tier": 1
+	},
+	"Shirk": {
+		"definition": "to avoid a duty or responsibility.",
+		"fullDefinition": "To shirk is to dodge work or an obligation out of laziness, fear or indifference.",
+		"example": "No member of the crew could shirk the night watch without endangering the others.",
+		"pos": "verb",
+		"tier": 2
+	},
+	"Shrewd": {
+		"definition": "sharp in practical judgment.",
+		"fullDefinition": "Shrewd describes someone who quickly grasps how situations work and uses that insight to their advantage, especially in business or politics.",
+		"example": "A shrewd negotiator, she waited until the last day of the quarter to make her offer.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Sinecure": {
+		"definition": "a paid post requiring little work.",
+		"fullDefinition": "A sinecure is a position that brings income or prestige while demanding little or no actual effort.",
+		"example": "The governorship of the tiny island was a sinecure awarded to loyal courtiers.",
+		"pos": "noun",
+		"tier": 3
+	},
+	"Sinuous": {
+		"definition": "winding and curving gracefully.",
+		"fullDefinition": "Sinuous describes something with many smooth curves or turns, or a movement that is lithe and flowing.",
+		"example": "The road follows the sinuous course of the river through the canyon.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Slake": {
+		"definition": "to quench or satisfy (a thirst).",
+		"fullDefinition": "To slake is to relieve a thirst or fulfill a craving, whether physical or intellectual.",
+		"example": "No number of archival visits could slake her curiosity about the vanished colony.",
+		"pos": "verb",
+		"tier": 3
+	},
+	"Slight": {
+		"definition": "to snub or treat dismissively.",
+		"fullDefinition": "In the GRE sense, to slight is to insult someone by ignoring them or treating them as unimportant.",
+		"example": "The ambassador felt slighted when she was seated at the far end of the banquet table.",
+		"pos": "verb",
+		"tier": 2
+	},
+	"Solecism": {
+		"definition": "a grammatical or social blunder.",
+		"fullDefinition": "A solecism is a mistake in the use of language or a breach of good manners or etiquette.",
+		"example": "The editor winced at every solecism in the manuscript, beginning with a misplaced modifier in the first line.",
+		"pos": "noun",
+		"tier": 3
+	},
+	"Solvent": {
+		"definition": "able to pay all debts.",
+		"fullDefinition": "Solvent describes a person or organization whose assets are sufficient to meet its financial obligations.",
+		"example": "Only a last-minute loan kept the railroad solvent through the winter.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Somnolent": {
+		"definition": "drowsy; half-asleep.",
+		"fullDefinition": "Somnolent describes a person on the edge of sleep, or a place or mood so quiet that it seems to induce drowsiness.",
+		"example": "By the third hour of testimony, much of the gallery had grown somnolent.",
+		"pos": "adjective",
+		"tier": 3
+	},
+	"Sophistry": {
+		"definition": "clever but deceptive reasoning.",
+		"fullDefinition": "Sophistry is argument that sounds persuasive on the surface but relies on subtle tricks or fallacies to mislead.",
+		"example": "The defense's claim that a promise is not a contract struck the judge as mere sophistry.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Sophomoric": {
+		"definition": "immature yet overconfident.",
+		"fullDefinition": "Sophomoric describes thinking or behavior that is juvenile and shallow while pretending to sophistication.",
+		"example": "The essay's sophomoric jokes undermined its otherwise serious argument about climate policy.",
+		"pos": "adjective",
+		"tier": 3
+	},
+	"Spate": {
+		"definition": "a sudden rush of similar events.",
+		"fullDefinition": "A spate is a large number of similar things occurring in quick succession, like a flood of incidents or announcements.",
+		"example": "A spate of break-ins prompted the neighborhood to install new lighting.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Spurious": {
+		"definition": "not genuine; fake.",
+		"fullDefinition": "Spurious describes something false or of illegitimate origin, including a correlation or argument that only appears valid.",
+		"example": "The statistician warned that the link between ice-cream sales and drowning was spurious, since both rise in summer.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Squander": {
+		"definition": "to waste foolishly.",
+		"fullDefinition": "To squander is to use up money, time or opportunity carelessly, with nothing worthwhile to show for it.",
+		"example": "The team squandered a ten-point lead in the final minutes of the match.",
+		"pos": "verb",
+		"tier": 1
+	},
+	"Stagnant": {
+		"definition": "not flowing or developing.",
+		"fullDefinition": "Stagnant describes water that does not move, or an economy, career or field that has stopped growing or changing.",
+		"example": "Wages remained stagnant for a decade even as productivity steadily rose.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Staid": {
+		"definition": "sedate and unadventurous.",
+		"fullDefinition": "Staid describes someone or something respectable and steady but lacking excitement or daring.",
+		"example": "The once staid journal surprised its readers by publishing a series of experimental poems.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Steadfast": {
+		"definition": "firmly loyal and unwavering.",
+		"fullDefinition": "Steadfast describes a person or commitment that remains fixed and dependable despite pressure or difficulty.",
+		"example": "She remained a steadfast advocate for the archive even when its funding was repeatedly cut.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Stoic": {
+		"definition": "enduring hardship without complaint.",
+		"fullDefinition": "Stoic describes someone who bears pain, loss or adversity calmly, without showing distress or self-pity.",
+		"example": "The farmers' stoic acceptance of the flood masked the scale of their losses.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Strident": {
+		"definition": "harsh and aggressively insistent.",
+		"fullDefinition": "Strident describes a voice or argument that is loud and grating, or a stance that is pushed forward forcefully and without compromise.",
+		"example": "The activists' strident rhetoric alienated some of the moderates they hoped to win over.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Stringent": {
+		"definition": "strict and rigidly enforced.",
+		"fullDefinition": "Stringent describes rules, standards or conditions that are severe and demanding, allowing few exceptions.",
+		"example": "The state adopted stringent emissions limits that many automakers said were impossible to meet.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Stultify": {
+		"definition": "to make dull or stifle.",
+		"fullDefinition": "To stultify is to deaden someone's enthusiasm or creativity, typically through tedious routine or rigid constraints.",
+		"example": "Years of stultifying paperwork had drained the young teacher's love of the classroom.",
+		"pos": "verb",
+		"tier": 3
+	},
+	"Subjugate": {
+		"definition": "to conquer and bring under control.",
+		"fullDefinition": "To subjugate is to defeat a people or group and force them into a subordinate position.",
+		"example": "The empire subjugated the coastal kingdoms but never fully controlled the mountain tribes.",
+		"pos": "verb",
+		"tier": 2
+	},
+	"Sublime": {
+		"definition": "awe-inspiringly grand or excellent.",
+		"fullDefinition": "Sublime describes beauty or greatness so lofty that it inspires wonder or reverence.",
+		"example": "Romantic painters sought to capture the sublime power of storms and mountain peaks.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Subservient": {
+		"definition": "servilely deferential to authority.",
+		"fullDefinition": "Subservient describes someone who defers to others too readily, or something treated as less important than something else.",
+		"example": "The novel's heroine refuses to play the subservient wife her family expects.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Subsume": {
+		"definition": "to absorb into a larger category.",
+		"fullDefinition": "To subsume is to include something within a broader group or principle, so that it no longer stands apart.",
+		"example": "The small press was eventually subsumed into a multinational publishing house.",
+		"pos": "verb",
+		"tier": 3
+	},
+	"Subvert": {
+		"definition": "to undermine an established order.",
+		"fullDefinition": "To subvert is to overturn or corrupt a system, institution or set of values, often covertly from within.",
+		"example": "The playwright subverted the conventions of the drawing-room comedy by letting the servants have the last word.",
+		"pos": "verb",
+		"tier": 2
+	},
+	"Succor": {
+		"definition": "help given in a time of need.",
+		"fullDefinition": "Succor is assistance and comfort offered to those in hardship or distress.",
+		"example": "The monastery offered succor to travelers caught by winter storms in the pass.",
+		"pos": "noun",
+		"tier": 3
+	},
+	"Succumb": {
+		"definition": "to give way to a stronger force.",
+		"fullDefinition": "To succumb is to stop resisting pressure, temptation or illness and yield to it.",
+		"example": "After months of lobbying, the council finally succumbed and approved the stadium.",
+		"pos": "verb",
+		"tier": 1
+	},
+	"Sullen": {
+		"definition": "silently resentful and gloomy.",
+		"fullDefinition": "Sullen describes someone who is bad-tempered and withdrawn, sulking without explaining their displeasure.",
+		"example": "The sullen teenager answered every question with a shrug.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Sully": {
+		"definition": "to stain or tarnish (a reputation).",
+		"fullDefinition": "To sully is to damage the purity or good name of something, often by association with wrongdoing.",
+		"example": "One fabricated interview was enough to sully the reporter's otherwise distinguished career.",
+		"pos": "verb",
+		"tier": 2
+	},
+	"Sumptuous": {
+		"definition": "lavish and costly.",
+		"fullDefinition": "Sumptuous describes something magnificent and splendid in a way that suggests great expense.",
+		"example": "The sumptuous banquet stood in stark contrast to the famine in the provinces.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Supercilious": {
+		"definition": "haughtily contemptuous.",
+		"fullDefinition": "Supercilious describes someone who behaves as though they are superior to others and looks down on them with disdain.",
+		"example": "The supercilious waiter made it clear that he considered the guests unworthy of the wine list.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Supine": {
+		"definition": "passively unwilling to resist.",
+		"fullDefinition": "In the GRE sense, supine describes a person or institution that fails to act or object out of weakness or indifference; literally, it means lying face upward.",
+		"example": "Critics accused the supine legislature of approving every decree the governor sent it.",
+		"pos": "adjective",
+		"tier": 3
+	},
+	"Supple": {
+		"definition": "flexible and pliant.",
+		"fullDefinition": "Supple describes something that bends easily without breaking, whether a body, a material or a mind able to adapt.",
+		"example": "The translator's supple prose captures both the wit and the melancholy of the original.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Supplicate": {
+		"definition": "to beg humbly.",
+		"fullDefinition": "To supplicate is to ask for something earnestly and submissively, as from a ruler or deity.",
+		"example": "The envoys knelt to supplicate the king for mercy on behalf of the besieged city.",
+		"pos": "verb",
+		"tier": 3
+	},
+	"Surly": {
+		"definition": "rude and bad-tempered.",
+		"fullDefinition": "Surly describes someone who is gruff and unfriendly in a way that borders on hostile.",
+		"example": "A surly clerk took the application without looking up from his newspaper.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Surreptitious": {
+		"definition": "done secretly and stealthily.",
+		"fullDefinition": "Surreptitious describes an action carried out furtively, because it would not be approved of if noticed.",
+		"example": "She cast a surreptitious glance at her phone during the keynote address.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Susceptible": {
+		"definition": "liable to be harmed or affected.",
+		"fullDefinition": "Susceptible describes someone or something vulnerable to a particular influence, harm or condition.",
+		"example": "Older trees proved more susceptible to the fungus than young saplings.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Sybarite": {
+		"definition": "a person devoted to luxury.",
+		"fullDefinition": "A sybarite is someone who indulges freely in comfort and sensual pleasure.",
+		"example": "The ascetic monk and the wealthy sybarite made an unlikely pair of correspondents.",
+		"pos": "noun",
+		"tier": 3
+	},
+	"Sycophant": {
+		"definition": "one who flatters the powerful for gain.",
+		"fullDefinition": "A sycophant is a person who seeks favor by praising and deferring to people of influence.",
+		"example": "Surrounded by sycophants, the aging director no longer heard any honest criticism of his films.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Tantamount": {
+		"definition": "equivalent in effect.",
+		"fullDefinition": "Tantamount describes something that amounts to, or is virtually the same as, something else, usually something worse.",
+		"example": "Critics argued that the new fee was tantamount to closing the park to low-income families.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Tautology": {
+		"definition": "needless repetition of an idea.",
+		"fullDefinition": "A tautology is a statement that says the same thing twice in different words, or one that is true by definition and so conveys no information.",
+		"example": "The slogan 'it is what it is' struck the professor as an empty tautology.",
+		"pos": "noun",
+		"tier": 3
+	},
+	"Tawdry": {
+		"definition": "cheap and showy; sordid.",
+		"fullDefinition": "Tawdry describes something gaudy but of poor quality, or behavior that is shabby and morally sleazy.",
+		"example": "The memoir's tawdry gossip overshadowed its few genuine insights into the era.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Telling": {
+		"definition": "revealing; significant.",
+		"fullDefinition": "In the GRE sense, telling describes a detail or result that discloses more than it seems to, often unintentionally.",
+		"example": "It was telling that the company's annual report never once mentioned its largest factory.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Temerity": {
+		"definition": "reckless nerve; presumption.",
+		"fullDefinition": "Temerity is the boldness to do something that others consider rash or impertinent.",
+		"example": "The junior clerk had the temerity to correct the senator's arithmetic in front of the committee.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Temper": {
+		"definition": "to moderate or soften.",
+		"fullDefinition": "In the GRE sense, to temper is to make something less extreme by balancing it with an opposing quality.",
+		"example": "The judge tempered her criticism of the defendant with an acknowledgment of his difficult childhood.",
+		"pos": "verb",
+		"tier": 1
+	},
+	"Tempestuous": {
+		"definition": "turbulent and stormy in emotion.",
+		"fullDefinition": "Tempestuous describes a relationship, temperament or period marked by violent passions and frequent conflict.",
+		"example": "The composer's tempestuous marriage left its mark on the stormy final movement of the symphony.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Temporize": {
+		"definition": "to stall in order to gain time.",
+		"fullDefinition": "To temporize is to avoid making a commitment or decision, often by giving evasive answers, so as to delay matters.",
+		"example": "Rather than reject the demands outright, the ministry temporized, promising a review that never came.",
+		"pos": "verb",
+		"tier": 3
+	},
+	"Tenacious": {
+		"definition": "persistent; holding firm.",
+		"fullDefinition": "Tenacious describes someone who keeps pursuing a goal despite obstacles, or something that grips tightly and is hard to dislodge.",
+		"example": "A tenacious researcher, he spent eleven years tracing the manuscript's chain of ownership.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Tenet": {
+		"definition": "a central principle or belief.",
+		"fullDefinition": "A tenet is one of the core doctrines held to be true by a group, movement or school of thought.",
+		"example": "A basic tenet of the scientific method is that results must be reproducible.",
+		"pos": "noun",
+		"tier": 1
+	},
+	"Tentative": {
+		"definition": "provisional and hesitant.",
+		"fullDefinition": "Tentative describes something not yet confirmed or done with uncertainty, as a plan subject to change or a cautious first step.",
+		"example": "The two parties reached a tentative agreement, pending approval by their members.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Tepid": {
+		"definition": "lukewarm; unenthusiastic.",
+		"fullDefinition": "Tepid describes water that is only slightly warm, or a response that shows little interest or excitement.",
+		"example": "The sequel received a tepid reception from critics who had adored the original.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Titular": {
+		"definition": "holding a title without real power.",
+		"fullDefinition": "Titular describes a position that exists in name only, carrying status but no actual authority; it can also mean relating to a title.",
+		"example": "The monarch remained the titular head of state, while parliament made every meaningful decision.",
+		"pos": "adjective",
+		"tier": 3
+	},
+	"Tome": {
+		"definition": "a large, weighty book.",
+		"fullDefinition": "A tome is a book of considerable size, often scholarly and serious in content.",
+		"example": "Her nine-hundred-page tome on the history of salt became an unlikely bestseller.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Torrid": {
+		"definition": "scorching; fiercely intense.",
+		"fullDefinition": "Torrid describes scorching heat, or a pace, emotion or affair that is fiercely intense.",
+		"example": "The company grew at a torrid pace before the downturn exposed its shaky finances.",
+		"pos": "adjective",
+		"tier": 3
+	},
+	"Transcend": {
+		"definition": "to rise above or go beyond.",
+		"fullDefinition": "To transcend is to exceed the usual limits of something, such as a category, experience or barrier.",
+		"example": "Great satire transcends its own era, speaking to readers centuries after its targets are forgotten.",
+		"pos": "verb",
+		"tier": 1
+	},
+	"Travesty": {
+		"definition": "a grotesque distortion of something.",
+		"fullDefinition": "A travesty is an absurd or shocking imitation that makes a mockery of what it is supposed to represent.",
+		"example": "Observers called the hurried trial a travesty of justice.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Trepidation": {
+		"definition": "nervous dread about what is coming.",
+		"fullDefinition": "Trepidation is a feeling of anxiety or apprehension about something that may happen.",
+		"example": "With some trepidation, the young pianist walked onstage for her first solo recital.",
+		"pos": "noun",
+		"tier": 1
+	},
+	"Truism": {
+		"definition": "a self-evident truth.",
+		"fullDefinition": "A truism is a statement so obviously true that saying it adds little, though it may be repeated as if profound.",
+		"example": "That history is written by the victors has become a truism, yet the archives often tell a messier story.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Truncate": {
+		"definition": "to shorten by cutting off a part.",
+		"fullDefinition": "To truncate is to cut something short by removing its end, as with a text, a process or a number.",
+		"example": "The broadcast truncated the speech, omitting the senator's closing remarks on the budget.",
+		"pos": "verb",
+		"tier": 2
+	},
+	"Turbid": {
+		"definition": "cloudy or muddy; confused.",
+		"fullDefinition": "Turbid describes liquid made opaque by stirred-up sediment, or thought and writing that is murky and muddled.",
+		"example": "After the storm, the river ran turbid and brown for days.",
+		"pos": "adjective",
+		"tier": 3
+	},
+	"Turpitude": {
+		"definition": "moral depravity.",
+		"fullDefinition": "Turpitude is wickedness or baseness of character, a term often used in legal contexts for gravely immoral conduct.",
+		"example": "The contract allowed the studio to dismiss any actor found guilty of moral turpitude.",
+		"pos": "noun",
+		"tier": 3
+	},
+	"Tutelage": {
+		"definition": "instruction and guidance.",
+		"fullDefinition": "Tutelage is the protection, teaching or supervision given by a mentor, guardian or institution.",
+		"example": "Under the tutelage of a master luthier, he learned to carve violins from spruce and maple.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Umbrage": {
+		"definition": "offense or annoyance.",
+		"fullDefinition": "Umbrage is a feeling of being slighted or insulted, typically expressed in the phrase take umbrage.",
+		"example": "Several faculty members took umbrage at the dean's suggestion that their research lacked relevance.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Unalloyed": {
+		"definition": "pure; not mixed with anything else.",
+		"fullDefinition": "Unalloyed describes a feeling or quality that is complete and undiluted, untouched by any contrary element.",
+		"example": "The team's victory brought unalloyed joy to a city that had endured a hard year.",
+		"pos": "adjective",
+		"tier": 3
+	},
+	"Unassailable": {
+		"definition": "impossible to attack or refute.",
+		"fullDefinition": "Unassailable describes a position, argument or lead so secure that it cannot be challenged successfully.",
+		"example": "With a twenty-point lead and a week to go, the incumbent's position looked unassailable.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Unassuming": {
+		"definition": "modest and unpretentious.",
+		"fullDefinition": "Unassuming describes someone who does not seek attention or flaunt their status or abilities.",
+		"example": "The unassuming librarian turned out to be one of the country's leading experts on medieval maps.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Unconscionable": {
+		"definition": "shockingly unjust or excessive.",
+		"fullDefinition": "Unconscionable describes conduct or terms so unfair or unreasonable that no one with a conscience could accept them.",
+		"example": "The court voided the loan, calling its interest rate unconscionable.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Unctuous": {
+		"definition": "oily and insincerely flattering.",
+		"fullDefinition": "Unctuous describes a smooth, ingratiating manner that seems to be put on in order to win favor.",
+		"example": "The salesman's unctuous compliments made the buyers more suspicious, not less.",
+		"pos": "adjective",
+		"tier": 3
+	},
+	"Undermine": {
+		"definition": "to weaken gradually or covertly.",
+		"fullDefinition": "To undermine is to erode the strength, authority or effectiveness of something, often subtly over time.",
+		"example": "Repeated delays undermined public confidence in the reconstruction effort.",
+		"pos": "verb",
+		"tier": 1
+	},
+	"Underwrite": {
+		"definition": "to guarantee financial support for.",
+		"fullDefinition": "To underwrite is to take on financial responsibility for a project or risk, agreeing to cover its costs or losses.",
+		"example": "A private foundation agreed to underwrite the excavation for its first three seasons.",
+		"pos": "verb",
+		"tier": 2
+	},
+	"Undulate": {
+		"definition": "to move or lie in waves.",
+		"fullDefinition": "To undulate is to rise and fall in a smooth, wavelike pattern, as rolling hills or a swaying field of grass do.",
+		"example": "The prairie undulated toward the horizon in long, gentle swells.",
+		"pos": "verb",
+		"tier": 3
+	},
+	"Unequivocal": {
+		"definition": "clear and leaving no doubt.",
+		"fullDefinition": "Unequivocal describes a statement or position expressed so plainly that it cannot be misunderstood.",
+		"example": "The court's ruling was unequivocal: the law violated the constitution.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Unfettered": {
+		"definition": "free from restriction.",
+		"fullDefinition": "Unfettered describes something released from constraints or control, able to proceed without limits.",
+		"example": "The charter granted the inspectors unfettered access to every facility in the country.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Ungainly": {
+		"definition": "awkward and clumsy in movement.",
+		"fullDefinition": "Ungainly describes a person, creature or thing that moves without grace or looks awkwardly proportioned.",
+		"example": "On land the albatross is ungainly, but in the air it glides for hours without a single wingbeat.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Unimpeachable": {
+		"definition": "beyond doubt as to honesty.",
+		"fullDefinition": "Unimpeachable describes a person, source or record so reliable and trustworthy that it cannot reasonably be questioned.",
+		"example": "The historian relied only on sources of unimpeachable authority, such as signed treaties.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Unkempt": {
+		"definition": "untidy and disheveled.",
+		"fullDefinition": "Unkempt describes hair, clothing or grounds that look neglected and messy.",
+		"example": "The once-grand estate had become unkempt, its hedges overgrown and its fountains dry.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Unprecedented": {
+		"definition": "never done or known before.",
+		"fullDefinition": "Unprecedented describes an event or achievement without any earlier example or parallel.",
+		"example": "The drought caused an unprecedented drop in the reservoir's water level.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Unruly": {
+		"definition": "disorderly and undisciplined.",
+		"fullDefinition": "Unruly describes people, behavior or things that resist discipline or order.",
+		"example": "The substitute teacher struggled to manage the unruly class.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Unscrupulous": {
+		"definition": "lacking moral principles.",
+		"fullDefinition": "Unscrupulous describes someone willing to act dishonestly or unfairly to get what they want.",
+		"example": "Unscrupulous landlords exploited the housing shortage to charge exorbitant rents.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Unstinting": {
+		"definition": "given freely and generously.",
+		"fullDefinition": "Unstinting describes support, praise or effort offered without holding anything back.",
+		"example": "The author thanked her editor for his unstinting encouragement through six years of revisions.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Untoward": {
+		"definition": "unexpected and unfortunate.",
+		"fullDefinition": "Untoward describes something inconvenient, improper or unfavorable that disrupts what was expected.",
+		"example": "The inspectors reported nothing untoward in the laboratory's safety records.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Unwieldy": {
+		"definition": "hard to handle due to size or complexity.",
+		"fullDefinition": "Unwieldy describes something so large, heavy or complicated that it is difficult to manage or use.",
+		"example": "The coalition grew so unwieldy that it could no longer agree on a single agenda.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Unwitting": {
+		"definition": "unaware; unintentional.",
+		"fullDefinition": "Unwitting describes someone who acts without knowing the true nature of the situation, or an outcome that was not deliberate.",
+		"example": "The courier was an unwitting accomplice who had no idea what the package contained.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Usurp": {
+		"definition": "to seize power without right.",
+		"fullDefinition": "To usurp is to take a position, authority or role by force or without legitimate claim.",
+		"example": "The regent was accused of plotting to usurp the throne from the young heir.",
+		"pos": "verb",
+		"tier": 2
+	},
+	"Utilitarian": {
+		"definition": "designed for usefulness over beauty.",
+		"fullDefinition": "Utilitarian describes something made to be practical and functional rather than attractive.",
+		"example": "The station's utilitarian concrete design has recently found admirers among architects.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Utopian": {
+		"definition": "idealistic to the point of impracticality.",
+		"fullDefinition": "Utopian describes a vision of a perfect society or system, often implying that it is unrealistic.",
+		"example": "The commune's utopian plans for shared labor collapsed within two winters.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Vagary": {
+		"definition": "an unpredictable change or whim.",
+		"fullDefinition": "A vagary is an erratic, unexpected shift in circumstances or behavior; the word is most often used in the plural.",
+		"example": "Small farmers are especially exposed to the vagaries of weather and commodity prices.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Vanguard": {
+		"definition": "the leading edge of a movement.",
+		"fullDefinition": "The vanguard is the group at the forefront of new developments or ideas, originally the front line of an advancing army.",
+		"example": "The small gallery placed itself in the vanguard of the city's abstract art movement.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Vehement": {
+		"definition": "showing intense conviction.",
+		"fullDefinition": "Vehement describes feelings or statements expressed with great force and passion.",
+		"example": "The proposal met vehement opposition from residents who feared the loss of the wetlands.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Veneer": {
+		"definition": "a superficial outward appearance.",
+		"fullDefinition": "A veneer is an attractive surface that conceals something less appealing beneath, from a thin layer of fine wood to a show of politeness.",
+		"example": "Beneath a veneer of civility, the negotiations were fraught with mutual suspicion.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Venerable": {
+		"definition": "respected because of age or wisdom.",
+		"fullDefinition": "Venerable describes a person, institution or object that commands respect for its long history, experience or dignity.",
+		"example": "The venerable newspaper marked its two hundredth year with a special edition.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Venial": {
+		"definition": "minor and easily pardoned.",
+		"fullDefinition": "Venial describes a fault or offense slight enough to be forgiven without serious consequence.",
+		"example": "Compared with the fraud uncovered later, his early errors seemed venial.",
+		"pos": "adjective",
+		"tier": 3
+	},
+	"Verdant": {
+		"definition": "green with vegetation.",
+		"fullDefinition": "Verdant describes land lushly covered with growing plants, or something fresh and green.",
+		"example": "The verdant valley below the dam contrasted sharply with the parched hills above.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Verisimilitude": {
+		"definition": "the appearance of being real.",
+		"fullDefinition": "Verisimilitude is the quality of seeming true or lifelike, especially in fiction, art or drama.",
+		"example": "The novelist interviewed dozens of dockworkers to lend her scenes verisimilitude.",
+		"pos": "noun",
+		"tier": 3
+	},
+	"Veritable": {
+		"definition": "genuine; truly deserving the name.",
+		"fullDefinition": "Veritable is used to emphasize that a description, often a figurative one, is apt and not an exaggeration.",
+		"example": "The attic proved a veritable treasure trove of letters from the war years.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Vernacular": {
+		"definition": "everyday language of a region.",
+		"fullDefinition": "The vernacular is the ordinary spoken language of a particular people or place, as opposed to formal or literary speech.",
+		"example": "Dante's choice to write in the vernacular rather than Latin brought poetry to a far wider audience.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Verve": {
+		"definition": "energetic enthusiasm and flair.",
+		"fullDefinition": "Verve is vigor and spirit in performance or expression, especially in artistic work.",
+		"example": "The young conductor led the orchestra with a verve that delighted even the oldest subscribers.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Vestige": {
+		"definition": "a remaining trace of the past.",
+		"fullDefinition": "A vestige is a small surviving remnant of something that once existed in fuller form.",
+		"example": "A few crumbling arches are the only vestige of the aqueduct that once supplied the town.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Vicarious": {
+		"definition": "experienced through another person.",
+		"fullDefinition": "Vicarious describes feelings or experiences gained by imagining or observing someone else's, rather than by direct participation.",
+		"example": "Readers of travel memoirs often seek the vicarious thrill of journeys they will never take.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Vicissitude": {
+		"definition": "a change of fortune, often for the worse.",
+		"fullDefinition": "A vicissitude is one of the ups and downs of life, especially an unwelcome turn of events; the plural is more common.",
+		"example": "The family firm survived the vicissitudes of two world wars and a depression.",
+		"pos": "noun",
+		"tier": 3
+	},
+	"Vigilant": {
+		"definition": "watchful for possible danger.",
+		"fullDefinition": "Vigilant describes someone who stays alert and attentive to threats or problems.",
+		"example": "Hospitals must remain vigilant for signs of infection after surgery.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Vignette": {
+		"definition": "a brief, evocative description.",
+		"fullDefinition": "A vignette is a short scene, sketch or piece of writing that captures a moment or character vividly.",
+		"example": "The documentary opens with a vignette of fishermen mending nets at dawn.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Vindictive": {
+		"definition": "seeking revenge.",
+		"fullDefinition": "Vindictive describes a person or act motivated by a strong desire to harm someone in return for a perceived wrong.",
+		"example": "The executive's vindictive firing of the whistle-blower only drew more scrutiny to the company.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Virtuoso": {
+		"definition": "a highly skilled performer.",
+		"fullDefinition": "A virtuoso is someone with outstanding technical mastery of an art, especially musical performance.",
+		"example": "A virtuoso of the cello, she could make the most difficult passages sound effortless.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Visceral": {
+		"definition": "felt instinctively rather than reasoned.",
+		"fullDefinition": "Visceral describes a reaction that comes from deep feeling or gut instinct rather than from careful thought.",
+		"example": "Voters had a visceral distrust of the candidate that no policy paper could overcome.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Vivacious": {
+		"definition": "lively and spirited.",
+		"fullDefinition": "Vivacious describes a person, usually in social settings, who is full of animation and cheerful energy.",
+		"example": "Her vivacious manner made her the natural host of the faculty's monthly gatherings.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Volition": {
+		"definition": "the power of conscious choice.",
+		"fullDefinition": "Volition is the faculty of using one's own will to decide or act.",
+		"example": "The witness insisted she had come forward of her own volition, not under pressure from the police.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Voracious": {
+		"definition": "having an insatiable appetite.",
+		"fullDefinition": "Voracious describes a great hunger for food or, in the common GRE sense, an eager and seemingly endless appetite for an activity.",
+		"example": "A voracious reader, the young Lincoln borrowed every book within walking distance.",
+		"pos": "adjective",
+		"tier": 1
+	},
+	"Vouchsafe": {
+		"definition": "to grant or disclose condescendingly.",
+		"fullDefinition": "To vouchsafe is to give or reveal something, often as a favor, in a way that suggests the giver is doing the recipient a kindness.",
+		"example": "The reclusive author vouchsafed only a single sentence about her next novel.",
+		"pos": "verb",
+		"tier": 3
+	},
+	"Wane": {
+		"definition": "to decrease gradually.",
+		"fullDefinition": "To wane is to diminish in size, strength or influence over time, like the moon's visible portion after it is full.",
+		"example": "Interest in the scandal waned once the hearings ended.",
+		"pos": "verb",
+		"tier": 1
+	},
+	"Wanting": {
+		"definition": "lacking; not up to standard.",
+		"fullDefinition": "In the GRE sense, wanting describes something deficient or absent, or something that falls short of what is required.",
+		"example": "Tested against the new data, the old theory was found wanting.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Wanton": {
+		"definition": "deliberate and without provocation.",
+		"fullDefinition": "Wanton describes cruelty, damage or waste done gratuitously, without justification or regard for consequences.",
+		"example": "The wanton destruction of the ancient library shocked scholars around the world.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Warrant": {
+		"definition": "to justify or call for.",
+		"fullDefinition": "To warrant is to make an action or response necessary or appropriate, given the circumstances.",
+		"example": "The modest decline in sales hardly warrants closing the entire division.",
+		"pos": "verb",
+		"tier": 1
+	},
+	"Wax": {
+		"definition": "to grow larger or stronger.",
+		"fullDefinition": "In the GRE sense, to wax is to increase gradually, or to become a certain way, as in waxing eloquent; it is the opposite of wane.",
+		"example": "The party's fortunes waxed as the economy improved.",
+		"pos": "verb",
+		"tier": 2
+	},
+	"Wayward": {
+		"definition": "headstrong and erratic.",
+		"fullDefinition": "Wayward describes someone or something that strays from the expected path, is hard to control and behaves unpredictably.",
+		"example": "The novel follows a wayward son who returns home after a decade of drifting.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Whet": {
+		"definition": "to sharpen or stimulate (an appetite).",
+		"fullDefinition": "To whet is to sharpen a blade, or more often to arouse interest or desire for more.",
+		"example": "The museum's small preview exhibit was meant to whet visitors' appetites for the full collection.",
+		"pos": "verb",
+		"tier": 2
+	},
+	"Whitewash": {
+		"definition": "to conceal faults or wrongdoing.",
+		"fullDefinition": "To whitewash is to gloss over mistakes or misconduct, often through a deliberately incomplete investigation or account.",
+		"example": "Critics charged that the official inquiry had whitewashed the agency's role in the disaster.",
+		"pos": "verb",
+		"tier": 2
+	},
+	"Willful": {
+		"definition": "intentional; stubbornly self-willed.",
+		"fullDefinition": "Willful describes an act done on purpose, often with knowledge that it is wrong, or a person determined to have their own way.",
+		"example": "The judge ruled that the company's failure to report the leak was willful, not an oversight.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Wily": {
+		"definition": "crafty and cunning.",
+		"fullDefinition": "Wily describes someone skilled at using clever tricks or schemes to get ahead.",
+		"example": "The wily old senator always seemed to have one more procedural maneuver in reserve.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Winsome": {
+		"definition": "engagingly charming.",
+		"fullDefinition": "Winsome describes a person or manner that is attractive in a fresh, innocent and appealing way.",
+		"example": "The documentary's winsome narrator made even the dullest statistics seem delightful.",
+		"pos": "adjective",
+		"tier": 3
+	},
+	"Wistful": {
+		"definition": "longing with gentle sadness.",
+		"fullDefinition": "Wistful describes a mood of yearning, often for something past or out of reach, tinged with melancholy.",
+		"example": "She gave a wistful smile when she spoke of the farm where she grew up.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Wizened": {
+		"definition": "shriveled and wrinkled with age.",
+		"fullDefinition": "Wizened describes someone or something dried out and lined, especially from old age.",
+		"example": "A wizened fisherman sat on the pier, repairing a net with quick, practiced fingers.",
+		"pos": "adjective",
+		"tier": 3
+	},
+	"Wont": {
+		"definition": "accustomed; inclined by habit.",
+		"fullDefinition": "Wont describes a person's customary behavior, as in being wont to do something; as a noun it means a habit.",
+		"example": "As he was wont to do, the professor began the lecture with a question he refused to answer.",
+		"pos": "adjective",
+		"tier": 3
+	},
+	"Wrangle": {
+		"definition": "to argue noisily and at length.",
+		"fullDefinition": "To wrangle is to engage in a long, often heated dispute, typically over details or terms.",
+		"example": "The heirs wrangled over the estate for years until legal fees had consumed most of it.",
+		"pos": "verb",
+		"tier": 2
+	},
+	"Wry": {
+		"definition": "dryly and subtly humorous.",
+		"fullDefinition": "Wry describes humor that is understated and ironic, or a facial expression that shows mild amusement or displeasure.",
+		"example": "Her wry account of the failed expedition had the audience laughing at disasters that were not funny at the time.",
+		"pos": "adjective",
+		"tier": 2
+	},
+	"Xenophobia": {
+		"definition": "fear or hatred of foreigners.",
+		"fullDefinition": "Xenophobia is a strong dislike or distrust of people from other countries or cultures.",
+		"example": "The historian traced how economic hardship fueled xenophobia in the port cities.",
+		"pos": "noun",
+		"tier": 2
+	},
+	"Zeitgeist": {
+		"definition": "the defining spirit of an era.",
+		"fullDefinition": "The zeitgeist is the general intellectual, moral and cultural climate that characterizes a particular period.",
+		"example": "Few novels captured the zeitgeist of the postwar decade as precisely as hers.",
+		"pos": "noun",
+		"tier": 3
+	}
+}

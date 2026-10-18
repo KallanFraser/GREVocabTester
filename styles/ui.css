@@ -1,0 +1,462 @@
+/** @format */
+/* Shared UI kit, ported from Wortschatz: buttons, pills, segmented controls,
+   progress bars, tags, the compact select, kbd, the switch, the /play/* header
+   (components/PlayHeader.jsx) and the mobile foundation. Loaded once by
+   app/layout.jsx after globals.css. Every rule is a bare class (or element), so
+   a page's own scoped selectors (#id .x, .page .x) always win where they
+   overlap. Tokens come from globals.css. */
+
+/* ============== Buttons ============== */
+.btn-p,
+.btn-s,
+.btn-q,
+.btn-danger,
+.btn-neutral {
+	font: inherit;
+	cursor: pointer;
+	transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+}
+a.btn-p,
+a.btn-s,
+a.btn-q {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+}
+
+/* Primary: the one coral action on a surface. */
+.btn-p {
+	border: 1px solid rgba(234, 87, 70, 0.7);
+	background: linear-gradient(180deg, #f06554, #d6483a);
+	color: #fff;
+	border-radius: 10px;
+	padding: 0.55rem 1rem;
+	font-weight: 600;
+	font-size: 0.9rem;
+	box-shadow: inset 0 1px 0 rgba(255, 200, 190, 0.25);
+}
+.btn-p:hover {
+	background: linear-gradient(180deg, #f56f5e, #de4f40);
+}
+.btn-p:disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+
+/* Secondary: outlined, quiet. */
+.btn-s {
+	border: 1px solid var(--line-strong);
+	background: rgba(255, 255, 255, 0.03);
+	border-radius: 10px;
+	padding: 0.55rem 0.9rem;
+	font-size: 0.88rem;
+	color: var(--soft);
+}
+.btn-s:hover {
+	color: #fff;
+	background: rgba(255, 255, 255, 0.07);
+}
+.btn-s:disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+
+/* Quiet: an underlined text action. */
+.btn-q {
+	border: 0;
+	background: none;
+	color: var(--muted);
+	font-size: 0.85rem;
+	padding: 0.3rem 0.4rem;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+.btn-q:hover {
+	color: #fff;
+}
+
+/* Destructive confirm: erases progress. The only red button. */
+.btn-danger {
+	border: 1px solid rgba(255, 107, 94, 0.6);
+	background: rgba(255, 107, 94, 0.14);
+	color: #ffb3aa;
+	border-radius: 10px;
+	padding: 0.55rem 1rem;
+	font-weight: 600;
+}
+.btn-danger:hover {
+	background: rgba(255, 107, 94, 0.24);
+	color: #fff;
+}
+
+/* Neutral confirm: proceeds without erasing anything (Restart, Reshuffle). */
+.btn-neutral {
+	border: 1px solid rgba(255, 255, 255, 0.85);
+	background: #f0f0f2;
+	color: #0a0a0a;
+	border-radius: 10px;
+	padding: 0.55rem 1rem;
+	font-weight: 600;
+}
+.btn-neutral:hover {
+	background: #fff;
+}
+
+.btn-p:focus-visible,
+.btn-s:focus-visible,
+.btn-q:focus-visible,
+.btn-danger:focus-visible,
+.btn-neutral:focus-visible,
+button.pill:focus-visible,
+.seg button:focus-visible,
+.select:focus-visible,
+.switch:focus-visible {
+	outline: 2px solid rgba(100, 181, 255, 0.8);
+	outline-offset: 2px;
+}
+
+/* ============== Pill ============== */
+.pill {
+	border: 1px solid var(--line-strong);
+	background: rgba(255, 255, 255, 0.03);
+	border-radius: 999px;
+	padding: 0.28rem 0.7rem;
+	font: inherit;
+	font-size: 0.8rem;
+	color: var(--soft);
+	white-space: nowrap;
+}
+button.pill {
+	cursor: pointer;
+}
+button.pill:hover {
+	color: #fff;
+	border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ============== Segmented control ============== */
+/* Buttons inside carry aria-pressed; the pressed one is filled. */
+.seg {
+	display: inline-flex;
+	border: 1px solid var(--line-strong);
+	border-radius: 999px;
+	padding: 3px;
+	gap: 2px;
+}
+.seg button {
+	border: 0;
+	background: none;
+	border-radius: 999px;
+	padding: 0.3rem 0.75rem;
+	font: inherit;
+	font-size: 0.82rem;
+	color: var(--soft);
+	cursor: pointer;
+	white-space: nowrap;
+}
+.seg button:hover {
+	color: #fff;
+}
+.seg button[aria-pressed="true"] {
+	background: rgba(255, 255, 255, 0.12);
+	color: #fff;
+}
+.seg.big button {
+	padding: 0.45rem 1rem;
+	font-size: 0.9rem;
+}
+.seg.big button[aria-pressed="true"] {
+	background: var(--coral);
+}
+
+/* ============== Progress bar ============== */
+/* <div class="bar"><i style="width: 40%"></i></div> */
+.bar {
+	height: 5px;
+	border-radius: 3px;
+	background: rgba(255, 255, 255, 0.08);
+	overflow: hidden;
+}
+.bar i {
+	display: block;
+	height: 100%;
+	background: var(--coral);
+	border-radius: 3px;
+	transition: width 0.3s;
+}
+.bar.done i {
+	background: var(--ok);
+}
+
+/* ============== Tag ============== */
+.tag {
+	font-size: 0.74rem;
+	border-radius: 999px;
+	padding: 0.05rem 0.5rem;
+	border: 1px solid var(--line);
+	color: var(--muted);
+	white-space: nowrap;
+}
+.tag.words {
+	color: var(--accent);
+	border-color: rgba(100, 181, 255, 0.3);
+}
+.tag.done {
+	color: var(--ok);
+	border-color: rgba(95, 211, 154, 0.35);
+}
+
+/* ============== Compact select ============== */
+.select {
+	appearance: none;
+	-webkit-appearance: none;
+	border: 1px solid var(--line-strong);
+	background-color: rgba(255, 255, 255, 0.03);
+	border-radius: 999px;
+	padding: 0.28rem 1.6rem 0.28rem 0.7rem;
+	font: inherit;
+	font-size: 0.8rem;
+	color: var(--soft);
+	cursor: pointer;
+	background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+		linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+	background-position: right 0.75rem center, right 0.5rem center;
+	background-size: 4px 4px;
+	background-repeat: no-repeat;
+}
+.select option {
+	background: #111;
+}
+
+/* ============== Keyboard key ============== */
+kbd {
+	font-family: inherit;
+	font-size: 0.78em;
+	font-weight: 600;
+	border: 1px solid var(--line-strong);
+	border-bottom-width: 2px;
+	border-radius: 5px;
+	padding: 0.02rem 0.35rem;
+	color: var(--soft);
+}
+
+/* ============== Switch ============== */
+/* <button class="switch" role="switch" aria-checked="true"> */
+.switch {
+	position: relative;
+	flex: none;
+	width: 44px;
+	height: 26px;
+	padding: 0;
+	border-radius: 999px;
+	border: 1px solid var(--line-strong);
+	background: rgba(255, 255, 255, 0.08);
+	cursor: pointer;
+	transition: background 0.2s, border-color 0.2s;
+}
+.switch::after {
+	content: "";
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	background: #fff;
+	transition: transform 0.2s;
+}
+.switch[aria-checked="true"] {
+	background: var(--coral);
+	border-color: var(--coral);
+}
+.switch[aria-checked="true"]::after {
+	transform: translateX(18px);
+}
+
+/* ============== Play header (components/PlayHeader.jsx) ============== */
+.play-head {
+	position: relative;
+	z-index: 3;
+	border-bottom: 1px solid var(--line);
+	background: rgba(5, 5, 5, 0.6);
+	font-size: 15px;
+	line-height: 1.5;
+}
+.play-head .ph-row {
+	width: min(1100px, 100% - 2rem);
+	margin-inline: auto;
+	display: grid;
+	grid-template-columns: minmax(0, auto) minmax(0, 1fr) auto;
+	gap: 1rem;
+	align-items: center;
+	padding: 0.7rem 0;
+}
+.play-head .ph-left {
+	display: flex;
+	align-items: center;
+	gap: 0.7rem;
+	min-width: 0;
+}
+.play-head .ph-back {
+	flex: none;
+	padding: 0.4rem 0.75rem;
+}
+.play-head .ph-heading {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	line-height: 1.25;
+}
+.play-head .ph-title,
+.play-head .ph-pack {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	min-width: 0;
+}
+.play-head .ph-title {
+	font-weight: 600;
+	font-size: 0.92rem;
+	color: var(--text);
+}
+.play-head .ph-pack {
+	font-size: 0.78rem;
+	color: var(--muted);
+}
+.play-head .ph-mid {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	max-width: 280px;
+	width: 100%;
+	justify-self: center;
+	font-size: 0.78rem;
+	color: var(--muted);
+	font-variant-numeric: tabular-nums;
+}
+.play-head .ph-right {
+	display: flex;
+	gap: 0.35rem;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+}
+.play-head .ph-short {
+	display: none;
+}
+@media (max-width: 760px) {
+	.play-head .ph-row {
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 0.6rem 0.8rem;
+	}
+	.play-head .ph-mid {
+		grid-column: 1 / -1;
+		order: 3;
+		max-width: none;
+	}
+}
+/* A phone cannot fit the title and the controls on one row: title, then
+   controls, then the progress bar. Direction labels shorten. */
+@media (max-width: 560px) {
+	.play-head .ph-row {
+		grid-template-columns: minmax(0, 1fr);
+	}
+	.play-head .ph-right {
+		justify-content: flex-start;
+	}
+	.play-head .ph-long {
+		display: none;
+	}
+	.play-head .ph-short {
+		display: inline;
+	}
+}
+
+/* ============== Mobile foundation ============== */
+/* Phone fit-and-finish (Safari iOS, Chrome Android, 375-430px). */
+
+/* Safe areas: the notch, home indicator and landscape side insets, applied once
+   on the outermost container. The fixed navbar adds its own top inset
+   (styles/navbar.css). */
+body {
+	padding-top: env(safe-area-inset-top);
+	padding-right: env(safe-area-inset-right);
+	padding-bottom: env(safe-area-inset-bottom);
+	padding-left: env(safe-area-inset-left);
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	-webkit-tap-highlight-color: transparent;
+}
+
+/* Kills the double-tap-to-zoom delay on every control. */
+button,
+a,
+summary,
+select,
+label,
+[role="button"],
+input[type="checkbox"],
+input[type="radio"] {
+	touch-action: manipulation;
+}
+
+/* Long headwords and definitions wrap instead of widening the page. */
+main,
+#home-landing,
+#main-section,
+.play-head,
+.dialog {
+	overflow-wrap: anywhere;
+}
+table {
+	max-width: 100%;
+}
+img,
+svg,
+video,
+canvas {
+	max-width: 100%;
+}
+
+/* Touch devices: 44px minimum targets. The switch keeps its own size. */
+@media (pointer: coarse) {
+	button:not(.switch),
+	[role="button"],
+	.btn-p,
+	.btn-s,
+	.btn-q,
+	.btn-danger,
+	.btn-neutral,
+	.pill,
+	.select,
+	.nav-burger,
+	.site-nav .nav-links a,
+	.nav-panel a,
+	.nav-cta,
+	select,
+	summary {
+		min-height: 44px;
+	}
+	.nav-burger {
+		min-width: 44px;
+	}
+	.nav-panel a {
+		display: flex;
+		align-items: center;
+	}
+	input[type="checkbox"],
+	input[type="radio"] {
+		min-width: 20px;
+		min-height: 20px;
+	}
+}
+
+/* Phones: iOS Safari zooms the page on focus of any input under 16px. */
+@media (max-width: 820px) {
+	input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+	textarea,
+	select {
+		font-size: 16px !important;
+	}
+}

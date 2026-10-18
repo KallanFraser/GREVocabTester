@@ -1,7 +1,8 @@
 /** @format */
-// app/layout.tsx — Global wrapper with metadata for GRE Vocab Tester
+// app/layout.jsx — Global wrapper with metadata for GRE Vocab Tester
 
 import "../styles/globals.css";
+import "../styles/ui.css";
 import "../styles/components.css";
 import Navbar from "../components/Navbar";
 
@@ -53,15 +54,29 @@ export const metadata = {
 		icon: "/favicon.ico",
 		apple: "/apple-touch-icon.png",
 	},
+	// Static file in public/ (a static export cannot serve app/manifest.js as a
+	// dynamic route, and the file form needs no build step).
+	manifest: "/manifest.webmanifest",
+	// Emits apple-mobile-web-app-capable (and the modern mobile-web-app-capable).
+	appleWebApp: { capable: true, title: "GRE Vocab", statusBarStyle: "black-translucent" },
+	other: { "apple-mobile-web-app-capable": "yes" },
+};
+
+// No maximumScale: pinch zoom stays allowed. themeColor matches --bg.
+export const viewport = {
+	width: "device-width",
+	initialScale: 1,
+	viewportFit: "cover",
+	themeColor: "#050505",
 };
 
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body>
-					<Navbar />
-					{children}
-				</body>
+				<Navbar />
+				{children}
+			</body>
 		</html>
 	);
 }

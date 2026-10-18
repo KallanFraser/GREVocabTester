@@ -1,0 +1,1388 @@
+{
+  "Jaded": {
+    "definition": "dulled by overexposure or excess.",
+    "fullDefinition": "Someone jaded has experienced so much of something that it no longer excites them, leaving a weary, unimpressed attitude.",
+    "example": "Critics jaded by a decade of formulaic thrillers were startled by the film's restraint.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Jargon": {
+    "definition": "insider terminology opaque to outsiders.",
+    "fullDefinition": "Jargon is the specialized vocabulary used within a profession or group, often baffling to anyone outside it.",
+    "example": "The report's reliance on bureaucratic jargon obscured what was, at bottom, a simple recommendation.",
+    "pos": "noun",
+    "tier": 1
+  },
+  "Jaundiced": {
+    "definition": "cynically biased by bitterness.",
+    "fullDefinition": "A jaundiced view is colored by resentment or distrust, so that the observer expects the worst of everything.",
+    "example": "Years of broken promises had given the villagers a jaundiced view of every new development scheme.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Jingoism": {
+    "definition": "belligerent, boastful nationalism.",
+    "fullDefinition": "Jingoism is extreme patriotism expressed through calls for aggressive foreign policy and contempt for other nations.",
+    "example": "The editorial warned that wartime jingoism was drowning out every voice calling for negotiation.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Jocular": {
+    "definition": "fond of joking; good-humored.",
+    "fullDefinition": "Jocular describes speech or a manner marked by playful joking and a lighthearted spirit.",
+    "example": "His jocular tone at the briefing struck many listeners as ill-suited to the gravity of the crisis.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Judicious": {
+    "definition": "sensible and well-considered.",
+    "fullDefinition": "A judicious choice reflects careful, balanced thought about what is wise in the circumstances.",
+    "example": "The editor's judicious cuts tightened the memoir without sacrificing its candor.",
+    "pos": "adjective",
+    "tier": 1
+  },
+  "Juggernaut": {
+    "definition": "an overwhelming, unstoppable force.",
+    "fullDefinition": "A juggernaut is a massive force, institution, or movement that crushes whatever stands in its path.",
+    "example": "Small booksellers struggled to survive once the online retailer became a commercial juggernaut.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Juxtapose": {
+    "definition": "to place side by side for contrast.",
+    "fullDefinition": "To juxtapose is to set two things close together, usually so that their differences or similarities stand out.",
+    "example": "The exhibition juxtaposes early sketches with finished canvases, revealing how much the painter revised.",
+    "pos": "verb",
+    "tier": 1
+  },
+  "Kindle": {
+    "definition": "to arouse or ignite a feeling or interest.",
+    "fullDefinition": "To kindle is literally to set something burning; figuratively, it means to stir up an emotion, curiosity, or idea.",
+    "example": "A single lecture on cellular biology kindled her lifelong fascination with the field.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Kinetic": {
+    "definition": "relating to or full of motion.",
+    "fullDefinition": "Kinetic describes anything produced by or characterized by movement; in the arts it suggests energetic dynamism.",
+    "example": "The choreographer's kinetic style left the audience nearly as breathless as the dancers.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Knotty": {
+    "definition": "intricate and hard to resolve.",
+    "fullDefinition": "A knotty problem is tangled and complex, resisting any easy or obvious solution.",
+    "example": "The committee spent weeks on the knotty question of how to divide water rights among the three states.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Kowtow": {
+    "definition": "to behave with servile submissiveness.",
+    "fullDefinition": "To kowtow is to defer excessively to someone in authority, giving up one's own dignity or judgment in the process.",
+    "example": "Board members who refused to kowtow to the founder were quietly removed.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Kudos": {
+    "definition": "credit or prestige for an achievement.",
+    "fullDefinition": "Kudos is acclaim or renown earned through accomplishment. Despite its final s, the word is traditionally singular.",
+    "example": "The young architect won considerable kudos for her restoration of the derelict train station.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Lachrymose": {
+    "definition": "given to weeping; tearful.",
+    "fullDefinition": "Lachrymose describes a person inclined to cry, or a work that seems designed to provoke tears.",
+    "example": "Reviewers found the novel's lachrymose final chapter manipulative rather than moving.",
+    "pos": "adjective",
+    "tier": 3
+  },
+  "Lackadaisical": {
+    "definition": "half-hearted and unenthusiastic.",
+    "fullDefinition": "A lackadaisical approach shows little vigor, determination, or interest in doing a task well.",
+    "example": "The team's lackadaisical preparation became obvious within the first minutes of the debate.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Lackluster": {
+    "definition": "lacking brilliance or vitality.",
+    "fullDefinition": "Something lackluster is flat and uninspired, failing to impress or excite those who encounter it.",
+    "example": "Despite an illustrious cast, the revival received lackluster reviews and closed within a month.",
+    "pos": "adjective",
+    "tier": 1
+  },
+  "Laggard": {
+    "definition": "one who falls behind others.",
+    "fullDefinition": "A laggard is a person, organization, or nation that moves more slowly than its peers or trails in progress.",
+    "example": "Once a laggard in renewable energy, the country now leads the region in solar capacity.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Lament": {
+    "definition": "to express grief or regret over.",
+    "fullDefinition": "To lament is to mourn openly, or to voice sorrow and disappointment about a loss or a state of affairs.",
+    "example": "Many historians lament the destruction of the ancient library as an irreparable blow to scholarship.",
+    "pos": "verb",
+    "tier": 1
+  },
+  "Lampoon": {
+    "definition": "to satirize in a public, humorous way.",
+    "fullDefinition": "To lampoon is to make a person or institution look ridiculous through satirical writing, drawing, or performance.",
+    "example": "The cartoonist lampooned the senator's shifting positions by drawing him as a weathervane.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Languid": {
+    "definition": "relaxed and slow; drowsily unhurried.",
+    "fullDefinition": "Languid describes movement, speech, or atmosphere that is slow, relaxed, and without force, sometimes pleasantly so.",
+    "example": "The novel's languid pace suits its setting, a sleepy river town in the heat of August.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Languish": {
+    "definition": "to weaken or stall from neglect.",
+    "fullDefinition": "To languish is to lose vitality, or to remain stuck in an unfavorable situation without making progress.",
+    "example": "The proposal languished in committee for years before anyone revisited it.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Largesse": {
+    "definition": "generous giving of gifts or money.",
+    "fullDefinition": "Largesse is liberality in bestowing gifts, especially by someone wealthy or powerful; it can also mean the gifts themselves.",
+    "example": "The museum's new wing was made possible by the largesse of a reclusive collector.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Latitude": {
+    "definition": "freedom from narrow restrictions.",
+    "fullDefinition": "In its GRE sense, latitude is scope for independent action or thought, rather than a measure of geographic position.",
+    "example": "The new director gave curators considerable latitude in choosing which works to exhibit.",
+    "pos": "noun",
+    "tier": 1
+  },
+  "Laudable": {
+    "definition": "deserving praise.",
+    "fullDefinition": "A laudable action or aim is worthy of commendation, even if it does not fully succeed.",
+    "example": "The initiative's goals were laudable, but its budget was hopelessly unrealistic.",
+    "pos": "adjective",
+    "tier": 1
+  },
+  "Laudatory": {
+    "definition": "expressing praise.",
+    "fullDefinition": "Laudatory describes language, reviews, or speeches that celebrate and commend their subject.",
+    "example": "The biography is so laudatory that it reads more like a tribute than a critical study.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Legerdemain": {
+    "definition": "sleight of hand; artful deception.",
+    "fullDefinition": "Legerdemain originally meant a conjurer's manual skill; it now also describes any clever trickery or deceitful maneuvering.",
+    "example": "Through accounting legerdemain, the firm turned a year of losses into an apparent profit.",
+    "pos": "noun",
+    "tier": 3
+  },
+  "Lexicon": {
+    "definition": "the full stock of words of a language.",
+    "fullDefinition": "A lexicon is the vocabulary of a language, a person, or a field of study; the word can also mean a dictionary.",
+    "example": "Digital culture has added hundreds of new terms to the English lexicon in a single generation.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Litany": {
+    "definition": "a long, repetitive list.",
+    "fullDefinition": "A litany is a lengthy recital or enumeration, often of complaints or problems; the word derives from a form of repetitive prayer.",
+    "example": "The tenants presented a litany of grievances, from broken heating to unanswered repair requests.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Lithe": {
+    "definition": "gracefully flexible and slender.",
+    "fullDefinition": "Lithe describes a body or movement that is supple, nimble, and graceful.",
+    "example": "The lithe gymnast seemed to float through a routine that would strain most athletes.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Litigious": {
+    "definition": "inclined to file lawsuits.",
+    "fullDefinition": "A litigious person or society turns readily to the courts to settle disputes.",
+    "example": "In such a litigious industry, even minor contract disagreements tend to end up before a judge.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Loath": {
+    "definition": "reluctant; unwilling.",
+    "fullDefinition": "To be loath to do something is to be disinclined to do it. The adjective should not be confused with the verb loathe.",
+    "example": "The administration was loath to admit the policy had failed, even as the evidence mounted.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Lofty": {
+    "definition": "elevated in ideals; also haughty.",
+    "fullDefinition": "Lofty describes noble or exalted aims, or alternatively a superior, condescending manner.",
+    "example": "The charter's lofty rhetoric about equality contrasted sharply with its narrow voting provisions.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Longevity": {
+    "definition": "long life or long duration.",
+    "fullDefinition": "Longevity is the length of a life, or the capacity of anything, from an institution to a structure, to last a long time.",
+    "example": "The longevity of the Roman aqueducts testifies to the skill of their engineers.",
+    "pos": "noun",
+    "tier": 1
+  },
+  "Lucre": {
+    "definition": "money, especially ill-gotten profit.",
+    "fullDefinition": "Lucre is wealth regarded with disapproval, often appearing in the phrase filthy lucre.",
+    "example": "The reformer accused the officials of abandoning the public good in pursuit of lucre.",
+    "pos": "noun",
+    "tier": 3
+  },
+  "Luddite": {
+    "definition": "one who opposes new technology.",
+    "fullDefinition": "A Luddite resists technological change; the name comes from early nineteenth-century English workers who smashed textile machinery.",
+    "example": "Dismissing every critic of automation as a Luddite ignores legitimate concerns about labor.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Lugubrious": {
+    "definition": "exaggeratedly mournful.",
+    "fullDefinition": "Lugubrious describes a gloominess so heavy or overdone that it can seem almost comic.",
+    "example": "The play's lugubrious narrator undercut its moments of genuine tragedy.",
+    "pos": "adjective",
+    "tier": 3
+  },
+  "Lull": {
+    "definition": "a brief pause or quiet period.",
+    "fullDefinition": "A lull is a temporary interval of calm or reduced activity in the midst of something busier or more turbulent.",
+    "example": "During a lull in the fighting, relief workers rushed supplies into the besieged city.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Luminary": {
+    "definition": "an eminent, inspiring figure.",
+    "fullDefinition": "A luminary is a person of great distinction whose work enlightens or inspires others in a field.",
+    "example": "The conference drew luminaries from linguistics, philosophy, and cognitive science.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Machination": {
+    "definition": "a scheming plot.",
+    "fullDefinition": "Machinations are crafty, often secret maneuvers designed to achieve a goal, usually a dishonest one.",
+    "example": "The novel traces the courtiers' machinations as they compete for the aging king's favor.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Maelstrom": {
+    "definition": "a violently turbulent situation.",
+    "fullDefinition": "A maelstrom is literally a powerful whirlpool; figuratively, it is a state of chaotic upheaval that pulls people in.",
+    "example": "The young diplomat found herself in a maelstrom of competing demands once the ceasefire collapsed.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Magisterial": {
+    "definition": "commandingly authoritative.",
+    "fullDefinition": "Magisterial describes a manner or work that displays great authority, mastery, and assurance.",
+    "example": "Her magisterial survey of medieval trade remains the standard reference decades after publication.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Magnate": {
+    "definition": "a powerful business leader.",
+    "fullDefinition": "A magnate is a wealthy and influential figure who dominates an industry or commercial field.",
+    "example": "The railroad magnate funded the library partly to soften his reputation for ruthless dealing.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Maladroit": {
+    "definition": "clumsy; lacking skill or tact.",
+    "fullDefinition": "Maladroit describes physical awkwardness or, more often, an inept handling of a delicate situation.",
+    "example": "The minister's maladroit response to the scandal only deepened public suspicion.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Malaise": {
+    "definition": "a vague sense of unease or decline.",
+    "fullDefinition": "Malaise is a general feeling of discomfort or listless dissatisfaction, whether in a person or in a whole society.",
+    "example": "Economists struggled to explain the malaise that settled over the economy despite rising employment.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Malcontent": {
+    "definition": "a chronically dissatisfied person.",
+    "fullDefinition": "A malcontent is someone persistently unhappy with the existing order, often inclined to complain or rebel.",
+    "example": "The chairman dismissed his critics as a handful of malcontents, ignoring the substance of their complaints.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Malevolent": {
+    "definition": "wishing harm on others.",
+    "fullDefinition": "Malevolent describes a person, act, or force driven by ill will and a desire to do evil.",
+    "example": "The villain's malevolent schemes are made all the more chilling by his impeccable manners.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Malfeasance": {
+    "definition": "wrongdoing, especially by an official.",
+    "fullDefinition": "Malfeasance is illegal or improper conduct, particularly by someone holding public office or a position of trust.",
+    "example": "The audit uncovered evidence of malfeasance by several members of the city council.",
+    "pos": "noun",
+    "tier": 3
+  },
+  "Mandate": {
+    "definition": "an official order or authority to act.",
+    "fullDefinition": "A mandate is a formal command, or the authority to carry out a policy that voters are understood to have granted.",
+    "example": "The new government claimed a mandate for sweeping reform after winning by a wide margin.",
+    "pos": "noun",
+    "tier": 1
+  },
+  "Martinet": {
+    "definition": "a rigid disciplinarian.",
+    "fullDefinition": "A martinet insists on strict obedience to rules and procedures, often to a petty or harsh degree.",
+    "example": "The conductor was a martinet who would halt rehearsal over a single late entrance.",
+    "pos": "noun",
+    "tier": 3
+  },
+  "Maudlin": {
+    "definition": "self-pityingly sentimental.",
+    "fullDefinition": "Maudlin describes emotion that is tearful and indulgent, often associated with self-pity or drink.",
+    "example": "The memoir avoids the maudlin tone that so often mars accounts of childhood hardship.",
+    "pos": "adjective",
+    "tier": 3
+  },
+  "Mawkish": {
+    "definition": "cloying in its sweetness or emotion.",
+    "fullDefinition": "Mawkish describes sentiment laid on so thickly that it becomes faintly sickening rather than touching.",
+    "example": "Without its mawkish epilogue, the film would be a far more honest portrait of grief.",
+    "pos": "adjective",
+    "tier": 3
+  },
+  "Maxim": {
+    "definition": "a concise statement of a principle.",
+    "fullDefinition": "A maxim is a brief saying that expresses a general truth or a rule of conduct.",
+    "example": "The old maxim that history repeats itself is more often asserted than demonstrated.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Meander": {
+    "definition": "to wander or follow a winding course.",
+    "fullDefinition": "To meander is to move along a twisting path, or, in speech and writing, to drift from point to point without direction.",
+    "example": "The lecture meandered through several unrelated anecdotes before arriving at its thesis.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Megalomania": {
+    "definition": "an obsession with one's own power.",
+    "fullDefinition": "Megalomania is an inflated sense of one's importance combined with a craving for domination.",
+    "example": "The dictator's megalomania led him to rename cities, rivers, and even a month after himself.",
+    "pos": "noun",
+    "tier": 3
+  },
+  "Mellifluous": {
+    "definition": "smooth and sweet-sounding.",
+    "fullDefinition": "Mellifluous describes a voice, melody, or phrasing that flows pleasantly to the ear.",
+    "example": "The narrator's mellifluous voice made even the dense technical passages pleasant to hear.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Mercenary": {
+    "definition": "motivated chiefly by money.",
+    "fullDefinition": "Mercenary describes a person or action concerned above all with financial gain, at the expense of principle.",
+    "example": "Critics accused the studio of mercenary motives in releasing yet another sequel.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Miasma": {
+    "definition": "an oppressive, unwholesome atmosphere.",
+    "fullDefinition": "A miasma was once a foul vapor thought to spread disease; it now usually means a pervasive, corrupting mood or influence.",
+    "example": "A miasma of suspicion hung over the department after the leak.",
+    "pos": "noun",
+    "tier": 3
+  },
+  "Microcosm": {
+    "definition": "a small-scale model of a larger whole.",
+    "fullDefinition": "A microcosm is a community, place, or situation that captures in miniature the features of something much bigger.",
+    "example": "The village, with its feuds and alliances, serves as a microcosm of the nation's politics.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Mien": {
+    "definition": "a person's bearing or expression.",
+    "fullDefinition": "Mien is the outward manner or look of a person, especially as it reveals mood or character.",
+    "example": "Despite the turmoil around him, the judge maintained a serene mien throughout the trial.",
+    "pos": "noun",
+    "tier": 3
+  },
+  "Milieu": {
+    "definition": "a social or cultural setting.",
+    "fullDefinition": "A milieu is the environment, especially the social and intellectual surroundings, in which someone lives or works.",
+    "example": "The novelist captures the milieu of postwar Paris, with its cafes, exiles, and ideological quarrels.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Militate": {
+    "definition": "to act as a strong force against.",
+    "fullDefinition": "To militate, usually followed by against, is for a fact or circumstance to weigh heavily toward preventing something.",
+    "example": "The project's enormous cost militates against its approval in a year of budget cuts.",
+    "pos": "verb",
+    "tier": 3
+  },
+  "Minutiae": {
+    "definition": "small, precise details.",
+    "fullDefinition": "Minutiae are the trivial or fine-grained particulars of a subject, as opposed to its broad outlines.",
+    "example": "The biographer's absorption in the minutiae of daily life sometimes obscures the larger arc of the career.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Misconstrue": {
+    "definition": "to interpret wrongly.",
+    "fullDefinition": "To misconstrue is to take the wrong meaning from someone's words or actions.",
+    "example": "Her cautious remarks were misconstrued as an endorsement of the policy.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Misnomer": {
+    "definition": "an inaccurate or misleading name.",
+    "fullDefinition": "A misnomer is a label that wrongly describes the thing it is applied to.",
+    "example": "Calling the treaty a peace agreement is a misnomer, since hostilities resumed within weeks.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Misogynist": {
+    "definition": "one who hates or distrusts women.",
+    "fullDefinition": "A misogynist holds contempt or deep prejudice toward women.",
+    "example": "Scholars debate whether the poet was a misogynist or merely reflected the prejudices of his era.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Missive": {
+    "definition": "a letter or written message.",
+    "fullDefinition": "A missive is a written communication, often a formal or lengthy one.",
+    "example": "The ambassador's terse missive made clear that negotiations were over.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Modulate": {
+    "definition": "to adjust or regulate in degree.",
+    "fullDefinition": "To modulate is to vary the strength, pitch, or intensity of something so that it suits a purpose.",
+    "example": "Skilled speakers modulate their tone to suit the mood of the audience.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Monastic": {
+    "definition": "secluded and austere, like monks.",
+    "fullDefinition": "Monastic describes a way of living marked by solitude, simplicity, and discipline, as in a monastery.",
+    "example": "During the final months of writing, the novelist adopted an almost monastic routine.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Monolithic": {
+    "definition": "massive, uniform, and unyielding.",
+    "fullDefinition": "Monolithic describes something large and seemingly undivided, with no internal variety or flexibility.",
+    "example": "The opposition was far from monolithic; it included factions with sharply different goals.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Mordant": {
+    "definition": "darkly and incisively witty.",
+    "fullDefinition": "Mordant describes humor or commentary that is sharp enough to wound, often with a bleak edge.",
+    "example": "Her mordant commentary on the art world earned her both devoted readers and powerful enemies.",
+    "pos": "adjective",
+    "tier": 3
+  },
+  "Mores": {
+    "definition": "the customs and moral norms of a group.",
+    "fullDefinition": "Mores are the accepted conventions of a community, especially those carrying moral weight.",
+    "example": "The novel satirizes the mores of a provincial elite obsessed with status.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Moribund": {
+    "definition": "in terminal decline.",
+    "fullDefinition": "Moribund describes something near death or losing all vitality, such as an industry, tradition, or institution.",
+    "example": "Once a thriving port, the town had become moribund after the shipyards closed.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Motley": {
+    "definition": "made up of ill-matched parts.",
+    "fullDefinition": "Motley describes a group or collection whose members are strikingly varied and do not seem to belong together.",
+    "example": "A motley coalition of farmers, students, and retired officers rallied against the dam.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Multifarious": {
+    "definition": "having many diverse forms or parts.",
+    "fullDefinition": "Multifarious describes activities, interests, or elements that are numerous and of many different kinds.",
+    "example": "The foundation's multifarious activities range from medical research to arts education.",
+    "pos": "adjective",
+    "tier": 3
+  },
+  "Munificent": {
+    "definition": "lavishly generous.",
+    "fullDefinition": "Munificent describes a giver or gift that is far more generous than ordinary expectations.",
+    "example": "A munificent bequest allowed the college to eliminate tuition for low-income students.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Mutable": {
+    "definition": "liable to change.",
+    "fullDefinition": "Something mutable can be altered or is prone to shifting over time.",
+    "example": "The constitution's framers deliberately made it less mutable than ordinary legislation.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Myopic": {
+    "definition": "lacking foresight; narrow in view.",
+    "fullDefinition": "Literally nearsighted, myopic in its GRE sense describes thinking that ignores long-term consequences.",
+    "example": "Cutting the research budget to balance one year's accounts was a myopic decision.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Myriad": {
+    "definition": "countless; extremely numerous.",
+    "fullDefinition": "Myriad describes a quantity so large and varied that it is hard to count.",
+    "example": "The reef supports myriad species, many of which have yet to be described.",
+    "pos": "adjective",
+    "tier": 1
+  },
+  "Narcissism": {
+    "definition": "consuming preoccupation with oneself.",
+    "fullDefinition": "Narcissism is an absorbing preoccupation with oneself, one's appearance, or one's importance.",
+    "example": "The memoir's narcissism becomes wearing, as every event is framed as a test of the author's brilliance.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Nefarious": {
+    "definition": "flagrantly wicked or criminal.",
+    "fullDefinition": "Nefarious describes schemes or people that are thoroughly villainous and violate law or morality.",
+    "example": "Investigators uncovered a nefarious scheme to defraud elderly investors.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Negligent": {
+    "definition": "failing in a duty of care.",
+    "fullDefinition": "A negligent person does not exercise the attention or caution that their responsibilities require.",
+    "example": "The court found the landlord negligent for ignoring repeated reports of faulty wiring.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Negligible": {
+    "definition": "so small it can be disregarded.",
+    "fullDefinition": "A negligible amount or effect is too slight to be worth taking into account.",
+    "example": "The new drug's side effects were negligible in comparison with its benefits.",
+    "pos": "adjective",
+    "tier": 1
+  },
+  "Nemesis": {
+    "definition": "a rival or agent of one's downfall.",
+    "fullDefinition": "A nemesis is a persistent opponent who seems impossible to defeat, or a force that brings about deserved ruin.",
+    "example": "For decades the champion's nemesis was a quiet player who almost never lost to him.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Nepotism": {
+    "definition": "favoritism toward relatives.",
+    "fullDefinition": "Nepotism is the practice of using power to give jobs or advantages to family members.",
+    "example": "Accusations of nepotism followed the mayor's appointment of his nephew as city planner.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Nettle": {
+    "definition": "to irritate or vex.",
+    "fullDefinition": "To nettle is to annoy someone in a way that stings, much as the plant of the same name does.",
+    "example": "The reviewer's condescending tone nettled even readers who agreed with her conclusions.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Nexus": {
+    "definition": "a central link or connection.",
+    "fullDefinition": "A nexus is a point where several things meet or the bond that ties them together.",
+    "example": "The city became a nexus of trade between the coastal ports and the interior.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Nihilism": {
+    "definition": "the rejection of all values or meaning.",
+    "fullDefinition": "Nihilism is the belief that life lacks inherent purpose and that moral principles have no foundation.",
+    "example": "The play's bleak ending has been read as an expression of postwar nihilism.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Noisome": {
+    "definition": "foul-smelling; offensive.",
+    "fullDefinition": "Noisome describes something disgusting, especially in odor; despite its look, it has nothing to do with noise.",
+    "example": "A noisome odor drifted from the stagnant canal behind the factory.",
+    "pos": "adjective",
+    "tier": 3
+  },
+  "Nomenclature": {
+    "definition": "a system of names in a field.",
+    "fullDefinition": "Nomenclature is the set of terms, and the rules for forming them, used within a discipline.",
+    "example": "Botanical nomenclature follows strict rules so that each plant has a single accepted name.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Nominal": {
+    "definition": "in name only; trivially small.",
+    "fullDefinition": "Nominal describes a role that exists in title but not in substance, or a sum so small it is merely symbolic.",
+    "example": "Though he remained the nominal head of the firm, his daughter made every important decision.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Nondescript": {
+    "definition": "lacking distinctive features.",
+    "fullDefinition": "Something nondescript is so ordinary in appearance that it is hard to describe or remember.",
+    "example": "The spy's real talent lay in looking utterly nondescript.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Nonentity": {
+    "definition": "a person of no importance.",
+    "fullDefinition": "A nonentity is someone who has no influence, distinction, or significance.",
+    "example": "Once celebrated, the author had become a literary nonentity within a decade of his death.",
+    "pos": "noun",
+    "tier": 3
+  },
+  "Nostalgia": {
+    "definition": "wistful longing for the past.",
+    "fullDefinition": "Nostalgia is a sentimental yearning for an earlier time, often one remembered as better than it was.",
+    "example": "The exhibit trades on nostalgia, presenting the 1950s without any of their hardships.",
+    "pos": "noun",
+    "tier": 1
+  },
+  "Notoriety": {
+    "definition": "fame for something bad.",
+    "fullDefinition": "Notoriety is the condition of being widely known for a negative reason, such as a crime or scandal.",
+    "example": "The case brought the small town an unwelcome notoriety.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Numinous": {
+    "definition": "evoking spiritual awe.",
+    "fullDefinition": "Numinous describes an experience or place that suggests the presence of the divine or the mysterious.",
+    "example": "Visitors often describe a numinous quality in the vast, silent cathedral.",
+    "pos": "adjective",
+    "tier": 3
+  },
+  "Obeisance": {
+    "definition": "a gesture of homage or submission.",
+    "fullDefinition": "Obeisance is a bow or similar act expressing deep respect, or the attitude of deference such an act shows.",
+    "example": "Courtiers made deep obeisance as the empress entered the hall.",
+    "pos": "noun",
+    "tier": 3
+  },
+  "Oblique": {
+    "definition": "indirect; not straightforward.",
+    "fullDefinition": "Literally slanting, oblique in its GRE sense describes remarks or approaches that come at a subject sideways.",
+    "example": "Her oblique references to the scandal were clear only to those already in the know.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Oblivious": {
+    "definition": "unaware of one's surroundings.",
+    "fullDefinition": "Someone oblivious fails to notice what is happening around them, often because their attention is elsewhere.",
+    "example": "Absorbed in his calculations, the mathematician seemed oblivious to the commotion outside.",
+    "pos": "adjective",
+    "tier": 1
+  },
+  "Obscure": {
+    "definition": "little known; hard to make out.",
+    "fullDefinition": "Obscure describes a person or work that few have heard of, or something faint or unclear to perceive.",
+    "example": "The scholar rescued several obscure poets from centuries of neglect.",
+    "pos": "adjective",
+    "tier": 1
+  },
+  "Obtrusive": {
+    "definition": "noticeable in an unwelcome way.",
+    "fullDefinition": "Something obtrusive stands out so conspicuously that it intrudes on its surroundings.",
+    "example": "The new tower is an obtrusive presence on the city's historic skyline.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Ominous": {
+    "definition": "suggesting that harm is coming.",
+    "fullDefinition": "Ominous describes a sign, sound, or mood that seems to foreshadow trouble.",
+    "example": "An ominous silence followed the minister's announcement.",
+    "pos": "adjective",
+    "tier": 1
+  },
+  "Omniscient": {
+    "definition": "all-knowing.",
+    "fullDefinition": "Omniscient describes a being, or a narrator in fiction, with complete knowledge of everything.",
+    "example": "The novel's omniscient narrator reveals the private thoughts of every character.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Omnivorous": {
+    "definition": "taking in everything indiscriminately.",
+    "fullDefinition": "Omnivorous literally means eating all kinds of food; figuratively, it describes a wide, eager appetite for books or ideas.",
+    "example": "An omnivorous reader, she moved easily from ancient history to quantum physics.",
+    "pos": "adjective",
+    "tier": 3
+  },
+  "Onus": {
+    "definition": "a burden of responsibility.",
+    "fullDefinition": "The onus is the obligation that rests on a particular party, such as the duty to prove a claim.",
+    "example": "The onus is on the prosecution to prove guilt beyond reasonable doubt.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Opine": {
+    "definition": "to state as one's opinion.",
+    "fullDefinition": "To opine is to offer a view, often with an air of authority that may not be earned.",
+    "example": "The columnist opined that the reforms would do little to curb corruption.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Opulent": {
+    "definition": "luxuriously rich.",
+    "fullDefinition": "Opulent describes surroundings or a lifestyle marked by conspicuous wealth and lavish comfort.",
+    "example": "The opulent palace, with its gilded ceilings, stood in stark contrast to the poverty outside its gates.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Oracular": {
+    "definition": "cryptic yet authoritative.",
+    "fullDefinition": "Oracular describes pronouncements that sound wise and weighty but are mysterious or open to interpretation.",
+    "example": "The central banker's oracular statements left markets guessing about the next rate decision.",
+    "pos": "adjective",
+    "tier": 3
+  },
+  "Ostracize": {
+    "definition": "to exclude from a group.",
+    "fullDefinition": "To ostracize is to shut someone out of a community or circle, usually as a form of disapproval.",
+    "example": "Scientists who questioned the theory risked being ostracized by their colleagues.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Outstrip": {
+    "definition": "to surpass or exceed.",
+    "fullDefinition": "To outstrip is to go faster, further, or beyond something else in amount or achievement.",
+    "example": "Demand for the vaccine quickly outstripped the available supply.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Overbearing": {
+    "definition": "domineering; bossy.",
+    "fullDefinition": "An overbearing person imposes their will on others in an arrogant, unpleasant way.",
+    "example": "His overbearing manner in meetings discouraged junior staff from voicing objections.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Overt": {
+    "definition": "done openly, not concealed.",
+    "fullDefinition": "Overt describes actions or attitudes shown plainly rather than kept hidden.",
+    "example": "The memo was the first overt acknowledgment that the program had failed.",
+    "pos": "adjective",
+    "tier": 1
+  },
+  "Overwrought": {
+    "definition": "excessively agitated or elaborate.",
+    "fullDefinition": "Overwrought describes a person in a state of nervous excitement, or a style so ornate it strains for effect.",
+    "example": "The novel's overwrought prose buries a promising plot under layers of ornament.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Palatable": {
+    "definition": "acceptable; agreeable.",
+    "fullDefinition": "Palatable literally means pleasant to taste; more often it describes an idea or option that people can accept.",
+    "example": "The compromise made the tax increase more palatable to wary legislators.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Palpable": {
+    "definition": "so intense it seems tangible.",
+    "fullDefinition": "Palpable describes a feeling or quality so strong and evident that it can almost be touched.",
+    "example": "The tension in the courtroom was palpable as the jury filed back in.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Paltry": {
+    "definition": "contemptibly meager; trifling.",
+    "fullDefinition": "Paltry describes a sum or effort so meager that it seems worthless or contemptible.",
+    "example": "The workers rejected the paltry raise as an insult to their years of service.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Panacea": {
+    "definition": "a supposed cure for every problem.",
+    "fullDefinition": "A panacea is a remedy or solution claimed to fix all ills, usually with the implication that no such cure exists.",
+    "example": "Technology is often promoted as a panacea for education, though the results have been mixed.",
+    "pos": "noun",
+    "tier": 1
+  },
+  "Pander": {
+    "definition": "to gratify others' baser wishes.",
+    "fullDefinition": "To pander is to cater to the prejudices, fears, or low tastes of others in order to win their favor.",
+    "example": "The candidate was accused of pandering to voters' fears rather than addressing the facts.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Panoply": {
+    "definition": "a complete, impressive array.",
+    "fullDefinition": "A panoply is a full and splendid collection or display of many related things.",
+    "example": "The festival offered a panoply of performances, from string quartets to street theater.",
+    "pos": "noun",
+    "tier": 3
+  },
+  "Paradigm": {
+    "definition": "a prevailing framework of thought.",
+    "fullDefinition": "A paradigm is a model or set of assumptions that shapes how a field or society understands its subject.",
+    "example": "Darwin's theory replaced the paradigm of fixed, unchanging species.",
+    "pos": "noun",
+    "tier": 1
+  },
+  "Pariah": {
+    "definition": "a social outcast.",
+    "fullDefinition": "A pariah is a person or group shunned and rejected by the rest of society.",
+    "example": "After the scandal, the once-celebrated financier became a pariah in polite society.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Parity": {
+    "definition": "equality in status or amount.",
+    "fullDefinition": "Parity is the state of being equal, especially in pay, rank, or power.",
+    "example": "The union's central demand was pay parity between full-time and part-time staff.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Parochial": {
+    "definition": "narrowly local in outlook.",
+    "fullDefinition": "Parochial describes concerns or views limited to one's own small area, ignoring wider issues.",
+    "example": "Critics dismissed the council's objections as parochial, ignoring the regional benefits of the highway.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Parody": {
+    "definition": "an exaggerated, mocking imitation.",
+    "fullDefinition": "A parody copies the style of a work, genre, or person in an exaggerated way for comic effect.",
+    "example": "The sketch is a parody of self-help seminars, complete with a guru who cannot help himself.",
+    "pos": "noun",
+    "tier": 1
+  },
+  "Paroxysm": {
+    "definition": "a sudden violent outburst.",
+    "fullDefinition": "A paroxysm is an abrupt attack of emotion, laughter, or physical symptoms.",
+    "example": "The verdict provoked a paroxysm of rage among the defendant's supporters.",
+    "pos": "noun",
+    "tier": 3
+  },
+  "Pastiche": {
+    "definition": "a work imitating or mixing styles.",
+    "fullDefinition": "A pastiche borrows from the styles of other works or periods, sometimes in tribute and sometimes as a jumble.",
+    "example": "The building is a pastiche of Gothic arches, Moorish tiles, and modernist glass.",
+    "pos": "noun",
+    "tier": 3
+  },
+  "Patent": {
+    "definition": "plainly evident.",
+    "fullDefinition": "As an adjective, patent describes something so clear it cannot be denied; it is unrelated to the legal sense of an invention patent.",
+    "example": "The witness's account was a patent fabrication, contradicted by every piece of physical evidence.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Paternalistic": {
+    "definition": "restricting others for their supposed good.",
+    "fullDefinition": "Paternalistic describes authority that limits people's choices on the grounds that it knows what is best for them.",
+    "example": "Residents resented the paternalistic regulations that dictated even the color of their front doors.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Pathos": {
+    "definition": "a quality that arouses pity.",
+    "fullDefinition": "Pathos is the element in art, speech, or experience that stirs sympathy and sorrow.",
+    "example": "The actor brings real pathos to the role of the aging, forgotten composer.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Patrician": {
+    "definition": "of aristocratic rank or manner.",
+    "fullDefinition": "Patrician describes a person of high birth or someone whose bearing suggests refinement and privilege.",
+    "example": "His patrician bearing made it hard for voters to believe he understood their struggles.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Patronize": {
+    "definition": "to talk down to; treat as inferior.",
+    "fullDefinition": "To patronize, in its GRE sense, is to act kindly toward someone in a way that implies they are less capable.",
+    "example": "The consultant patronized the staff by explaining procedures they had followed for years.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Peccadillo": {
+    "definition": "a minor, forgivable fault.",
+    "fullDefinition": "A peccadillo is a small sin or lapse that is generally regarded as trivial.",
+    "example": "The press seized on the senator's peccadilloes while ignoring his serious conflicts of interest.",
+    "pos": "noun",
+    "tier": 3
+  },
+  "Pecuniary": {
+    "definition": "relating to money.",
+    "fullDefinition": "Pecuniary describes matters, losses, or motives that concern finances.",
+    "example": "The judge ruled that the plaintiff had suffered no pecuniary loss.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Pejorative": {
+    "definition": "expressing contempt; disparaging.",
+    "fullDefinition": "A pejorative word or phrase conveys disapproval or belittles whatever it describes.",
+    "example": "The term was once pejorative but has since been embraced by the movement it was meant to mock.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Pensive": {
+    "definition": "deeply, often sadly thoughtful.",
+    "fullDefinition": "Pensive describes a quiet, reflective mood, frequently tinged with melancholy.",
+    "example": "The portrait shows the poet in a pensive mood, gazing out across a gray sea.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Peremptory": {
+    "definition": "brusquely commanding; allowing no refusal.",
+    "fullDefinition": "Peremptory describes orders or a manner that demand immediate compliance and leave no room for discussion.",
+    "example": "Her peremptory dismissal of the proposal left no room for further debate.",
+    "pos": "adjective",
+    "tier": 3
+  },
+  "Peripatetic": {
+    "definition": "traveling from place to place.",
+    "fullDefinition": "Peripatetic describes a person or way of life that involves frequent moving or itinerant work.",
+    "example": "The peripatetic scholar taught at a dozen universities on three continents.",
+    "pos": "adjective",
+    "tier": 3
+  },
+  "Permeate": {
+    "definition": "to spread throughout.",
+    "fullDefinition": "To permeate is to pass into every part of something, whether a substance or an atmosphere.",
+    "example": "A sense of foreboding permeates the novel from its opening page.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Pernicious": {
+    "definition": "harmful in a subtle, gradual way.",
+    "fullDefinition": "Pernicious describes influences or effects that cause serious damage, often without being noticed at first.",
+    "example": "The pernicious effects of the misinformation became evident only years later.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Perpetuate": {
+    "definition": "to cause to continue indefinitely.",
+    "fullDefinition": "To perpetuate is to keep a belief, practice, or situation going, often one that should end.",
+    "example": "Textbooks that omit women scientists perpetuate the myth that science is a male pursuit.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Perquisite": {
+    "definition": "a benefit in addition to salary.",
+    "fullDefinition": "A perquisite is a privilege or advantage that comes with a position, beyond regular pay.",
+    "example": "A car and driver were among the perquisites of the ambassador's post.",
+    "pos": "noun",
+    "tier": 3
+  },
+  "Perturb": {
+    "definition": "to disturb or unsettle.",
+    "fullDefinition": "To perturb is to make someone anxious or to throw a system out of its normal state.",
+    "example": "The sudden drop in sales perturbed investors who had expected steady growth.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Petulant": {
+    "definition": "sulky and childishly peevish.",
+    "fullDefinition": "Petulant describes ill-tempered, sulking behavior, like that of a child denied its way.",
+    "example": "The star's petulant refusal to attend the premiere embarrassed the studio.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Philistine": {
+    "definition": "one indifferent or hostile to culture.",
+    "fullDefinition": "A philistine dismisses art, literature, and intellectual pursuits, valuing only the practical or material.",
+    "example": "The mayor was branded a philistine after proposing to sell the city's art collection to pay for parking.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Picayune": {
+    "definition": "petty; concerned with trifles.",
+    "fullDefinition": "Picayune describes objections, details, or people fixated on matters of little real importance.",
+    "example": "The editor's picayune objections to comma placement delayed publication by months.",
+    "pos": "adjective",
+    "tier": 3
+  },
+  "Pillory": {
+    "definition": "to expose to public denunciation.",
+    "fullDefinition": "To pillory is to subject someone to widespread public attack; the word comes from a wooden frame used to display offenders.",
+    "example": "The press pilloried the regulator for failing to anticipate the collapse.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Pique": {
+    "definition": "resentment from wounded pride.",
+    "fullDefinition": "Pique is a passing feeling of irritation caused by a slight to one's self-esteem.",
+    "example": "In a fit of pique, the composer withdrew his symphony from the festival.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Pittance": {
+    "definition": "a pitifully small payment.",
+    "fullDefinition": "A pittance is a very small amount of money, especially wages or an allowance that seem unfairly low.",
+    "example": "Translators were paid a pittance for work that took months.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Plaintive": {
+    "definition": "softly sorrowful in sound.",
+    "fullDefinition": "Plaintive describes a sound or voice that is mournful and wistful.",
+    "example": "The plaintive call of a loon echoed across the empty lake.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Plebeian": {
+    "definition": "common; lacking refinement.",
+    "fullDefinition": "Plebeian describes tastes or people associated with the ordinary masses, often used dismissively.",
+    "example": "The critic sneered at the novel's plebeian appeal, though readers adored it.",
+    "pos": "adjective",
+    "tier": 3
+  },
+  "Plenary": {
+    "definition": "complete; attended by all members.",
+    "fullDefinition": "Plenary describes powers that are unlimited, or a meeting that every member of a body is entitled to attend.",
+    "example": "The proposal will be debated at the plenary session, where every delegate may vote.",
+    "pos": "adjective",
+    "tier": 3
+  },
+  "Plumb": {
+    "definition": "to examine in depth.",
+    "fullDefinition": "To plumb is to explore something thoroughly, as if measuring the depth of water with a weighted line.",
+    "example": "The memoir plumbs the depths of the author's long struggle with depression.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Poignant": {
+    "definition": "keenly touching or moving.",
+    "fullDefinition": "Poignant describes something that evokes a sharp sense of sadness or regret.",
+    "example": "The film's most poignant scene shows the brothers reunited after forty years.",
+    "pos": "adjective",
+    "tier": 1
+  },
+  "Polarize": {
+    "definition": "to divide into opposing camps.",
+    "fullDefinition": "To polarize is to push opinions toward two sharply contrasting extremes.",
+    "example": "The debate over the dam polarized a community that had once been close-knit.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Polymath": {
+    "definition": "a person of wide-ranging learning.",
+    "fullDefinition": "A polymath has deep knowledge across many different subjects.",
+    "example": "A true polymath, she published in astronomy, music theory, and economics.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Ponderous": {
+    "definition": "weighty and dull in style.",
+    "fullDefinition": "Ponderous describes movement that is slow and heavy, or writing and speech that is labored and tedious.",
+    "example": "The ponderous prose of the report discouraged all but the most dedicated readers.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Pontificate": {
+    "definition": "to hold forth self-importantly.",
+    "fullDefinition": "To pontificate is to express opinions in a lecturing, dogmatic way, as though one's word were final.",
+    "example": "Rather than listen to the farmers, the consultant pontificated about agricultural theory.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Portend": {
+    "definition": "to be an omen of.",
+    "fullDefinition": "To portend is to signal that something, usually unwelcome, is about to happen.",
+    "example": "Economists feared the falling orders portended a long recession.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Poseur": {
+    "definition": "one who adopts a pose to impress.",
+    "fullDefinition": "A poseur affects an attitude, style, or expertise that is not genuine in order to impress others.",
+    "example": "Fellow painters regarded him as a poseur whose bohemian style masked a lack of talent.",
+    "pos": "noun",
+    "tier": 3
+  },
+  "Posit": {
+    "definition": "to put forward as a premise.",
+    "fullDefinition": "To posit is to propose something as a basis for argument or reasoning.",
+    "example": "The theory posits that language ability is partly innate.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Precedent": {
+    "definition": "an earlier case used as a guide.",
+    "fullDefinition": "A precedent is a prior decision or event that serves as an example or justification for later ones.",
+    "example": "The ruling set a precedent that later courts would follow for decades.",
+    "pos": "noun",
+    "tier": 1
+  },
+  "Precipitous": {
+    "definition": "dangerously steep.",
+    "fullDefinition": "Precipitous describes a sheer slope or, figuratively, a sudden and dramatic rise or fall.",
+    "example": "The precipitous decline in bee populations has alarmed agricultural scientists.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Preclude": {
+    "definition": "to rule out in advance.",
+    "fullDefinition": "To preclude is to make something impossible from the start, typically through an existing condition.",
+    "example": "His lack of a degree did not preclude him from becoming a respected historian.",
+    "pos": "verb",
+    "tier": 1
+  },
+  "Precocious": {
+    "definition": "showing unusually early development.",
+    "fullDefinition": "Precocious describes a child or talent that matures well ahead of the usual age.",
+    "example": "A precocious child, she was solving calculus problems at the age of nine.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Preeminent": {
+    "definition": "surpassing all others in distinction.",
+    "fullDefinition": "Preeminent describes the person or thing that ranks highest in importance or reputation.",
+    "example": "By midcentury, the city had become the preeminent center of the European art market.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Premonition": {
+    "definition": "an uneasy sense of coming harm.",
+    "fullDefinition": "A premonition is an intuitive feeling, not based on evidence, that something bad is about to occur.",
+    "example": "She had a premonition that the expedition would end badly, but she kept it to herself.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Preponderance": {
+    "definition": "superiority in number or weight.",
+    "fullDefinition": "A preponderance is the state of outweighing or outnumbering the alternatives.",
+    "example": "The preponderance of evidence suggests that the fire was set deliberately.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Prepossessing": {
+    "definition": "creating a favorable impression.",
+    "fullDefinition": "Prepossessing describes an appearance or manner that is attractive and wins approval at once; it is often used in the negative.",
+    "example": "The candidate was not especially prepossessing, but his grasp of policy impressed the panel.",
+    "pos": "adjective",
+    "tier": 3
+  },
+  "Preposterous": {
+    "definition": "absurdly contrary to reason.",
+    "fullDefinition": "Preposterous describes claims or ideas so unreasonable that they invite ridicule.",
+    "example": "The claim that the pyramids were built in a single summer is preposterous.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Prerogative": {
+    "definition": "an exclusive right or privilege.",
+    "fullDefinition": "A prerogative is a power or entitlement that belongs to a particular person, office, or group.",
+    "example": "Pardoning prisoners is the governor's prerogative, though it is rarely exercised.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Pretentious": {
+    "definition": "affecting unearned importance or culture.",
+    "fullDefinition": "Pretentious describes people or things that try to appear more sophisticated or significant than they are.",
+    "example": "The restaurant's pretentious menu described a simple salad in three paragraphs.",
+    "pos": "adjective",
+    "tier": 1
+  },
+  "Pretext": {
+    "definition": "a false reason concealing the real one.",
+    "fullDefinition": "A pretext is a stated justification offered to hide one's true motive.",
+    "example": "The border dispute served as a pretext for an invasion planned months earlier.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Primordial": {
+    "definition": "existing from the very beginning.",
+    "fullDefinition": "Primordial describes what is original or fundamental, dating from the earliest stage of time or development.",
+    "example": "Some scientists believe life emerged from a primordial soup of simple organic molecules.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Procrastinate": {
+    "definition": "to put off action needlessly.",
+    "fullDefinition": "To procrastinate is to delay doing something that should be done, often habitually.",
+    "example": "Writers who procrastinate often blame perfectionism rather than laziness.",
+    "pos": "verb",
+    "tier": 1
+  },
+  "Prodigious": {
+    "definition": "remarkably vast or impressive.",
+    "fullDefinition": "Prodigious describes size, extent, or ability so great that it inspires wonder.",
+    "example": "The young composer's prodigious output astonished her teachers.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Prodigy": {
+    "definition": "a remarkably gifted young person.",
+    "fullDefinition": "A prodigy is someone, usually a child, with exceptional talent far beyond their years.",
+    "example": "A chess prodigy, he defeated a grandmaster at the age of twelve.",
+    "pos": "noun",
+    "tier": 1
+  },
+  "Profane": {
+    "definition": "irreverent toward what is sacred.",
+    "fullDefinition": "Profane describes language or acts that show disrespect for religion, or, more neutrally, things that are secular rather than holy.",
+    "example": "Some worshippers considered the use of the cathedral as a concert venue profane.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Profligate": {
+    "definition": "given to shameless vice and excess.",
+    "fullDefinition": "Profligate describes a person who is morally dissolute or who squanders resources without restraint.",
+    "example": "The profligate heir squandered the family fortune within a decade.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Promulgate": {
+    "definition": "to proclaim officially.",
+    "fullDefinition": "To promulgate is to announce a law, decree, or doctrine publicly, putting it into effect or wide circulation.",
+    "example": "The new regulations were promulgated without any period for public comment.",
+    "pos": "verb",
+    "tier": 3
+  },
+  "Propinquity": {
+    "definition": "nearness in place or kinship.",
+    "fullDefinition": "Propinquity is physical closeness or a close relationship in nature or family.",
+    "example": "Studies suggest that propinquity, more than shared interests, predicts which neighbors become friends.",
+    "pos": "noun",
+    "tier": 3
+  },
+  "Proponent": {
+    "definition": "one who argues in favor of something.",
+    "fullDefinition": "A proponent puts forward and supports a proposal, theory, or cause.",
+    "example": "Proponents of the plan argue that it will reduce traffic without raising taxes.",
+    "pos": "noun",
+    "tier": 1
+  },
+  "Proselytize": {
+    "definition": "to try to convert others.",
+    "fullDefinition": "To proselytize is to urge others to adopt one's religion, political view, or other belief.",
+    "example": "Unlike his more zealous colleagues, the professor never proselytized for his theory in class.",
+    "pos": "verb",
+    "tier": 3
+  },
+  "Prostrate": {
+    "definition": "lying face down; overwhelmed.",
+    "fullDefinition": "Prostrate describes someone lying flat, often in submission or worship, or someone utterly overcome by grief or exhaustion.",
+    "example": "The pilgrims lay prostrate before the altar as the bells rang.",
+    "pos": "adjective",
+    "tier": 3
+  },
+  "Protean": {
+    "definition": "endlessly versatile in form.",
+    "fullDefinition": "Protean describes a person or thing able to take on many different shapes, roles, or styles.",
+    "example": "A protean performer, she moved from opera to comedy to experimental theater.",
+    "pos": "adjective",
+    "tier": 3
+  },
+  "Protract": {
+    "definition": "to prolong in time.",
+    "fullDefinition": "To protract is to draw something out so that it lasts longer than expected or necessary.",
+    "example": "Neither side wanted a protracted legal battle, yet the case dragged on for years.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Provenance": {
+    "definition": "place of origin; ownership history.",
+    "fullDefinition": "Provenance is the source of something, especially the documented chain of ownership of an artwork or artifact.",
+    "example": "Doubts about the painting's provenance led the museum to withdraw it from auction.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Provincial": {
+    "definition": "unsophisticated, as from a remote region.",
+    "fullDefinition": "Provincial describes manners or attitudes regarded as unworldly and limited, as if from outside the cultural center.",
+    "example": "Her urbane cousins mocked her provincial manners, but she soon outshone them all.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Provisional": {
+    "definition": "temporary until confirmed.",
+    "fullDefinition": "Provisional describes an arrangement put in place for the present, pending something more permanent.",
+    "example": "The provisional government promised elections within six months.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Prowess": {
+    "definition": "exceptional skill or ability.",
+    "fullDefinition": "Prowess is outstanding competence in a particular activity, originally bravery in battle.",
+    "example": "The general's tactical prowess was matched only by his indifference to his soldiers' welfare.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Proxy": {
+    "definition": "one authorized to act for another.",
+    "fullDefinition": "A proxy is a substitute who acts or votes on someone's behalf, or anything that stands in for something else.",
+    "example": "Shareholders who could not attend the meeting voted by proxy.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Prudish": {
+    "definition": "easily shocked by impropriety.",
+    "fullDefinition": "Prudish describes someone excessively concerned with modesty, especially in matters of sex.",
+    "example": "Victorian audiences were not as uniformly prudish as later caricatures suggest.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Pulchritude": {
+    "definition": "physical beauty.",
+    "fullDefinition": "Pulchritude is beauty of appearance; the word itself is often noted for sounding unattractive.",
+    "example": "The poet praised her pulchritude in verses that now seem embarrassingly overwrought.",
+    "pos": "noun",
+    "tier": 3
+  },
+  "Punctilious": {
+    "definition": "strictly attentive to etiquette.",
+    "fullDefinition": "Punctilious describes someone who observes every fine point of formality, protocol, or correct conduct.",
+    "example": "The punctilious ambassador insisted that every guest be seated according to rank.",
+    "pos": "adjective",
+    "tier": 3
+  },
+  "Pundit": {
+    "definition": "an expert who comments publicly.",
+    "fullDefinition": "A pundit is a commentator who offers opinions to the public, often in the media, on a field of expertise.",
+    "example": "Political pundits confidently predicted a landslide that never materialized.",
+    "pos": "noun",
+    "tier": 2
+  },
+  "Punitive": {
+    "definition": "intended to punish.",
+    "fullDefinition": "Punitive describes measures, damages, or policies designed to inflict a penalty.",
+    "example": "The court imposed punitive damages to deter similar misconduct.",
+    "pos": "adjective",
+    "tier": 2
+  },
+  "Purloin": {
+    "definition": "to steal.",
+    "fullDefinition": "To purloin is to take something that belongs to another, often stealthily.",
+    "example": "The spy purloined documents from the embassy over a period of several years.",
+    "pos": "verb",
+    "tier": 3
+  },
+  "Purport": {
+    "definition": "to claim, often falsely.",
+    "fullDefinition": "To purport is to appear or profess to be something, with the implication that the claim may not hold.",
+    "example": "The letter purports to be from the president, but historians doubt its authenticity.",
+    "pos": "verb",
+    "tier": 2
+  },
+  "Putative": {
+    "definition": "generally assumed; supposed.",
+    "fullDefinition": "Putative describes what is commonly believed or reputed to be so, without full proof.",
+    "example": "The putative father of the modern novel may in fact have borrowed heavily from earlier writers.",
+    "pos": "adjective",
+    "tier": 3
+  },
+  "Pyrrhic": {
+    "definition": "won at ruinous cost.",
+    "fullDefinition": "A Pyrrhic victory is one gained at such a heavy price that it is hardly better than defeat.",
+    "example": "The company's legal win proved a Pyrrhic victory, as the trial's expense drove it into bankruptcy.",
+    "pos": "adjective",
+    "tier": 3
+  }
+}
