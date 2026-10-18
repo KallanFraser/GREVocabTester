@@ -1,10 +1,15 @@
 /** @format */
-"use client";
 
-import React from "react";
-import "../../../styles/globals.css";
+import { Suspense } from "react";
 import PracticeMode from "../../../components/PracticeMode";
+import { ChoiceFallback } from "../../../components/choice/ChoiceQuiz";
 
+// The mode reads ?pack= through useSearchParams, which a static export can only
+// render on the client, below a Suspense boundary.
 export default function PracticeRoute() {
-	return <PracticeMode onBack={() => (window.location.href = "/")} />;
+	return (
+		<Suspense fallback={<ChoiceFallback variant="practice" />}>
+			<PracticeMode />
+		</Suspense>
+	);
 }

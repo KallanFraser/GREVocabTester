@@ -1,0 +1,247 @@
+/** @format */
+/* Daily review (components/ReviewMode.jsx), after Wortschatz's review session
+   and done screen. The header is .play-head from ui.css; buttons, .bar, .select
+   and kbd come from ui.css; tokens from globals.css. Scoped to .rv-page. */
+
+.rv-page {
+	min-height: 100vh;
+	min-height: 100dvh;
+}
+.rv-page .rv-stage {
+	padding: clamp(1.5rem, 8vh, 4.5rem) 1rem 3rem;
+}
+.rv-page .rv-wrap {
+	max-width: 640px;
+	margin: 0 auto;
+}
+.rv-page .rv-loading {
+	text-align: center;
+	color: var(--muted);
+}
+
+/* ---- Prompt ---- */
+.rv-page .rv-prompt {
+	text-align: center;
+	margin-bottom: 1.6rem;
+}
+.rv-page .rv-prompt-main {
+	font-size: clamp(2.2rem, 7vw, 3.2rem);
+	font-weight: 800;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	overflow-wrap: anywhere;
+}
+.rv-page .rv-prompt-main.def {
+	font-size: clamp(1.4rem, 4.6vw, 1.9rem);
+	font-weight: 700;
+	letter-spacing: -0.01em;
+	line-height: 1.3;
+}
+.rv-page .rv-prompt-hint {
+	margin-top: 0.4rem;
+	color: var(--muted);
+	font-size: 0.9rem;
+	font-style: italic;
+}
+
+/* ---- Answer ---- */
+.rv-page .rv-answer-row {
+	display: flex;
+	gap: 0.5rem;
+}
+.rv-page .rv-input {
+	flex: 1;
+	min-width: 0;
+	font: inherit;
+	font-size: 1.05rem;
+	color: var(--text);
+	background: rgba(255, 255, 255, 0.04);
+	border: 1px solid var(--line-strong);
+	border-radius: var(--r-md);
+	padding: 0.75rem 1rem;
+	outline: none;
+	transition: border-color 0.2s, background 0.2s;
+}
+.rv-page .rv-input:focus {
+	border-color: rgba(234, 87, 70, 0.7);
+}
+.rv-page .rv-input.ok {
+	border-color: var(--ok);
+	background: rgba(95, 211, 154, 0.08);
+}
+.rv-page .rv-input.bad {
+	border-color: var(--bad);
+	background: rgba(255, 107, 94, 0.08);
+}
+.rv-page .rv-input:disabled {
+	opacity: 1;
+	-webkit-text-fill-color: var(--text);
+}
+
+/* ---- Feedback ---- */
+.rv-page .rv-fb {
+	min-height: 3rem;
+	margin-top: 1rem;
+}
+.rv-page .rv-fb-line {
+	display: flex;
+	align-items: center;
+	gap: 0.55rem;
+	font-weight: 600;
+}
+/* A coloured dot rather than a check or cross glyph (no icons in chrome). */
+.rv-page .rv-fb-line::before {
+	content: "";
+	flex: none;
+	width: 0.6rem;
+	height: 0.6rem;
+	border-radius: 50%;
+	background: currentColor;
+}
+.rv-page .rv-fb-line.ok {
+	color: var(--ok);
+}
+.rv-page .rv-fb-line.bad {
+	color: var(--bad);
+}
+.rv-page .rv-fb-note {
+	margin: 0.4rem 0 0;
+	color: var(--soft);
+	font-size: 0.92rem;
+}
+.rv-page .rv-continue {
+	display: block;
+	margin: 1rem auto 0;
+	background: none;
+	border: 0;
+	padding: 0.3rem 0.5rem;
+	font: inherit;
+	font-size: 0.85rem;
+	color: var(--muted);
+	cursor: pointer;
+}
+.rv-page .rv-continue:hover {
+	color: var(--text);
+}
+
+/* ---- Word card after a miss ---- */
+.rv-page .rv-card {
+	margin-top: 0.9rem;
+	border: 1px solid var(--line-strong);
+	border-radius: var(--r-lg);
+	background: var(--panel);
+	padding: 1rem 1.2rem;
+}
+.rv-page .rv-card-head {
+	display: flex;
+	align-items: baseline;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+}
+.rv-page .rv-card-word {
+	font-size: 1.3rem;
+	font-weight: 700;
+	letter-spacing: -0.01em;
+}
+.rv-page .rv-card-pos {
+	color: var(--muted);
+	font-size: 0.85rem;
+	font-style: italic;
+}
+.rv-page .rv-card-def {
+	margin: 0.35rem 0 0;
+	font-weight: 600;
+}
+.rv-page .rv-card-full {
+	margin: 0.5rem 0 0;
+	color: var(--soft);
+	font-size: 0.94rem;
+	line-height: 1.5;
+}
+.rv-page .rv-card-ex {
+	margin: 0.6rem 0 0;
+	padding-top: 0.6rem;
+	border-top: 1px solid var(--line);
+	color: var(--muted);
+	font-size: 0.9rem;
+	font-style: italic;
+	line-height: 1.5;
+}
+
+/* ---- Done screen and empty state ---- */
+.rv-page .rv-done {
+	text-align: center;
+	border: 1px solid var(--line-strong);
+	border-radius: var(--r-lg);
+	background: var(--panel);
+	padding: 2rem 1.5rem;
+}
+.rv-page .rv-done.rv-empty {
+	border-style: dashed;
+	background: transparent;
+}
+.rv-page .rv-done h2 {
+	margin: 0 0 0.6rem;
+	font-size: 1.45rem;
+	letter-spacing: -0.01em;
+}
+.rv-page .rv-done p {
+	margin: 0 auto;
+	max-width: 30rem;
+	color: var(--soft);
+	line-height: 1.5;
+}
+.rv-page .rv-hero strong {
+	color: var(--text);
+	font-size: 1.15rem;
+	font-variant-numeric: tabular-nums;
+}
+.rv-page .rv-missed-title {
+	margin-top: 1.2rem !important;
+	font-size: 0.9rem;
+	color: var(--muted) !important;
+}
+.rv-page .rv-missed {
+	list-style: none;
+	margin: 0.6rem auto 0;
+	padding: 0;
+	max-width: 30rem;
+	text-align: left;
+}
+.rv-page .rv-missed li {
+	display: flex;
+	gap: 0.8rem;
+	justify-content: space-between;
+	padding: 0.5rem 0;
+	border-top: 1px solid var(--line);
+	font-size: 0.92rem;
+}
+.rv-page .rv-missed-word {
+	font-weight: 600;
+	flex: none;
+}
+.rv-page .rv-missed-def {
+	color: var(--muted);
+	text-align: right;
+	min-width: 0;
+}
+.rv-page .rv-acts {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 0.6rem;
+	margin-top: 1.4rem;
+}
+.rv-page .rv-acts a {
+	text-decoration: none;
+}
+
+@media (max-width: 560px) {
+	.rv-page .rv-answer-row {
+		flex-direction: column;
+	}
+	.rv-page .rv-done {
+		padding: 1.6rem 1.1rem;
+	}
+}

@@ -11,7 +11,8 @@
 		"generate:images": "node scripts/generate-images.js",
 		"test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test \"tests/**/*.test.mjs\"",
 		"vocab:validate": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/validate-vocab.js",
-		"vocab:stats": "node scripts/vocab-stats.js"
+		"vocab:stats": "node scripts/vocab-stats.js",
+		"packs:build": "node scripts/build-packs.js"
 	},
 	"keywords": [],
 	"author": "",

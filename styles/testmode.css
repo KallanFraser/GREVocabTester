@@ -1,0 +1,911 @@
+/** @format */
+/* Test mode (components/TestMode.jsx and components/test/*), ported from
+   Wortschatz's styles/testmode.css with the German-only blocks removed. The
+   header itself is components/PlayHeader.jsx (styles/ui.css). Everything that
+   lives in the page is scoped to .tm-page; the overlays that sit on <body>
+   (confetti, the flying word, the pip pop, the toast) and the Choose Words
+   dialog are top-level classes. Tokens come from styles/globals.css. */
+
+.tm-page {
+	position: relative;
+	min-height: 100vh;
+	min-height: 100dvh;
+	font-size: 15px;
+	line-height: 1.5;
+	color: var(--text);
+	padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.tm-page .tm-wrap {
+	width: min(1100px, 100% - 2rem);
+	margin-inline: auto;
+}
+.tm-page .sr,
+.tm-toast .sr {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+}
+
+/* ---- Header ---- */
+/* Holds the play header and the Harder caption, which hangs below it as an
+   overlay. */
+.tm-headwrap {
+	position: relative;
+	z-index: 3;
+}
+/* The header bar moves when a mastered word's copy lands in it, then glows.
+   Unclipped so the glow shows; the fill keeps its own rounded ends. */
+.tm-headwrap .tm-bar {
+	overflow: visible;
+}
+.tm-headwrap .tm-bar i {
+	transition: width 0.7s cubic-bezier(0.3, 1.2, 0.5, 1), background 0.3s, box-shadow 0.3s;
+}
+.tm-headwrap .tm-bar.glow i {
+	background: var(--ok);
+	box-shadow: 0 0 14px rgba(95, 211, 154, 0.8);
+}
+
+/* ---- Harder caption ---- */
+/* Shown for a few seconds each time a Harder run starts, then faded out. It
+   hangs just under the header as an overlay, so its exit never moves the page. */
+.tm-difficulty-desc {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	color: var(--muted);
+	font-size: 0.78rem;
+	margin: 0.4rem auto 0;
+	padding: 0 1rem;
+	text-align: center;
+	max-width: 640px;
+	pointer-events: none;
+	opacity: 1;
+	transition: opacity 1s ease;
+}
+.tm-difficulty-desc strong {
+	color: var(--soft);
+}
+.tm-difficulty-desc.fade {
+	opacity: 0;
+}
+
+/* ---- Stage: the pool-to-answer block is centred in the space the header
+   leaves. The Choose words / Reset links hang below it, out of flow, so they
+   do not pull it off centre. ---- */
+.tm-page.tm-test {
+	display: flex;
+	flex-direction: column;
+}
+.tm-page.tm-test > .tm-stage {
+	flex: 1 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 4rem 0;
+}
+.tm-page .tm-block {
+	position: relative;
+}
+.tm-page .tm-block > .tm-quiet {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	margin: 0;
+	padding-top: 1.25rem;
+}
+/* Short viewports (phones with the keyboard open): no centring, so the input
+   and Check stay near the top of what is visible. */
+@media (max-height: 699px) {
+	.tm-page.tm-test > .tm-stage {
+		justify-content: flex-start;
+		padding-top: clamp(1.5rem, 5vw, 3rem);
+	}
+}
+.tm-loading {
+	text-align: center;
+	color: var(--muted);
+}
+
+/* ---- Pool strip ---- */
+.tm-page .pool {
+	display: flex;
+	gap: 0.4rem;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-bottom: 1.6rem;
+}
+.tm-page .pool-item {
+	border: 1px solid var(--line);
+	border-radius: 10px;
+	padding: 0.35rem 0.6rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
+	min-width: 76px;
+	max-width: 11rem;
+	font-size: 0.78rem;
+	color: var(--muted);
+}
+.tm-page .pool-label {
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.tm-page .pool-item.cur {
+	border-color: var(--coral);
+	color: #fff;
+	background: rgba(234, 87, 70, 0.08);
+}
+.tm-page .pool-item.new {
+	animation: tm-pop 0.4s ease;
+}
+@keyframes tm-pop {
+	from {
+		transform: scale(0.85);
+		opacity: 0;
+	}
+}
+.tm-page .dots {
+	display: flex;
+	gap: 3px;
+}
+.tm-page .dots i {
+	width: 10px;
+	height: 4px;
+	border-radius: 2px;
+	background: rgba(255, 255, 255, 0.12);
+}
+.tm-page .dots i.on {
+	background: var(--coral);
+}
+.tm-page .pool-cap {
+	text-align: center;
+	color: var(--muted);
+	font-size: 0.78rem;
+	margin: -1rem 0 1.4rem;
+}
+
+/* ---- Prompt ---- */
+.tm-page .prompt {
+	text-align: center;
+}
+.tm-page .prompt-word {
+	display: inline-flex;
+	align-items: baseline;
+	justify-content: center;
+	flex-wrap: wrap;
+	max-width: 100%;
+}
+.tm-page .prompt-word .w {
+	display: inline-block;
+	font-size: clamp(2.6rem, 8vw, 4.2rem);
+	font-weight: 800;
+	letter-spacing: -0.04em;
+	line-height: 1.05;
+	max-width: 100%;
+	overflow-wrap: anywhere;
+}
+/* d2w: the short definition is the prompt. */
+.tm-page .prompt-def {
+	font-size: clamp(1.5rem, 4vw, 2.1rem);
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	max-width: 34rem;
+	margin: 0 auto;
+	line-height: 1.25;
+	overflow-wrap: anywhere;
+}
+.tm-page .prompt-hint {
+	color: var(--muted);
+	margin-top: 0.4rem;
+	display: flex;
+	gap: 0.6rem;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+/* Shrink-wrapped so the "+1" can be placed over a pip by index. */
+.tm-page .streak {
+	position: relative;
+	display: flex;
+	gap: 5px;
+	justify-content: center;
+	width: fit-content;
+	margin: 1rem auto 0;
+}
+.tm-page .streak i {
+	width: 30px;
+	height: 6px;
+	border-radius: 3px;
+	background: rgba(255, 255, 255, 0.1);
+	transition: background 0.3s;
+}
+.tm-page .streak i.on {
+	background: var(--coral);
+}
+
+/* ---- Answer motion ----
+   Nothing here holds the next card back. The correct-answer pop is an overlay
+   on <body> (components/test/MasteryFx.jsx, popPip), placed over the pip's
+   rect at grading time, so it plays on over the next card. */
+.tm-popfx {
+	position: fixed;
+	z-index: 42;
+	pointer-events: none;
+}
+.tm-popfx i {
+	position: absolute;
+	inset: 0;
+	border-radius: 3px;
+	opacity: 0;
+	animation: tm-pip-pop 0.6s cubic-bezier(0.3, 1.7, 0.45, 1);
+}
+@keyframes tm-pip-pop {
+	0% {
+		opacity: 1;
+		transform: scale(0.3, 1);
+		background: var(--ok);
+	}
+	40% {
+		opacity: 1;
+		transform: scale(1.35, 3.2);
+		background: #8be8b8;
+		box-shadow: 0 0 22px 4px rgba(95, 211, 154, 0.75);
+	}
+	100% {
+		opacity: 0;
+		transform: none;
+		background: var(--ok);
+	}
+}
+.tm-popfx span {
+	position: absolute;
+	top: -34px;
+	left: 50%;
+	width: 2.4em;
+	margin-left: -1.2em;
+	text-align: center;
+	font-size: 17px;
+	font-weight: 800;
+	color: var(--ok);
+	text-shadow: 0 0 14px rgba(95, 211, 154, 0.6);
+	pointer-events: none;
+	opacity: 0;
+	animation: tm-float-up 1s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+}
+@keyframes tm-float-up {
+	0% {
+		opacity: 0;
+		transform: translateY(10px) scale(0.6);
+	}
+	25% {
+		opacity: 1;
+		transform: translateY(0) scale(1.2);
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(-22px) scale(1);
+	}
+}
+/* Mastered: the pips turn green one after another. */
+.tm-page .streak.win i {
+	background: var(--ok);
+	transition-delay: calc(var(--i, 0) * 70ms);
+}
+.tm-page .prompt-word .w,
+.tm-page .prompt-def {
+	transition: color 0.3s, transform 0.45s cubic-bezier(0.3, 1.5, 0.5, 1), opacity 0.15s;
+}
+.tm-page .prompt-word .w.glow,
+.tm-page .prompt-def.glow {
+	/* --fx-glow (set on .prompt) is the advance delay, at most 0.85s: the glow
+	   belongs to the word being swapped out. */
+	animation: tm-word-glow var(--fx-glow, 0.85s) ease-out;
+}
+@keyframes tm-word-glow {
+	0% {
+		color: #d3f7e4;
+		text-shadow: 0 0 50px rgba(95, 211, 154, 0.8);
+		transform: scale(1.045);
+	}
+	100% {
+		color: var(--text);
+		text-shadow: none;
+		transform: none;
+	}
+}
+.tm-page .prompt-word .w.win,
+.tm-page .prompt-def.win {
+	color: var(--ok);
+	transform: scale(1.08);
+	text-shadow: 0 0 40px rgba(95, 211, 154, 0.45);
+}
+.tm-page .prompt-word .w.gone,
+.tm-page .prompt-def.gone {
+	opacity: 0;
+}
+
+/* Out of React's tree: the confetti canvas and the green copy of the word
+   flying into the header bar. */
+.tm-confetti {
+	position: fixed;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 40;
+	pointer-events: none;
+}
+.tm-ghost {
+	position: fixed;
+	z-index: 45;
+	pointer-events: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	white-space: nowrap;
+	transform-origin: center;
+	color: var(--ok);
+	text-shadow: 0 0 30px rgba(95, 211, 154, 0.5);
+}
+
+/* Mastery summary toast: a portal on <body>, fixed just under the answer box
+   (TestMode sets `top`), out of the layout and out of the way of clicks. It
+   shows for 1.6s, then .out fades it over 0.4s. */
+.tm-toast {
+	position: fixed;
+	left: 50%;
+	z-index: 44;
+	width: min(520px, calc(100vw - 2rem));
+	transform: translateX(-50%);
+	pointer-events: none;
+	transition: opacity 0.4s ease;
+	font-size: 15px;
+	line-height: 1.5;
+	color: var(--text);
+}
+.tm-toast.out {
+	opacity: 0;
+}
+.tm-toast .tm-mcard {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	width: 100%;
+	margin: 0;
+	padding: 1rem 1.25rem;
+	border: 1px solid rgba(95, 211, 154, 0.35);
+	border-radius: 16px;
+	background: rgba(10, 24, 15, 0.75);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+	text-align: left;
+	animation: tm-rise 0.5s 0.12s cubic-bezier(0.3, 1.4, 0.5, 1) both;
+}
+@keyframes tm-rise {
+	from {
+		opacity: 0;
+		transform: translateY(16px) scale(0.95);
+	}
+}
+.tm-toast .tm-mcard-md {
+	flex: none;
+	width: 46px;
+	height: 46px;
+	border-radius: 50%;
+	background: var(--ok);
+	color: #06210f;
+	display: grid;
+	place-items: center;
+	animation: tm-pop-in 0.5s 0.25s cubic-bezier(0.3, 1.8, 0.5, 1) both;
+}
+@keyframes tm-pop-in {
+	from {
+		transform: scale(0);
+	}
+}
+.tm-toast .tm-mcard-body {
+	min-width: 0;
+}
+.tm-toast .tm-mcard-word {
+	font-size: 1.2rem;
+	font-weight: 700;
+	overflow-wrap: anywhere;
+}
+.tm-toast .tm-mcard-meaning {
+	font-weight: 500;
+	color: var(--soft);
+}
+.tm-toast .tm-mcard-arrow {
+	color: var(--muted);
+	font-weight: 500;
+	margin: 0 0.4rem;
+}
+.tm-toast .tm-mcard-sub {
+	color: #9fdcbc;
+	font-size: 0.85rem;
+	margin-top: 2px;
+	font-variant-numeric: tabular-nums;
+}
+.tm-toast .tm-mcard-plus {
+	margin-left: auto;
+	flex: none;
+	font-weight: 800;
+	font-size: 1.25rem;
+	color: var(--ok);
+}
+@media (prefers-reduced-motion: reduce) {
+	.tm-page .pool-item.new,
+	.tm-page .prompt-word .w.glow,
+	.tm-page .prompt-def.glow,
+	.tm-toast .tm-mcard,
+	.tm-toast .tm-mcard-md {
+		animation: none;
+	}
+	/* popPip() starts nothing under reduced motion; this is a backstop. */
+	.tm-popfx {
+		display: none;
+	}
+	.tm-page .prompt-word .w.win,
+	.tm-page .prompt-def.win {
+		transform: none;
+	}
+}
+
+/* ---- Answer ---- */
+.tm-page .answer {
+	margin: 2rem auto 0;
+	max-width: 520px;
+}
+.tm-page .answer-row {
+	display: flex;
+	gap: 0.5rem;
+}
+.tm-page .answer-input {
+	flex: 1;
+	min-width: 0;
+	background: rgba(0, 0, 0, 0.45);
+	border: 1px solid var(--line-strong);
+	border-radius: 12px;
+	padding: 0.9rem 1rem;
+	font: inherit;
+	font-size: 1.1rem;
+	color: var(--text);
+}
+.tm-page .answer-input:focus {
+	outline: none;
+	border-color: rgba(234, 87, 70, 0.7);
+}
+.tm-page .answer-input.ok {
+	border-color: var(--ok);
+}
+.tm-page .answer-input.bad {
+	border-color: var(--bad);
+}
+.tm-page .answer-row .btn-p {
+	flex: none;
+	border-radius: 12px;
+	padding-inline: 1.2rem;
+}
+
+/* ---- Feedback ----
+   Fixed height, sized for the wrong-answer card, so the block does not move
+   when feedback appears. A longer card grows downward. */
+.tm-page .fb {
+	margin-top: 1.1rem;
+	min-height: 13rem;
+}
+.tm-page .fb-line {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	justify-content: center;
+	flex-wrap: wrap;
+	font-weight: 600;
+	text-align: center;
+}
+.tm-page .fb-line.bad {
+	color: var(--bad);
+}
+.tm-page .fb-icon {
+	flex: none;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	display: grid;
+	place-items: center;
+	border: 1px solid currentColor;
+}
+.tm-page .fb-spelled {
+	text-align: center;
+	color: var(--soft);
+	margin: 0.5rem 0 0;
+}
+.tm-page .fb-spelled strong {
+	color: var(--text);
+}
+.tm-page .fb-card {
+	margin-top: 1rem;
+	border: 1px solid var(--line-strong);
+	border-radius: 14px;
+	background: var(--panel);
+	padding: 1rem 1.1rem;
+	text-align: left;
+	overflow-wrap: anywhere;
+}
+.tm-page .fb-card .hw {
+	font-size: 1.35rem;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	line-height: 1.3;
+}
+.tm-page .fb-card .gloss {
+	color: var(--soft);
+	margin: 0.15rem 0 0.7rem;
+}
+.tm-page .fb-card .gloss strong {
+	color: var(--text);
+}
+.tm-page .fb-card .pos {
+	color: var(--muted);
+}
+.tm-page .fb-card .full {
+	margin: 0 0 0.7rem;
+	color: var(--soft);
+	font-size: 0.95rem;
+}
+.tm-page .fb-card .ex {
+	border-top: 1px solid var(--line);
+	padding-top: 0.7rem;
+}
+.tm-page .fb-card .ex-label {
+	display: block;
+	color: var(--muted);
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	margin-bottom: 0.2rem;
+}
+.tm-page .fb-card .ex p {
+	margin: 0;
+	font-style: italic;
+	color: var(--text);
+}
+
+/* Manual wait: a quiet cue that is also clickable. */
+.tm-page .continue-hint {
+	display: block;
+	margin: 0.9rem auto 0;
+	padding: 0.2rem 0.4rem;
+	border: 0;
+	background: none;
+	font: inherit;
+	font-size: 0.84rem;
+	color: var(--muted);
+	cursor: pointer;
+}
+.tm-page .continue-hint:hover {
+	color: #fff;
+}
+
+/* Choose words and Reset progress, quiet, under the answer area. */
+.tm-page .tm-quiet {
+	display: flex;
+	gap: 0.6rem;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+/* ---- Normal completion ---- */
+.tm-page .done-screen {
+	text-align: center;
+	max-width: 520px;
+	margin: 0 auto;
+	padding: 2rem 0;
+}
+.tm-page .done-screen h2 {
+	font-size: clamp(2.2rem, 6vw, 3.2rem);
+	letter-spacing: -0.04em;
+	line-height: 1.1;
+	margin: 0 0 0.5rem;
+}
+.tm-page .done-screen p {
+	color: var(--soft);
+	margin: 0;
+}
+.tm-page .done-stats {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 1.2rem 2.2rem;
+	margin: 1.5rem 0;
+}
+.tm-page .done-stats strong {
+	display: block;
+	font-size: 1.6rem;
+	font-variant-numeric: tabular-nums;
+}
+.tm-page .done-stats span {
+	color: var(--muted);
+	font-size: 0.82rem;
+}
+.tm-page .done-acts {
+	display: flex;
+	gap: 0.5rem;
+	justify-content: center;
+	flex-wrap: wrap;
+	align-items: center;
+	margin-top: 1.5rem;
+}
+.tm-page .done-stats + .done-acts {
+	margin-top: 0;
+}
+
+/* ---- Harder session summary (components/test/SessionSummary.jsx) ---- */
+.tm-page .ss {
+	text-align: center;
+	max-width: 560px;
+	margin: 0 auto;
+	padding: 2rem 0;
+}
+.tm-page .ss h2 {
+	font-size: clamp(1.8rem, 5vw, 2.4rem);
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	margin: 0 0 1.5rem;
+}
+.tm-page .ss-hero {
+	margin-bottom: 1.6rem;
+}
+.tm-page .ss-hero-score {
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+}
+.tm-page .ss-hero-num {
+	font-size: clamp(3rem, 10vw, 4.5rem);
+	font-weight: 800;
+	letter-spacing: -0.04em;
+	line-height: 1;
+	font-variant-numeric: tabular-nums;
+}
+.tm-page .ss-hero-sep {
+	font-size: clamp(1.6rem, 5vw, 2.2rem);
+	color: var(--muted);
+	font-weight: 600;
+}
+.tm-page .ss-hero-max {
+	font-size: clamp(1.8rem, 6vw, 2.6rem);
+	color: var(--soft);
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+}
+.tm-page .ss-hero-pct {
+	align-self: center;
+	margin-left: 0.3rem;
+	padding: 0.25rem 0.65rem;
+	border-radius: 999px;
+	background: rgba(234, 87, 70, 0.14);
+	border: 1px solid rgba(234, 87, 70, 0.35);
+	color: var(--coral-light);
+	font-size: 1rem;
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+}
+.tm-page .ss-hero-label {
+	margin: 0.5rem 0 0;
+	color: var(--muted);
+}
+.tm-page .ss-stats {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 1.2rem 2.2rem;
+	margin: 0 0 1.8rem;
+}
+.tm-page .ss-stats strong {
+	display: block;
+	font-size: 1.4rem;
+	font-variant-numeric: tabular-nums;
+}
+.tm-page .ss-stats span {
+	color: var(--muted);
+	font-size: 0.82rem;
+}
+.tm-page .ss-perfect {
+	margin: 0 0 1.8rem;
+	padding: 1.6rem 1rem;
+	border: 1px solid rgba(95, 211, 154, 0.3);
+	border-radius: var(--r-lg);
+	background: rgba(95, 211, 154, 0.07);
+}
+.tm-page .ss-perfect-icon {
+	display: grid;
+	place-items: center;
+	color: var(--ok);
+	margin-bottom: 0.4rem;
+}
+.tm-page .ss-perfect-title {
+	font-weight: 700;
+	font-size: 1.1rem;
+	margin: 0 0 0.3rem;
+	color: var(--text);
+}
+.tm-page .ss-perfect-body {
+	margin: 0;
+	color: var(--soft);
+}
+.tm-page .ss-missed {
+	text-align: left;
+	margin: 0 0 1.8rem;
+}
+.tm-page .ss-missed-label {
+	text-align: center;
+	color: var(--muted);
+	font-size: 0.82rem;
+	margin: 0 0 0.7rem;
+}
+.tm-page .ss-missed-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	max-height: 22rem;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+}
+.tm-page .ss-missed-list li {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	align-items: center;
+	gap: 0.1rem 0.8rem;
+	padding: 0.65rem 0.9rem;
+	border: 1px solid var(--line);
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.03);
+}
+.tm-page .ss-missed-word {
+	grid-column: 1;
+	font-weight: 700;
+	font-size: 1.02rem;
+	overflow-wrap: anywhere;
+}
+.tm-page .ss-missed-gloss {
+	grid-column: 1;
+	color: var(--muted);
+	font-size: 0.84rem;
+	overflow-wrap: anywhere;
+}
+.tm-page .ss-missed-badge {
+	grid-column: 2;
+	grid-row: 1 / span 2;
+	min-width: 2.2rem;
+	padding: 0.2rem 0.5rem;
+	border-radius: 999px;
+	background: rgba(234, 87, 70, 0.14);
+	border: 1px solid rgba(234, 87, 70, 0.3);
+	color: var(--coral-light);
+	font-size: 0.78rem;
+	font-weight: 700;
+	text-align: center;
+	font-variant-numeric: tabular-nums;
+	align-self: center;
+	justify-self: end;
+}
+.tm-page .ss-acts {
+	display: flex;
+	gap: 0.6rem;
+	justify-content: center;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+/* ---- Choose Words modal (components/test/ChooseWords.jsx) ---- */
+.dialog.cw {
+	width: min(560px, 100%);
+	max-height: 85vh;
+	max-height: 85dvh;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+.dialog.cw .cw-desc {
+	margin-bottom: 0.8rem;
+}
+.cw-tools {
+	display: flex;
+	gap: 0.4rem;
+	margin-bottom: 0.7rem;
+	flex-wrap: wrap;
+}
+.cw-tools input {
+	flex: 1;
+	min-width: 140px;
+	background: rgba(0, 0, 0, 0.4);
+	border: 1px solid var(--line-strong);
+	border-radius: 10px;
+	padding: 0.5rem 0.75rem;
+	font: inherit;
+	color: var(--text);
+}
+.cw-tools input:focus {
+	outline: none;
+	border-color: rgba(234, 87, 70, 0.7);
+}
+.cw-list {
+	overflow: auto;
+	border: 1px solid var(--line);
+	border-radius: 12px;
+	flex: 1;
+	min-height: 0;
+	overscroll-behavior: contain;
+}
+.cw-list label {
+	display: grid;
+	grid-template-columns: auto minmax(0, auto) minmax(0, 1fr);
+	gap: 0.7rem;
+	align-items: center;
+	padding: 0.55rem 0.8rem;
+	border-bottom: 1px solid var(--line);
+	cursor: pointer;
+}
+.cw-list label:last-child {
+	border-bottom: 0;
+}
+.cw-list label:hover {
+	background: rgba(255, 255, 255, 0.03);
+}
+.cw-list input {
+	accent-color: var(--coral);
+	width: 16px;
+	height: 16px;
+}
+.cw-list .cw-word {
+	font-weight: 600;
+}
+.cw-list .cw-def {
+	color: var(--muted);
+	font-size: 0.85rem;
+	text-align: right;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.cw-empty {
+	margin: 0;
+	padding: 1rem;
+	color: var(--muted);
+	text-align: center;
+}
+.cw-foot {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.6rem;
+	margin-top: 0.9rem;
+	flex-wrap: wrap;
+}
+.cw-foot .count {
+	font-size: 0.85rem;
+	color: var(--muted);
+}
+.cw-foot .count.warn {
+	color: var(--coral-light);
+}
+@media (max-width: 480px) {
+	.cw-foot .dialog-actions {
+		width: 100%;
+	}
+}

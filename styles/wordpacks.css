@@ -1,341 +1,1285 @@
 /** @format */
 /* =====================================================================
-   Wordpacks — overhauled. Coral as an accent, not the dominant color.
-   Pairs with the polished home-page tile + feature-card system.
+   /wordpacks: header, the "Up next" panel with the learning path, the
+   sticky toolbar, the collapsible pack list and the pack builder
+   (app/wordpacks/page.jsx, components/packs/*). Ported from Wortschatz's
+   styles/pack-list.css; buttons outside the rows are the shared .btn-*
+   from styles/ui.css.
+
+   Every flex row wraps and every grid track can shrink, so nothing here can
+   push the page sideways at 360px.
    ===================================================================== */
 
-/* Scoped tokens */
-#wordpacks {
-	--wp-radius: 16px;
-	--wp-radius-pill: 999px;
-	--wp-border: var(--glass-border, rgba(255, 255, 255, 0.08));
-	--wp-border-strong: rgba(255, 255, 255, 0.16);
-	--wp-surface: linear-gradient(180deg, rgba(24, 24, 26, 0.78), rgba(14, 14, 16, 0.85));
-	--wp-surface-hover: linear-gradient(180deg, rgba(30, 30, 32, 0.85), rgba(16, 16, 18, 0.9));
-	--wp-text: rgba(255, 255, 255, 0.96);
-	--wp-text-soft: rgba(255, 255, 255, 0.66);
-	--wp-text-muted: rgba(255, 255, 255, 0.5);
-	--wp-coral: var(--coral, #ea5746);
-	--wp-coral-light: var(--coral-light, #ff8a7a);
-
-	position: relative;
-	min-height: 100dvh;
-	padding: 0 clamp(14px, 3vw, 28px) 32px;
-	padding-top: 88px; /* offset for fixed navbar */
-	display: grid;
-	gap: 10px;
-	color: var(--wp-text);
-}
-
-/* ===================== Background mesh ===================== */
-/* Cool, desaturated. Just enough motion to feel alive — not warm and pulsing. */
-#wordpacks .mesh {
-	position: absolute;
-	inset: -20vmax;
-	z-index: -1;
-	background:
-		radial-gradient(55vmax 45vmax at 12% 12%, rgba(100, 181, 255, 0.07), transparent 60%),
-		radial-gradient(50vmax 40vmax at 88% 88%, rgba(234, 87, 70, 0.05), transparent 60%);
-	filter: blur(56px);
-	animation: wp-drift 22s ease-in-out infinite alternate;
-}
-@keyframes wp-drift {
-	0% { transform: translate(-1.5%, -1%) scale(1.02); }
-	100% { transform: translate(1.5%, 1%) scale(1.05); }
-}
-@media (prefers-reduced-motion: reduce) {
-	#wordpacks .mesh { animation: none; }
+.packs-page {
+	--pl-text: #f0f0f2;
+	--pl-soft: #c4c4c8;
+	--pl-muted: #8a8a8e;
+	--pl-green: var(--ok, #5fd39a);
+	--pl-coral: var(--coral, #ea5746);
+	--pl-coral-light: var(--coral-light, #ff8a7a);
+	--pl-line: rgba(255, 255, 255, 0.08);
+	--pl-line-strong: rgba(255, 255, 255, 0.16);
+	--pl-ring: 2px solid rgba(100, 181, 255, 0.8);
+	--pl-nav-h: 64px; /* the fixed navbar, styles/navbar.css */
+	min-height: 100vh;
+	padding: calc(var(--pl-nav-h) + 2.2rem) 0 4rem;
+	color: var(--pl-text);
 }
 
 /* ===================== Header ===================== */
-#wordpacks .wp-header {
-	width: min(1100px, 96%);
-	margin: clamp(1.5rem, 4vw, 3rem) auto 1.25rem;
+.packs-page .pk-header {
+	width: min(1320px, 96%);
+	margin: 0 auto 1.6rem;
 }
-#wordpacks .wp-header h1 {
-	position: relative;
-	margin: 0;
-	padding-left: 14px;
-	font-size: clamp(1.9rem, 3.5vw, 2.5rem);
+.packs-page .pk-header h1 {
+	margin: 0 0 0.5rem;
+	font-size: clamp(1.9rem, 4vw, 2.6rem);
 	font-weight: 800;
-	letter-spacing: -0.02em;
-	line-height: 1.05;
-	color: #fff;
+	letter-spacing: -0.03em;
+	line-height: 1.15;
 }
-/* Editorial side-bar marker — replaces the heavy underline + red glow */
-#wordpacks .wp-header h1::before {
-	content: "";
-	position: absolute;
-	left: 0;
-	top: 0.18em;
-	bottom: 0.18em;
-	width: 3px;
-	border-radius: 3px;
-	background: linear-gradient(to bottom, var(--wp-coral), rgba(234, 87, 70, 0.15));
+.packs-page .pk-header .sub {
+	max-width: 68ch;
+	margin: 0;
+	font-size: 1rem;
+	line-height: 1.6;
+	color: var(--pl-soft);
 }
-#wordpacks .wp-header .sub {
-	margin: 0.75rem 0 0;
-	padding-left: 14px;
-	font-size: 0.98rem;
-	line-height: 1.5;
-	color: var(--wp-text-soft);
-	max-width: 56ch;
+.packs-page .pk-header-meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem 1.4rem;
+	margin-top: 1rem;
+}
+.packs-page .pk-meta {
+	margin: 0;
+	font-size: 0.85rem;
+	color: var(--pl-muted);
+	font-variant-numeric: tabular-nums;
+}
+.packs-page .pk-build {
+	margin-left: auto;
+}
+.packs-page .pk-center {
+	text-align: center;
+}
+/* An empty live region takes no room. */
+.packs-page .pk-notice {
+	margin: 0;
+	font-size: 0.88rem;
+	color: var(--pl-green);
+}
+.packs-page .pk-notice:empty {
+	display: none;
 }
 
-/* ===================== Grid ===================== */
-#wordpacks .grid {
-	width: min(1100px, 96%);
+/* ===================== Loading, error and empty states ===================== */
+.packs-page .pk-status {
+	display: grid;
+	justify-items: center;
+	gap: 0.9rem;
+	padding: 3rem 1rem;
+	border: 1px solid var(--pl-line);
+	border-radius: 16px;
+	background: rgba(255, 255, 255, 0.015);
+	color: var(--pl-soft);
+	text-align: center;
+}
+.packs-page .pk-status p {
+	margin: 0;
+}
+.packs-page .pk-spinner {
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	border: 3px solid rgba(255, 255, 255, 0.12);
+	border-top-color: var(--pl-coral);
+	animation: pk-spin 0.9s linear infinite;
+}
+@keyframes pk-spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.packs-page .pl-page {
+	/* Wide enough for the single-line row (medals, two rails and the buttons). */
+	width: min(1320px, 96%);
 	margin: 0 auto 24px;
 	display: grid;
-	gap: 14px;
-	grid-template-columns: repeat(3, 1fr);
-}
-@media (max-width: 1100px) {
-	#wordpacks .grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 680px) {
-	#wordpacks .grid { grid-template-columns: 1fr; }
+	gap: 1.1rem;
+	min-width: 0;
+	/* Set from the toolbar's measured height by the page; a fallback here. */
+	--pl-toolbar-h: 64px;
 }
 
-/* ===================== Card ===================== */
-#wordpacks .card {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	gap: 0.6rem;
-	min-height: 200px;
-	padding: 1rem 1.1rem 1rem;
-	border-radius: var(--wp-radius);
-	color: var(--wp-text);
-	background: var(--wp-surface);
-	border: 1px solid var(--wp-border);
-	box-shadow:
-		inset 0 1px 0 rgba(255, 255, 255, 0.05),
-		0 8px 24px rgba(0, 0, 0, 0.35);
-	backdrop-filter: blur(10px);
-	-webkit-backdrop-filter: blur(10px);
-	transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-		border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-	cursor: pointer;
+/* ===================== Shared pieces ===================== */
+.packs-page .pl-bar {
+	height: 5px;
+	border-radius: 3px;
+	background: rgba(255, 255, 255, 0.08);
 	overflow: hidden;
-	isolation: isolate;
 }
-
-/* Subtle top-edge highlight — matches home-page tile system */
-#wordpacks .card::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 70%;
-	height: 1px;
-	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
-	pointer-events: none;
-	transition: opacity 0.25s ease, background 0.25s ease;
+.packs-page .pl-bar > i {
+	display: block;
+	height: 100%;
+	border-radius: 3px;
+	background: var(--pl-coral);
+	transition: width 240ms ease;
 }
-
-#wordpacks .card:hover {
-	transform: translateY(-3px);
-	border-color: rgba(234, 87, 70, 0.32);
-	background: var(--wp-surface-hover);
-	box-shadow:
-		inset 0 1px 0 rgba(255, 255, 255, 0.08),
-		0 16px 38px rgba(0, 0, 0, 0.5),
-		0 0 0 1px rgba(234, 87, 70, 0.08);
+.packs-page .pl-bar.is-done > i {
+	background: var(--pl-green);
 }
-#wordpacks .card:hover::before {
-	background: linear-gradient(90deg, transparent, rgba(234, 87, 70, 0.55), transparent);
-	width: 80%;
+.packs-page .pl-tag {
+	font-size: 0.74rem;
+	font-weight: 500;
+	line-height: 1.5;
+	border-radius: 999px;
+	padding: 0.05rem 0.5rem;
+	border: 1px solid var(--pl-line);
+	color: var(--pl-muted);
+	white-space: nowrap;
 }
-
-#wordpacks .card:focus-visible {
-	outline: var(--ring, 2px solid rgba(100, 181, 255, 0.9));
+.packs-page .pl-bp,
+.packs-page .pl-bs {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	border-radius: 9px;
+	padding: 0.45rem 0.95rem;
+	font: inherit;
+	font-size: 0.86rem;
+	line-height: 1.4;
+	text-decoration: none;
+	white-space: nowrap;
+	cursor: pointer;
+	transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+}
+.packs-page .pl-bp {
+	border: 1px solid rgba(234, 87, 70, 0.7);
+	background: linear-gradient(180deg, #f06554, #d6483a);
+	color: #fff;
+	font-weight: 600;
+}
+.packs-page .pl-bp:hover {
+	background: linear-gradient(180deg, #f3725f, #dc5142);
+}
+.packs-page .pl-bs {
+	border: 1px solid var(--pl-line-strong);
+	background: rgba(255, 255, 255, 0.03);
+	color: var(--pl-soft);
+	padding-inline: 0.75rem;
+	font-size: 0.84rem;
+}
+.packs-page .pl-bs:hover {
+	color: #fff;
+	background: rgba(255, 255, 255, 0.07);
+}
+.packs-page .pl-link {
+	border: 0;
+	background: none;
+	padding: 0;
+	font: inherit;
+	font-size: inherit;
+	color: var(--pl-muted);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	cursor: pointer;
+}
+.packs-page .pl-link:hover {
+	color: #fff;
+}
+.packs-page .pl-bp:focus-visible,
+.packs-page .pl-bs:focus-visible,
+.packs-page .pl-link:focus-visible,
+.packs-page .un-step:focus-visible,
+.packs-page .pl-cat-toggle:focus-visible,
+.packs-page .pl-fav:focus-visible,
+.packs-page .pl-chip:focus-visible,
+.packs-page .pl-rail-act:focus-visible {
+	outline: var(--pl-ring);
 	outline-offset: 2px;
+	border-radius: 6px;
+}
+.packs-page .pl-icon {
+	flex: none;
 }
 
-/* ===================== Card content ===================== */
-#wordpacks .card__top {
-	display: grid;
-	grid-template-columns: 1fr auto;
-	align-items: start;
-	gap: 0.75rem;
+/* Favorite toggle: an outlined heart, filled coral when on. */
+.pl-fav {
+	flex: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 26px;
+	height: 26px;
+	padding: 0;
+	border: 0;
+	border-radius: 6px;
+	background: none;
+	color: var(--pl-muted, #8a8a8e);
+	cursor: pointer;
+	transition: color 140ms ease, background 140ms ease;
 }
-#wordpacks .title {
+.pl-fav:hover {
+	color: #fff;
+	background: rgba(255, 255, 255, 0.06);
+}
+.pl-fav.is-on {
+	color: var(--pl-coral, #ea5746);
+}
+
+/* ===================== Shared pack offer (?words=) ===================== */
+.packs-page .pk-shared {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem 1.5rem;
+	min-width: 0;
+	padding: 1.2rem 1.4rem;
+	border-radius: 16px;
+	border: 1px solid rgba(100, 181, 255, 0.35);
+	background: rgba(100, 181, 255, 0.06);
+}
+.packs-page .pk-shared-text {
+	flex: 1 1 320px;
+	min-width: 0;
+}
+.packs-page .pk-shared-kicker {
 	margin: 0;
-	font-size: 1.08rem;
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: #9ccfff;
+}
+.packs-page .pk-shared-title {
+	margin: 0.15rem 0 0.3rem;
+	font-size: 1.15rem;
 	font-weight: 700;
-	letter-spacing: -0.01em;
-	line-height: 1.25;
-	color: rgba(255, 255, 255, 0.96);
+	line-height: 1.35;
+}
+.packs-page .pk-shared-words {
+	margin: 0;
+	font-size: 0.88rem;
+	color: var(--pl-soft);
+	overflow-wrap: anywhere;
+}
+.packs-page .pk-shared-note {
+	margin: 0.35rem 0 0;
+	font-size: 0.82rem;
+	color: var(--pl-muted);
+}
+.packs-page .pk-shared-actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem;
 }
 
-#wordpacks .desc {
+/* ===================== Up next + learning path ===================== */
+.packs-page .un {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+	gap: 2rem;
+	min-width: 0;
+	padding: 1.5rem;
+	border-radius: 20px;
+	border: 1px solid rgba(234, 87, 70, 0.3);
+	background: linear-gradient(180deg, rgba(40, 23, 20, 0.75), rgba(16, 10, 9, 0.85));
+	scroll-margin-top: calc(var(--pl-nav-h) + 16px);
+}
+.packs-page .un-main,
+.packs-page .un-pathcol {
+	min-width: 0;
+}
+.packs-page .un-kicker {
 	margin: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.15rem 0.6rem;
+	color: var(--pl-coral-light);
+	font-size: 0.86rem;
+	font-weight: 600;
+}
+.packs-page .un-kicker-sub {
+	color: var(--pl-muted);
+	font-weight: 500;
+}
+.packs-page .un-titleline {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	min-width: 0;
+}
+.packs-page .un-title {
+	margin: 0.1rem 0 0.4rem;
+	min-width: 0;
+	font-size: 1.55rem;
+	font-weight: 700;
+	letter-spacing: -0.03em;
+	line-height: 1.25;
+	color: var(--pl-text);
+	overflow-wrap: anywhere;
+}
+.packs-page .un-desc {
+	margin: 0 0 1rem;
 	font-size: 0.92rem;
 	line-height: 1.5;
-	color: var(--wp-text-soft);
-	display: -webkit-box;
-	-webkit-line-clamp: 3;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
-	flex: 1;
+	color: var(--pl-soft);
+	overflow-wrap: anywhere;
 }
-
-/* ===================== Chips ===================== */
-#wordpacks .meta {
-	display: flex;
-	gap: 0.5rem;
-	flex-wrap: wrap;
-	margin: 0;
+.packs-page .un-pending {
+	color: var(--pl-muted);
 }
-#wordpacks .chip {
-	padding: 0.28rem 0.7rem;
-	font-size: 0.78rem;
-	font-weight: 500;
-	line-height: 1;
-	border-radius: var(--wp-radius-pill);
-	border: 1px solid rgba(255, 255, 255, 0.1);
-	background: rgba(255, 255, 255, 0.035);
-	color: rgba(255, 255, 255, 0.78);
-	letter-spacing: 0;
+.packs-page .un-bar {
+	max-width: 360px;
+	height: 7px;
+	margin-bottom: 0.4rem;
 }
-/* Word-count chip = the primary fact, gets a quiet coral whisper */
-#wordpacks .chip:first-child {
-	border-color: rgba(234, 87, 70, 0.28);
-	background: rgba(234, 87, 70, 0.08);
-	color: rgba(255, 200, 195, 0.95);
-}
-#wordpacks .chip--muted {
-	color: var(--wp-text-muted);
-}
-
-/* ===================== Actions ===================== */
-#wordpacks .row {
-	display: flex;
-	gap: 0.6rem;
-	flex-wrap: wrap;
-	margin-top: 0.1rem;
-}
-
-/* Primary CTA — solid coral, contained shadow (no spreading red glow) */
-#wordpacks .btn {
-	padding: 0.55rem 1rem;
-	border-radius: 10px;
-	color: #fff;
-	border: 1px solid rgba(234, 87, 70, 0.55);
-	background: linear-gradient(180deg, var(--wp-coral), #d4493a);
-	box-shadow:
-		inset 0 1px 0 rgba(255, 200, 190, 0.22),
-		0 2px 10px rgba(234, 87, 70, 0.18);
-	font-weight: 600;
-	font-size: 0.9rem;
-	letter-spacing: 0;
-	cursor: pointer;
-	transition: transform 110ms ease, border-color 140ms ease,
-		box-shadow 140ms ease, background 140ms ease;
-}
-#wordpacks .btn:hover {
-	transform: translateY(-1px);
-	background: linear-gradient(180deg, #f0654f, #de4d3d);
-	border-color: rgba(234, 87, 70, 0.75);
-	box-shadow:
-		inset 0 1px 0 rgba(255, 200, 190, 0.28),
-		0 6px 18px rgba(234, 87, 70, 0.28);
-}
-#wordpacks .btn:focus-visible {
-	outline: var(--ring, 2px solid rgba(100, 181, 255, 0.9));
-	outline-offset: 2px;
-}
-
-/* Like button — neutral at rest, coral when liked */
-#wordpacks .like {
-	padding: 0.32rem 0.7rem;
-	border-radius: var(--wp-radius-pill);
-	border: 1px solid rgba(255, 255, 255, 0.12);
-	background: rgba(255, 255, 255, 0.04);
-	color: rgba(255, 255, 255, 0.85);
+.packs-page .un-count {
+	margin: 0 0 1.1rem;
 	font-size: 0.85rem;
+	color: var(--pl-soft);
+	font-variant-numeric: tabular-nums;
+}
+.packs-page .un-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem;
+}
+.packs-page .un-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem 1.1rem;
+	margin-top: 0.9rem;
+	font-size: 0.84rem;
+}
+.packs-page .un-path-label {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 0.2rem 0.75rem;
+	margin-bottom: 0.7rem;
+	font-size: 0.85rem;
+	color: var(--pl-muted);
+}
+.packs-page .un-path-label > :last-child {
+	font-variant-numeric: tabular-nums;
+}
+.packs-page .un-tier + .un-tier {
+	margin-top: 0.8rem;
+}
+.packs-page .un-tier-name {
+	margin: 0 0 0.4rem;
+	font-size: 0.64rem;
 	font-weight: 600;
-	line-height: 1;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--pl-soft);
+}
+.packs-page .un-path {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(46px, 1fr));
+	gap: 8px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.packs-page .un-path > li {
+	display: flex;
+	min-width: 0;
+}
+.packs-page .un-step {
+	flex: 1;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 6px;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: inherit;
+	font: inherit;
+	text-align: center;
 	cursor: pointer;
-	transition: border-color 160ms ease, background 160ms ease,
-		color 160ms ease, transform 80ms ease;
 }
-#wordpacks .like:hover {
-	border-color: rgba(234, 87, 70, 0.4);
-	background: rgba(234, 87, 70, 0.08);
+.packs-page .un-step-bar {
+	position: relative;
+	height: 34px;
+	border-radius: 6px;
+	border: 1px solid transparent;
+	background: rgba(255, 255, 255, 0.06);
+	overflow: hidden;
+	transition: border-color 140ms ease;
+}
+.packs-page .un-step:hover .un-step-bar {
+	border-color: var(--pl-line-strong);
+}
+.packs-page .un-step-bar > i {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: var(--pl-coral);
+	transition: height 240ms ease;
+}
+.packs-page .un-step.is-done .un-step-bar > i {
+	background: var(--pl-green);
+}
+.packs-page .un-step.is-current .un-step-bar {
+	border-color: var(--pl-coral-light);
+}
+.packs-page .un-step-range {
+	font-size: 0.68rem;
+	line-height: 1.35;
+	color: var(--pl-muted);
+	font-variant-numeric: tabular-nums;
+}
+.packs-page .un-step.is-current .un-step-range {
 	color: #fff;
 }
-#wordpacks .like[aria-pressed="true"] {
-	border-color: rgba(234, 87, 70, 0.55);
-	background: rgba(234, 87, 70, 0.15);
-	color: #fff;
+.packs-page .un-path-foot {
+	margin: 0.9rem 0 0;
+	font-size: 0.83rem;
+	color: var(--pl-muted);
 }
-#wordpacks .like:active {
-	transform: scale(0.97);
+
+@media (max-width: 860px) {
+	.packs-page .un {
+		grid-template-columns: minmax(0, 1fr);
+	}
 }
-#wordpacks .like:focus-visible {
-	outline: var(--ring, 2px solid rgba(100, 181, 255, 0.9));
+@media (max-width: 600px) {
+	.packs-page .un-path {
+		grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+		gap: 6px 8px;
+	}
+}
+
+/* ===================== Toolbar, sticky under the navbar ===================== */
+.packs-page .pl-toolbar {
+	position: sticky;
+	top: var(--pl-nav-h);
+	z-index: 30;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.6rem;
+	min-width: 0;
+	padding: 0.6rem 0;
+	background: rgba(5, 5, 5, 0.9);
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+	/* Full-bleed backing so rows never show beside it, without widening the page. */
+	box-shadow: 0 0 0 100vmax rgba(5, 5, 5, 0.9);
+	clip-path: inset(0 -100vmax);
+}
+.packs-page .pl-search {
+	box-sizing: border-box;
+	flex: 1 1 220px;
+	min-width: 0;
+	max-width: 320px;
+	padding: 0.55rem 0.8rem;
+	border-radius: 10px;
+	border: 1px solid var(--pl-line-strong);
+	background: rgba(0, 0, 0, 0.4);
+	color: var(--pl-text);
+	font: inherit;
+	font-size: 0.92rem;
+}
+.packs-page .pl-search::placeholder {
+	color: var(--pl-muted);
+}
+.packs-page .pl-search:focus {
+	outline: none;
+	border-color: rgba(100, 181, 255, 0.7);
+}
+.packs-page .pl-sort {
+	flex: 0 0 auto;
+	padding: 0.35rem 0.6rem;
+	border-radius: 10px;
+	border: 1px solid var(--pl-line-strong);
+	background: rgba(0, 0, 0, 0.4);
+	color: var(--pl-soft);
+	font: inherit;
+	font-size: 0.84rem;
+}
+.packs-page .pl-sort option {
+	background: #121214;
+}
+.packs-page .pl-sort:focus-visible {
+	outline: var(--pl-ring);
 	outline-offset: 2px;
 }
-
-/* ===================== Status states ===================== */
-#wordpacks .empty {
-	text-align: center;
-	color: var(--wp-text-muted);
-	padding: 1.5rem 0;
+.packs-page .pl-filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.35rem;
+	min-width: 0;
+}
+.packs-page .pl-filter {
+	padding: 0.35rem 0.75rem;
+	border-radius: 999px;
+	border: 1px solid var(--pl-line);
+	background: rgba(255, 255, 255, 0.02);
+	color: var(--pl-soft);
+	font: inherit;
+	font-size: 0.84rem;
+	white-space: nowrap;
+	cursor: pointer;
+	transition: border-color 140ms ease, background 140ms ease, color 140ms ease;
+}
+.packs-page .pl-filter:hover {
+	color: #fff;
+	border-color: var(--pl-line-strong);
+}
+.packs-page .pl-filter[aria-pressed="true"] {
+	border-color: rgba(234, 87, 70, 0.6);
+	background: rgba(234, 87, 70, 0.12);
+	color: #fff;
+}
+.packs-page .pl-filter:focus-visible {
+	outline: var(--pl-ring);
+	outline-offset: 2px;
+}
+.packs-page .pl-results {
+	margin: 0;
+	font-size: 0.8rem;
+	color: var(--pl-muted);
+}
+.packs-page .pl-empty {
+	margin: 1rem 0;
 }
 
-#wordpacks .wp-status {
-	width: min(1100px, 96%);
-	margin: 3rem auto;
+/* ===================== Categories ===================== */
+.packs-page .pl-cats {
+	display: grid;
+	gap: 1.1rem;
+	min-width: 0;
+}
+.packs-page .pl-cat {
+	min-width: 0;
+	border: 1px solid var(--pl-line);
+	border-radius: 16px;
+	background: rgba(255, 255, 255, 0.015);
+	overflow: hidden;
+	scroll-margin-top: calc(var(--pl-nav-h) + var(--pl-toolbar-h) + 12px);
+}
+.packs-page .pl-cat-head {
+	margin: 0;
+	font-size: inherit;
+	font-weight: inherit;
+}
+.packs-page .pl-cat-toggle {
+	box-sizing: border-box;
+	width: 100%;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 200px auto auto;
+	align-items: center;
+	gap: 1rem;
+	padding: 1rem 1.1rem;
+	border: 0;
+	background: none;
+	color: inherit;
+	font: inherit;
+	text-align: left;
+	cursor: pointer;
+}
+.packs-page .pl-cat-toggle:disabled {
+	cursor: default;
+}
+.packs-page .pl-cat-title {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: 0.6rem;
+	min-width: 0;
+	font-size: 1.05rem;
+	font-weight: 700;
+	color: var(--pl-text);
+}
+.packs-page .pl-cat-name {
+	min-width: 0;
+	overflow-wrap: break-word;
+}
+.packs-page .pl-chevron {
+	width: 8px;
+	height: 8px;
+	flex: none;
+	border-right: 2px solid var(--pl-muted);
+	border-bottom: 2px solid var(--pl-muted);
+	transform: rotate(-45deg);
+	transition: transform 0.2s;
+}
+.packs-page .pl-cat.is-open .pl-chevron {
+	transform: rotate(45deg);
+}
+.packs-page .pl-cat-toggle:disabled .pl-chevron {
+	opacity: 0.4;
+}
+.packs-page .pl-cat-bar,
+.packs-page .pl-cat-bar .pl-bar {
+	display: block;
+}
+.packs-page .pl-cat-agg {
+	font-size: 0.8rem;
+	color: var(--pl-muted);
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+.packs-page .pl-cat-pill {
+	box-sizing: border-box;
+	min-width: 5.6rem;
+	padding: 0.1rem 0.6rem;
+	border-radius: 999px;
+	border: 1px solid rgba(95, 211, 154, 0.3);
+	background: rgba(95, 211, 154, 0.08);
+	color: var(--pl-green);
+	font-size: 0.74rem;
+	font-weight: 600;
+	line-height: 1.5;
 	text-align: center;
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+}
+/* Holds the pill's place until progress is read, so the header does not shift. */
+.packs-page .pl-cat-pill--idle {
+	visibility: hidden;
+}
+.packs-page .pl-cat-body {
+	border-top: 1px solid var(--pl-line);
+	min-width: 0;
+}
+
+/* ===================== Rows ===================== */
+/* One grid per row. Every row has the same parts, each of a fixed height, so
+   every row is the same height whatever its title or description says. */
+.packs-page .pl-rows {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	min-width: 0;
+}
+.packs-page .pl-row {
+	box-sizing: border-box;
+	display: grid;
+	grid-template-columns: 140px minmax(0, 1fr) 72px 200px 160px auto;
+	grid-template-areas: "medals name size normal hard actions";
+	align-items: center;
+	column-gap: 1rem;
+	height: 88px;
+	min-width: 0;
+	padding: 0 1.1rem;
+	border-bottom: 1px solid var(--pl-line);
+	overflow: hidden;
+	/* Clear the navbar and the stuck toolbar when a scroll lands here. */
+	scroll-margin-top: calc(var(--pl-nav-h) + var(--pl-toolbar-h) + 12px);
+}
+.packs-page .pl-rows > .pl-row:last-child {
+	border-bottom: 0;
+}
+.packs-page .pl-row:hover {
+	background: rgba(255, 255, 255, 0.025);
+}
+
+/* Medals: one tile per mode, dim at zero, green once completed. */
+.packs-page .pl-medals {
+	grid-area: medals;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 8px;
+	min-width: 0;
+}
+.packs-page .pl-medal {
+	box-sizing: border-box;
+	height: 66px;
+	min-width: 0;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
+	gap: 3px;
+	border-radius: 10px;
+	border: 1px solid var(--pl-line-strong);
+	background: rgba(255, 255, 255, 0.02);
+	color: var(--pl-muted);
+	cursor: default;
+}
+.packs-page .pl-medal-n {
+	font-size: 1.4rem;
+	font-weight: 700;
+	line-height: 1;
+	letter-spacing: -0.02em;
+	font-variant-numeric: tabular-nums;
+}
+.packs-page .pl-medal-l {
+	font-size: 0.6rem;
+	font-weight: 600;
+	line-height: 1;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+.packs-page .pl-medal.is-earned {
+	color: var(--pl-green);
+	background: rgba(95, 211, 154, 0.08);
+	border-color: rgba(95, 211, 154, 0.3);
+}
+
+.packs-page .pl-name {
+	grid-area: name;
+	min-width: 0;
+}
+/* Title and description are one line each, with ellipsis: a long title can
+   never change the row's height. */
+.packs-page .pl-titleline {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	gap: 0.4rem;
+	height: 1.65rem;
+	min-width: 0;
+	margin-left: -4px;
+}
+.packs-page .pl-title {
+	flex: 0 1 auto;
+	min-width: 0;
+	font-weight: 600;
+	line-height: 1.5;
+	color: var(--pl-text);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.packs-page .pl-chip {
+	flex: none;
+	padding: 0.05rem 0.5rem;
+	border-radius: 999px;
+	border: 1px solid var(--pl-line-strong);
+	background: rgba(255, 255, 255, 0.03);
+	color: var(--pl-soft);
+	font: inherit;
+	font-size: 0.72rem;
+	line-height: 1.5;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.packs-page .pl-chip:hover {
+	color: #fff;
+	border-color: rgba(255, 255, 255, 0.3);
+}
+.packs-page .pl-desc {
+	margin: 0;
+	min-width: 0;
+	height: 1.25rem;
+	font-size: 0.82rem;
+	line-height: 1.5;
+	color: var(--pl-muted);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.packs-page .pl-size {
+	grid-area: size;
+	display: grid;
+	min-width: 0;
+	font-size: 0.82rem;
+	line-height: 1.35;
+	color: var(--pl-soft);
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+.packs-page .pl-level {
+	font-size: 0.74rem;
+	color: var(--pl-muted);
+}
+
+/* Rails: a mode's label, a 6px bar and one line of figures. */
+.packs-page .pl-rail {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	min-width: 0;
+	font-size: 0.74rem;
+	color: var(--pl-muted);
+	font-variant-numeric: tabular-nums;
+}
+.packs-page .pl-rail--normal {
+	grid-area: normal;
+}
+.packs-page .pl-rail--hard {
+	grid-area: hard;
+}
+.packs-page .pl-rail-label {
+	font-size: 0.64rem;
+	font-weight: 600;
+	line-height: 1.2;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--pl-soft);
+}
+.packs-page .pl-rail .pl-bar {
+	height: 6px;
+}
+/* Finished before, current round not finished: the track is banked green and
+   the coral fill sits on top of it. */
+.packs-page .pl-bar.is-banked {
+	background: rgba(95, 198, 131, 0.24);
+}
+.packs-page .pl-rail-foot {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.5rem;
+	height: 1.2rem;
+	min-width: 0;
+	line-height: 1.2rem;
+	white-space: nowrap;
+}
+.packs-page .pl-rail-main {
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.packs-page .pl-rail-main b {
+	font-weight: 700;
+	color: var(--pl-text);
+}
+.packs-page .pl-rail-side {
+	flex: none;
+}
+.packs-page .pl-rail-act {
+	flex: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3rem;
+	padding: 0;
+	border: 0;
+	background: none;
+	font: inherit;
+	font-weight: 600;
+	color: var(--pl-green);
+	cursor: pointer;
+}
+.packs-page .pl-rail-act:hover {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.packs-page .pl-actions {
+	grid-area: actions;
+	display: flex;
+	gap: 0.3rem;
+	min-width: 0;
+}
+.packs-page .pl-actions .pl-bp,
+.packs-page .pl-actions .pl-bs {
+	padding: 0.35rem 0.55rem;
+	font-size: 0.8rem;
+}
+
+/* "Your packs" before any exist: what the builder does, and the way in. */
+.packs-page .pk-yours {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem 1.5rem;
+	padding: 1.1rem 1.2rem;
+	border: 1px dashed var(--pl-line-strong);
+	border-radius: 16px;
+}
+.packs-page .pk-yours > div {
+	flex: 1 1 320px;
+	min-width: 0;
+}
+.packs-page .pk-yours-title {
+	margin: 0 0 0.25rem;
+	font-size: 1.05rem;
+	font-weight: 700;
+}
+.packs-page .pk-yours-text {
+	margin: 0;
+	font-size: 0.88rem;
+	line-height: 1.5;
+	color: var(--pl-muted);
+}
+
+/* Below 1380px the full row no longer fits: the medals span two rows on the
+   left, the title and both rails take the first, size and the buttons the second. */
+@media (max-width: 1380px) {
+	.packs-page .pl-row {
+		grid-template-columns: 140px minmax(0, 1fr) 210px 170px;
+		grid-template-areas:
+			"medals name normal hard"
+			"medals size actions actions";
+		row-gap: 0.4rem;
+		height: 118px;
+	}
+	.packs-page .pl-size {
+		display: flex;
+		gap: 0.6rem;
+		align-items: baseline;
+	}
+	.packs-page .pl-actions {
+		justify-content: flex-start;
+	}
+}
+
+/* Narrow: everything stacks and the six buttons share the width in a grid. */
+@media (max-width: 900px) {
+	.packs-page .pl-cat-toggle {
+		grid-template-columns: minmax(0, 1fr) auto;
+	}
+	.packs-page .pl-cat-toggle .pl-cat-bar {
+		display: none;
+	}
+	.packs-page .pl-cat-agg {
+		max-width: 6.5rem;
+		white-space: normal;
+	}
+	.packs-page .pl-cat-pill {
+		grid-column: 2;
+		justify-self: end;
+	}
+	.packs-page .pl-row {
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-areas:
+			"medals"
+			"name"
+			"size"
+			"normal"
+			"hard"
+			"actions";
+		row-gap: 0.6rem;
+		height: auto;
+		padding: 0.8rem 1.1rem;
+	}
+	.packs-page .pl-medals {
+		grid-template-columns: repeat(2, minmax(0, 140px));
+	}
+	.packs-page .pl-actions {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+	.packs-page .pk-build {
+		margin-left: 0;
+	}
+}
+
+/* A phone keeps the stuck toolbar to two lines: the chips scroll inside it. */
+@media (max-width: 600px) {
+	.packs-page {
+		padding-top: calc(var(--pl-nav-h) + 1.4rem);
+	}
+	.packs-page .pl-search {
+		flex-basis: 100%;
+		max-width: none;
+		font-size: 16px; /* iOS zooms on focus below 16px */
+	}
+	.packs-page .pl-filters {
+		flex: 1 1 100%;
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		scrollbar-width: none;
+		margin: -2px;
+		padding: 2px 24px 2px 2px;
+		-webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent);
+		mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent);
+	}
+	.packs-page .pl-filters::-webkit-scrollbar {
+		display: none;
+	}
+	.packs-page .un {
+		padding: 1.15rem;
+	}
+	.packs-page .un-title {
+		font-size: 1.3rem;
+	}
+}
+
+/* ===================== Pack builder (components/packs/PackBuilder.jsx) ===================== */
+/* Rendered outside the list but inside .packs-page. */
+.pb-backdrop {
+	position: fixed;
+	inset: 0;
+	z-index: 1500;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right))
+		max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+	background: rgba(0, 0, 0, 0.65);
+}
+.pb {
+	box-sizing: border-box;
+	width: min(900px, 100%);
+	max-height: 90vh;
+	max-height: 90dvh;
+	display: flex;
+	flex-direction: column;
+	gap: 0.9rem;
+	padding: 1.3rem 1.4rem;
+	border-radius: 18px;
+	border: 1px solid var(--line-strong, rgba(255, 255, 255, 0.16));
+	background: #121214;
+	box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+	color: var(--pl-text, #f0f0f2);
+	overflow: hidden;
+}
+.pb-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 	gap: 1rem;
 }
-#wordpacks .wp-status p {
-	color: var(--wp-text-soft);
-	font-size: 0.98rem;
+.pb-heading {
 	margin: 0;
+	font-size: 1.2rem;
+	font-weight: 700;
+	letter-spacing: -0.01em;
 }
-#wordpacks .wp-spinner {
-	width: 30px;
-	height: 30px;
-	border: 2px solid rgba(255, 255, 255, 0.1);
-	border-top-color: var(--wp-coral);
+.pb-close {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	padding: 0;
+	border: 1px solid var(--pl-line-strong, rgba(255, 255, 255, 0.16));
+	border-radius: 8px;
+	background: none;
+	color: var(--pl-soft, #c4c4c8);
+	cursor: pointer;
+}
+.pb-close:hover {
+	color: #fff;
+}
+.pb-fields {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+	gap: 0.8rem;
+}
+.pb-field {
+	display: grid;
+	gap: 0.3rem;
+	min-width: 0;
+	font-size: 0.8rem;
+	color: var(--pl-muted, #8a8a8e);
+}
+.pb-field input {
+	box-sizing: border-box;
+	width: 100%;
+	min-width: 0;
+	padding: 0.55rem 0.75rem;
+	border-radius: 10px;
+	border: 1px solid var(--pl-line-strong, rgba(255, 255, 255, 0.16));
+	background: rgba(0, 0, 0, 0.4);
+	color: var(--pl-text, #f0f0f2);
+	font: inherit;
+	font-size: 0.92rem;
+}
+.pb-field input:focus {
+	outline: none;
+	border-color: rgba(100, 181, 255, 0.7);
+}
+.pb-cols {
+	flex: 1 1 auto;
+	min-height: 0;
+	display: grid;
+	grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+	gap: 1rem;
+}
+.pb-col {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	min-width: 0;
+	min-height: 0;
+}
+.pb-results,
+.pb-chips {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.pb-results {
+	flex: 1 1 auto;
+	min-height: 160px;
+	max-height: 44vh;
+	overflow-y: auto;
+	border: 1px solid var(--pl-line, rgba(255, 255, 255, 0.08));
+	border-radius: 12px;
+}
+.pb-result {
+	box-sizing: border-box;
+	width: 100%;
+	display: grid;
+	grid-template-columns: minmax(0, 8.5rem) minmax(0, 1fr) auto;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 0.5rem 0.75rem;
+	border: 0;
+	border-bottom: 1px solid var(--pl-line, rgba(255, 255, 255, 0.08));
+	background: none;
+	color: inherit;
+	font: inherit;
+	text-align: left;
+	cursor: pointer;
+}
+.pb-results > li:last-child .pb-result {
+	border-bottom: 0;
+}
+.pb-result:hover {
+	background: rgba(255, 255, 255, 0.04);
+}
+.pb-result:focus-visible {
+	outline: 2px solid rgba(100, 181, 255, 0.8);
+	outline-offset: -2px;
+}
+.pb-result-word {
+	font-weight: 600;
+	font-size: 0.9rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.pb-result-def {
+	font-size: 0.82rem;
+	color: var(--pl-muted, #8a8a8e);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.pb-result-act {
+	font-size: 0.78rem;
+	font-weight: 600;
+	color: var(--pl-coral-light, #ff8a7a);
+}
+.pb-result.is-on {
+	background: rgba(95, 211, 154, 0.06);
+}
+.pb-result.is-on .pb-result-act {
+	color: var(--pl-soft, #c4c4c8);
+}
+.pb-sel-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5rem;
+	min-height: 2rem;
+	font-size: 0.85rem;
+	color: var(--pl-soft, #c4c4c8);
+	font-variant-numeric: tabular-nums;
+}
+.pb-chips {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: flex-start;
+	gap: 0.4rem;
+	max-height: 44vh;
+	overflow-y: auto;
+}
+.pb-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25rem;
+	padding: 0.2rem 0.3rem 0.2rem 0.65rem;
+	border-radius: 999px;
+	border: 1px solid rgba(95, 211, 154, 0.3);
+	background: rgba(95, 211, 154, 0.08);
+	font-size: 0.82rem;
+}
+.pb-chip button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 22px;
+	height: 22px;
+	padding: 0;
+	border: 0;
 	border-radius: 50%;
-	animation: wp-spin 0.75s linear infinite;
+	background: none;
+	color: var(--pl-soft, #c4c4c8);
+	cursor: pointer;
 }
-@keyframes wp-spin {
-	to { transform: rotate(360deg); }
+.pb-chip button:hover {
+	color: #fff;
+	background: rgba(255, 255, 255, 0.08);
+}
+.pb-none {
+	margin: 0;
+	padding: 0.75rem;
+	font-size: 0.85rem;
+	color: var(--pl-muted, #8a8a8e);
+}
+.pb-status {
+	margin: 0;
+	min-height: 1.3em;
+	font-size: 0.85rem;
+	color: var(--pl-soft, #c4c4c8);
+}
+.pb-actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem;
+}
+.pb-spacer {
+	flex: 1 1 auto;
+}
+.pb-delete {
+	color: #ffb3aa;
+}
+.pb-close:focus-visible,
+.pb-chip button:focus-visible {
+	outline: 2px solid rgba(100, 181, 255, 0.8);
+	outline-offset: 2px;
 }
 
-/* ===================== Mobile tuning ===================== */
-@media (max-width: 680px) {
-	#wordpacks {
-		padding: 80px 14px 24px;
-		overflow-x: hidden;
+@media (max-width: 720px) {
+	.pb {
+		padding: 1.1rem;
+		overflow-y: auto;
 	}
-	#wordpacks .grid {
-		gap: 12px;
+	.pb-fields,
+	.pb-cols {
+		grid-template-columns: minmax(0, 1fr);
 	}
-	#wordpacks .card {
-		min-height: 0;
+	.pb-results {
+		max-height: 38vh;
 	}
-	#wordpacks .card:hover {
-		transform: none; /* no lift on touch — feels jittery */
+	.pb-chips {
+		max-height: none;
+	}
+	.pb-field input {
+		font-size: 16px; /* iOS zooms on focus below 16px */
+	}
+	.pb-result {
+		grid-template-columns: minmax(0, 1fr) auto;
+	}
+	.pb-result-def {
+		grid-column: 1;
+		grid-row: 2;
+	}
+	.pb-result-act {
+		grid-row: 1 / span 2;
+		grid-column: 2;
 	}
 }
 
-/* ===================== Reduced motion ===================== */
 @media (prefers-reduced-motion: reduce) {
-	#wordpacks .card,
-	#wordpacks .card::before,
-	#wordpacks .btn,
-	#wordpacks .like {
+	.packs-page .pl-bar > i,
+	.packs-page .un-step-bar > i,
+	.packs-page .un-step-bar,
+	.packs-page .pl-chevron {
 		transition: none;
+	}
+	.packs-page .pk-spinner {
+		animation-duration: 2.4s;
 	}
 }

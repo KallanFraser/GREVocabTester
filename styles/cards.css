@@ -1,0 +1,218 @@
+/** @format */
+/* Flashcards (components/Flashcards.jsx), ported from Wortschatz's
+   styles/flashcards.css. The header is .play-head from ui.css; buttons, pills,
+   .seg, .bar, .tag and kbd come from ui.css too. This file adds the stage, the
+   3D card, its faces and the controls under it, all scoped to .fc-page.
+
+   The flip is the transition on .fc. globals.css zeroes every transition
+   under prefers-reduced-motion, so there the flip is an instant swap.
+
+   Mobile Safari safety:
+   - every 3D property carries its -webkit- twin;
+   - the card has a fixed height and both faces are absolutely positioned
+     inside it, so flipping never changes layout;
+   - the front face gets an explicit rotateY(0) so iOS gives it its own layer
+     and backface-visibility is honoured;
+   - the hidden face also switches to visibility: hidden half-way through the
+     flip, so even if backface-visibility fails the mirrored face never shows
+     or catches taps;
+   - nothing on the 3D path (.fc-scene, .fc) sets overflow, which would
+     flatten preserve-3d; the scroll lives inside each face. */
+
+.fc-page {
+	min-height: 100vh;
+	min-height: 100dvh;
+}
+.fc-page .fc-stage {
+	padding: clamp(1.5rem, 6vh, 3.5rem) 1rem 3rem;
+}
+.fc-page .fc-wrap {
+	max-width: 560px;
+	margin: 0 auto;
+}
+.fc-page .fc-loading {
+	text-align: center;
+	color: var(--muted);
+}
+
+/* ---- The card ---- */
+.fc-page .fc-scene {
+	-webkit-perspective: 1200px;
+	perspective: 1200px;
+}
+.fc-page .fc {
+	position: relative;
+	height: 340px;
+	border-radius: 20px;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transition: -webkit-transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
+	transition: transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-user-select: none;
+	user-select: none;
+}
+.fc-page .fc.flipped {
+	-webkit-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+}
+.fc-page .fc:focus-visible {
+	outline: 2px solid rgba(234, 87, 70, 0.8);
+	outline-offset: 4px;
+}
+
+.fc-page .fc-face {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	display: flex;
+	flex-direction: column;
+	padding: 1.5rem;
+	text-align: center;
+	border: 1px solid var(--line-strong);
+	border-radius: 20px;
+	background: linear-gradient(180deg, rgba(26, 26, 28, 0.94), rgba(13, 13, 15, 0.97));
+	box-shadow: var(--shadow-1);
+	/* Long content scrolls inside the face rather than growing the card. */
+	overflow-x: hidden;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	overscroll-behavior: contain;
+	/* Swap visibility at the midpoint of the flip (see header comment). */
+	-webkit-transition: visibility 0s linear 0.27s;
+	transition: visibility 0s linear 0.27s;
+}
+.fc-page .fc-front {
+	-webkit-transform: rotateY(0deg);
+	transform: rotateY(0deg);
+}
+.fc-page .fc-back {
+	-webkit-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+	border-color: rgba(234, 87, 70, 0.28);
+}
+.fc-page .fc:not(.flipped) .fc-back,
+.fc-page .fc.flipped .fc-front {
+	visibility: hidden;
+	pointer-events: none;
+}
+.fc-page .fc-face.has-tag {
+	padding-top: 2.4rem;
+}
+/* Centered with auto margins, not justify-content, so content taller than
+   the face scrolls from its top instead of being clipped above it. */
+.fc-page .fc-in {
+	margin-top: auto;
+	margin-bottom: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.45rem;
+	width: 100%;
+	min-width: 0;
+}
+.fc-page .fc-face .corner {
+	position: absolute;
+	top: 0.9rem;
+	right: 1rem;
+}
+
+/* ---- Face content ---- */
+.fc-page .fc-face .w {
+	font-size: clamp(2.1rem, 7vw, 3.1rem);
+	font-weight: 800;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	max-width: 100%;
+	overflow-wrap: anywhere;
+}
+.fc-page .fc-face .pos {
+	color: var(--muted);
+	font-size: 0.88rem;
+	font-style: italic;
+}
+.fc-page .fc-face .gl {
+	font-size: clamp(1.35rem, 4.6vw, 1.75rem);
+	font-weight: 700;
+	letter-spacing: -0.01em;
+	line-height: 1.25;
+	max-width: 100%;
+	overflow-wrap: anywhere;
+}
+.fc-page .fc-face .full {
+	margin: 0.6rem 0 0;
+	color: var(--soft);
+	font-size: 0.95rem;
+	line-height: 1.5;
+	max-width: 28rem;
+}
+.fc-page .fc-face .ex {
+	margin: 0.5rem 0 0;
+	border-top: 1px solid var(--line);
+	padding-top: 0.7rem;
+	color: var(--muted);
+	font-size: 0.9rem;
+	font-style: italic;
+	line-height: 1.5;
+	max-width: 28rem;
+}
+
+/* ---- Controls under the deck ---- */
+.fc-page .fc-nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.5rem;
+	margin-top: 1rem;
+}
+.fc-page .fc-keys {
+	text-align: center;
+	color: var(--muted);
+	font-size: 0.8rem;
+	margin: 0.9rem 0 0;
+}
+.fc-page .fc-keys-touch {
+	display: none;
+}
+/* A touch-only device has no Space or arrow keys to hint at. */
+@media (hover: none) and (pointer: coarse) {
+	.fc-page .fc-keys-kbd {
+		display: none;
+	}
+	.fc-page .fc-keys-touch {
+		display: inline;
+	}
+}
+
+/* ---- Empty filter ---- */
+.fc-page .fc-empty {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.4rem;
+	text-align: center;
+	border: 1px dashed var(--line-strong);
+	border-radius: var(--r-lg);
+	padding: 1.6rem 1.4rem;
+	color: var(--muted);
+}
+.fc-page .fc-empty p {
+	margin: 0;
+}
+
+@media (max-width: 560px) {
+	.fc-page .fc {
+		height: 320px;
+	}
+	.fc-page .fc-face {
+		padding: 1.25rem 1rem;
+	}
+	.fc-page .fc-face.has-tag {
+		padding-top: 2.4rem;
+	}
+}

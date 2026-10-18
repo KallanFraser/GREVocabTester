@@ -1,0 +1,322 @@
+[
+	{
+		"id": "argument-verbs",
+		"title": "Argument & Rhetoric Verbs",
+		"desc": "Verbs common in Reading Comprehension and Sentence Equivalence arguments.",
+		"category": "classic",
+		"likes": 108,
+		"words": ["Advocate", "Bolster", "Coalesce", "Condone", "Confound", "Corroborate", "Delineate", "Demur", "Denigrate", "Deride", "Discredit", "Disparage", "Distill", "Embellish", "Equivocate", "Excoriate", "Exacerbate", "Mitigate", "Refute", "Substantiate", "Supposition"]
+	},
+	{
+		"id": "process-change",
+		"title": "Change, Degree & Trend",
+		"desc": "Words for increase, decrease, and change.",
+		"category": "classic",
+		"likes": 96,
+		"words": ["Abate", "Aggrandize", "Alleviate", "Ameliorate", "Assuage", "Attenuate", "Abridge", "Burgeon", "Coalesce", "Enervate", "Engender", "Enhance", "Exacerbate", "Foment", "Mitigate", "Plummet", "Proliferate", "Subside"]
+	},
+	{
+		"id": "emotion-spectrum",
+		"title": "Emotion Spectrum",
+		"desc": "Words for moods, from calm indifference to high spirits.",
+		"category": "classic",
+		"likes": 88,
+		"words": ["Apathy", "Apathetic", "Blithe", "Crestfallen", "Disgruntled", "Ebullient", "Impassive", "Morose", "Phlegmatic", "Sanguine"]
+	},
+	{
+		"id": "people-traits-pos",
+		"title": "People Traits — Positive",
+		"desc": "Favorable words for describing character.",
+		"category": "classic",
+		"likes": 77,
+		"words": ["Amenable", "Auspicious", "Benevolent", "Benign", "Discerning", "Equitable", "Erudite", "Fastidious", "Gregarious", "Probity", "Scrupulous", "Veracious"]
+	},
+	{
+		"id": "people-traits-neg",
+		"title": "People Traits — Negative",
+		"desc": "Unfavorable words for describing character.",
+		"category": "classic",
+		"likes": 101,
+		"words": ["Acerbic", "Apathetic", "Bellicose", "Bombastic", "Boorish", "Contumacious", "Craven", "Credulous", "Dogmatic", "Garrulous", "Grandiloquent", "Gregarious", "Gullible", "Implacable", "Irascible", "Mendacious", "Obdurate", "Polemical", "Querulous", "Recalcitrant", "Venal", "Vituperative"]
+	},
+	{
+		"id": "style-register",
+		"title": "Style & Register",
+		"desc": "Adjectives for describing writing style and tone.",
+		"category": "classic",
+		"likes": 85,
+		"words": ["Didactic", "Prosaic", "Florid", "Bombastic", "Laconic", "Pithy", "Succinct", "Verbose", "Eloquent", "Artless", "Cacophonous", "Grandiloquent", "Pedantic", "Esoteric", "Arcane", "Lucid"]
+	},
+	{
+		"id": "verbal-attacks",
+		"title": "Verbal Attacks & Harsh Tone",
+		"desc": "Words for harsh criticism and bitter speech.",
+		"category": "classic",
+		"likes": 84,
+		"words": ["Acerbic", "Caustic", "Trenchant", "Scathing", "Astringent", "Asperity", "Invective", "Diatribe", "Harangue", "Tirade", "Vituperative", "Deride", "Denigrate", "Excoriate", "Vilify"]
+	},
+	{
+		"id": "learning-intellect",
+		"title": "Learning & Intellect",
+		"desc": "Words about learning, expertise, and inexperience.",
+		"category": "classic",
+		"likes": 90,
+		"words": ["Erudite", "Didactic", "Nascent", "Inchoate", "Incipient", "Neophyte", "Dilettante", "Tyro", "Pedantic", "Cerebral"]
+	},
+	{
+		"id": "gre-elite-30",
+		"title": "GRE Elite 30",
+		"desc": "Thirty essential high-frequency words; the best single pack to start with.",
+		"category": "classic",
+		"likes": 150,
+		"words": ["Alacrity", "Anachronism", "Apathy", "Auspicious", "Austere", "Capricious", "Caustic", "Chicanery", "Coalesce", "Cogent", "Convoluted", "Corroborate", "Craven", "Diatribe", "Didactic", "Disparate", "Dogmatic", "Ebullient", "Esoteric", "Exacerbate", "Hackneyed", "Laconic", "Misanthrope", "Obdurate", "Perfidy", "Phlegmatic", "Placate", "Specious", "Enervate", "Equivocate"]
+	},
+	{
+		"id": "power-P",
+		"title": "Power P — 25",
+		"desc": "A dense set of P-words that show up often.",
+		"category": "classic",
+		"likes": 73,
+		"words": ["Paean", "Palliate", "Panache", "Panegyric", "Paradox", "Paragon", "Parsimonious", "Partisan", "Pathological", "Paucity", "Pedagogy", "Pedantic", "Pedestrian", "Pellucid", "Pellucidity", "Penchant", "Penitential", "Penurious", "Penury", "Perennial", "Perfidious", "Perfidy", "Perfunctoriness", "Perfunctory", "Peripheral"]
+	},
+	{
+		"id": "power-S",
+		"title": "Power S — 30",
+		"desc": "High-yield S-words.",
+		"category": "classic",
+		"likes": 70,
+		"words": ["Salacious", "Salubrious", "Salutary", "Sanction", "Sanguine", "Sartorial", "Satiate", "Saturate", "Saturnine", "Savor", "Scant", "Scathing", "Schism", "Scrupulous", "Scurvy", "Secrete", "Sedulous", "Sententious", "Shagreen", "Sham", "Skeptic", "Solicitous", "Soporific", "Sordid", "Specious", "Spendthrift", "Sporadic", "Sporadically", "Squalid", "Stand"]
+	},
+	{
+		"id": "power-G",
+		"title": "Power G — 11",
+		"desc": "High-yield G-words.",
+		"category": "classic",
+		"likes": 62,
+		"words": ["Gainsay", "Garrulous", "Gawkiness", "Germane", "Goad", "Grandiloquent", "Gregarious", "Grouse", "Guileless", "Gullible", "Guy"]
+	},
+	{
+		"id": "theme-praise-criticism",
+		"title": "Praise and Criticism",
+		"desc": "Words for applauding and condemning, from formal tribute to bitter attack.",
+		"category": "theme",
+		"order": 1,
+		"words": ["Laud", "Extol", "Encomium", "Panegyric", "Paean", "Laudatory", "Accolade", "Kudos", "Homage", "Tout", "Lionized", "Approbation", "Adulation", "Eulogy", "Censure", "Excoriate", "Castigation", "Berate", "Lambast", "Deride", "Disparage", "Denigrate", "Vilify", "Decry", "Pillory", "Reproach", "Scathing", "Diatribe", "Tirade", "Invective"]
+	},
+	{
+		"id": "theme-deception-honesty",
+		"title": "Deception and Honesty",
+		"desc": "Lies, tricks, and frauds, set against candor and integrity.",
+		"category": "theme",
+		"order": 2,
+		"words": ["Duplicity", "Chicanery", "Mendacious", "Dissemble", "Feign", "Ruse", "Artifice", "Charlatan", "Sham", "Spurious", "Specious", "Disingenuous", "Prevaricate", "Equivocate", "Perfidious", "Legerdemain", "Dupe", "Beguile", "Inveigle", "Candor", "Probity", "Veracious", "Forthright", "Artless", "Guileless", "Ingenuous", "Aboveboard", "Unfeigned", "Rectitude"]
+	},
+	{
+		"id": "theme-stubbornness-yielding",
+		"title": "Stubbornness and Yielding",
+		"desc": "Refusing to budge versus giving way.",
+		"category": "theme",
+		"order": 3,
+		"words": ["Obdurate", "Intransigence", "Recalcitrant", "Refractory", "Adamant", "Dogged", "Tenacious", "Headstrong", "Willful", "Contumacious", "Intractable", "Implacable", "Inexorable", "Dogmatic", "Acquiesce", "Capitulate", "Accede", "Cede", "Succumb", "Concede", "Amenable", "Compliant", "Docile", "Tractable", "Malleable", "Complaisant"]
+	},
+	{
+		"id": "theme-talkative-reticent",
+		"title": "Talkative and Reticent",
+		"desc": "Words for saying too much and for saying very little.",
+		"category": "theme",
+		"order": 4,
+		"words": ["Garrulous", "Loquacious", "Voluble", "Volubility", "Verbose", "Prolix", "Prolixity", "Prattle", "Circumlocution", "Rambling", "Discursive", "Effusive", "Harangue", "Laconic", "Reticent", "Taciturnity", "Terse", "Succinct", "Pithy", "Brevity", "Brusque"]
+	},
+	{
+		"id": "theme-generosity-stinginess",
+		"title": "Generosity and Stinginess",
+		"desc": "Giving freely, spending recklessly, and holding on to every penny.",
+		"category": "theme",
+		"order": 5,
+		"words": ["Munificent", "Largesse", "Magnanimity", "Beneficent", "Benefactor", "Altruism", "Unstinting", "Prodigal", "Spendthrift", "Prodigality", "Squander", "Parsimonious", "Penurious", "Miserliness", "Illiberal", "Frugality", "Thrift", "Avarice", "Acquisitive", "Rapacious", "Stint", "Mercenary"]
+	},
+	{
+		"id": "theme-arrogance-humility",
+		"title": "Arrogance and Humility",
+		"desc": "Pride, condescension, and self-importance, set against modesty and deference.",
+		"category": "theme",
+		"order": 6,
+		"words": ["Haughty", "Hubris", "Supercilious", "Overweening", "Imperiously", "Condescension", "Patronize", "Conceit", "Presumptuous", "Pretentious", "Grandiose", "Narcissism", "Megalomania", "Vain", "Overbearing", "Unassuming", "Deferential", "Deference", "Demure", "Diffidence", "Kowtow", "Obeisance", "Grovel"]
+	},
+	{
+		"id": "theme-change-permanence",
+		"title": "Change and Permanence",
+		"desc": "The fickle and fleeting, set against the fixed and enduring.",
+		"category": "theme",
+		"order": 7,
+		"words": ["Mutable", "Mercurial", "Capricious", "Fickle", "Volatile", "Vacillate", "Oscillate", "Protean", "Vagary", "Vicissitude", "Metamorphosis", "Erratic", "Ephemeral", "Evanescent", "Immutable", "Indelible", "Irrevocable", "Perennial", "Entrenched", "Inveterate", "Ossified", "Steadfast", "Longevity"]
+	},
+	{
+		"id": "theme-secrecy-openness",
+		"title": "Secrecy and Openness",
+		"desc": "Plots, stealth, and concealment, set against what is done in plain view.",
+		"category": "theme",
+		"order": 8,
+		"words": ["Clandestine", "Surreptitious", "Furtive", "Cabal", "Collusion", "Connive", "Machination", "Enigmatic", "Sequester", "Guise", "Pretext", "Whitewash", "Insinuate", "Overt", "Candor", "Forthright", "Blatant", "Flagrant", "Patent", "Palpable", "Conspicuous", "Aboveboard", "Brazen"]
+	},
+	{
+		"id": "theme-harshness-mildness",
+		"title": "Harshness and Mildness",
+		"desc": "Severe, cutting, and punitive, set against gentle and soothing.",
+		"category": "theme",
+		"order": 9,
+		"words": ["Draconian", "Austere", "Stringent", "Astringent", "Caustic", "Acerbic", "Asperity", "Abrasive", "Trenchant", "Scathing", "Mordant", "Brusque", "Callous", "Martinet", "Punitive", "Clemency", "Benign", "Emollient", "Anodyne", "Placid", "Genial", "Temper", "Mollify", "Assuage", "Mitigate"]
+	},
+	{
+		"id": "theme-beginnings-endings",
+		"title": "Beginnings and Endings",
+		"desc": "Origins, forerunners, and first stages, through to conclusions and decline.",
+		"category": "theme",
+		"order": 10,
+		"words": ["Nascent", "Incipient", "Inchoate", "Fledgling", "Neophyte", "Tyro", "Precursor", "Harbinger", "Preamble", "Primordial", "Burgeon", "Antecedent", "Denouement", "Coda", "Peroration", "Culminate", "Moribund", "Defunct", "Dissolution", "Extirpate", "Posthumous", "Desuetude"]
+	},
+	{
+		"id": "theme-courage-fear",
+		"title": "Courage and Fear",
+		"desc": "Daring and composure, set against timidity and dread.",
+		"category": "theme",
+		"order": 11,
+		"words": ["Intrepid", "Audacious", "Fortitude", "Pluck", "Temerity", "Bravado", "Foolhardy", "Indomitable", "Sangfroid", "Aplomb", "Craven", "Pusillanimous", "Timorous", "Trepidation", "Quail", "Daunt", "Apprehensive", "Foreboding", "Chary", "Consternation"]
+	},
+	{
+		"id": "theme-anger-hostility",
+		"title": "Anger and Hostility",
+		"desc": "Irritation, resentment, and open aggression.",
+		"category": "theme",
+		"order": 12,
+		"words": ["Irascible", "Rancor", "Animosity", "Antipathy", "Enmity", "Acrimonious", "Belligerent", "Bellicose", "Pugnacious", "Truculence", "Vindictive", "Malevolent", "Apoplectic", "Indignant", "Umbrage", "Pique", "Petulant", "Fractious", "Querulous", "Inimical", "Antagonize", "Exasperate", "Rankle", "Nettle", "Vexation"]
+	},
+	{
+		"id": "theme-wisdom-folly",
+		"title": "Wisdom and Folly",
+		"desc": "Insight and learning, set against naivety and poor judgment.",
+		"category": "theme",
+		"order": 13,
+		"words": ["Sagacious", "Astute", "Shrewd", "Perspicacious", "Acumen", "Prescience", "Discerning", "Judicious", "Erudite", "Polymath", "Savant", "Cerebral", "Incisive", "Fatuous", "Obtuse", "Vacuous", "Puerile", "Sophomoric", "Jejune", "Callow", "Imprudent", "Injudicious", "Myopic", "Benighted"]
+	},
+	{
+		"id": "theme-flattery-servility",
+		"title": "Flattery and Servility",
+		"desc": "Fawning, coaxing, and bowing to win favor.",
+		"category": "theme",
+		"order": 14,
+		"words": ["Obsequious", "Sycophant", "Fawning", "Unctuous", "Ingratiate", "Cajole", "Blandishment", "Kowtow", "Grovel", "Subservient", "Obeisance", "Fulsome", "Pander", "Adulation", "Propitiate", "Complaisant", "Supplicate", "Inveigle", "Abject"]
+	},
+	{
+		"id": "theme-idleness-diligence",
+		"title": "Idleness and Diligence",
+		"desc": "Sloth, delay, and half-hearted effort, set against tireless work.",
+		"category": "theme",
+		"order": 15,
+		"words": ["Indolent", "Lethargic", "Torpor", "Lassitude", "Languid", "Lackadaisical", "Perfunctory", "Desultory", "Sedentary", "Inert", "Somnolent", "Soporific", "Supine", "Malingerer", "Shirk", "Procrastinate", "Dilatory", "Laggard", "Assiduous", "Sedulous", "Diligent", "Indefatigable", "Meticulous", "Conscientious", "Punctilious", "Exhaustive"]
+	},
+	{
+		"id": "theme-abundance-scarcity",
+		"title": "Abundance and Scarcity",
+		"desc": "Gluts and floods, set against traces and shortages.",
+		"category": "theme",
+		"order": 16,
+		"words": ["Plethora", "Surfeit", "Glut", "Copious", "Ample", "Replete", "Myriad", "Prolific", "Preponderance", "Spate", "Inundate", "Saturate", "Dearth", "Paucity", "Scant", "Modicum", "Scintilla", "Pittance", "Paltry", "Negligible", "Wanting", "Vestige"]
+	},
+	{
+		"id": "theme-wealth-poverty",
+		"title": "Wealth and Poverty",
+		"desc": "Money, luxury, and gain, set against want and hardship.",
+		"category": "theme",
+		"order": 17,
+		"words": ["Opulent", "Sumptuous", "Magnate", "Plutocratic", "Lucre", "Pecuniary", "Solvent", "Underwrite", "Perquisite", "Sinecure", "Venal", "Exorbitant", "Prohibitive", "Bilk", "Purloin", "Impecunious", "Indigence", "Penury", "Mendicant", "Pittance"]
+	},
+	{
+		"id": "theme-showiness",
+		"title": "Showiness and Pretension",
+		"desc": "Ornate, flashy, and theatrical display.",
+		"category": "theme",
+		"order": 18,
+		"words": ["Bombastic", "Grandiloquent", "Florid", "Baroque", "Ostentatious", "Flamboyant", "Garish", "Tawdry", "Meretricious", "Overwrought", "Flaunt", "Grandiose", "Panache", "Histrionic", "Pretentious", "Brandish", "Strut", "Preen", "Opulent", "Sumptuous"]
+	},
+	{
+		"id": "theme-dullness-cliche",
+		"title": "Dullness and Cliché",
+		"desc": "The ordinary, the overused, and the uninspired.",
+		"category": "theme",
+		"order": 19,
+		"words": ["Prosaic", "Pedestrian", "Mundane", "Quotidian", "Banal", "Trite", "Hackneyed", "Platitude", "Insipid", "Humdrum", "Lackluster", "Tepid", "Staid", "Nondescript", "Ponderous", "Derivative", "Truism", "Anodyne", "Ennui", "Jaded", "Arid"]
+	},
+	{
+		"id": "theme-clarity-obscurity",
+		"title": "Clarity and Obscurity",
+		"desc": "Clear and explicit, set against cryptic, vague, and convoluted.",
+		"category": "theme",
+		"order": 20,
+		"words": ["Lucid", "Pellucid", "Limpid", "Elucidate", "Unequivocal", "Coherent", "Articulate", "Cogent", "Delineate", "Obscure", "Abstruse", "Recondite", "Arcane", "Esoteric", "Cryptic", "Nebulous", "Ambiguous", "Convoluted", "Byzantine", "Inscrutable", "Oracular", "Obfuscate", "Turbid", "Tortuous"]
+	},
+	{
+		"id": "theme-harmony-discord",
+		"title": "Harmony and Discord",
+		"desc": "Agreement and reconciliation, set against division and quarrels.",
+		"category": "theme",
+		"order": 21,
+		"words": ["Accord", "Concur", "Consonant", "Amicable", "Conciliatory", "Rapprochement", "Reconcile", "Concerted", "Congenial", "Camaraderie", "Cohesive", "Converge", "Discordant", "Dissonance", "Schism", "Contention", "Contentious", "Polarize", "Divisive", "Factious", "Wrangle", "Recrimination", "Dissident", "Embroil"]
+	},
+	{
+		"id": "theme-help-hindrance",
+		"title": "Help and Hindrance",
+		"desc": "Supporting and strengthening, set against blocking and weakening.",
+		"category": "theme",
+		"order": 22,
+		"words": ["Bolster", "Buttress", "Abet", "Foster", "Succor", "Alleviate", "Ameliorate", "Augment", "Bulwark", "Boon", "Catalyst", "Galvanize", "Hearten", "Impede", "Stymie", "Encumber", "Fetter", "Forestall", "Preclude", "Obviate", "Circumscribe", "Curtail", "Stultify", "Undermine", "Impair", "Vitiate"]
+	},
+	{
+		"id": "theme-joy-sorrow",
+		"title": "Joy and Sorrow",
+		"desc": "High spirits and good cheer, set against gloom and grief.",
+		"category": "theme",
+		"order": 23,
+		"words": ["Ebullient", "Ecstatic", "Buoyant", "Blithe", "Jocular", "Vivacious", "Sanguine", "Beatific", "Convivial", "Bonhomie", "Morose", "Despondent", "Dour", "Saturnine", "Lugubrious", "Lachrymose", "Plaintive", "Wistful", "Maudlin", "Crestfallen", "Lament", "Bemoan", "Rue", "Sullen"]
+	},
+	{
+		"id": "theme-virtue-vice",
+		"title": "Virtue and Vice",
+		"desc": "Integrity and moral excellence, set against corruption and wickedness.",
+		"category": "theme",
+		"order": 24,
+		"words": ["Rectitude", "Probity", "Scrupulous", "Estimable", "Exemplary", "Paragon", "Piety", "Laudable", "Unimpeachable", "Depravity", "Turpitude", "Nefarious", "Heinous", "Egregious", "Reprobate", "Venal", "Unscrupulous", "Malfeasance", "Profligate", "Sordid", "Reprehensible", "Unconscionable", "Peccadillo", "Venial", "Transgression", "Ignoble", "Base"]
+	},
+	{
+		"id": "theme-guilt-pardon",
+		"title": "Guilt, Blame and Pardon",
+		"desc": "Accusation and punishment, set against excuse, atonement, and mercy.",
+		"category": "theme",
+		"order": 25,
+		"words": ["Culpable", "Complicit", "Inculpate", "Impugn", "Exculpate", "Exonerate", "Absolve", "Vindicate", "Expiate", "Clemency", "Reprieve", "Extenuate", "Contrite", "Penitential", "Compunction", "Restitution", "Redress", "Reprisal", "Punitive", "Requite", "Impunity"]
+	},
+	{
+		"id": "theme-power-authority",
+		"title": "Power and Authority",
+		"desc": "Rulers, decrees, and domination.",
+		"category": "theme",
+		"order": 26,
+		"words": ["Hegemony", "Autocratic", "Despot", "Demagogue", "Martinet", "Usurp", "Arrogate", "Subjugate", "Ascendancy", "Mandate", "Fiat", "Prerogative", "Magisterial", "Puissance", "Titular", "Sedition", "Coerce", "Abdicate", "Proxy", "Juggernaut"]
+	},
+	{
+		"id": "theme-language-rhetoric",
+		"title": "Language and Rhetoric",
+		"desc": "Words about words: sayings, figures of speech, and ways of arguing.",
+		"category": "theme",
+		"order": 27,
+		"words": ["Sophistry", "Polemical", "Exhort", "Pontificate", "Opine", "Aver", "Asseverate", "Posit", "Gainsay", "Rejoinder", "Hyperbole", "Euphemism", "Aphorism", "Maxim", "Epithet", "Allusion", "Paradox", "Tautology", "Neologism", "Jargon", "Vernacular", "Colloquial", "Lexicon", "Nomenclature"]
+	},
+	{
+		"id": "theme-logic-evidence",
+		"title": "Logic and Evidence",
+		"desc": "Proof, inference, and flawed reasoning, as used in GRE arguments.",
+		"category": "theme",
+		"order": 28,
+		"words": ["Empirical", "Anecdotal", "Corroborate", "Substantiate", "Conjecture", "Supposition", "Extrapolation", "Fallacious", "Fallacy", "Tenuous", "Untenable", "Unassailable", "Incontrovertible", "Axiomatic", "Corollary", "Heuristic", "Paradigm", "Dichotomy", "Refutation", "Analogous", "Contingent", "Arbitrary", "Debunk", "Specious"]
+	}
+]

@@ -1,0 +1,245 @@
+/** @format */
+/* Practice and Learn (components/choice/ChoiceQuiz.jsx), ported from the
+   Wortschatz .tm-page / .qz-page rules. Everything is scoped under .ch-page.
+   The header comes from components/PlayHeader.jsx (styles/ui.css); tokens
+   from styles/globals.css. */
+
+.ch-page {
+	position: relative;
+	min-height: 100vh;
+	min-height: 100dvh;
+	font-size: 15px;
+	line-height: 1.5;
+	color: var(--text);
+	padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.ch-page .ch-wrap {
+	width: min(1100px, 100% - 2rem);
+	margin-inline: auto;
+}
+.ch-page .ch-sr {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+}
+
+/* ---- Header extras ---- */
+.ch-page .ch-delay {
+	display: inline-flex;
+}
+.ch-page .pill[aria-pressed="false"] {
+	color: var(--muted);
+}
+
+/* ---- Stage ---- */
+.ch-page .ch-stage {
+	padding: clamp(1.5rem, 5vw, 3rem) 0 4rem;
+}
+.ch-page .ch-loading {
+	text-align: center;
+	color: var(--muted);
+}
+
+/* ---- Prompt ---- */
+.ch-page .ch-prompt {
+	text-align: center;
+}
+.ch-page .ch-ask {
+	margin: 0 0 0.6rem;
+	color: var(--muted);
+	font-size: 0.9rem;
+}
+.ch-page .ch-prompt-word {
+	display: inline-block;
+	max-width: 100%;
+	font-size: clamp(2.6rem, 8vw, 4.2rem);
+	font-weight: 800;
+	letter-spacing: -0.04em;
+	line-height: 1.05;
+	overflow-wrap: anywhere;
+}
+.ch-page .ch-prompt-def {
+	display: inline-block;
+	max-width: 34rem;
+	font-size: clamp(1.5rem, 4vw, 2.1rem);
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	line-height: 1.25;
+	overflow-wrap: anywhere;
+}
+
+/* ---- Options ---- */
+.ch-page .ch-opts {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.6rem;
+	max-width: 620px;
+	margin: 2rem auto 0;
+}
+@media (max-width: 560px) {
+	.ch-page .ch-opts {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+.ch-page .ch-opt {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr) auto;
+	gap: 0.8rem;
+	align-items: center;
+	text-align: left;
+	border: 1px solid var(--line-strong);
+	background: rgba(255, 255, 255, 0.025);
+	border-radius: 12px;
+	padding: 0.85rem 1rem;
+	font: inherit;
+	font-size: 1rem;
+	color: var(--text);
+	cursor: pointer;
+	transition: border-color 140ms ease, background 140ms ease, opacity 140ms ease;
+}
+.ch-page .ch-opts.is-words .ch-opt {
+	font-size: 1.08rem;
+	font-weight: 600;
+}
+.ch-page .ch-opt:hover:not(:disabled) {
+	border-color: rgba(255, 255, 255, 0.32);
+	background: rgba(255, 255, 255, 0.05);
+}
+.ch-page .ch-opt:focus-visible {
+	outline: 2px solid rgba(100, 181, 255, 0.8);
+	outline-offset: 2px;
+}
+.ch-page .ch-opt:disabled {
+	cursor: default;
+}
+.ch-page .ch-opt .k {
+	color: var(--muted);
+}
+.ch-page .ch-opt-text {
+	overflow-wrap: anywhere;
+}
+.ch-page .ch-mark {
+	display: grid;
+	place-items: center;
+	width: 1rem;
+}
+.ch-page .ch-opt.ok {
+	border-color: var(--ok);
+	background: rgba(95, 211, 154, 0.09);
+}
+.ch-page .ch-opt.ok .ch-mark {
+	color: var(--ok);
+}
+.ch-page .ch-opt.bad {
+	border-color: var(--bad);
+	background: rgba(255, 107, 94, 0.09);
+}
+.ch-page .ch-opt.bad .ch-mark {
+	color: var(--bad);
+}
+.ch-page .ch-opt.dim {
+	opacity: 0.45;
+}
+
+/* ---- Feedback ---- */
+.ch-page .ch-fb {
+	max-width: 620px;
+	margin: 1.1rem auto 0;
+	min-height: 2rem;
+}
+.ch-page .ch-fb-line {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin: 0;
+	font-weight: 600;
+	text-align: center;
+}
+.ch-page .ch-fb-line.ok {
+	color: var(--ok);
+}
+.ch-page .ch-fb-line.bad {
+	color: var(--bad);
+}
+.ch-page .ch-fb-line strong {
+	color: var(--text);
+}
+.ch-page .ch-fb-icon {
+	flex: none;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	display: grid;
+	place-items: center;
+	border: 1px solid currentColor;
+}
+.ch-page .ch-fb-icon svg {
+	width: 12px;
+	height: 12px;
+}
+.ch-page .ch-card {
+	margin-top: 1rem;
+	border: 1px solid var(--line-strong);
+	border-radius: 14px;
+	background: var(--panel);
+	padding: 1rem 1.1rem;
+	text-align: left;
+	overflow-wrap: anywhere;
+}
+.ch-page .ch-card .hw {
+	font-size: 1.35rem;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+}
+.ch-page .ch-card .gloss {
+	color: var(--soft);
+	margin: 0.1rem 0 0.7rem;
+}
+.ch-page .ch-card .ex {
+	margin: 0;
+	border-top: 1px solid var(--line);
+	padding-top: 0.7rem;
+	font-style: italic;
+	color: var(--soft);
+}
+
+/* ---- Continue cue and key hint ---- */
+.ch-page .ch-continue {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin: 0.9rem auto 0;
+	padding: 0.3rem 0.6rem;
+	border: 0;
+	border-radius: 8px;
+	background: none;
+	font: inherit;
+	font-size: 0.84rem;
+	color: var(--muted);
+	cursor: pointer;
+}
+.ch-page .ch-continue:hover {
+	color: #fff;
+}
+.ch-page .ch-continue:focus-visible {
+	outline: 2px solid rgba(100, 181, 255, 0.8);
+	outline-offset: 2px;
+}
+.ch-page .ch-keys {
+	text-align: center;
+	color: var(--muted);
+	font-size: 0.84rem;
+	margin: 0.9rem 0 0;
+}
+/* No number keys on a touch screen. */
+@media (hover: none) and (pointer: coarse) {
+	.ch-page .ch-keys,
+	.ch-page .ch-continue kbd {
+		display: none;
+	}
+}

@@ -1,0 +1,216 @@
+/* Settings page. Grouped cards, one row per setting, each row naming the modes
+   it applies to. Segmented controls and buttons come from ui.css; tokens come
+   from globals.css. Every rule is scoped to #settings so it cannot leak into
+   another route. The navbar is visible here, so the top padding clears it. */
+#settings {
+	min-height: 100vh;
+	min-height: 100dvh;
+	padding: 96px 16px calc(4rem + env(safe-area-inset-bottom, 0px));
+	color: var(--text);
+}
+#settings .settings-wrap {
+	width: min(760px, 100%);
+	margin: 0 auto;
+}
+
+/* ---------- Page header ---------- */
+#settings .settings-head {
+	padding-bottom: 0.4rem;
+}
+#settings .settings-head h1 {
+	margin: 0 0 0.4rem;
+	font-size: clamp(2rem, 4vw, 2.7rem);
+	letter-spacing: -0.04em;
+	line-height: 1.1;
+}
+#settings .settings-head p {
+	margin: 0;
+	color: var(--soft);
+	max-width: 44rem;
+}
+#settings .settings-loading {
+	color: var(--muted);
+}
+
+/* ---------- Groups and rows ---------- */
+#settings .set-group {
+	margin-top: 1.6rem;
+	border: 1px solid var(--line);
+	border-radius: 18px;
+	background: rgba(255, 255, 255, 0.015);
+}
+#settings .set-group > h2 {
+	margin: 0;
+	padding: 1rem 1.2rem 0.2rem;
+	font-size: 1rem;
+}
+#settings .set-row {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	gap: 1.2rem;
+	align-items: center;
+	padding: 1rem 1.2rem;
+	border-bottom: 1px solid var(--line);
+}
+#settings .set-row:last-child {
+	border-bottom: 0;
+}
+#settings .set-row h3 {
+	margin: 0;
+	font-size: 0.95rem;
+	font-weight: 600;
+}
+#settings .set-row p {
+	margin: 0.15rem 0 0;
+	color: var(--muted);
+	font-size: 0.85rem;
+	line-height: 1.5;
+}
+#settings .set-row .where {
+	color: var(--soft);
+}
+#settings .set-row.set-row-stack {
+	grid-template-columns: minmax(0, 1fr);
+}
+#settings .set-row.danger-row h3 {
+	color: #ffb3aa;
+}
+@media (max-width: 640px) {
+	#settings .set-row {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+/* The five-option delay segment has to fit a 360px phone. */
+#settings .set-row .seg {
+	max-width: 100%;
+}
+#settings .set-row .seg button {
+	padding: 0.3rem 0.55rem;
+}
+#settings .set-row .seg.big button {
+	padding: 0.45rem 0.9rem;
+}
+
+/* ---------- Switch ---------- */
+#settings .switch {
+	position: relative;
+	flex: none;
+	width: 44px;
+	height: 26px;
+	padding: 0;
+	border-radius: 999px;
+	border: 1px solid var(--line-strong);
+	background: rgba(255, 255, 255, 0.08);
+	cursor: pointer;
+	transition: background 0.2s, border-color 0.2s;
+}
+#settings .switch::after {
+	content: "";
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	background: #fff;
+	transition: transform 0.2s;
+}
+#settings .switch[aria-checked="true"] {
+	background: var(--coral);
+	border-color: var(--coral);
+}
+#settings .switch[aria-checked="true"]::after {
+	transform: translateX(18px);
+}
+#settings .switch:focus-visible {
+	outline: 2px solid rgba(100, 181, 255, 0.8);
+	outline-offset: 2px;
+}
+
+/* ---------- Import ---------- */
+#settings .drop {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.4rem;
+	border: 1px dashed var(--line-strong);
+	border-radius: 12px;
+	padding: 1rem;
+	text-align: center;
+	color: var(--muted);
+	font-size: 0.88rem;
+}
+/* The real file input is visually hidden, not display:none, so iOS Safari still
+   opens the picker from the label. Focus is shown on the label instead. */
+#settings .file-pick {
+	position: relative;
+	display: inline-flex;
+	cursor: pointer;
+}
+#settings .file-pick:focus-within {
+	outline: 2px solid rgba(100, 181, 255, 0.8);
+	outline-offset: 2px;
+}
+#settings .file-input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 1px;
+	height: 1px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	opacity: 0;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+}
+#settings .drop .btn-q {
+	padding: 0;
+}
+#settings .paste-box {
+	width: 100%;
+	margin-top: 0.4rem;
+	text-align: left;
+}
+#settings .paste-box[hidden] {
+	display: none;
+}
+#settings .paste {
+	display: block;
+	width: 100%;
+	min-height: 90px;
+	resize: vertical;
+	border-radius: var(--r-md);
+	border: 1px solid var(--line-strong);
+	background: rgba(0, 0, 0, 0.4);
+	color: var(--text);
+	padding: 0.6rem 0.8rem;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	font-size: 0.85rem;
+	line-height: 1.4;
+}
+#settings .paste:focus {
+	outline: none;
+	border-color: rgba(100, 181, 255, 0.6);
+	box-shadow: 0 0 0 3px rgba(100, 181, 255, 0.2);
+}
+#settings .paste-actions {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 0.6rem;
+}
+
+/* ---------- Status ---------- */
+#settings .status {
+	margin: 1rem 0 0;
+	min-height: 1.3rem;
+	font-size: 0.9rem;
+}
+#settings .status.ok {
+	color: var(--ok);
+}
+#settings .status.err {
+	color: var(--bad);
+}

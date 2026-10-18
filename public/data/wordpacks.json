@@ -1,343 +1,865 @@
 [
 	{
+		"id": "path-core-01",
+		"title": "Core Set 1",
+		"desc": "Core tier, set 1 of 19: 26 high-frequency words to learn first.",
+		"category": "path",
+		"tier": 1,
+		"order": 1,
+		"words": ["Pedestrian", "Tractable", "Cajole", "Unruly", "Coerce", "Lucid", "Stringent", "Ameliorate", "Maverick", "Voracious", "Exacerbate", "Mundane", "Acumen", "Cacophonous", "Fickle", "Sanction", "Obviate", "Acerbic", "Censure", "Scrupulous", "Dispel", "Poignant", "Derivative", "Ominous", "Quandary", "Ramification"]
+	},
+	{
+		"id": "path-core-02",
+		"title": "Core Set 2",
+		"desc": "Core tier, set 2 of 19: 26 high-frequency words to learn first.",
+		"category": "path",
+		"tier": 1,
+		"order": 2,
+		"words": ["Eloquent", "Indolent", "Innate", "Decorum", "Circumvent", "Exonerate", "Exasperate", "Esoteric", "Lethargic", "Engender", "Curtail", "Laudable", "Abstruse", "Arcane", "Prevaricate", "Plummet", "Caustic", "Debunk", "Fortuitous", "Fervor", "Paucity", "Incessant", "Impair", "Contentious", "Craven", "Acrimonious"]
+	},
+	{
+		"id": "path-core-03",
+		"title": "Core Set 3",
+		"desc": "Core tier, set 3 of 19: 26 high-frequency words to learn first.",
+		"category": "path",
+		"tier": 1,
+		"order": 3,
+		"words": ["Idiosyncrasy", "Resurgence", "Paradigm", "Aesthetic", "Goad", "Exorbitant", "Elusive", "Overt", "Deleterious", "Assiduous", "Complicit", "Cursory", "Rudimentary", "Derogatory", "Vacillate", "Pedantic", "Tentative", "Autonomous", "Culminate", "Equanimity", "Repudiate", "Exemplary", "Inundate", "Ingenuous", "Dichotomy", "Charlatan"]
+	},
+	{
+		"id": "path-core-04",
+		"title": "Core Set 4",
+		"desc": "Core tier, set 4 of 19: 26 high-frequency words to learn first.",
+		"category": "path",
+		"tier": 1,
+		"order": 4,
+		"words": ["Fatuous", "Stagnant", "Ambivalence", "Alleviate", "Fortitude", "Adulterate", "Ascetic", "Proponent", "Clandestine", "Equivocate", "Appease", "Preclude", "Assuage", "Foster", "Elucidate", "Adulation", "Pretentious", "Astute", "Magnanimity", "Iconoclast", "Perfidious", "Garrulous", "Imperturbable", "Apathy", "Proliferate", "Dearth"]
+	},
+	{
+		"id": "path-core-05",
+		"title": "Core Set 5",
+		"desc": "Core tier, set 5 of 19: 26 high-frequency words to learn first.",
+		"category": "path",
+		"tier": 1,
+		"order": 5,
+		"words": ["Intransigence", "Endemic", "Flaunt", "Alacrity", "Prescience", "Undermine", "Mitigate", "Morose", "Capricious", "Salient", "Rancor", "Efficacy", "Harangue", "Dogmatic", "Recalcitrant", "Innocuous", "Desultory", "Superfluous", "Satiate", "Complaisant", "Exhaustive", "Indignant", "Propriety", "Disseminate", "Irascible", "Conciliatory"]
+	},
+	{
+		"id": "path-core-06",
+		"title": "Core Set 6",
+		"desc": "Core tier, set 6 of 19: 26 high-frequency words to learn first.",
+		"category": "path",
+		"tier": 1,
+		"order": 6,
+		"words": ["Oblivious", "Squander", "Aggrandize", "Coherent", "Vindicate", "Recant", "Rigorous", "Corroborate", "Averse", "Parsimonious", "Cumulative", "Ambiguous", "Anarchy", "Extant", "Sporadic", "Conflate", "Latent", "Misanthrope", "Didactic", "Abate", "Parody", "Complement", "Vigilant", "Deride", "Panacea", "Paragon"]
+	},
+	{
+		"id": "path-core-07",
+		"title": "Core Set 7",
+		"desc": "Core tier, set 7 of 19: 25 high-frequency words to learn first.",
+		"category": "path",
+		"tier": 1,
+		"order": 7,
+		"words": ["Inconsequential", "Diffuse", "Cosmopolitan", "Unequivocal", "Tangential", "Refute", "Occlude", "Despondent", "Castigation", "Quotidian", "Dissonance", "Tortuous", "Prolific", "Caveat", "Admonish", "Mendacious", "Zealot", "Dissuade", "Haughty", "Euphemism", "Hyperbole", "Succinct", "Impeccable", "Attenuate", "Partisan"]
+	},
+	{
+		"id": "path-core-08",
+		"title": "Core Set 8",
+		"desc": "Core tier, set 8 of 19: 25 high-frequency words to learn first.",
+		"category": "path",
+		"tier": 1,
+		"order": 8,
+		"words": ["Contrived", "Hubris", "Blatant", "Reiterate", "Disabuse", "Obdurate", "Elicit", "Gullible", "Audacious", "Incongruous", "Hypocrisy", "Tenuous", "Plethora", "Digression", "Accolade", "Bombastic", "Cumbersome", "Gregarious", "Discrete", "Laud", "Discrepancy", "Frugality", "Stolid", "Gainsay", "Facile"]
+	},
+	{
+		"id": "path-core-09",
+		"title": "Core Set 9",
+		"desc": "Core tier, set 9 of 19: 25 high-frequency words to learn first.",
+		"category": "path",
+		"tier": 1,
+		"order": 9,
+		"words": ["Alienate", "Transcend", "Succumb", "Hackneyed", "Artless", "Obsequious", "Conjecture", "Contingent", "Altruism", "Ostentatious", "Egregious", "Propitiate", "Meticulous", "Immutable", "Wane", "Camaraderie", "Invective", "Belligerent", "Inchoate", "Catalyst", "Credulous", "Dubious", "Refractory", "Conscientious", "Jargon"]
+	},
+	{
+		"id": "path-core-10",
+		"title": "Core Set 10",
+		"desc": "Core tier, set 10 of 19: 25 high-frequency words to learn first.",
+		"category": "path",
+		"tier": 1,
+		"order": 10,
+		"words": ["Impervious", "Inert", "Implacable", "Brevity", "Buttress", "Facetious", "Predilection", "Adept", "Coalesce", "Galvanize", "Insidious", "Rampant", "Shrewd", "Latitude", "Anomaly", "Lackluster", "Approbation", "Robust", "Officious", "Paradox", "Affinity", "Converge", "Complacent", "Supersede", "Pragmatic"]
+	},
+	{
+		"id": "path-core-11",
+		"title": "Core Set 11",
+		"desc": "Core tier, set 11 of 19: 25 high-frequency words to learn first.",
+		"category": "path",
+		"tier": 1,
+		"order": 11,
+		"words": ["Precarious", "Articulate", "Amenable", "Convoluted", "Extol", "Disinterested", "Sedentary", "Inherent", "Analogous", "Vilify", "Soporific", "Volatile", "Pervasive", "Wary", "Opprobrium", "Loquacious", "Reverent", "Culpable", "Adverse", "Antipathy", "Unscrupulous", "Chicanery", "Placate", "Impasse", "Venal"]
+	},
+	{
+		"id": "path-core-12",
+		"title": "Core Set 12",
+		"desc": "Core tier, set 12 of 19: 25 high-frequency words to learn first.",
+		"category": "path",
+		"tier": 1,
+		"order": 12,
+		"words": ["Phlegmatic", "Penury", "Discordant", "Longevity", "Obfuscate", "Malleable", "Banal", "Mollify", "Nostalgia", "Disparage", "Belie", "Disdain", "Ardent", "Neophyte", "Gaffe", "Apathetic", "Judicious", "Enervate", "Stigma", "Foment", "Levity", "Viable", "Mercurial", "Precursor", "Antagonize"]
+	},
+	{
+		"id": "path-core-13",
+		"title": "Core Set 13",
+		"desc": "Core tier, set 13 of 19: 25 high-frequency words to learn first.",
+		"category": "path",
+		"tier": 1,
+		"order": 13,
+		"words": ["Scrutinize", "Ascribe", "Adamant", "Ubiquitous", "Precedent", "Anachronism", "Check", "Emulate", "Garner", "Haphazard", "Frivolous", "Flout", "Bolster", "Proscribe", "Abstain", "Augment", "Procrastinate", "Sanguine", "Dissemble", "Cryptic", "Whimsical", "Lassitude", "Compromise", "Ingenious", "Impassive"]
+	},
+	{
+		"id": "path-core-14",
+		"title": "Core Set 14",
+		"desc": "Core tier, set 14 of 19: 25 high-frequency words to learn first.",
+		"category": "path",
+		"tier": 1,
+		"order": 14,
+		"words": ["Veracious", "Heinous", "Capitulate", "Discerning", "Austere", "Oscillate", "Serendipity", "Delineate", "Contrite", "Fawning", "Prosaic", "Vindictive", "Concede", "Stoic", "Venerate", "Hone", "Unprecedented", "Quiescent", "Quixotic", "Fervent", "Enigmatic", "Epitome", "Circumspect", "Prodigal", "Dormant"]
+	},
+	{
+		"id": "path-core-15",
+		"title": "Core Set 15",
+		"desc": "Core tier, set 15 of 19: 25 high-frequency words to learn first.",
+		"category": "path",
+		"tier": 1,
+		"order": 15,
+		"words": ["Deference", "Reciprocate", "Burgeon", "Erudite", "Tacit", "Decry", "Laconic", "Nebulous", "Tirade", "Verbose", "Probity", "Seminal", "Colloquial", "Abscond", "Inadvertently", "Diffidence", "Divisive", "Embellish", "Permeable", "Avarice", "Specious", "Propensity", "Homogenous", "Animosity", "Inured"]
+	},
+	{
+		"id": "path-core-16",
+		"title": "Core Set 16",
+		"desc": "Core tier, set 16 of 19: 25 high-frequency words to learn first.",
+		"category": "path",
+		"tier": 1,
+		"order": 16,
+		"words": ["Steadfast", "Impermeable", "Prodigy", "Confound", "Negligible", "Orthodox", "Futile", "Pristine", "Candor", "Disparate", "Disingenuous", "Evanescent", "Abrasive", "Fraught", "Diligent", "Eschew", "Tenet", "Myriad", "Perfunctory", "Harbinger", "Copious", "Fastidious", "Implicit", "Torpor", "Incisive"]
+	},
+	{
+		"id": "path-core-17",
+		"title": "Core Set 17",
+		"desc": "Core tier, set 17 of 19: 25 high-frequency words to learn first.",
+		"category": "path",
+		"tier": 1,
+		"order": 17,
+		"words": ["Viscous", "Erratic", "Tenacious", "Intrepid", "Vehement", "Peripheral", "Truculence", "Arbitrary", "Eclectic", "Insipid", "Assimilate", "Mandate", "Gratuitous", "Ebullient", "Impede", "Anecdotal", "Relegate", "Debacle", "Intractable", "Deterrent", "Advocate", "Callous", "Conundrum", "Nascent", "Feign"]
+	},
+	{
+		"id": "path-core-18",
+		"title": "Core Set 18",
+		"desc": "Core tier, set 18 of 19: 25 high-frequency words to learn first.",
+		"category": "path",
+		"tier": 1,
+		"order": 18,
+		"words": ["Obscure", "Desiccate", "Concur", "Boisterous", "Substantiate", "Hegemony", "Denigrate", "Ephemeral", "Trite", "Aberrant", "Guileless", "Intermittent", "Conspicuous", "Trepidation", "Condone", "Champion", "Reticent", "Belittle", "Rectify", "Flagrant", "Arduous", "Heterodox", "Benefactor", "Susceptible", "Felicitous"]
+	},
+	{
+		"id": "path-core-19",
+		"title": "Core Set 19",
+		"desc": "Core tier, set 19 of 19: 25 high-frequency words to learn first.",
+		"category": "path",
+		"tier": 1,
+		"order": 19,
+		"words": ["Incredulous", "Fallacious", "Juxtapose", "Diatribe", "Resilient", "Exculpate", "Amass", "Lament", "Warrant", "Rescind", "Penchant", "Breach", "Onerous", "Cohesive", "Insularity", "Cogent", "Empirical", "Quintessential", "Temper", "Apprehensive", "Recondite", "Acquiesce", "Germane", "Precipitate", "Impetus"]
+	},
+	{
+		"id": "path-common-01",
+		"title": "Common Set 1",
+		"desc": "Common tier, set 1 of 32: 25 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 1,
+		"words": ["Codify", "Sanctimonious", "Outstrip", "Strut", "Capacious", "Supposition", "Canon", "Truism", "Pittance", "Antithetical", "Reprehensible", "Vanguard", "Neologism", "Aloof", "Caricature", "Bemoan", "Histrionic", "Coy", "Reactionary", "Apocryphal", "Preen", "Antecedent", "Accede", "Putrefy", "Preponderance"]
+	},
+	{
+		"id": "path-common-02",
+		"title": "Common Set 2",
+		"desc": "Common tier, set 2 of 32: 25 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 2,
+		"words": ["Piety", "Repugnant", "Garish", "Qualms", "Surreptitious", "Chagrin", "Interloper", "Opulent", "Quagmire", "Sagacious", "Ruse", "Apotheosis", "Schism", "List", "Polymath", "Genial", "Feckless", "Conversant", "Concerted", "Pillory", "Circumscribe", "Aspersion", "Vagary", "Quell", "Circuitous"]
+	},
+	{
+		"id": "path-common-03",
+		"title": "Common Set 3",
+		"desc": "Common tier, set 3 of 32: 25 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 3,
+		"words": ["Collusion", "Steep", "Connive", "Hapless", "Dismiss", "Supercilious", "Minutiae", "Tendentious", "Intrinsic", "Petulant", "Pine", "Berate", "Heady", "Umbrage", "Prattle", "Badger", "Raucous", "Spendthrift", "Cavil", "August", "Bemused", "Docile", "Incorporate", "Veneer", "Overwrought"]
+	},
+	{
+		"id": "path-common-04",
+		"title": "Common Set 4",
+		"desc": "Common tier, set 4 of 32: 25 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 4,
+		"words": ["Reconcile", "Encroach", "Reprieve", "Nihilism", "Pith", "Philistine", "Misnomer", "Wry", "Resolution", "Reverie", "Beguile", "Wax", "Rebuff", "Fledgling", "Subside", "Dissipate", "Skeptic", "Ineffable", "Unseemly", "Rote", "Nonplussed", "Abrogate", "Itinerant", "Denouement", "Congenial"]
+	},
+	{
+		"id": "path-common-05",
+		"title": "Common Set 5",
+		"desc": "Common tier, set 5 of 32: 25 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 5,
+		"words": ["Dour", "Rue", "Abeyance", "Nadir", "Discredit", "Acquisition", "Confluence", "Staunchness", "Fidelity", "Bastion", "Modicum", "Crass", "Idolatry", "Glean", "Chimera", "Voluble", "Conventional", "Patrician", "Protract", "Ponderous", "Wanting", "Subjugate", "Saturate", "Grandiloquent", "Brook"]
+	},
+	{
+		"id": "path-common-06",
+		"title": "Common Set 6",
+		"desc": "Common tier, set 6 of 32: 25 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 6,
+		"words": ["Deplore", "Vain", "Lionized", "Rancorous", "Epithet", "Aggrieved", "Waffle", "Baroque", "Quaint", "Frivolity", "Extrapolation", "Distill", "Venerable", "Provisional", "Rapacious", "Fervid", "Abject", "Crestfallen", "Pontificate", "Disconcert", "Understate", "Bane", "Finesse", "Headstrong", "Demure"]
+	},
+	{
+		"id": "path-common-07",
+		"title": "Common Set 7",
+		"desc": "Common tier, set 7 of 32: 25 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 7,
+		"words": ["Inimical", "Balk", "Vicarious", "Heresy", "Abreast", "Categorical", "Adherent", "Eminence", "Misogynist", "Paltry", "Erstwhile", "Gratify", "Recrimination", "Artifice", "Palatable", "Oblique", "Underscores", "Impecunious", "Dissident", "Mutable", "Baleful", "Draconian", "Benign", "Enmity", "Whitewash"]
+	},
+	{
+		"id": "path-common-08",
+		"title": "Common Set 8",
+		"desc": "Common tier, set 8 of 32: 25 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 8,
+		"words": ["Saccharine", "Tome", "Jaundiced", "Panegyric", "Tout", "Gambit", "Base", "Meretricious", "Humdrum", "Quack", "Pedagogy", "Perturb", "Enumerate", "Bucolic", "Anemic", "Xenophobia", "Cede", "Insinuate", "Underwrite", "Shirk", "Tutelage", "Ignoble", "Furtive", "Amalgamate", "Lithe"]
+	},
+	{
+		"id": "path-common-09",
+		"title": "Common Set 9",
+		"desc": "Common tier, set 9 of 32: 25 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 9,
+		"words": ["Truncate", "Juggernaut", "Eulogy", "Largesse", "Pathological", "Posit", "Beholden", "Incontrovertible", "Plaintive", "Acme", "Imbue", "Misconstrue", "Tyro", "Requisite", "Halcyon", "Contention", "Anathema", "Acquisitive", "Convivial", "Table", "Intractible", "Malcontent", "Vignette", "Quip", "Extraneous"]
+	},
+	{
+		"id": "path-common-10",
+		"title": "Common Set 10",
+		"desc": "Common tier, set 10 of 32: 25 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 10,
+		"words": ["Sullen", "Lax", "Compliant", "Rarefied", "Kudos", "Rustic", "Virtuoso", "Heterogeneous", "Preposterous", "Inimitable", "Malignant", "Effusive", "Unwitting", "Embroil", "Foible", "Prolixity", "Circumlocution", "Mores", "Respite", "Sinuous", "Axiomatic", "Narcissism", "Urbane", "Panache", "Deferential"]
+	},
+	{
+		"id": "path-common-11",
+		"title": "Common Set 11",
+		"desc": "Common tier, set 11 of 32: 25 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 11,
+		"words": ["Catholic", "Ossified", "Gauche", "Abstemious", "Preeminent", "Patronize", "Spate", "Expedient", "Scathing", "Consonant", "Ruinous", "Unimpeachable", "Ruminate", "Archetype", "Parochial", "Restive", "Stymie", "Primordial", "Nefarious", "Preamble", "Posthumous", "Pecuniary", "Tawdry", "Quail", "Ancillary"]
+	},
+	{
+		"id": "path-common-12",
+		"title": "Common Set 12",
+		"desc": "Common tier, set 12 of 32: 25 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 12,
+		"words": ["Fallow", "Pretext", "Recluse", "Bereft", "Beleaguer", "Remonstrate", "Lackadaisical", "Preceded", "Prophetic", "Opine", "Unfeigned", "Peruse", "Penurious", "Laudatory", "Sophistry", "Quash", "Extemporaneous", "Irreverent", "Cataclysm", "Connote", "Prowess", "Befuddle", "Fleeting", "Aplomb", "Ostracize"]
+	},
+	{
+		"id": "path-common-13",
+		"title": "Common Set 13",
+		"desc": "Common tier, set 13 of 32: 25 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 13,
+		"words": ["Tumultuous", "Obtrusive", "Perennial", "Maxim", "Sublime", "Inscrutable", "Callow", "Apostate", "Renege", "Monolithic", "Utilitarian", "Presumptuous", "Appropriate", "Glut", "Portend", "Abhor", "Belabor", "Behemoth", "Exigency", "Reprisal", "Buoyant", "Divergent", "Unfettered", "Monastic", "Verdant"]
+	},
+	{
+		"id": "path-common-14",
+		"title": "Common Set 14",
+		"desc": "Common tier, set 14 of 32: 25 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 14,
+		"words": ["Virulence", "Redoubtable", "Canonical", "Foolhardy", "Availed", "Pique", "Sporadically", "Flabby", "Profligate", "Trenchant", "Negligent", "Halting", "Impunity", "Kinetic", "Lambast", "Sully", "Expiate", "Debase", "Abridge", "Renounce", "Staid", "Remiss", "Pugnacious", "Prolix", "Desecrate"]
+	},
+	{
+		"id": "path-common-15",
+		"title": "Common Set 15",
+		"desc": "Common tier, set 15 of 32: 25 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 15,
+		"words": ["Mellifluous", "Vestige", "Lofty", "Depravity", "Indecorous", "Stand", "Polemical", "Subservient", "Negate", "Grandiose", "Gargantuan", "Distend", "Allusion", "Cognizant", "Prerogative", "Fractious", "Veritable", "Countenance", "Holistic", "Clamor", "Demagogue", "Secular", "Egalitarian", "Divest", "Precipitous"]
+	},
+	{
+		"id": "path-common-16",
+		"title": "Common Set 16",
+		"desc": "Common tier, set 16 of 32: 25 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 16,
+		"words": ["Overbearing", "Luddite", "Encumber", "Consternation", "Vituperative", "Proxy", "Plasticity", "Patent", "Pander", "Glib", "Machination", "Bluster", "Essay", "Modulate", "Autocratic", "Supple", "Willful", "Bulwark", "Encomium", "Maelstrom", "Remedial", "Ample", "Puerile", "Calumny", "Disquiet"]
+	},
+	{
+		"id": "path-common-17",
+		"title": "Common Set 17",
+		"desc": "Common tier, set 17 of 32: 25 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 17,
+		"words": ["Adroit", "Perfidy", "Brusque", "Overweening", "Polarize", "Amicable", "Timorous", "Contravene", "Thrift", "Luminous", "Paternalistic", "Telling", "Sordid", "Knotty", "Transgression", "Grouse", "Ostensible", "Maladroit", "Punitive", "Luminary", "Impugn", "Rail", "Disaffected", "Contiguous", "Fallible"]
+	},
+	{
+		"id": "path-common-18",
+		"title": "Common Set 18",
+		"desc": "Common tier, set 18 of 32: 25 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 18,
+		"words": ["Milieu", "Frenetic", "Notion", "Rapt", "Scant", "Sacrosanct", "Nexus", "Problematic", "Sumptuous", "Coagulate", "Reproach", "Erroneous", "Querulous", "Implode", "Benevolent", "Effrontery", "Coddle", "Connoisseur", "Construe", "Inveterate", "Forestall", "Undue", "Usurp", "Precocious", "Crux"]
+	},
+	{
+		"id": "path-common-19",
+		"title": "Common Set 19",
+		"desc": "Common tier, set 19 of 32: 25 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 19,
+		"words": ["Affected", "Indiscriminate", "Magisterial", "Default", "Salutary", "Forgo", "Discursive", "Carp", "Nomenclature", "Attest", "Exact", "Conflagration", "Vernacular", "Whet", "Anachronistic", "Burnish", "Qualify", "Untoward", "Arid", "Paean", "Reprobate", "Prudish", "Glacial", "Unpremeditated", "Impregnable"]
+	},
+	{
+		"id": "path-common-20",
+		"title": "Common Set 20",
+		"desc": "Common tier, set 20 of 32: 25 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 20,
+		"words": ["Jingoism", "Compunction", "Edify", "Byzantine", "Ignominious", "Abdicate", "Cavalier", "Dirge", "Pluck", "Excoriate", "Moribund", "Plumb", "Provincial", "Nuances", "Cloying", "Predominant", "Indomitable", "Aggregate", "Allegory", "Sycophant", "Sham", "Apogee", "Indeterminate", "Sedulous", "Placid"]
+	},
+	{
+		"id": "path-common-21",
+		"title": "Common Set 21",
+		"desc": "Common tier, set 21 of 32: 25 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 21,
+		"words": ["Platitude", "Laggard", "Guise", "Inexorable", "Pragmatism", "Raze", "Palpable", "Incipient", "Unconscionable", "Astringent", "Deft", "Foreboding", "Nemesis", "Affability", "Miserliness", "Brash", "Unstinting", "Wanton", "Malingerer", "Beneficent", "Boorish", "Provenance", "Onus", "Occult", "Vitiate"]
+	},
+	{
+		"id": "path-common-22",
+		"title": "Common Set 22",
+		"desc": "Common tier, set 22 of 32: 24 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 22,
+		"words": ["Solicitous", "Prodigious", "Disgruntled", "Missive", "Unkempt", "Bellwether", "Squalid", "Profane", "Idyllic", "Refutation", "Fathom", "Permeate", "Lurid", "Malevolent", "Cordial", "Inordinately", "Novel", "Obstreperous", "Flounder", "Resolve", "Subpoena", "Corollary", "Meander", "Palliate"]
+	},
+	{
+		"id": "path-common-23",
+		"title": "Common Set 23",
+		"desc": "Common tier, set 23 of 32: 24 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 23,
+		"words": ["Alloy", "Regale", "Anodyne", "Harrowing", "Dissolution", "Florid", "Conceit", "Brazen", "Cabal", "Consign", "Wistful", "Credence", "Myopic", "Feasible", "Disavow", "Rankle", "Exegesis", "Prohibitive", "Emollient", "Nepotism", "Accord", "Despot", "Arbiter", "Martial"]
+	},
+	{
+		"id": "path-common-24",
+		"title": "Common Set 24",
+		"desc": "Common tier, set 24 of 32: 24 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 24,
+		"words": ["Dupe", "Vivacious", "Incumbent", "Discretion", "Ethereal", "Unassuming", "Hallowed", "Chauvinist", "Allay", "Forthright", "Clerical", "Flag", "Nondescript", "Amorphous", "Loath", "Concomitant", "Belies", "Volition", "Recapitulate", "Auspicious", "Surfeit", "Bungle", "Pejorative", "Notoriety"]
+	},
+	{
+		"id": "path-common-25",
+		"title": "Common Set 25",
+		"desc": "Common tier, set 25 of 32: 24 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 25,
+		"words": ["Omniscient", "Qualified", "Homage", "Evince", "Consummate", "Surly", "Munificent", "Demur", "Hardy", "Sartorial", "Wayward", "Boon", "Microcosm", "Solvent", "Motley", "Unassailable", "Curmudgeon", "Coterie", "Spurious", "Pungent", "Parity", "Sardonic", "Secrete", "Complaisance"]
+	},
+	{
+		"id": "path-common-26",
+		"title": "Common Set 26",
+		"desc": "Common tier, set 26 of 32: 24 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 26,
+		"words": ["Incendiary", "Entrenched", "Magnate", "Nominal", "Novelty", "Lexicon", "Quibble", "Certitude", "Insatiable", "Conceivably", "Mercenary", "Gamut", "Subvert", "Wrangle", "Rambling", "Prodigality", "Insolent", "Replete", "Ennui", "Kowtow", "Atrophy", "Utopian", "Jettison", "Clemency"]
+	},
+	{
+		"id": "path-common-27",
+		"title": "Common Set 27",
+		"desc": "Common tier, set 27 of 32: 24 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 27,
+		"words": ["Pernicious", "Diverge", "Ingratiate", "Proclivity", "Jaded", "Redress", "Injudicious", "Apprise", "Pithy", "Incorrigible", "Commensurate", "Avid", "Earnest", "Perspicacious", "Strident", "Broach", "Pensive", "Estranged", "Expunge", "Deprecate", "Purport", "Die", "Ascertain", "Censorious"]
+	},
+	{
+		"id": "path-common-28",
+		"title": "Common Set 28",
+		"desc": "Common tier, set 28 of 32: 24 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 28,
+		"words": ["Salubrious", "Litigious", "Slight", "Vociferous", "Antedate", "Abet", "Dispassionate", "Litany", "Disjointed", "Bravado", "Pariah", "Enhance", "Stint", "Indefatigable", "Lull", "Arrest", "Kindle", "Sequester", "Hodgepodge", "Verve", "Condescension", "Irresolute", "Churlish", "Tepid"]
+	},
+	{
+		"id": "path-common-29",
+		"title": "Common Set 29",
+		"desc": "Common tier, set 29 of 32: 24 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 29,
+		"words": ["Enthrall", "Aver", "Jocular", "Stupefy", "Temerity", "Resolute", "Inculcate", "Pundit", "Hedonistic", "Tantamount", "Insouciant", "Visceral", "Fallacy", "Brandish", "Variegated", "Savor", "Gingerly", "Illusory", "Terse", "Calamitous", "Affront", "Untenable", "Metamorphosis", "Hiatus"]
+	},
+	{
+		"id": "path-common-30",
+		"title": "Common Set 30",
+		"desc": "Common tier, set 30 of 32: 24 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 30,
+		"words": ["Ascendancy", "Elegy", "Vexation", "Tempestuous", "Dilapidated", "Aphorism", "Countervailing", "Gravitas", "Obtuse", "Dogged", "Incongruity", "Perpetuate", "Tender", "Bellicose", "Blithe", "Defunct", "Malaise", "Commiserate", "Droll", "Eccentric", "Irrevocable", "Ungainly", "Trifling", "Vacuous"]
+	},
+	{
+		"id": "path-common-31",
+		"title": "Common Set 31",
+		"desc": "Common tier, set 31 of 32: 24 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 31,
+		"words": ["Stipulate", "Insensible", "Porous", "Hearten", "Exhort", "Languish", "Compendium", "Languid", "Forbidding", "Pathos", "Flamboyant", "Premonition", "Coda", "Cardinal", "Duplicity", "Restitution", "Abjure", "Grovel", "Unwieldy", "Assail", "Apposite", "Nettle", "Dilettante", "Bourgeois"]
+	},
+	{
+		"id": "path-common-32",
+		"title": "Common Set 32",
+		"desc": "Common tier, set 32 of 32: 24 frequently tested words.",
+		"category": "path",
+		"tier": 2,
+		"order": 32,
+		"words": ["Noxious", "Equitable", "Indelible", "Resignation", "Heedless", "Travesty", "Fetter", "Grudging", "Archaic", "Daunt", "Quizzical", "Wily", "Odious", "Imprudent", "Cerebral", "Lampoon", "Profound", "Deign", "Indigence", "Ecstatic", "Extricate", "Asperity", "Absolve", "Derision"]
+	},
+	{
+		"id": "path-advanced-01",
+		"title": "Advanced Set 1",
+		"desc": "Advanced tier, set 1 of 8: 26 less common words for higher scores.",
+		"category": "path",
+		"tier": 3,
+		"order": 1,
+		"words": ["Doctrinaire", "Obeisance", "Aboveboard", "Sinecure", "Tautology", "Stygian", "Bootless", "Hidebound", "Undulate", "Saturnine", "Zeitgeist", "Importune", "Savant", "Sybarite", "Garble", "Omnivorous", "Mince", "Illiberal", "Efface", "Scurrilous", "Pied", "Prostrate", "Benignity", "Torrid", "Nonentity", "Promulgate"]
+	},
+	{
+		"id": "path-advanced-02",
+		"title": "Advanced Set 2",
+		"desc": "Advanced tier, set 2 of 8: 26 less common words for higher scores.",
+		"category": "path",
+		"tier": 3,
+		"order": 2,
+		"words": ["Gesticulate", "Militate", "Cynosure", "Rectitude", "Pellucid", "Titular", "Augury", "Ersatz", "Wag", "Noisome", "Asseverate", "Diaphanous", "Scintilla", "Unalloyed", "Redolent", "Estimable", "Bonhomie", "Sedition", "Ford", "Proselytize", "Invidious", "Synoptic", "Improvident", "Lachrymose", "Rapprochement", "Quaff"]
+	},
+	{
+		"id": "path-advanced-03",
+		"title": "Advanced Set 3",
+		"desc": "Advanced tier, set 3 of 8: 26 less common words for higher scores.",
+		"category": "path",
+		"tier": 3,
+		"order": 3,
+		"words": ["Pusillanimous", "Guy", "Fulminate", "Illiberality", "Legerdemain", "Poseur", "Hermetic", "Impetuously", "Scurvy", "Lugubrious", "Chary", "Salacious", "Aegis", "Mordant", "Rejoinder", "Plebeian", "Rarefy", "Apologist", "Vouchsafe", "Elliptical", "Protean", "Plenary", "Peccadillo", "Perfunctoriness", "Venial", "Volubility"]
+	},
+	{
+		"id": "path-advanced-04",
+		"title": "Advanced Set 4",
+		"desc": "Advanced tier, set 4 of 8: 26 less common words for higher scores.",
+		"category": "path",
+		"tier": 3,
+		"order": 4,
+		"words": ["Shagreen", "Desuetude", "Homily", "Benighted", "Captious", "Picayune", "Ribald", "Hoary", "Refulgent", "Supine", "Oracular", "Prepossessing", "Multifarious", "Wont", "Accretion", "Gild", "Rakish", "Imbroglio", "Effete", "Ensconce", "Mien", "Mawkish", "Malfeasance", "Ploddingly", "Blandishment", "Vicissitude"]
+	},
+	{
+		"id": "path-advanced-05",
+		"title": "Advanced Set 5",
+		"desc": "Advanced tier, set 5 of 8: 26 less common words for higher scores.",
+		"category": "path",
+		"tier": 3,
+		"order": 5,
+		"words": ["Stultify", "Hector", "Pastiche", "Limpid", "Meet", "Dictum", "Peroration", "Solecism", "Succor", "Taciturnity", "Megalomania", "Paroxysm", "Epicure", "Heuristic", "Penitential", "Peripatetic", "Verisimilitude", "Plangent", "Unctuous", "Lumber", "Bifurcate", "Besmirch", "Cant", "Stentorian", "Sangfroid", "Subsume"]
+	},
+	{
+		"id": "path-advanced-06",
+		"title": "Advanced Set 6",
+		"desc": "Advanced tier, set 6 of 8: 26 less common words for higher scores.",
+		"category": "path",
+		"tier": 3,
+		"order": 6,
+		"words": ["Turpitude", "Wizened", "Husband", "Fetid", "Fiat", "Fulsome", "Apoplectic", "Sophomoric", "Perquisite", "Sententious", "Propinquity", "Punctilious", "Fell", "Manacled", "Genteel", "Beatific", "Descry", "Contumacious", "Immured", "Adumbrate", "Inculpate", "Bilk", "Idolatrous", "Turbid", "Plutocratic", "Putative"]
+	},
+	{
+		"id": "path-advanced-07",
+		"title": "Advanced Set 7",
+		"desc": "Advanced tier, set 7 of 8: 26 less common words for higher scores.",
+		"category": "path",
+		"tier": 3,
+		"order": 7,
+		"words": ["Somnolent", "Bowdlerize", "Extenuate", "Retrograde", "Raconteur", "Inveigle", "Purloin", "Martinet", "Tendentiousness", "Gawkiness", "Puissance", "Supplicate", "Celerity", "Corporeal", "Slake", "Avidity", "Credo", "Pulchritude", "Fractiousness", "Bathos", "Maudlin", "Calumniate", "Ineluctable", "Imperiously", "Miasma", "Jejune"]
+	},
+	{
+		"id": "path-advanced-08",
+		"title": "Advanced Set 8",
+		"desc": "Advanced tier, set 8 of 8: 25 less common words for higher scores.",
+		"category": "path",
+		"tier": 3,
+		"order": 8,
+		"words": ["Lubricious", "Dilatory", "Panoply", "Temporize", "Peremptory", "Enormity", "Atavistic", "Contraries", "Rent", "Pellucidity", "Pyrrhic", "Execrate", "Factious", "Mendicant", "Minatory", "Requite", "Arrogate", "Fiascoes", "Lucre", "Numinous", "Welter", "Extirpate", "Winsome", "Fecund", "Iconographic"]
+	},
+	{
+		"id": "theme-praise-criticism",
+		"title": "Praise and Criticism",
+		"desc": "Words for applauding and condemning, from formal tribute to bitter attack.",
+		"category": "theme",
+		"order": 1,
+		"words": ["Laud", "Extol", "Encomium", "Panegyric", "Paean", "Laudatory", "Accolade", "Kudos", "Homage", "Tout", "Lionized", "Approbation", "Adulation", "Eulogy", "Censure", "Excoriate", "Castigation", "Berate", "Lambast", "Deride", "Disparage", "Denigrate", "Vilify", "Decry", "Pillory", "Reproach", "Scathing", "Diatribe", "Tirade", "Invective"]
+	},
+	{
+		"id": "theme-deception-honesty",
+		"title": "Deception and Honesty",
+		"desc": "Lies, tricks, and frauds, set against candor and integrity.",
+		"category": "theme",
+		"order": 2,
+		"words": ["Duplicity", "Chicanery", "Mendacious", "Dissemble", "Feign", "Ruse", "Artifice", "Charlatan", "Sham", "Spurious", "Specious", "Disingenuous", "Prevaricate", "Equivocate", "Perfidious", "Legerdemain", "Dupe", "Beguile", "Inveigle", "Candor", "Probity", "Veracious", "Forthright", "Artless", "Guileless", "Ingenuous", "Aboveboard", "Unfeigned", "Rectitude"]
+	},
+	{
+		"id": "theme-stubbornness-yielding",
+		"title": "Stubbornness and Yielding",
+		"desc": "Refusing to budge versus giving way.",
+		"category": "theme",
+		"order": 3,
+		"words": ["Obdurate", "Intransigence", "Recalcitrant", "Refractory", "Adamant", "Dogged", "Tenacious", "Headstrong", "Willful", "Contumacious", "Intractable", "Implacable", "Inexorable", "Dogmatic", "Acquiesce", "Capitulate", "Accede", "Cede", "Succumb", "Concede", "Amenable", "Compliant", "Docile", "Tractable", "Malleable", "Complaisant"]
+	},
+	{
+		"id": "theme-talkative-reticent",
+		"title": "Talkative and Reticent",
+		"desc": "Words for saying too much and for saying very little.",
+		"category": "theme",
+		"order": 4,
+		"words": ["Garrulous", "Loquacious", "Voluble", "Volubility", "Verbose", "Prolix", "Prolixity", "Prattle", "Circumlocution", "Rambling", "Discursive", "Effusive", "Harangue", "Laconic", "Reticent", "Taciturnity", "Terse", "Succinct", "Pithy", "Brevity", "Brusque"]
+	},
+	{
+		"id": "theme-generosity-stinginess",
+		"title": "Generosity and Stinginess",
+		"desc": "Giving freely, spending recklessly, and holding on to every penny.",
+		"category": "theme",
+		"order": 5,
+		"words": ["Munificent", "Largesse", "Magnanimity", "Beneficent", "Benefactor", "Altruism", "Unstinting", "Prodigal", "Spendthrift", "Prodigality", "Squander", "Parsimonious", "Penurious", "Miserliness", "Illiberal", "Frugality", "Thrift", "Avarice", "Acquisitive", "Rapacious", "Stint", "Mercenary"]
+	},
+	{
+		"id": "theme-arrogance-humility",
+		"title": "Arrogance and Humility",
+		"desc": "Pride, condescension, and self-importance, set against modesty and deference.",
+		"category": "theme",
+		"order": 6,
+		"words": ["Haughty", "Hubris", "Supercilious", "Overweening", "Imperiously", "Condescension", "Patronize", "Conceit", "Presumptuous", "Pretentious", "Grandiose", "Narcissism", "Megalomania", "Vain", "Overbearing", "Unassuming", "Deferential", "Deference", "Demure", "Diffidence", "Kowtow", "Obeisance", "Grovel"]
+	},
+	{
+		"id": "theme-change-permanence",
+		"title": "Change and Permanence",
+		"desc": "The fickle and fleeting, set against the fixed and enduring.",
+		"category": "theme",
+		"order": 7,
+		"words": ["Mutable", "Mercurial", "Capricious", "Fickle", "Volatile", "Vacillate", "Oscillate", "Protean", "Vagary", "Vicissitude", "Metamorphosis", "Erratic", "Ephemeral", "Evanescent", "Immutable", "Indelible", "Irrevocable", "Perennial", "Entrenched", "Inveterate", "Ossified", "Steadfast", "Longevity"]
+	},
+	{
+		"id": "theme-secrecy-openness",
+		"title": "Secrecy and Openness",
+		"desc": "Plots, stealth, and concealment, set against what is done in plain view.",
+		"category": "theme",
+		"order": 8,
+		"words": ["Clandestine", "Surreptitious", "Furtive", "Cabal", "Collusion", "Connive", "Machination", "Enigmatic", "Sequester", "Guise", "Pretext", "Whitewash", "Insinuate", "Overt", "Candor", "Forthright", "Blatant", "Flagrant", "Patent", "Palpable", "Conspicuous", "Aboveboard", "Brazen"]
+	},
+	{
+		"id": "theme-harshness-mildness",
+		"title": "Harshness and Mildness",
+		"desc": "Severe, cutting, and punitive, set against gentle and soothing.",
+		"category": "theme",
+		"order": 9,
+		"words": ["Draconian", "Austere", "Stringent", "Astringent", "Caustic", "Acerbic", "Asperity", "Abrasive", "Trenchant", "Scathing", "Mordant", "Brusque", "Callous", "Martinet", "Punitive", "Clemency", "Benign", "Emollient", "Anodyne", "Placid", "Genial", "Temper", "Mollify", "Assuage", "Mitigate"]
+	},
+	{
+		"id": "theme-beginnings-endings",
+		"title": "Beginnings and Endings",
+		"desc": "Origins, forerunners, and first stages, through to conclusions and decline.",
+		"category": "theme",
+		"order": 10,
+		"words": ["Nascent", "Incipient", "Inchoate", "Fledgling", "Neophyte", "Tyro", "Precursor", "Harbinger", "Preamble", "Primordial", "Burgeon", "Antecedent", "Denouement", "Coda", "Peroration", "Culminate", "Moribund", "Defunct", "Dissolution", "Extirpate", "Posthumous", "Desuetude"]
+	},
+	{
+		"id": "theme-courage-fear",
+		"title": "Courage and Fear",
+		"desc": "Daring and composure, set against timidity and dread.",
+		"category": "theme",
+		"order": 11,
+		"words": ["Intrepid", "Audacious", "Fortitude", "Pluck", "Temerity", "Bravado", "Foolhardy", "Indomitable", "Sangfroid", "Aplomb", "Craven", "Pusillanimous", "Timorous", "Trepidation", "Quail", "Daunt", "Apprehensive", "Foreboding", "Chary", "Consternation"]
+	},
+	{
+		"id": "theme-anger-hostility",
+		"title": "Anger and Hostility",
+		"desc": "Irritation, resentment, and open aggression.",
+		"category": "theme",
+		"order": 12,
+		"words": ["Irascible", "Rancor", "Animosity", "Antipathy", "Enmity", "Acrimonious", "Belligerent", "Bellicose", "Pugnacious", "Truculence", "Vindictive", "Malevolent", "Apoplectic", "Indignant", "Umbrage", "Pique", "Petulant", "Fractious", "Querulous", "Inimical", "Antagonize", "Exasperate", "Rankle", "Nettle", "Vexation"]
+	},
+	{
+		"id": "theme-wisdom-folly",
+		"title": "Wisdom and Folly",
+		"desc": "Insight and learning, set against naivety and poor judgment.",
+		"category": "theme",
+		"order": 13,
+		"words": ["Sagacious", "Astute", "Shrewd", "Perspicacious", "Acumen", "Prescience", "Discerning", "Judicious", "Erudite", "Polymath", "Savant", "Cerebral", "Incisive", "Fatuous", "Obtuse", "Vacuous", "Puerile", "Sophomoric", "Jejune", "Callow", "Imprudent", "Injudicious", "Myopic", "Benighted"]
+	},
+	{
+		"id": "theme-flattery-servility",
+		"title": "Flattery and Servility",
+		"desc": "Fawning, coaxing, and bowing to win favor.",
+		"category": "theme",
+		"order": 14,
+		"words": ["Obsequious", "Sycophant", "Fawning", "Unctuous", "Ingratiate", "Cajole", "Blandishment", "Kowtow", "Grovel", "Subservient", "Obeisance", "Fulsome", "Pander", "Adulation", "Propitiate", "Complaisant", "Supplicate", "Inveigle", "Abject"]
+	},
+	{
+		"id": "theme-idleness-diligence",
+		"title": "Idleness and Diligence",
+		"desc": "Sloth, delay, and half-hearted effort, set against tireless work.",
+		"category": "theme",
+		"order": 15,
+		"words": ["Indolent", "Lethargic", "Torpor", "Lassitude", "Languid", "Lackadaisical", "Perfunctory", "Desultory", "Sedentary", "Inert", "Somnolent", "Soporific", "Supine", "Malingerer", "Shirk", "Procrastinate", "Dilatory", "Laggard", "Assiduous", "Sedulous", "Diligent", "Indefatigable", "Meticulous", "Conscientious", "Punctilious", "Exhaustive"]
+	},
+	{
+		"id": "theme-abundance-scarcity",
+		"title": "Abundance and Scarcity",
+		"desc": "Gluts and floods, set against traces and shortages.",
+		"category": "theme",
+		"order": 16,
+		"words": ["Plethora", "Surfeit", "Glut", "Copious", "Ample", "Replete", "Myriad", "Prolific", "Preponderance", "Spate", "Inundate", "Saturate", "Dearth", "Paucity", "Scant", "Modicum", "Scintilla", "Pittance", "Paltry", "Negligible", "Wanting", "Vestige"]
+	},
+	{
+		"id": "theme-wealth-poverty",
+		"title": "Wealth and Poverty",
+		"desc": "Money, luxury, and gain, set against want and hardship.",
+		"category": "theme",
+		"order": 17,
+		"words": ["Opulent", "Sumptuous", "Magnate", "Plutocratic", "Lucre", "Pecuniary", "Solvent", "Underwrite", "Perquisite", "Sinecure", "Venal", "Exorbitant", "Prohibitive", "Bilk", "Purloin", "Impecunious", "Indigence", "Penury", "Mendicant", "Pittance"]
+	},
+	{
+		"id": "theme-showiness",
+		"title": "Showiness and Pretension",
+		"desc": "Ornate, flashy, and theatrical display.",
+		"category": "theme",
+		"order": 18,
+		"words": ["Bombastic", "Grandiloquent", "Florid", "Baroque", "Ostentatious", "Flamboyant", "Garish", "Tawdry", "Meretricious", "Overwrought", "Flaunt", "Grandiose", "Panache", "Histrionic", "Pretentious", "Brandish", "Strut", "Preen", "Opulent", "Sumptuous"]
+	},
+	{
+		"id": "theme-dullness-cliche",
+		"title": "Dullness and Cliché",
+		"desc": "The ordinary, the overused, and the uninspired.",
+		"category": "theme",
+		"order": 19,
+		"words": ["Prosaic", "Pedestrian", "Mundane", "Quotidian", "Banal", "Trite", "Hackneyed", "Platitude", "Insipid", "Humdrum", "Lackluster", "Tepid", "Staid", "Nondescript", "Ponderous", "Derivative", "Truism", "Anodyne", "Ennui", "Jaded", "Arid"]
+	},
+	{
+		"id": "theme-clarity-obscurity",
+		"title": "Clarity and Obscurity",
+		"desc": "Clear and explicit, set against cryptic, vague, and convoluted.",
+		"category": "theme",
+		"order": 20,
+		"words": ["Lucid", "Pellucid", "Limpid", "Elucidate", "Unequivocal", "Coherent", "Articulate", "Cogent", "Delineate", "Obscure", "Abstruse", "Recondite", "Arcane", "Esoteric", "Cryptic", "Nebulous", "Ambiguous", "Convoluted", "Byzantine", "Inscrutable", "Oracular", "Obfuscate", "Turbid", "Tortuous"]
+	},
+	{
+		"id": "theme-harmony-discord",
+		"title": "Harmony and Discord",
+		"desc": "Agreement and reconciliation, set against division and quarrels.",
+		"category": "theme",
+		"order": 21,
+		"words": ["Accord", "Concur", "Consonant", "Amicable", "Conciliatory", "Rapprochement", "Reconcile", "Concerted", "Congenial", "Camaraderie", "Cohesive", "Converge", "Discordant", "Dissonance", "Schism", "Contention", "Contentious", "Polarize", "Divisive", "Factious", "Wrangle", "Recrimination", "Dissident", "Embroil"]
+	},
+	{
+		"id": "theme-help-hindrance",
+		"title": "Help and Hindrance",
+		"desc": "Supporting and strengthening, set against blocking and weakening.",
+		"category": "theme",
+		"order": 22,
+		"words": ["Bolster", "Buttress", "Abet", "Foster", "Succor", "Alleviate", "Ameliorate", "Augment", "Bulwark", "Boon", "Catalyst", "Galvanize", "Hearten", "Impede", "Stymie", "Encumber", "Fetter", "Forestall", "Preclude", "Obviate", "Circumscribe", "Curtail", "Stultify", "Undermine", "Impair", "Vitiate"]
+	},
+	{
+		"id": "theme-joy-sorrow",
+		"title": "Joy and Sorrow",
+		"desc": "High spirits and good cheer, set against gloom and grief.",
+		"category": "theme",
+		"order": 23,
+		"words": ["Ebullient", "Ecstatic", "Buoyant", "Blithe", "Jocular", "Vivacious", "Sanguine", "Beatific", "Convivial", "Bonhomie", "Morose", "Despondent", "Dour", "Saturnine", "Lugubrious", "Lachrymose", "Plaintive", "Wistful", "Maudlin", "Crestfallen", "Lament", "Bemoan", "Rue", "Sullen"]
+	},
+	{
+		"id": "theme-virtue-vice",
+		"title": "Virtue and Vice",
+		"desc": "Integrity and moral excellence, set against corruption and wickedness.",
+		"category": "theme",
+		"order": 24,
+		"words": ["Rectitude", "Probity", "Scrupulous", "Estimable", "Exemplary", "Paragon", "Piety", "Laudable", "Unimpeachable", "Depravity", "Turpitude", "Nefarious", "Heinous", "Egregious", "Reprobate", "Venal", "Unscrupulous", "Malfeasance", "Profligate", "Sordid", "Reprehensible", "Unconscionable", "Peccadillo", "Venial", "Transgression", "Ignoble", "Base"]
+	},
+	{
+		"id": "theme-guilt-pardon",
+		"title": "Guilt, Blame and Pardon",
+		"desc": "Accusation and punishment, set against excuse, atonement, and mercy.",
+		"category": "theme",
+		"order": 25,
+		"words": ["Culpable", "Complicit", "Inculpate", "Impugn", "Exculpate", "Exonerate", "Absolve", "Vindicate", "Expiate", "Clemency", "Reprieve", "Extenuate", "Contrite", "Penitential", "Compunction", "Restitution", "Redress", "Reprisal", "Punitive", "Requite", "Impunity"]
+	},
+	{
+		"id": "theme-power-authority",
+		"title": "Power and Authority",
+		"desc": "Rulers, decrees, and domination.",
+		"category": "theme",
+		"order": 26,
+		"words": ["Hegemony", "Autocratic", "Despot", "Demagogue", "Martinet", "Usurp", "Arrogate", "Subjugate", "Ascendancy", "Mandate", "Fiat", "Prerogative", "Magisterial", "Puissance", "Titular", "Sedition", "Coerce", "Abdicate", "Proxy", "Juggernaut"]
+	},
+	{
+		"id": "theme-language-rhetoric",
+		"title": "Language and Rhetoric",
+		"desc": "Words about words: sayings, figures of speech, and ways of arguing.",
+		"category": "theme",
+		"order": 27,
+		"words": ["Sophistry", "Polemical", "Exhort", "Pontificate", "Opine", "Aver", "Asseverate", "Posit", "Gainsay", "Rejoinder", "Hyperbole", "Euphemism", "Aphorism", "Maxim", "Epithet", "Allusion", "Paradox", "Tautology", "Neologism", "Jargon", "Vernacular", "Colloquial", "Lexicon", "Nomenclature"]
+	},
+	{
+		"id": "theme-logic-evidence",
+		"title": "Logic and Evidence",
+		"desc": "Proof, inference, and flawed reasoning, as used in GRE arguments.",
+		"category": "theme",
+		"order": 28,
+		"words": ["Empirical", "Anecdotal", "Corroborate", "Substantiate", "Conjecture", "Supposition", "Extrapolation", "Fallacious", "Fallacy", "Tenuous", "Untenable", "Unassailable", "Incontrovertible", "Axiomatic", "Corollary", "Heuristic", "Paradigm", "Dichotomy", "Refutation", "Analogous", "Contingent", "Arbitrary", "Debunk", "Specious"]
+	},
+	{
 		"id": "argument-verbs",
 		"title": "Argument & Rhetoric Verbs",
-		"desc": "Verbs that appear in RC/SE arguments.",
-		"indices": [
-			21, 90, 121, 132, 133, 147, 162, 163, 164, 166, 187, 196, 204, 221, 236, 246, 244, 406, 553, 614,
-			618
-		],
+		"desc": "Verbs common in Reading Comprehension and Sentence Equivalence arguments.",
+		"category": "classic",
 		"likes": 108,
-		"words": [
-			"Advocate",
-			"Bolster",
-			"Coalesce",
-			"Condone",
-			"Confound",
-			"Corroborate",
-			"Delineate",
-			"Demur",
-			"Denigrate",
-			"Deride",
-			"Discredit",
-			"Disparage",
-			"Distill",
-			"Embellish",
-			"Equivocate",
-			"Excoriate",
-			"Exacerbate",
-			"Mitigate",
-			"Refute",
-			"Substantiate",
-			"Supposition"
-		]
+		"indices": [21, 90, 121, 132, 133, 147, 162, 163, 164, 166, 187, 196, 204, 221, 236, 246, 244, 406, 553, 614, 618],
+		"words": ["Advocate", "Bolster", "Coalesce", "Condone", "Confound", "Corroborate", "Delineate", "Demur", "Denigrate", "Deride", "Discredit", "Disparage", "Distill", "Embellish", "Equivocate", "Excoriate", "Exacerbate", "Mitigate", "Refute", "Substantiate", "Supposition"]
 	},
 	{
 		"id": "process-change",
 		"title": "Change, Degree & Trend",
-		"desc": "Increase/decrease & change verbs/adjs.",
-		"indices": [0, 24, 26, 33, 66, 68, 5, 97, 121, 227, 228, 229, 244, 275, 406, 486, 513, 613],
+		"desc": "Words for increase, decrease, and change.",
+		"category": "classic",
 		"likes": 96,
-		"words": [
-			"Abate",
-			"Aggrandize",
-			"Alleviate",
-			"Ameliorate",
-			"Assuage",
-			"Attenuate",
-			"Abridge",
-			"Burgeon",
-			"Coalesce",
-			"Enervate",
-			"Engender",
-			"Enhance",
-			"Exacerbate",
-			"Foment",
-			"Mitigate",
-			"Plummet",
-			"Proliferate",
-			"Subside"
-		]
+		"indices": [0, 24, 26, 33, 66, 68, 5, 97, 121, 227, 228, 229, 244, 275, 406, 486, 513, 613],
+		"words": ["Abate", "Aggrandize", "Alleviate", "Ameliorate", "Assuage", "Attenuate", "Abridge", "Burgeon", "Coalesce", "Enervate", "Engender", "Enhance", "Exacerbate", "Foment", "Mitigate", "Plummet", "Proliferate", "Subside"]
 	},
 	{
 		"id": "emotion-spectrum",
 		"title": "Emotion Spectrum",
-		"desc": "From calm \u2192 hype; mood-heavy words.",
-		"indices": [47, 46, 89, 151, 191, 211, 318, 409, 472, 575],
+		"desc": "Words for moods, from calm indifference to high spirits.",
+		"category": "classic",
 		"likes": 88,
-		"words": [
-			"Apathy",
-			"Apathetic",
-			"Blithe",
-			"Crestfallen",
-			"Disgruntled",
-			"Ebullient",
-			"Impassive",
-			"Morose",
-			"Phlegmatic",
-			"Sanguine"
-		]
+		"indices": [47, 46, 89, 151, 191, 211, 318, 409, 472, 575],
+		"words": ["Apathy", "Apathetic", "Blithe", "Crestfallen", "Disgruntled", "Ebullient", "Impassive", "Morose", "Phlegmatic", "Sanguine"]
 	},
 	{
 		"id": "people-traits-pos",
-		"title": "People Traits \u2014 Positive",
-		"desc": "Praise-y descriptors for people.",
-		"indices": [34, 72, 86, 87, 185, 235, 238, 260, 293, 506, 584, 659],
+		"title": "People Traits — Positive",
+		"desc": "Favorable words for describing character.",
+		"category": "classic",
 		"likes": 77,
-		"words": [
-			"Amenable",
-			"Auspicious",
-			"Benevolent",
-			"Benign",
-			"Discerning",
-			"Equitable",
-			"Erudite",
-			"Fastidious",
-			"Gregarious",
-			"Probity",
-			"Scrupulous",
-			"Veracious"
-		]
+		"indices": [34, 72, 86, 87, 185, 235, 238, 260, 293, 506, 584, 659],
+		"words": ["Amenable", "Auspicious", "Benevolent", "Benign", "Discerning", "Equitable", "Erudite", "Fastidious", "Gregarious", "Probity", "Scrupulous", "Veracious"]
 	},
 	{
 		"id": "people-traits-neg",
-		"title": "People Traits \u2014 Negative",
-		"desc": "Harsh but useful character reads.",
-		"indices": [
-			12, 46, 84, 91, 92, 141, 149, 150, 208, 288, 292, 293, 296, 326, 367, 397, 423, 488, 533, 544,
-			657, 668
-		],
+		"title": "People Traits — Negative",
+		"desc": "Unfavorable words for describing character.",
+		"category": "classic",
 		"likes": 101,
-		"words": [
-			"Acerbic",
-			"Apathetic",
-			"Bellicose",
-			"Bombastic",
-			"Boorish",
-			"Contumacious",
-			"Craven",
-			"Credulous",
-			"Dogmatic",
-			"Garrulous",
-			"Grandiloquent",
-			"Gregarious",
-			"Gullible",
-			"Implacable",
-			"Irascible",
-			"Mendacious",
-			"Obdurate",
-			"Polemical",
-			"Querulous",
-			"Recalcitrant",
-			"Venal",
-			"Vituperative"
-		]
+		"indices": [12, 46, 84, 91, 92, 141, 149, 150, 208, 288, 292, 293, 296, 326, 367, 397, 423, 488, 533, 544, 657, 668],
+		"words": ["Acerbic", "Apathetic", "Bellicose", "Bombastic", "Boorish", "Contumacious", "Craven", "Credulous", "Dogmatic", "Garrulous", "Grandiloquent", "Gregarious", "Gullible", "Implacable", "Irascible", "Mendacious", "Obdurate", "Polemical", "Querulous", "Recalcitrant", "Venal", "Vituperative"]
 	},
 	{
 		"id": "style-register",
 		"title": "Style & Register",
-		"desc": "Writing/style adjectives that dunk on prose.",
-		"indices": [177, 521, 273, 91, 371, 477, 615, 660, 220, 60, 99, 292, 452, 240, 56, 384],
+		"desc": "Adjectives for describing writing style and tone.",
+		"category": "classic",
 		"likes": 85,
-		"words": [
-			"Didactic",
-			"Prosaic",
-			"Florid",
-			"Bombastic",
-			"Laconic",
-			"Pithy",
-			"Succinct",
-			"Verbose",
-			"Eloquent",
-			"Artless",
-			"Cacophonous",
-			"Grandiloquent",
-			"Pedantic",
-			"Esoteric",
-			"Arcane",
-			"Lucid"
-		]
+		"indices": [177, 521, 273, 91, 371, 477, 615, 660, 220, 60, 99, 292, 452, 240, 56, 384],
+		"words": ["Didactic", "Prosaic", "Florid", "Bombastic", "Laconic", "Pithy", "Succinct", "Verbose", "Eloquent", "Artless", "Cacophonous", "Grandiloquent", "Pedantic", "Esoteric", "Arcane", "Lucid"]
 	},
 	{
 		"id": "verbal-attacks",
 		"title": "Verbal Attacks & Harsh Tone",
-		"desc": "For when passages get spicy.",
-		"indices": [12, 109, 638, 582, 67, 63, 364, 175, 300, 632, 668, 166, 164, 246, 663],
+		"desc": "Words for harsh criticism and bitter speech.",
+		"category": "classic",
 		"likes": 84,
-		"words": [
-			"Acerbic",
-			"Caustic",
-			"Trenchant",
-			"Scathing",
-			"Astringent",
-			"Asperity",
-			"Invective",
-			"Diatribe",
-			"Harangue",
-			"Tirade",
-			"Vituperative",
-			"Deride",
-			"Denigrate",
-			"Excoriate",
-			"Vilify"
-		]
+		"indices": [12, 109, 638, 582, 67, 63, 364, 175, 300, 632, 668, 166, 164, 246, 663],
+		"words": ["Acerbic", "Caustic", "Trenchant", "Scathing", "Astringent", "Asperity", "Invective", "Diatribe", "Harangue", "Tirade", "Vituperative", "Deride", "Denigrate", "Excoriate", "Vilify"]
 	},
 	{
 		"id": "learning-intellect",
 		"title": "Learning & Intellect",
-		"desc": "Smart words about being smart.",
-		"indices": [238, 177, 412, 331, 332, 416, 182, 643, 452, 113],
+		"desc": "Words about learning, expertise, and inexperience.",
+		"category": "classic",
 		"likes": 90,
-		"words": [
-			"Erudite",
-			"Didactic",
-			"Nascent",
-			"Inchoate",
-			"Incipient",
-			"Neophyte",
-			"Dilettante",
-			"Tyro",
-			"Pedantic",
-			"Cerebral"
-		]
+		"indices": [238, 177, 412, 331, 332, 416, 182, 643, 452, 113],
+		"words": ["Erudite", "Didactic", "Nascent", "Inchoate", "Incipient", "Neophyte", "Dilettante", "Tyro", "Pedantic", "Cerebral"]
 	},
 	{
 		"id": "gre-elite-30",
 		"title": "GRE Elite 30",
-		"desc": "If you only cram one pack, do this.",
-		"indices": [
-			25, 36, 47, 72, 73, 104, 109, 116, 121, 123, 145, 147, 149, 175, 177, 197, 208, 211, 240, 244,
-			298, 371, 404, 423, 462, 472, 478, 595
-		],
+		"desc": "Thirty essential high-frequency words; the best single pack to start with.",
+		"category": "classic",
 		"likes": 150,
-		"words": [
-			"Alacrity",
-			"Anachronism",
-			"Apathy",
-			"Auspicious",
-			"Austere",
-			"Capricious",
-			"Caustic",
-			"Chicanery",
-			"Coalesce",
-			"Cogent",
-			"Convoluted",
-			"Corroborate",
-			"Craven",
-			"Diatribe",
-			"Didactic",
-			"Disparate",
-			"Dogmatic",
-			"Ebullient",
-			"Esoteric",
-			"Exacerbate",
-			"Hackneyed",
-			"Laconic",
-			"Misanthrope",
-			"Obdurate",
-			"Perfidy",
-			"Phlegmatic",
-			"Placate",
-			"Specious"
-		]
+		"indices": [25, 36, 47, 72, 73, 104, 109, 116, 121, 123, 145, 147, 149, 175, 177, 197, 208, 211, 240, 244, 298, 371, 404, 423, 462, 472, 478, 595, 227, 236],
+		"words": ["Alacrity", "Anachronism", "Apathy", "Auspicious", "Austere", "Capricious", "Caustic", "Chicanery", "Coalesce", "Cogent", "Convoluted", "Corroborate", "Craven", "Diatribe", "Didactic", "Disparate", "Dogmatic", "Ebullient", "Esoteric", "Exacerbate", "Hackneyed", "Laconic", "Misanthrope", "Obdurate", "Perfidy", "Phlegmatic", "Placate", "Specious", "Enervate", "Equivocate"]
 	},
 	{
 		"id": "power-P",
-		"title": "Power P \u2014 25",
+		"title": "Power P — 25",
 		"desc": "A dense set of P-words that show up often.",
-		"indices": [
-			441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459,
-			460, 461, 462, 463, 464, 465
-		],
+		"category": "classic",
 		"likes": 73,
-		"words": [
-			"Paean",
-			"Palliate",
-			"Panache",
-			"Panegyric",
-			"Paradox",
-			"Paragon",
-			"Parsimonious",
-			"Partisan",
-			"Pathological",
-			"Paucity",
-			"Pedagogy",
-			"Pedantic",
-			"Pedestrian",
-			"Pellucid",
-			"Pellucidity",
-			"Penchant",
-			"Penitential",
-			"Penurious",
-			"Penury",
-			"Perennial",
-			"Perfidious",
-			"Perfidy",
-			"Perfunctoriness",
-			"Perfunctory",
-			"Peripheral"
-		]
+		"indices": [441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465],
+		"words": ["Paean", "Palliate", "Panache", "Panegyric", "Paradox", "Paragon", "Parsimonious", "Partisan", "Pathological", "Paucity", "Pedagogy", "Pedantic", "Pedestrian", "Pellucid", "Pellucidity", "Penchant", "Penitential", "Penurious", "Penury", "Perennial", "Perfidious", "Perfidy", "Perfunctoriness", "Perfunctory", "Peripheral"]
 	},
 	{
 		"id": "power-S",
-		"title": "Power S \u2014 30",
+		"title": "Power S — 30",
 		"desc": "High-yield S-words.",
-		"indices": [
-			571, 572, 573, 574, 575, 576, 577, 578, 579, 580, 581, 582, 583, 584, 585, 586, 587, 588, 589,
-			590, 591, 592, 593, 594, 595, 596, 597, 598, 599, 600
-		],
+		"category": "classic",
 		"likes": 70,
-		"words": [
-			"Salacious",
-			"Salubrious",
-			"Salutary",
-			"Sanction",
-			"Sanguine",
-			"Sartorial",
-			"Satiate",
-			"Saturate",
-			"Saturnine",
-			"Savor",
-			"Scant",
-			"Scathing",
-			"Schism",
-			"Scrupulous",
-			"Scurvy",
-			"Secrete",
-			"Sedulous",
-			"Sententious",
-			"Shagreen",
-			"Sham",
-			"Skeptic",
-			"Solicitous",
-			"Soporific",
-			"Sordid",
-			"Specious",
-			"Spendthrift",
-			"Sporadic",
-			"Sporadically",
-			"Squalid",
-			"Stand"
-		]
+		"indices": [571, 572, 573, 574, 575, 576, 577, 578, 579, 580, 581, 582, 583, 584, 585, 586, 587, 588, 589, 590, 591, 592, 593, 594, 595, 596, 597, 598, 599, 600],
+		"words": ["Salacious", "Salubrious", "Salutary", "Sanction", "Sanguine", "Sartorial", "Satiate", "Saturate", "Saturnine", "Savor", "Scant", "Scathing", "Schism", "Scrupulous", "Scurvy", "Secrete", "Sedulous", "Sententious", "Shagreen", "Sham", "Skeptic", "Solicitous", "Soporific", "Sordid", "Specious", "Spendthrift", "Sporadic", "Sporadically", "Squalid", "Stand"]
 	},
 	{
 		"id": "power-G",
-		"title": "Power G \u2014 20",
-		"desc": "G-words cluster drill.",
-		"indices": [287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297],
+		"title": "Power G — 11",
+		"desc": "High-yield G-words.",
+		"category": "classic",
 		"likes": 62,
-		"words": [
-			"Gainsay",
-			"Garrulous",
-			"Gawkiness",
-			"Germane",
-			"Goad",
-			"Grandiloquent",
-			"Gregarious",
-			"Grouse",
-			"Guileless",
-			"Gullible",
-			"Guy"
-		]
+		"indices": [287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297],
+		"words": ["Gainsay", "Garrulous", "Gawkiness", "Germane", "Goad", "Grandiloquent", "Gregarious", "Grouse", "Guileless", "Gullible", "Guy"]
 	}
 ]
