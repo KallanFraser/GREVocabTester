@@ -56,7 +56,7 @@ const PACK_PARAMS = ["pack", "words", "id"];
 
 const MODE = {
 	practice: { title: "Practice", resetLabel: "Restart" },
-	learn: { title: "Learn", resetLabel: "Reshuffle" },
+	learn: { title: "Random Practice", resetLabel: "Reshuffle" },
 };
 
 // ---- Practice position: gv_practice_pos ----

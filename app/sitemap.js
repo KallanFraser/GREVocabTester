@@ -2,10 +2,13 @@
 // Next.js file-based convention. Emits /out/sitemap.xml at build time
 // under output: "export".
 
-// Required under output: "export" — emit a static sitemap.xml at build time.
+// Required under output: "export": emit a static sitemap.xml at build time.
 export const dynamic = "force-static";
 
 const BASE = "https://grevocabtester.com";
+
+// Every study mode, in the order the home page lists them.
+const PLAY_ROUTES = ["test", "practice", "learn", "cards", "review", "context"];
 
 export default function sitemap() {
 	const lastModified = new Date();
@@ -22,23 +25,11 @@ export default function sitemap() {
 			changeFrequency: "weekly",
 			priority: 0.8,
 		},
-		{
-			url: `${BASE}/play/test`,
+		...PLAY_ROUTES.map((route) => ({
+			url: `${BASE}/play/${route}`,
 			lastModified,
 			changeFrequency: "monthly",
-			priority: 0.7,
-		},
-		{
-			url: `${BASE}/play/practice`,
-			lastModified,
-			changeFrequency: "monthly",
-			priority: 0.6,
-		},
-		{
-			url: `${BASE}/play/learn`,
-			lastModified,
-			changeFrequency: "monthly",
-			priority: 0.6,
-		},
+			priority: route === "test" ? 0.7 : 0.6,
+		})),
 	];
 }

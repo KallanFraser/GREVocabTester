@@ -45,6 +45,33 @@ const JSON_LD = {
 	},
 };
 
+// Same title and description as the root layout. The canonical and og:url live
+// here, not in the layout, so the 404 page does not inherit the homepage URL.
+const META_TITLE = "GRE Vocab Tester: Free GRE Vocabulary Practice With Active Recall";
+const META_DESCRIPTION = `Free GRE vocabulary practice built around active recall. Study ${fmt(WORD_COUNT)} GRE words in ${MODES.length} study modes, with mastery tracking and Daily Review. No signup, no paywall.`;
+
+export const metadata = {
+	title: META_TITLE,
+	description: META_DESCRIPTION,
+	alternates: {
+		canonical: "https://grevocabtester.com",
+	},
+	openGraph: {
+		title: META_TITLE,
+		description: META_DESCRIPTION,
+		url: "https://grevocabtester.com",
+		siteName: "GRE Vocab Tester",
+		images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "GRE Vocab Tester" }],
+		type: "website",
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: META_TITLE,
+		description: META_DESCRIPTION,
+		images: ["/images/og-image.png"],
+	},
+};
+
 export default function Page() {
 	return (
 		<div id="home-landing">

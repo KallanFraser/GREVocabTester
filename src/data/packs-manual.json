@@ -25,7 +25,7 @@
 	},
 	{
 		"id": "people-traits-pos",
-		"title": "People Traits — Positive",
+		"title": "People Traits: Positive",
 		"desc": "Favorable words for describing character.",
 		"category": "classic",
 		"likes": 77,
@@ -33,7 +33,7 @@
 	},
 	{
 		"id": "people-traits-neg",
-		"title": "People Traits — Negative",
+		"title": "People Traits: Negative",
 		"desc": "Unfavorable words for describing character.",
 		"category": "classic",
 		"likes": 101,
@@ -73,7 +73,7 @@
 	},
 	{
 		"id": "power-P",
-		"title": "Power P — 25",
+		"title": "Power P: 25 Words",
 		"desc": "A dense set of P-words that show up often.",
 		"category": "classic",
 		"likes": 73,
@@ -81,7 +81,7 @@
 	},
 	{
 		"id": "power-S",
-		"title": "Power S — 30",
+		"title": "Power S: 30 Words",
 		"desc": "High-yield S-words.",
 		"category": "classic",
 		"likes": 70,
@@ -89,8 +89,8 @@
 	},
 	{
 		"id": "power-G",
-		"title": "Power G — 11",
-		"desc": "High-yield G-words.",
+		"title": "Power G: 11 Words",
+		"desc": "Eleven G-words from the original list, from Gainsay to Guy.",
 		"category": "classic",
 		"likes": 62,
 		"words": ["Gainsay", "Garrulous", "Gawkiness", "Germane", "Goad", "Grandiloquent", "Gregarious", "Grouse", "Guileless", "Gullible", "Guy"]

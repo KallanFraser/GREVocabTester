@@ -6,12 +6,23 @@ import "../styles/ui.css";
 import "../styles/components.css";
 import Navbar from "../components/Navbar";
 import Background from "../components/Background";
+import home from "../src/data/home.json";
+import { MODES } from "../components/home/modes";
 
+// The word count comes from src/data/home.json (written by npm run packs:build),
+// so the description cannot drift from the data.
+const WORDS = (Number(home?.words) || 0).toLocaleString("en-US");
+const TITLE = "GRE Vocab Tester: Free GRE Vocabulary Practice With Active Recall";
+const DESCRIPTION = `Free GRE vocabulary practice built around active recall. Study ${WORDS} GRE words in ${MODES.length} study modes, with mastery tracking and Daily Review. No signup, no paywall.`;
+
+// Route metadata replaces openGraph and twitter whole rather than merging them,
+// so every route repeats these. There is deliberately no canonical or og:url
+// here: the root layout also wraps the 404 page, which must not claim the
+// homepage URL. The homepage sets both in app/page.jsx.
 export const metadata = {
 	metadataBase: new URL("https://grevocabtester.com"),
-	title: "GRE Vocab Tester — Free GRE Vocabulary Practice With Active Recall",
-	description:
-		"Free GRE vocabulary practice built around active recall. Drill 800 high-frequency GRE words across three study modes — no signup, no paywall.",
+	title: TITLE,
+	description: DESCRIPTION,
 	keywords: [
 		"GRE vocab",
 		"GRE vocabulary practice",
@@ -25,14 +36,9 @@ export const metadata = {
 		"high-frequency GRE words",
 	],
 	authors: [{ name: "Kallan Fraser" }],
-	alternates: {
-		canonical: "https://grevocabtester.com",
-	},
 	openGraph: {
-		title: "GRE Vocab Tester — Free GRE Vocabulary Practice With Active Recall",
-		description:
-			"Free GRE vocabulary practice built around active recall. Drill 800 high-frequency GRE words across three study modes — no signup, no paywall.",
-		url: "https://grevocabtester.com",
+		title: TITLE,
+		description: DESCRIPTION,
 		siteName: "GRE Vocab Tester",
 		images: [
 			{
@@ -46,9 +52,8 @@ export const metadata = {
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "GRE Vocab Tester — Free GRE Vocabulary Practice With Active Recall",
-		description:
-			"Free GRE vocabulary practice built around active recall. Drill 800 high-frequency GRE words across three study modes — no signup, no paywall.",
+		title: TITLE,
+		description: DESCRIPTION,
 		images: ["/images/og-image.png"],
 	},
 	icons: {

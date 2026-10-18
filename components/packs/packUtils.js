@@ -122,7 +122,7 @@ export const DRILL_MODES = [
 	{ id: "test", route: "/play/test", mode: "normal", label: "Test", title: "Type the definition. Four in a row masters a word." },
 	{ id: "hard", route: "/play/test", mode: "harder", label: "Harder", title: "Words right on the first try are retired." },
 	{ id: "practice", route: "/play/practice", label: "Practice", title: "Multiple choice, in order" },
-	{ id: "learn", route: "/play/learn", label: "Random", title: "Multiple choice, shuffled" },
+	{ id: "learn", route: "/play/learn", label: "Random Practice", title: "Multiple choice, shuffled" },
 	{ id: "cards", route: "/play/cards", label: "Flashcards", title: "Flip through the pack" },
 	{ id: "context", route: "/play/context", label: "In Context", title: "Each word in an example sentence" },
 ];

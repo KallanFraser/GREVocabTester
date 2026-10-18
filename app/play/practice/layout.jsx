@@ -1,22 +1,31 @@
 /** @format */
 
+import home from "../../../src/data/home.json";
+
+const WORDS = (Number(home?.words) || 0).toLocaleString("en-US");
+const TITLE = "Practice: Multiple-Choice GRE Vocabulary Review in Order";
+const DESCRIPTION = `Multiple-choice review that works through a word pack, or all ${WORDS} GRE words, in order. A clean first pass before you move on to Test.`;
+const SHORT = `Multiple-choice review through a word pack, or all ${WORDS} GRE words, in order.`;
+
 export const metadata = {
-	title: "Flash Cards — Sequential GRE Vocabulary Review | GRE Vocab Tester",
-	description:
-		"Sequential multiple-choice review through the full list of high-frequency GRE vocabulary. The best way to make a clean first pass before deeper drilling.",
+	title: `${TITLE} | GRE Vocab Tester`,
+	description: DESCRIPTION,
 	alternates: {
 		canonical: "https://grevocabtester.com/play/practice",
 	},
 	openGraph: {
-		title: "Flash Cards — Sequential GRE Vocabulary Review",
-		description:
-			"Sequential multiple-choice review through the full list of high-frequency GRE vocabulary.",
+		title: TITLE,
+		description: SHORT,
 		url: "https://grevocabtester.com/play/practice",
+		siteName: "GRE Vocab Tester",
+		images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "GRE Vocab Tester" }],
+		type: "website",
 	},
 	twitter: {
-		title: "Flash Cards — Sequential GRE Vocabulary Review",
-		description:
-			"Sequential multiple-choice review through the full list of high-frequency GRE vocabulary.",
+		card: "summary_large_image",
+		title: TITLE,
+		description: SHORT,
+		images: ["/images/og-image.png"],
 	},
 };
 
