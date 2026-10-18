@@ -354,6 +354,24 @@ test("deleting a custom pack removes its progress, Harder runs and practice posi
 	assert.equal(storage.getItem("gv_last_pack"), null);
 });
 
+test("deleting a custom pack removes it from favorites and keeps the others", () => {
+	const p = K.createCustomPack({ title: "Mine", words: ["Abate", "Bolster", "Cajole", "Deride", "Enervate"] });
+	K.setFavorite("argument-verbs", true);
+	K.setFavorite(p.id, true);
+	assert.deepEqual(K.loadFavorites(), ["argument-verbs", p.id]);
+	assert.equal(K.deleteCustomPack(p.id), true);
+	assert.deepEqual(K.loadFavorites(), ["argument-verbs"]);
+	assert.equal(K.isFavorite(p.id), false);
+	// No gv_favorites yet: deleting leaves it unwritten, so the legacy likes
+	// still migrate on the first read.
+	const q = K.createCustomPack({ title: "Other", words: ["Abate", "Bolster", "Cajole", "Deride", "Enervate"] });
+	storage.removeItem("gv_favorites");
+	storage.setItem("wp_upvote_ledger_v2", JSON.stringify({ "argument-verbs": true }));
+	assert.equal(K.deleteCustomPack(q.id), true);
+	assert.equal(storage.getItem("gv_favorites"), null);
+	assert.deepEqual(K.loadFavorites(), ["argument-verbs"]);
+});
+
 test("the URL wins over the handoff, and the handoff is deleted anyway", async () => {
 	// The pre-overhaul /wordpacks page set both the key and ?id=.
 	storage.setItem("marketplaceWordpack", JSON.stringify([0, 1]));

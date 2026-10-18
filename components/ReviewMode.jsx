@@ -18,6 +18,7 @@ import "../styles/review.css";
 import PlayHeader from "./PlayHeader";
 import { getWord } from "../lib/words";
 import { gradeDefinition, gradeHeadwordWithNearDuplicates } from "../lib/matching";
+import { meaningGroupsReady } from "../lib/distractors";
 import { createReviewSession, wordReviewOpts, DEFAULT_REVIEW_CAP } from "../lib/review";
 import { loadReviewQueue, recordReviewAnswer } from "../lib/progress";
 import { isBlankAnswer } from "./test/engine";
@@ -109,12 +110,22 @@ export default function ReviewMode() {
 	}
 
 	// ---- Hydrate after mount: settings and the review store are client-only ----
+	// The first card waits for the meaning groups (at most
+	// MEANING_GROUPS_TIMEOUT_MS), so the first Definition -> Word grade accepts
+	// the same synonyms as every later one.
 	useEffect(() => {
-		const s = loadSettings();
-		setSettings(s);
-		startSession(s);
-		setHydrated(true);
-		return () => clearTimeout(advanceTimer.current);
+		let alive = true;
+		meaningGroupsReady.then(() => {
+			if (!alive) return;
+			const s = loadSettings();
+			setSettings(s);
+			startSession(s);
+			setHydrated(true);
+		});
+		return () => {
+			alive = false;
+			clearTimeout(advanceTimer.current);
+		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -393,7 +404,7 @@ export default function ReviewMode() {
 											</div>
 											{feedback.correct && d2w && feedback.acceptedKey && feedback.acceptedKey !== currentKey && (
 												<p className="rv-fb-note">
-													Accepted as a synonym. The word was <strong>{feedback.entry.word}</strong>.
+													Correct. <strong>{feedback.acceptedKey}</strong> works too; the word here was <strong>{feedback.entry.word}</strong>.
 												</p>
 											)}
 											{feedback.correct && d2w && !feedback.exact && feedback.acceptedKey === currentKey && (

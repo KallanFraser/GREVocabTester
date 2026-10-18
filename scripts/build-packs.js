@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// build-packs.js — generates public/data/wordpacks.json and src/data/home.json.
+// build-packs.js: generates public/data/wordpacks.json and src/data/home.json.
 // Never hand-edit either; edit src/data/packs-manual.json and rerun
 // `npm run packs:build`.
 //

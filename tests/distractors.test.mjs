@@ -151,6 +151,23 @@ test("defaults to crypto.getRandomValues", () => {
 	assert.equal(pickDistractors(getWord("Mitigate"), 2).length, 2);
 });
 
+test("meaning groups ready: resolves once loaded, falls back after the timeout, never rejects", async () => {
+	const D = await import("../lib/distractors.js");
+	assert.equal(D.MEANING_GROUPS_TIMEOUT_MS, 2000);
+	assert.equal(await D.meaningGroupsReady, true, "the local file loads well inside 2 seconds");
+	assert.equal(D.meaningGroupsLoaded(), true);
+	assert.equal(await D.waitForMeaningGroups(), true, "already loaded resolves at once");
+	// A load that never finishes resolves false after the timeout.
+	const never = new Promise(() => {});
+	const t0 = Date.now();
+	assert.equal(await D.waitForMeaningGroups(30, never), false);
+	assert.ok(Date.now() - t0 >= 25);
+	// A load that fails still means ready (with no groups), never a rejection.
+	assert.equal(await D.waitForMeaningGroups(1000, Promise.reject(new Error("missing"))), true);
+	// A slow load that beats the timeout resolves true.
+	assert.equal(await D.waitForMeaningGroups(1000, new Promise((r) => setTimeout(r, 10))), true);
+});
+
 test("pool, k and bad targets", async () => {
 	const { isSameMeaningGroup, meaningGroupsReady } = await import("../lib/distractors.js");
 	await meaningGroupsReady;

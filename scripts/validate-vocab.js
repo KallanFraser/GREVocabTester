@@ -5,15 +5,15 @@
 // Errors (exit 1): missing or empty fields, bad pos or tier, case-insensitive
 // duplicate headwords (also raw duplicate keys JSON.parse would collapse),
 // a definition over 3 words or ending in a period, alts that are not an array
-// of 1 to 3 strings of 1 to 4 words, the headword or its root inside its own
-// definition or alts, a meaning group (src/data/meaning-groups.json) with an
+// of 1 to 3 strings of 1 to 4 words, a verb alt that does not start with
+// "to ", the headword or its root inside its own definition or alts, a meaning group (src/data/meaning-groups.json) with an
 // unknown word, mixed pos or a word shared with another group, identical
 // definitions on words outside a common meaning group, a legacy-index entry
 // missing from the data, a pack word that does not exist, or pack indices that
 // no longer resolve to the pack's words.
 // Warnings: near-duplicate definitions outside a common meaning group (same
-// rule the distractor picker uses) and examples that do not contain the
-// headword or an inflection of it.
+// rule the distractor picker uses), an alt that repeats its own definition, and
+// examples that do not contain the headword or an inflection of it.
 //
 //   node scripts/validate-vocab.js
 const fs = require("fs");
@@ -123,6 +123,10 @@ async function main() {
 				}
 				if (wordCount(a) > MAX_ALT_WORDS) errors.push(`${k}: alt over ${MAX_ALT_WORDS} words: "${a}"`);
 				if (usesOwnRoot(k, a)) errors.push(`${k}: alt uses the headword or its root: "${a}"`);
+				if (e.pos === "verb" && !/^to /.test(a)) errors.push(`${k}: verb alt does not start with "to ": "${a}"`);
+				if (typeof e.definition === "string" && normalizeDefinition(a) === normalizeDefinition(e.definition)) {
+					warnings.push(`${k}: alt repeats the definition: "${a}"`);
+				}
 			}
 		}
 		if (typeof e.example === "string" && !exampleUsesWord(k, e.example)) {

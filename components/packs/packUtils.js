@@ -1,4 +1,4 @@
-// components/packs/packUtils.js — /wordpacks display helpers: categories, the
+// components/packs/packUtils.js: /wordpacks display helpers: categories, the
 // learning path order, drill-mode links, per-pack stats, filters and sorts.
 // Ported from Wortschatz's lib/packs.js (groupByCategory, computeStats,
 // packMatchesStatus, SORT_OPTIONS, isRetest, nextRoundLabel). Storage access

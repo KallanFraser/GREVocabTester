@@ -1,4 +1,4 @@
-// components/test/engine.js — Test mode's pure helpers: which words a run
+// components/test/engine.js: Test mode's pure helpers: which words a run
 // covers, one Normal answer, grading in either direction, and the labels the
 // screen shows. No React and no randomness of its own (lib/pool.js draws, with
 // an injectable rng), so tests can drive a whole run. The one storage touch is
@@ -218,17 +218,20 @@ export function isBlankAnswer(answer) {
 }
 
 // Grade `answer` for headword `key` (entry = its vocabulary record) in
-// `direction`. Returns { correct, exact, display, alsoAccepted } where
-// `display` is the expected answer and `alsoAccepted` names the target when a
-// d2w answer was a different headword with a near-duplicate definition.
+// `direction`. Returns { correct, exact, display, alsoAccepted, acceptedKey }
+// where `display` is the expected answer, `alsoAccepted` names the target when
+// a d2w answer was a different headword with a near-duplicate definition, and
+// `acceptedKey` is that other headword (null otherwise).
 export function gradeFor(key, entry, answer, direction, vocab) {
 	if (direction === "d2w") {
 		const r = gradeHeadwordWithNearDuplicates(key, answer, vocab);
+		const other = r.correct && r.acceptedKey && r.acceptedKey !== key;
 		return {
 			correct: r.correct,
 			exact: r.exact,
 			display: key,
-			alsoAccepted: r.correct && r.acceptedKey && r.acceptedKey !== key ? key : null,
+			alsoAccepted: other ? key : null,
+			acceptedKey: other ? r.acceptedKey : null,
 		};
 	}
 	// The raw vocabulary record may carry `alts` that the entry passed in lacks.

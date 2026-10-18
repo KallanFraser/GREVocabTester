@@ -1,5 +1,5 @@
 /** @format */
-// app/layout.jsx — Global wrapper with metadata for GRE Vocab Tester
+// app/layout.jsx: Global wrapper with metadata for GRE Vocab Tester
 
 import "../styles/globals.css";
 import "../styles/ui.css";

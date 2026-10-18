@@ -88,6 +88,7 @@ import {
 	saveProgress,
 } from "../lib/progress";
 import { wordReviewOpts } from "../lib/review";
+import { meaningGroupsReady } from "../lib/distractors";
 import { MISSING_PACK_NOTICE, isMissingPack, resolvePackContext } from "../lib/packs";
 import {
 	HARD_RELEARN_CORRECT,
@@ -380,6 +381,10 @@ export default function TestMode() {
 			} catch {
 				ctx = null;
 			}
+			// The first word waits for the meaning groups (at most
+			// MEANING_GROUPS_TIMEOUT_MS), so the first Definition -> Word grade
+			// accepts the same synonyms as every later one.
+			await meaningGroupsReady;
 			if (!alive) return;
 			// A pack that no longer exists runs as all words, with a notice; the
 			// tidied URL drops its parameters.
@@ -943,7 +948,7 @@ export default function TestMode() {
 				</span>
 				{feedback.alsoAccepted ? (
 					<p className="fb-spelled">
-						Also accepted: <strong>{feedback.alsoAccepted}</strong>
+						Correct. <strong>{feedback.acceptedKey}</strong> works too; the word here was <strong>{feedback.alsoAccepted}</strong>.
 					</p>
 				) : !feedback.exact ? (
 					<p className="fb-spelled">

@@ -241,7 +241,7 @@
 	},
 	"Adept": {
 		"definition": "proficient",
-		"alts": ["proficient", "expert", "competent"],
+		"alts": ["expert", "skilled", "competent"],
 		"example": "She became adept at reading medieval manuscripts after years in the archive.",
 		"fullDefinition": "An adept person has become highly competent at a task, typically through long experience.",
 		"pos": "adjective",
@@ -321,7 +321,7 @@
 	},
 	"Aesthetic": {
 		"definition": "artistic",
-		"alts": ["relating to beauty", "tasteful", "visual"],
+		"alts": ["relating to beauty", "tasteful"],
 		"example": "The minimalist aesthetic of the gallery—white walls, bare floors—let the sculptures speak for themselves.",
 		"fullDefinition": "Aesthetic pertains to the principles of beauty and artistic taste; it can also denote the visual style or sensory qualities that give something an appealing look or feel.",
 		"pos": "adjective",
@@ -529,7 +529,7 @@
 	},
 	"Anachronism": {
 		"definition": "chronological error",
-		"alts": ["out of its time", "relic", "thing out of time"],
+		"alts": ["thing out of time", "relic"],
 		"example": "The modern wristwatch on the knight’s arm was a glaring anachronism in the period film.",
 		"fullDefinition": "An anachronism is an object, expression, or event placed outside its correct historical timeframe, creating chronological inconsistency.",
 		"pos": "noun",
@@ -897,7 +897,7 @@
 	},
 	"Ascertain": {
 		"definition": "to find out",
-		"alts": ["to find out", "to verify", "to establish"],
+		"alts": ["to determine", "to verify", "to establish"],
 		"example": "The inspector attempted to ascertain the cause of the fire.",
 		"fullDefinition": "To ascertain is to discover or verify facts through examination, investigation, or experimentation.",
 		"pos": "verb",
@@ -937,7 +937,7 @@
 	},
 	"Assail": {
 		"definition": "to attack",
-		"alts": ["to attack verbally", "to criticize", "to beset"],
+		"alts": ["to assault", "to attack verbally", "to beset"],
 		"example": "The minister was assailed by questions about the missing funds.",
 		"fullDefinition": "To assail is to set upon someone vigorously, whether physically or with criticism, questions, or doubts.",
 		"pos": "verb",
@@ -1089,7 +1089,7 @@
 	},
 	"Availed": {
 		"definition": "made use of",
-		"alts": ["used", "benefited", "took advantage"],
+		"alts": ["to use", "to benefit from", "to take advantage of"],
 		"example": "She availed herself of the library’s vast digital collection.",
 		"fullDefinition": "Availed (past of ‘avail’) refers to taking advantage of a resource or opportunity so as to gain benefit.",
 		"pos": "verb",
@@ -1121,7 +1121,7 @@
 	},
 	"Avid": {
 		"definition": "enthusiastic",
-		"alts": ["enthusiastic", "keen", "passionate"],
+		"alts": ["keen", "eager", "passionate"],
 		"example": "She is an avid reader of historical fiction.",
 		"fullDefinition": "Avid expresses keen enthusiasm or thirst for an activity or pursuit.",
 		"pos": "adjective",
@@ -1233,7 +1233,7 @@
 	},
 	"Beguile": {
 		"definition": "to enchant",
-		"alts": ["to charm", "to enchant", "to deceive"],
+		"alts": ["to charm", "to captivate", "to deceive"],
 		"example": "He beguiled the audience with witty anecdotes.",
 		"fullDefinition": "To beguile is to attract or enchant someone in a deceptive manner, often with charm.",
 		"pos": "verb",
@@ -1281,7 +1281,7 @@
 	},
 	"Belies": {
 		"definition": "contradicts",
-		"alts": ["misrepresents", "disguises", "gives false impression"],
+		"alts": ["to contradict", "to misrepresent", "to disguise"],
 		"example": "Her calm smile belies the stress she feels inside.",
 		"fullDefinition": "To belie is to disguise or misrepresent the true nature of something, creating a discrepancy between appearance and reality.",
 		"pos": "verb",
@@ -1385,7 +1385,7 @@
 	},
 	"Berate": {
 		"definition": "to scold angrily",
-		"alts": ["to rebuke", "to upbraid", "to chew out"],
+		"alts": ["to rebuke", "to upbraid", "to scold harshly"],
 		"example": "The conductor berated the brass section in front of the entire orchestra.",
 		"fullDefinition": "To berate someone is to criticize them harshly and loudly for a perceived failure.",
 		"pos": "verb",
@@ -1521,7 +1521,7 @@
 	},
 	"Bowdlerize": {
 		"definition": "to censor",
-		"alts": ["to expurgate", "to sanitize", "to cut"],
+		"alts": ["to expurgate", "to sanitize", "to cut objectionable parts"],
 		"example": "The school edition bowdlerized the play, cutting nearly every bawdy joke.",
 		"fullDefinition": "To bowdlerize a text is to strip out material considered improper, often weakening the original.",
 		"pos": "verb",
@@ -1529,7 +1529,7 @@
 	},
 	"Brandish": {
 		"definition": "to wave aggressively",
-		"alts": ["to flourish", "to wield", "to wave"],
+		"alts": ["to flourish", "to wield", "to wave threateningly"],
 		"example": "The protester brandished a banner over the crowd.",
 		"fullDefinition": "To brandish is to exhibit an object—often a weapon—in a dramatic or threatening manner.",
 		"pos": "verb",
@@ -2065,7 +2065,7 @@
 	},
 	"Clandestine": {
 		"definition": "covert",
-		"alts": ["covert", "furtive", "hidden"],
+		"alts": ["secret", "furtive", "hidden"],
 		"example": "Dissidents circulated their writings through a clandestine network of printers.",
 		"fullDefinition": "Clandestine activities are kept hidden, usually because they are forbidden or politically dangerous.",
 		"pos": "adjective",
@@ -2505,7 +2505,7 @@
 	},
 	"Contingent": {
 		"definition": "dependent",
-		"alts": ["dependent", "subject to", "uncertain"],
+		"alts": ["conditional", "subject to", "uncertain"],
 		"example": "The grant is contingent on the university matching the funds.",
 		"fullDefinition": "Something contingent will happen only if certain other events or circumstances occur first.",
 		"pos": "adjective",
@@ -2785,7 +2785,7 @@
 	},
 	"Cursory": {
 		"definition": "superficial",
-		"alts": ["hasty", "perfunctory", "quick"],
+		"alts": ["hasty", "perfunctory", "hurried"],
 		"example": "Even a cursory reading of the contract reveals several contradictions.",
 		"fullDefinition": "A cursory examination is done quickly, without attention to detail.",
 		"pos": "adjective",
@@ -2905,7 +2905,7 @@
 	},
 	"Deign": {
 		"definition": "to stoop",
-		"alts": ["to stoop", "to lower oneself"],
+		"alts": ["to condescend", "to lower oneself"],
 		"example": "The celebrated architect rarely deigned to answer questions from junior staff.",
 		"fullDefinition": "To deign is to agree to do something one considers beneath one's dignity; the word usually implies arrogance in the person doing it.",
 		"pos": "verb",
@@ -2913,7 +2913,7 @@
 	},
 	"Deleterious": {
 		"definition": "injurious",
-		"alts": ["damaging", "injurious", "detrimental"],
+		"alts": ["harmful", "damaging", "detrimental"],
 		"example": "Researchers documented the deleterious effects of chronic noise on children's ability to concentrate.",
 		"fullDefinition": "Deleterious describes substances, habits, or policies that cause harm, often in ways that are not immediately obvious.",
 		"pos": "adjective",
@@ -3017,7 +3017,7 @@
 	},
 	"Derogatory": {
 		"definition": "demeaning",
-		"alts": ["pejorative", "demeaning", "belittling"],
+		"alts": ["pejorative", "belittling", "disparaging"],
 		"example": "The review was less a critique than a series of derogatory comments about the author's background.",
 		"fullDefinition": "Derogatory remarks or terms show disrespect for someone or something and are meant to diminish their standing.",
 		"pos": "adjective",
@@ -3201,7 +3201,7 @@
 	},
 	"Disabuse": {
 		"definition": "to undeceive",
-		"alts": ["to undeceive", "to set straight", "to enlighten"],
+		"alts": ["to set straight", "to enlighten", "to free from error"],
 		"example": "The mentor worked to disabuse him of the notion that success comes easily.",
 		"fullDefinition": "To disabuse is to rid someone of mistaken ideas or false beliefs by presenting accurate information.",
 		"pos": "verb",
@@ -3273,7 +3273,7 @@
 	},
 	"Discretion": {
 		"definition": "good judgment",
-		"alts": ["tact", "prudence", "good judgment"],
+		"alts": ["tact", "prudence", "circumspection"],
 		"example": "Use discretion when sharing sensitive information.",
 		"fullDefinition": "Discretion is the ability to make responsible decisions and maintain confidentiality or tact.",
 		"pos": "noun",
@@ -3289,7 +3289,7 @@
 	},
 	"Disdain": {
 		"definition": "contempt",
-		"alts": ["scorn", "disrespect", "to scorn"],
+		"alts": ["scorn", "disrespect", "derision"],
 		"example": "The critic made no attempt to hide his disdain for commercial fiction.",
 		"fullDefinition": "Disdain is the feeling that someone or something is beneath one's notice or respect; as a verb, it means to reject with such scorn.",
 		"pos": "noun",
@@ -3329,7 +3329,7 @@
 	},
 	"Dismiss": {
 		"definition": "to disregard",
-		"alts": ["to disregard", "to wave aside", "to brush off"],
+		"alts": ["to wave aside", "to brush off", "to reject"],
 		"example": "The judge moved to dismiss the case for lack of evidence.",
 		"fullDefinition": "To dismiss is to refuse to accept or entertain something—such as an idea, complaint, or legal action—deeming it unworthy of further attention.",
 		"pos": "verb",
@@ -3481,7 +3481,7 @@
 	},
 	"Docile": {
 		"definition": "easily managed",
-		"alts": ["compliant", "meek", "easily managed"],
+		"alts": ["compliant", "meek", "tractable"],
 		"example": "Colonial administrators mistakenly assumed that the population would remain docile under the new taxes.",
 		"fullDefinition": "Docile describes a person or animal that is quiet and readily accepts control or instruction.",
 		"pos": "adjective",
@@ -3545,7 +3545,7 @@
 	},
 	"Dubious": {
 		"definition": "questionable",
-		"alts": ["questionable", "suspect", "uncertain"],
+		"alts": ["suspect", "doubtful", "uncertain"],
 		"example": "The study's conclusions rest on the dubious assumption that survey respondents answered honestly.",
 		"fullDefinition": "Dubious describes something that invites suspicion or uncertainty, or a person who feels hesitant about it.",
 		"pos": "adjective",
@@ -3897,7 +3897,7 @@
 	},
 	"Epicure": {
 		"definition": "gourmet",
-		"alts": ["connoisseur", "foodie", "gastronome"],
+		"alts": ["connoisseur", "gastronome", "food connoisseur"],
 		"example": "Even a demanding epicure would have found little to criticize in the chef's tasting menu.",
 		"fullDefinition": "An epicure is a person with refined, discriminating taste, especially in food and wine.",
 		"pos": "noun",
@@ -4033,7 +4033,7 @@
 	},
 	"Eulogy": {
 		"definition": "funeral tribute",
-		"alts": ["tribute", "funeral speech", "praise"],
+		"alts": ["tribute", "funeral speech", "encomium"],
 		"example": "Her eulogy for the late professor recalled his generosity toward struggling students.",
 		"fullDefinition": "A eulogy is a speech or piece of writing that praises someone, most often delivered at a funeral.",
 		"pos": "noun",
@@ -4057,7 +4057,7 @@
 	},
 	"Evince": {
 		"definition": "to manifest",
-		"alts": ["to show", "to display", "to manifest"],
+		"alts": ["to show", "to display", "to reveal"],
 		"example": "The committee's questions evinced a deep skepticism about the project's budget.",
 		"fullDefinition": "To evince is to reveal or make evident a feeling, quality, or attitude, often through behavior rather than words.",
 		"pos": "verb",
@@ -4097,7 +4097,7 @@
 	},
 	"Exculpate": {
 		"definition": "to absolve",
-		"alts": ["to absolve", "to exonerate", "to clear of blame"],
+		"alts": ["to exonerate", "to clear of blame", "to vindicate"],
 		"example": "DNA evidence served to exculpate the wrongly convicted man.",
 		"fullDefinition": "Exculpate means to absolve someone of fault, guilt, or blame by providing credible proof of innocence.",
 		"pos": "verb",
@@ -4177,7 +4177,7 @@
 	},
 	"Expiate": {
 		"definition": "to atone",
-		"alts": ["to make amends", "to redeem", "to atone for"],
+		"alts": ["to make amends", "to redeem", "to do penance"],
 		"example": "He sought to expiate his mistake by volunteering for community service.",
 		"fullDefinition": "To expiate is to make reparation or seek forgiveness for wrongdoing through actions or rituals.",
 		"pos": "verb",
@@ -4249,7 +4249,7 @@
 	},
 	"Extricate": {
 		"definition": "to disentangle",
-		"alts": ["to disentangle", "to release", "to liberate"],
+		"alts": ["to free", "to release", "to liberate"],
 		"example": "The company struggled to extricate itself from a series of unprofitable contracts.",
 		"fullDefinition": "To extricate is to release someone or something from an entanglement or awkward situation, often with effort.",
 		"pos": "verb",
@@ -4257,7 +4257,7 @@
 	},
 	"Facetious": {
 		"definition": "inappropriately joking",
-		"alts": ["joking", "tongue-in-cheek", "jokey"],
+		"alts": ["flippant", "tongue-in-cheek", "jesting"],
 		"example": "His facetious joke about layoffs fell flat in the tense room.",
 		"fullDefinition": "Facetious describes remarks or behavior meant as humorous or playful but regarded as ill-timed, flippant, or lacking seriousness.",
 		"pos": "adjective",
@@ -4585,7 +4585,7 @@
 	},
 	"Ford": {
 		"definition": "to wade across",
-		"alts": ["to cross", "to wade", "to cross a river"],
+		"alts": ["to cross a river", "to wade through", "to cross on foot"],
 		"example": "They forded the shallow river at dawn.",
 		"fullDefinition": "To ford is to traverse a stream or river at a shallow point on foot or in a vehicle.",
 		"pos": "verb",
@@ -4937,7 +4937,7 @@
 	},
 	"Gratify": {
 		"definition": "to delight",
-		"alts": ["to satisfy", "to delight", "to indulge"],
+		"alts": ["to satisfy", "to please", "to indulge"],
 		"example": "The researchers were gratified to see their prediction confirmed.",
 		"fullDefinition": "To gratify is to give pleasure or satisfaction to someone, or to indulge a desire.",
 		"pos": "verb",
@@ -5017,7 +5017,7 @@
 	},
 	"Guy": {
 		"definition": "to tease",
-		"alts": ["to make fun of", "to mock", "to rib"],
+		"alts": ["to make fun of", "to mock", "to ridicule"],
 		"example": "They guyed him mercilessly for his outlandish tie.",
 		"fullDefinition": "To guy is to make fun of someone through taunts or jeers, often in a teasing way.",
 		"pos": "verb",
@@ -5081,7 +5081,7 @@
 	},
 	"Harbinger": {
 		"definition": "herald",
-		"alts": ["omen", "herald", "precursor"],
+		"alts": ["omen", "forerunner", "precursor"],
 		"example": "The early frost was a harbinger of a long winter.",
 		"fullDefinition": "A harbinger is a person or thing that signals the approach of something else.",
 		"pos": "noun",
@@ -5153,7 +5153,7 @@
 	},
 	"Heedless": {
 		"definition": "unmindful",
-		"alts": ["reckless", "unmindful", "inattentive"],
+		"alts": ["reckless", "careless", "inattentive"],
 		"example": "Developers pressed ahead, heedless of the geologists' warnings.",
 		"fullDefinition": "Heedless describes someone who fails to pay attention to warnings or risks.",
 		"pos": "adjective",
@@ -5273,7 +5273,7 @@
 	},
 	"Homily": {
 		"definition": "moral lecture",
-		"alts": ["sermon", "moralizing talk", "lecture"],
+		"alts": ["sermon", "moralizing talk", "moral discourse"],
 		"example": "The memo read less like a policy than a homily on teamwork.",
 		"fullDefinition": "A homily is a sermon or talk offering moral or spiritual guidance, often one perceived as tedious.",
 		"pos": "noun",
@@ -5441,7 +5441,7 @@
 	},
 	"Immured": {
 		"definition": "confined",
-		"alts": ["imprisoned", "walled in", "shut in"],
+		"alts": ["to imprison", "to wall in", "to shut in"],
 		"example": "The prisoners were immured behind the thick walls.",
 		"fullDefinition": "Immured means to be locked in or confined within a space, often against one’s will.",
 		"pos": "verb",
@@ -5505,7 +5505,7 @@
 	},
 	"Imperiously": {
 		"definition": "haughtily",
-		"alts": ["arrogantly", "commandingly", "bossily"],
+		"alts": ["arrogantly", "commandingly", "domineeringly"],
 		"example": "She waved imperiously for silence before announcing the verdict.",
 		"fullDefinition": "Imperiously is an adverb describing actions done in a domineering, overbearing manner befitting an absolute ruler.",
 		"pos": "adverb",
@@ -5593,7 +5593,7 @@
 	},
 	"Improvident": {
 		"definition": "thriftless",
-		"alts": ["thriftless", "wasteful", "careless"],
+		"alts": ["wasteful", "spendthrift", "shortsighted"],
 		"example": "The improvident heir squandered the estate within a decade.",
 		"fullDefinition": "Improvident describes someone careless in managing resources, without regard for future needs.",
 		"pos": "adjective",
@@ -5873,7 +5873,7 @@
 	},
 	"Ingratiate": {
 		"definition": "to curry favor",
-		"alts": ["to flatter", "to win favor", "to suck up"],
+		"alts": ["to win favor", "to flatter", "to fawn"],
 		"example": "The newcomer tried to ingratiate himself with the senior partners.",
 		"fullDefinition": "To ingratiate oneself is to try to gain someone's approval, often through flattery or calculated effort.",
 		"pos": "verb",
@@ -5929,7 +5929,7 @@
 	},
 	"Inordinately": {
 		"definition": "immoderately",
-		"alts": ["disproportionately", "unduly", "immoderately"],
+		"alts": ["disproportionately", "unduly", "excessively"],
 		"example": "The project became inordinately expensive after repeated delays.",
 		"fullDefinition": "Inordinately is an adverb stressing that something surpasses reasonable limits in amount, extent, or intensity.",
 		"pos": "adverb",
@@ -6169,7 +6169,7 @@
 	},
 	"Jejune": {
 		"definition": "insipid",
-		"alts": ["simplistic", "immature", "insipid"],
+		"alts": ["simplistic", "immature", "dull"],
 		"example": "Critics dismissed the film as jejune and uninspired.",
 		"fullDefinition": "Jejune refers to something that is lacking in maturity, depth, or interest.",
 		"pos": "adjective",
@@ -6297,7 +6297,7 @@
 	},
 	"Laggard": {
 		"definition": "straggler",
-		"alts": ["slowpoke", "latecomer", "dawdler"],
+		"alts": ["latecomer", "dawdler", "loiterer"],
 		"example": "Once a laggard in renewable energy, the country now leads the region in solar capacity.",
 		"fullDefinition": "A laggard is a person, organization, or nation that moves more slowly than its peers or trails in progress.",
 		"pos": "noun",
@@ -6305,7 +6305,7 @@
 	},
 	"Lambast": {
 		"definition": "to berate harshly",
-		"alts": ["to berate", "to castigate", "to criticize harshly"],
+		"alts": ["to castigate", "to criticize harshly", "to excoriate"],
 		"example": "The editorial lambasted the new policy for its flaws.",
 		"fullDefinition": "To lambast is to reprimand or assault verbally with strong criticism.",
 		"pos": "verb",
@@ -6313,7 +6313,7 @@
 	},
 	"Lament": {
 		"definition": "to grieve",
-		"alts": ["to grieve", "to bewail", "to bemoan"],
+		"alts": ["to mourn", "to bewail", "to bemoan"],
 		"example": "Many historians lament the destruction of the ancient library as an irreparable blow to scholarship.",
 		"fullDefinition": "To lament is to mourn openly, or to voice sorrow and disappointment about a loss or a state of affairs.",
 		"pos": "verb",
@@ -6449,7 +6449,7 @@
 	},
 	"Lionized": {
 		"definition": "celebrated",
-		"alts": ["idolized", "feted", "glorified"],
+		"alts": ["to idolize", "to fete", "to glorify"],
 		"example": "After the discovery, he was lionized by the scientific community.",
 		"fullDefinition": "To lionize is to give someone public attention and approval, elevating them to celebrity status.",
 		"pos": "verb",
@@ -6481,7 +6481,7 @@
 	},
 	"Litigious": {
 		"definition": "quick to sue",
-		"alts": ["prone to lawsuits", "sue-happy", "contentious"],
+		"alts": ["prone to lawsuits", "contentious"],
 		"example": "In such a litigious industry, even minor contract disagreements tend to end up before a judge.",
 		"fullDefinition": "A litigious person or society turns readily to the courts to settle disputes.",
 		"pos": "adjective",
@@ -6537,7 +6537,7 @@
 	},
 	"Lucre": {
 		"definition": "ill-gotten money",
-		"alts": ["profit", "filthy money", "wealth"],
+		"alts": ["filthy money", "tainted money", "ill-gotten gains"],
 		"example": "The reformer accused the officials of abandoning the public good in pursuit of lucre.",
 		"fullDefinition": "Lucre is wealth regarded with disapproval, often appearing in the phrase filthy lucre.",
 		"pos": "noun",
@@ -6689,7 +6689,7 @@
 	},
 	"Malingerer": {
 		"definition": "shirker",
-		"alts": ["faker", "work dodger", "goldbricker"],
+		"alts": ["faker", "work dodger", "feigner of illness"],
 		"example": "The boss was tired of the malingerer who always called in sick on Mondays.",
 		"fullDefinition": "A malingerer is a person who fakes or exaggerates illness, injury, or incapacity to evade duty, responsibility, or hardship.",
 		"pos": "noun",
@@ -6705,7 +6705,7 @@
 	},
 	"Manacled": {
 		"definition": "chained",
-		"alts": ["handcuffed", "chained", "fettered"],
+		"alts": ["handcuffed", "fettered", "shackled"],
 		"example": "The suspect was manacled before being transported.",
 		"fullDefinition": "Manacled describes someone who is physically bound, typically with handcuffs or chains.",
 		"pos": "adjective",
@@ -6745,7 +6745,7 @@
 	},
 	"Maverick": {
 		"definition": "nonconformist",
-		"alts": ["independent", "rebel", "free spirit"],
+		"alts": ["rebel", "free spirit", "individualist"],
 		"example": "As a maverick, she ignored standard methods and invented her own successful algorithm.",
 		"fullDefinition": "A maverick is an independent-minded individual who resists conformity to conventional practices or group consensus, often spearheading innovative approaches.",
 		"pos": "noun",
@@ -6873,7 +6873,7 @@
 	},
 	"Mien": {
 		"definition": "demeanor",
-		"alts": ["demeanor", "appearance", "manner"],
+		"alts": ["bearing", "appearance", "manner"],
 		"example": "Despite the turmoil around him, the judge maintained a serene mien throughout the trial.",
 		"fullDefinition": "Mien is the outward manner or look of a person, especially as it reveals mood or character.",
 		"pos": "noun",
@@ -6969,7 +6969,7 @@
 	},
 	"Mitigate": {
 		"definition": "to alleviate",
-		"alts": ["to alleviate", "to ease", "to soften"],
+		"alts": ["to ease", "to soften", "to lessen"],
 		"example": "Planting trees can mitigate the urban heat-island effect in big cities.",
 		"fullDefinition": "To mitigate is to make a situation, condition, or consequence less severe, harmful, or painful through remedial action.",
 		"pos": "verb",
@@ -6993,7 +6993,7 @@
 	},
 	"Mollify": {
 		"definition": "to appease",
-		"alts": ["to calm", "to appease", "to placate"],
+		"alts": ["to calm", "to placate", "to pacify"],
 		"example": "Free upgrades helped mollify passengers angry about the flight delay.",
 		"fullDefinition": "To mollify is to soften anger, anxiety, or hostility, often by offering concessions, reassurance, or conciliatory gestures.",
 		"pos": "verb",
@@ -7465,7 +7465,7 @@
 	},
 	"Omniscient": {
 		"definition": "all-knowing",
-		"alts": ["all knowing", "knowing everything", "infinitely wise"],
+		"alts": ["knowing everything", "infinitely wise"],
 		"example": "The novel's omniscient narrator reveals the private thoughts of every character.",
 		"fullDefinition": "Omniscient describes a being, or a narrator in fiction, with complete knowledge of everything.",
 		"pos": "adjective",
@@ -7489,7 +7489,7 @@
 	},
 	"Onus": {
 		"definition": "obligation",
-		"alts": ["responsibility", "obligation", "duty"],
+		"alts": ["responsibility", "duty", "burden"],
 		"example": "The onus is on the prosecution to prove guilt beyond reasonable doubt.",
 		"fullDefinition": "The onus is the obligation that rests on a particular party, such as the duty to prove a claim.",
 		"pos": "noun",
@@ -7497,7 +7497,7 @@
 	},
 	"Opine": {
 		"definition": "to voice views",
-		"alts": ["to comment", "to remark", "to suggest"],
+		"alts": ["to comment", "to remark", "to state a view"],
 		"example": "The columnist opined that the reforms would do little to curb corruption.",
 		"fullDefinition": "To opine is to offer a view, often with an air of authority that may not be earned.",
 		"pos": "verb",
@@ -7521,7 +7521,7 @@
 	},
 	"Oracular": {
 		"definition": "prophetic",
-		"alts": ["prophetic", "enigmatic", "cryptic"],
+		"alts": ["enigmatic", "cryptic", "foretelling"],
 		"example": "The central banker's oracular statements left markets guessing about the next rate decision.",
 		"fullDefinition": "Oracular describes pronouncements that sound wise and weighty but are mysterious or open to interpretation.",
 		"pos": "adjective",
@@ -7793,7 +7793,7 @@
 	},
 	"Paternalistic": {
 		"definition": "benevolently controlling",
-		"alts": ["overprotective", "nannying", "controlling"],
+		"alts": ["overprotective", "controlling", "patronizing"],
 		"example": "Residents resented the paternalistic regulations that dictated even the color of their front doors.",
 		"fullDefinition": "Paternalistic describes authority that limits people's choices on the grounds that it knows what is best for them.",
 		"pos": "adjective",
@@ -7809,7 +7809,7 @@
 	},
 	"Pathos": {
 		"definition": "pity-evoking quality",
-		"alts": ["poignancy", "sadness", "tragedy"],
+		"alts": ["poignancy", "pitifulness", "emotional appeal"],
 		"example": "The actor brings real pathos to the role of the aging, forgotten composer.",
 		"fullDefinition": "Pathos is the element in art, speech, or experience that stirs sympathy and sorrow.",
 		"pos": "noun",
@@ -8057,7 +8057,7 @@
 	},
 	"Perspicacious": {
 		"definition": "highly perceptive",
-		"alts": ["perceptive", "shrewd", "astute"],
+		"alts": ["discerning", "shrewd", "astute"],
 		"example": "Her perspicacious comments clarified the debate.",
 		"fullDefinition": "Perspicacious describes someone able to grasp complex ideas quickly and accurately.",
 		"pos": "adjective",
@@ -8177,7 +8177,7 @@
 	},
 	"Pittance": {
 		"definition": "tiny payment",
-		"alts": ["trifle", "small amount", "peanuts"],
+		"alts": ["trifle", "small amount", "meager sum"],
 		"example": "Translators were paid a pittance for work that took months.",
 		"fullDefinition": "A pittance is a very small amount of money, especially wages or an allowance that seem unfairly low.",
 		"pos": "noun",
@@ -8241,7 +8241,7 @@
 	},
 	"Plenary": {
 		"definition": "unlimited",
-		"alts": ["full", "unlimited", "fully attended"],
+		"alts": ["full", "complete", "fully attended"],
 		"example": "The proposal will be debated at the plenary session, where every delegate may vote.",
 		"fullDefinition": "Plenary describes powers that are unlimited, or a meeting that every member of a body is entitled to attend.",
 		"pos": "adjective",
@@ -8425,7 +8425,7 @@
 	},
 	"Preceded": {
 		"definition": "came before",
-		"alts": ["went before", "predated", "led"],
+		"alts": ["to go before", "to predate", "to come before"],
 		"example": "A brief introduction preceded the lecture.",
 		"fullDefinition": "Preceded describes an event, statement, or entity that occurs earlier in sequence or ranking.",
 		"pos": "verb",
@@ -8665,7 +8665,7 @@
 	},
 	"Prodigy": {
 		"definition": "gifted youngster",
-		"alts": ["wunderkind", "genius", "whiz kid"],
+		"alts": ["wunderkind", "genius", "child genius"],
 		"example": "A chess prodigy, he defeated a grandmaster at the age of twelve.",
 		"fullDefinition": "A prodigy is someone, usually a child, with exceptional talent far beyond their years.",
 		"pos": "noun",
@@ -8857,7 +8857,7 @@
 	},
 	"Provisional": {
 		"definition": "interim",
-		"alts": ["interim", "tentative", "conditional"],
+		"alts": ["tentative", "conditional", "temporary"],
 		"example": "The provisional government promised elections within six months.",
 		"fullDefinition": "Provisional describes an arrangement put in place for the present, pending something more permanent.",
 		"pos": "adjective",
@@ -8961,7 +8961,7 @@
 	},
 	"Purport": {
 		"definition": "to profess",
-		"alts": ["to profess", "to pretend", "to allege"],
+		"alts": ["to claim", "to pretend", "to allege"],
 		"example": "The letter purports to be from the president, but historians doubt its authenticity.",
 		"fullDefinition": "To purport is to appear or profess to be something, with the implication that the claim may not hold.",
 		"pos": "verb",
@@ -9009,7 +9009,7 @@
 	},
 	"Quaff": {
 		"definition": "to drink heartily",
-		"alts": ["to gulp", "to guzzle", "drink deeply"],
+		"alts": ["to gulp", "to guzzle", "to drink deeply"],
 		"example": "They quaffed ale at the festival.",
 		"fullDefinition": "To quaff is to drink a beverage, especially alcohol, with hearty enjoyment.",
 		"pos": "verb",
@@ -9025,7 +9025,7 @@
 	},
 	"Quail": {
 		"definition": "to cower",
-		"alts": ["to flinch", "shrink in fear", "to recoil"],
+		"alts": ["to flinch", "to shrink in fear", "to recoil"],
 		"example": "She quailed at the thought of speaking before the crowd.",
 		"fullDefinition": "To quail is to recoil or show fear, often visibly shrinking away.",
 		"pos": "verb",
@@ -9049,7 +9049,7 @@
 	},
 	"Qualify": {
 		"definition": "to limit",
-		"alts": ["to modify", "add conditions", "to restrict"],
+		"alts": ["to modify", "to add conditions", "to restrict"],
 		"example": "He qualified his praise with a few criticisms.",
 		"fullDefinition": "To qualify is to add conditions or reservations that reduce the scope or strength of something.",
 		"pos": "verb",
@@ -9057,7 +9057,7 @@
 	},
 	"Qualms": {
 		"definition": "misgivings",
-		"alts": ["misgivings", "scruples", "pangs of conscience"],
+		"alts": ["scruples", "pangs of conscience", "doubts"],
 		"example": "He had qualms about accepting the risky offer.",
 		"fullDefinition": "Qualms are sudden, uneasy feelings of doubt or worry about one’s actions or decisions.",
 		"pos": "noun",
@@ -9097,7 +9097,7 @@
 	},
 	"Quibble": {
 		"definition": "to argue pettily",
-		"alts": ["petty objection", "to cavil", "split hairs"],
+		"alts": ["to cavil", "to split hairs", "to nitpick"],
 		"example": "Let’s not quibble over fonts when the entire layout needs fixing.",
 		"fullDefinition": "A quibble involves raising petty objections or focusing on minor details so as to evade or distract from the main point of an argument.",
 		"pos": "verb",
@@ -9257,7 +9257,7 @@
 	},
 	"Rarefy": {
 		"definition": "to thin",
-		"alts": ["make less dense", "to refine", "to purify"],
+		"alts": ["to make less dense", "to refine", "to purify"],
 		"example": "The mountaintop air rarefies as you ascend.",
 		"fullDefinition": "To rarefy is to reduce density or intensity, making something more refined or thin.",
 		"pos": "verb",
@@ -9273,7 +9273,7 @@
 	},
 	"Raze": {
 		"definition": "to demolish",
-		"alts": ["to level", "to flatten", "tear down"],
+		"alts": ["to level", "to flatten", "to tear down"],
 		"example": "The old textile mill was razed to make room for a riverside park.",
 		"fullDefinition": "To raze is to tear down a building, town or other structure entirely, leaving it level with the ground.",
 		"pos": "verb",
@@ -9289,7 +9289,7 @@
 	},
 	"Rebuff": {
 		"definition": "to reject bluntly",
-		"alts": ["to snub", "to spurn", "turn down"],
+		"alts": ["to snub", "to spurn", "to turn down"],
 		"example": "The startup rebuffed several acquisition offers, convinced it could grow faster on its own.",
 		"fullDefinition": "To rebuff is to reject an advance, request or proposal bluntly, often in a way that leaves the other party feeling snubbed.",
 		"pos": "verb",
@@ -9313,7 +9313,7 @@
 	},
 	"Recapitulate": {
 		"definition": "to summarize",
-		"alts": ["to sum up", "to review", "restate briefly"],
+		"alts": ["to sum up", "to review", "to restate briefly"],
 		"example": "Before taking questions, the lecturer recapitulated the three stages of her argument.",
 		"fullDefinition": "To recapitulate is to go back over the essential parts of an argument or account in condensed form, usually to reinforce them.",
 		"pos": "verb",
@@ -9321,7 +9321,7 @@
 	},
 	"Reciprocate": {
 		"definition": "to return",
-		"alts": ["respond in kind", "to repay", "return in kind"],
+		"alts": ["to respond in kind", "to repay", "to requite"],
 		"example": "When the neighboring state lowered its tariffs, the government quickly reciprocated.",
 		"fullDefinition": "To reciprocate is to return a gesture, feeling or action with a similar one, so that the exchange runs both ways.",
 		"pos": "verb",
@@ -9337,7 +9337,7 @@
 	},
 	"Reconcile": {
 		"definition": "to harmonize",
-		"alts": ["to reunite", "to settle", "make compatible"],
+		"alts": ["to reunite", "to settle", "to make compatible"],
 		"example": "They reconciled their differences after years of estrangement.",
 		"fullDefinition": "To reconcile is to settle discord or to bring disparate elements into harmonious agreement.",
 		"pos": "verb",
@@ -9361,7 +9361,7 @@
 	},
 	"Rectify": {
 		"definition": "to correct",
-		"alts": ["to fix", "to remedy", "put right"],
+		"alts": ["to fix", "to remedy", "to put right"],
 		"example": "The publisher promised to rectify the misattributed quotation in all future printings.",
 		"fullDefinition": "To rectify is to fix an error or remedy an unfair situation so that it is as it should be.",
 		"pos": "verb",
@@ -9425,7 +9425,7 @@
 	},
 	"Refute": {
 		"definition": "to disprove",
-		"alts": ["to rebut", "prove false", "to debunk"],
+		"alts": ["to rebut", "to prove false", "to debunk"],
 		"example": "Data from the new study refute the old theory’s core prediction.",
 		"fullDefinition": "To refute is to systematically demonstrate that a statement, hypothesis, or argument is erroneous or invalid.",
 		"pos": "verb",
@@ -9441,7 +9441,7 @@
 	},
 	"Reiterate": {
 		"definition": "to repeat",
-		"alts": ["to restate", "say again", "repeat for emphasis"],
+		"alts": ["to restate", "to say again", "to repeat for emphasis"],
 		"example": "The memo reiterated that no data could leave the laboratory without written approval.",
 		"fullDefinition": "To reiterate is to repeat a statement or point, often several times, so that its importance is not missed.",
 		"pos": "verb",
@@ -9489,7 +9489,7 @@
 	},
 	"Renege": {
 		"definition": "to back out",
-		"alts": ["break a promise", "go back on", "to default"],
+		"alts": ["to break a promise", "to go back on", "to default"],
 		"example": "They reneged on their offer at the last minute.",
 		"fullDefinition": "To renege is to fail to fulfill a commitment or break a promise.",
 		"pos": "verb",
@@ -9545,7 +9545,7 @@
 	},
 	"Reproach": {
 		"definition": "to rebuke",
-		"alts": ["to scold", "to criticize", "express disapproval"],
+		"alts": ["to scold", "to criticize", "to express disapproval"],
 		"example": "With quiet reproach, she asked why he had missed yet another deadline.",
 		"fullDefinition": "Reproach denotes pointed expression of disappointment or blame directed toward conduct considered wrong or inadequate.",
 		"pos": "verb",
@@ -9585,7 +9585,7 @@
 	},
 	"Requite": {
 		"definition": "to repay",
-		"alts": ["return in kind", "to avenge", "to reward"],
+		"alts": ["to return in kind", "to avenge", "to reward"],
 		"example": "The poet spent decades writing to a woman who never requited his devotion.",
 		"fullDefinition": "To requite is to return something given or done, whether kindness, love or injury, with a response of equal measure.",
 		"pos": "verb",
@@ -9729,7 +9729,7 @@
 	},
 	"Rote": {
 		"definition": "mechanical repetition",
-		"alts": ["memorization", "routine", "by heart"],
+		"alts": ["memorization", "routine", "habitual repetition"],
 		"example": "The reformers wanted students to reason through problems rather than learn formulas by rote.",
 		"fullDefinition": "Rote is the routine of memorizing or performing something by sheer repetition rather than by grasping its meaning.",
 		"pos": "noun",
@@ -9745,7 +9745,7 @@
 	},
 	"Rue": {
 		"definition": "to regret",
-		"alts": ["to lament", "to bemoan", "feel remorse"],
+		"alts": ["to lament", "to bemoan", "to feel remorse"],
 		"example": "The general would soon rue his decision to divide his forces before the river crossing.",
 		"fullDefinition": "To rue is to feel sorrow or remorse over something one has done or allowed to happen.",
 		"pos": "verb",
@@ -9881,7 +9881,7 @@
 	},
 	"Sartorial": {
 		"definition": "about clothing",
-		"alts": ["of tailoring", "relating to dress", "clothing"],
+		"alts": ["of tailoring", "relating to dress", "of clothing"],
 		"example": "His sartorial choices reflect a love of vintage fashion.",
 		"fullDefinition": "Sartorial concerns deal with garments, the craft of tailoring, and matters of individual dress sense.",
 		"pos": "adjective",
@@ -9897,7 +9897,7 @@
 	},
 	"Saturate": {
 		"definition": "to soak",
-		"alts": ["to drench", "to permeate", "fill completely"],
+		"alts": ["to drench", "to permeate", "to fill completely"],
 		"example": "Heavy rain began to saturate the soil, causing small landslides.",
 		"fullDefinition": "Saturate means to permeate something completely until no further absorption is possible—of liquids, colors, or markets.",
 		"pos": "verb",
@@ -9969,7 +9969,7 @@
 	},
 	"Scrutinize": {
 		"definition": "to examine closely",
-		"alts": ["to inspect", "to scan", "study carefully"],
+		"alts": ["to inspect", "to scan", "to study carefully"],
 		"example": "Auditors scrutinized every invoice from the final quarter before signing off on the accounts.",
 		"fullDefinition": "To scrutinize is to inspect something carefully and critically, looking for flaws or hidden meaning.",
 		"pos": "verb",
@@ -10049,7 +10049,7 @@
 	},
 	"Sequester": {
 		"definition": "to set apart",
-		"alts": ["to seclude", "set apart", "to segregate"],
+		"alts": ["to seclude", "to isolate", "to segregate"],
 		"example": "The jurors were sequestered in a hotel for the duration of the high-profile trial.",
 		"fullDefinition": "To sequester is to keep someone or something separated from others, as a jury kept from the news or carbon locked away in soil.",
 		"pos": "verb",
@@ -10057,7 +10057,7 @@
 	},
 	"Serendipity": {
 		"definition": "happy accident",
-		"alts": ["fortunate chance", "lucky discovery", "luck"],
+		"alts": ["fortunate chance", "lucky discovery"],
 		"example": "The discovery of penicillin is often cited as a triumph of serendipity as much as of method.",
 		"fullDefinition": "Serendipity is the occurrence of valuable or pleasant finds by chance, while one is looking for something else.",
 		"pos": "noun",
@@ -10121,7 +10121,7 @@
 	},
 	"Slake": {
 		"definition": "to quench",
-		"alts": ["to satisfy", "to satiate", "relieve thirst"],
+		"alts": ["to satisfy", "to satiate", "to relieve thirst"],
 		"example": "No number of archival visits could slake her curiosity about the vanished colony.",
 		"fullDefinition": "To slake is to relieve a thirst or fulfill a craving, whether physical or intellectual.",
 		"pos": "verb",
@@ -10233,7 +10233,7 @@
 	},
 	"Sporadically": {
 		"definition": "now and then",
-		"alts": ["occasionally", "intermittently", "now and then"],
+		"alts": ["occasionally", "intermittently", "irregularly"],
 		"example": "The alarms rang sporadically throughout the night.",
 		"fullDefinition": "Sporadically refers to events happening occasionally and unpredictably.",
 		"pos": "adverb",
@@ -10257,7 +10257,7 @@
 	},
 	"Squander": {
 		"definition": "to fritter away",
-		"alts": ["to fritter away", "to misspend", "to blow"],
+		"alts": ["to waste", "to misspend", "to dissipate"],
 		"example": "The team squandered a ten-point lead in the final minutes of the match.",
 		"fullDefinition": "To squander is to use up money, time or opportunity carelessly, with nothing worthwhile to show for it.",
 		"pos": "verb",
@@ -10305,7 +10305,7 @@
 	},
 	"Steep": {
 		"definition": "to soak",
-		"alts": ["to soak", "to immerse", "to marinate"],
+		"alts": ["to immerse", "to marinate", "to saturate"],
 		"example": "Steep the tea bag in hot water for three minutes.",
 		"fullDefinition": "To steep is to immerse solid substance in a liquid so that flavor or properties are extracted.",
 		"pos": "verb",
@@ -10313,7 +10313,7 @@
 	},
 	"Stentorian": {
 		"definition": "booming",
-		"alts": ["loud", "thunderous", "powerful voice"],
+		"alts": ["loud", "thunderous", "resounding"],
 		"example": "The coach’s stentorian shout echoed across the field.",
 		"fullDefinition": "Stentorian describes a voice or sound that is loud, clear, and commanding.",
 		"pos": "adjective",
@@ -10329,7 +10329,7 @@
 	},
 	"Stint": {
 		"definition": "to skimp",
-		"alts": ["to economize", "to be frugal", "limited period"],
+		"alts": ["to economize", "to be frugal", "to scrimp"],
 		"example": "After a brief stint as a barista, she realized office work suited her better.",
 		"fullDefinition": "As a verb, stint means to be frugal or restrict the supply or use of something; as a noun, it denotes a fixed or allotted period of service, duty, or activity.",
 		"pos": "verb",
@@ -10337,7 +10337,7 @@
 	},
 	"Stipulate": {
 		"definition": "to specify",
-		"alts": ["to require", "to demand", "set conditions"],
+		"alts": ["to require", "to demand", "to set conditions"],
 		"example": "The lease agreements stipulate that tenants may not keep pets larger than twenty-five pounds.",
 		"fullDefinition": "To stipulate is to specify or insist upon an exact condition, requirement, or term that must be accepted for a contract or agreement to be valid.",
 		"pos": "verb",
@@ -10377,7 +10377,7 @@
 	},
 	"Strut": {
 		"definition": "to prance proudly",
-		"alts": ["to parade", "to prance", "walk proudly"],
+		"alts": ["to parade", "to prance", "to walk proudly"],
 		"example": "He strutted into the room like he owned it.",
 		"fullDefinition": "To strut is to swagger or parade oneself with exaggerated confidence.",
 		"pos": "verb",
@@ -10521,7 +10521,7 @@
 	},
 	"Sumptuous": {
 		"definition": "luxurious",
-		"alts": ["luxurious", "opulent", "splendid"],
+		"alts": ["lavish", "opulent", "splendid"],
 		"example": "The sumptuous banquet stood in stark contrast to the famine in the provinces.",
 		"fullDefinition": "Sumptuous describes something magnificent and splendid in a way that suggests great expense.",
 		"pos": "adjective",
@@ -10545,7 +10545,7 @@
 	},
 	"Supersede": {
 		"definition": "to replace",
-		"alts": ["to supplant", "to displace", "take the place of"],
+		"alts": ["to supplant", "to displace", "to take over from"],
 		"example": "Streaming did not merely compete with DVDs—it came to supersede them.",
 		"fullDefinition": "Supersede means to displace or render obsolete something older or inferior by substituting a newer, more authoritative, or more effective alternative.",
 		"pos": "verb",
@@ -10633,7 +10633,7 @@
 	},
 	"Synoptic": {
 		"definition": "giving an overview",
-		"alts": ["overview", "comprehensive", "condensed"],
+		"alts": ["comprehensive", "condensed", "summarizing"],
 		"example": "The executive requested a synoptic report of the quarter’s performance.",
 		"fullDefinition": "Synoptic presentations condense complex information into a broad, cohesive perspective.",
 		"pos": "adjective",
@@ -10641,7 +10641,7 @@
 	},
 	"Table": {
 		"definition": "to shelve",
-		"alts": ["to defer", "to shelve", "to put off"],
+		"alts": ["to defer", "to put off", "to postpone"],
 		"example": "They tabled the motion until next week.",
 		"fullDefinition": "To table is to defer discussion or action on an item, often in a formal meeting context.",
 		"pos": "verb",
@@ -10657,7 +10657,7 @@
 	},
 	"Taciturnity": {
 		"definition": "reticence",
-		"alts": ["reticence", "reserve", "quietness"],
+		"alts": ["reserve", "quietness", "uncommunicativeness"],
 		"example": "His taciturnity made casual conversation feel like an interrogation.",
 		"fullDefinition": "Taciturnity is a personality trait marked by minimal speech and reluctance to engage in verbal exchange.",
 		"pos": "noun",
@@ -10665,7 +10665,7 @@
 	},
 	"Tangential": {
 		"definition": "peripheral",
-		"alts": ["peripheral", "off-topic", "digressive"],
+		"alts": ["off-topic", "digressive", "incidental"],
 		"example": "Her anecdote about the weather was tangential to the budget discussion.",
 		"fullDefinition": "Tangential remarks or arguments touch the main subject only slightly, diverging into side issues without substantial connection.",
 		"pos": "adjective",
@@ -10729,7 +10729,7 @@
 	},
 	"Temporize": {
 		"definition": "to stall",
-		"alts": ["to delay", "to equivocate", "play for time"],
+		"alts": ["to delay", "to equivocate", "to play for time"],
 		"example": "Rather than reject the demands outright, the ministry temporized, promising a review that never came.",
 		"fullDefinition": "To temporize is to avoid making a commitment or decision, often by giving evasive answers, so as to delay matters.",
 		"pos": "verb",
@@ -10801,7 +10801,7 @@
 	},
 	"Terse": {
 		"definition": "concise",
-		"alts": ["brief", "abrupt", "concise"],
+		"alts": ["brief", "abrupt", "curt"],
 		"example": "His terse reply signaled impatience.",
 		"fullDefinition": "Terse communication conveys information in a brief, sometimes curt, manner.",
 		"pos": "adjective",
@@ -10889,7 +10889,7 @@
 	},
 	"Transcend": {
 		"definition": "to surpass",
-		"alts": ["to exceed", "to rise above", "go beyond"],
+		"alts": ["to exceed", "to rise above", "to go beyond"],
 		"example": "Great satire transcends its own era, speaking to readers centuries after its targets are forgotten.",
 		"fullDefinition": "To transcend is to exceed the usual limits of something, such as a category, experience or barrier.",
 		"pos": "verb",
@@ -11073,7 +11073,7 @@
 	},
 	"Underscores": {
 		"definition": "emphasizes",
-		"alts": ["highlights", "stresses", "accentuates"],
+		"alts": ["to emphasize", "to highlight", "to stress"],
 		"example": "Her success underscores the value of perseverance.",
 		"fullDefinition": "To underscore is to draw special attention to a point, highlighting its significance.",
 		"pos": "verb",
@@ -11097,7 +11097,7 @@
 	},
 	"Undue": {
 		"definition": "unwarranted",
-		"alts": ["unwarranted", "inappropriate", "disproportionate"],
+		"alts": ["excessive", "inappropriate", "disproportionate"],
 		"example": "The policy puts undue burden on small businesses.",
 		"fullDefinition": "Undue indicates a degree that exceeds what is proper, justified, or legal.",
 		"pos": "adjective",
@@ -11105,7 +11105,7 @@
 	},
 	"Undulate": {
 		"definition": "to ripple",
-		"alts": ["to wave", "to roll", "rise and fall"],
+		"alts": ["to wave", "to roll", "to rise and fall"],
 		"example": "The prairie undulated toward the horizon in long, gentle swells.",
 		"fullDefinition": "To undulate is to rise and fall in a smooth, wavelike pattern, as rolling hills or a swaying field of grass do.",
 		"pos": "verb",
@@ -11257,7 +11257,7 @@
 	},
 	"Utilitarian": {
 		"definition": "functional",
-		"alts": ["functional", "pragmatic", "serviceable"],
+		"alts": ["practical", "pragmatic", "serviceable"],
 		"example": "The station's utilitarian concrete design has recently found admirers among architects.",
 		"fullDefinition": "Utilitarian describes something made to be practical and functional rather than attractive.",
 		"pos": "adjective",
@@ -11353,7 +11353,7 @@
 	},
 	"Venerate": {
 		"definition": "to revere",
-		"alts": ["to worship", "to honor", "respect deeply"],
+		"alts": ["to worship", "to honor", "to respect deeply"],
 		"example": "Many cultures venerate their elders as sources of wisdom and guidance.",
 		"fullDefinition": "To venerate is to regard or treat with profound respect, reverence, and often ritual honor.",
 		"pos": "verb",
@@ -11433,7 +11433,7 @@
 	},
 	"Vexation": {
 		"definition": "exasperation",
-		"alts": ["irritation", "frustration", "exasperation"],
+		"alts": ["irritation", "frustration", "annoyance"],
 		"example": "He sighed in vexation at the constant interruptions.",
 		"fullDefinition": "Vexation is the state of being irritated or distressed by little annoyances.",
 		"pos": "noun",
@@ -11657,7 +11657,7 @@
 	},
 	"Warrant": {
 		"definition": "to justify",
-		"alts": ["to merit", "to deserve", "call for"],
+		"alts": ["to merit", "to deserve", "to call for"],
 		"example": "The modest decline in sales hardly warrants closing the entire division.",
 		"fullDefinition": "To warrant is to make an action or response necessary or appropriate, given the circumstances.",
 		"pos": "verb",
@@ -11673,7 +11673,7 @@
 	},
 	"Wax": {
 		"definition": "to grow",
-		"alts": ["to increase", "to swell", "to become"],
+		"alts": ["to increase", "to swell", "to enlarge"],
 		"example": "The party's fortunes waxed as the economy improved.",
 		"fullDefinition": "In the GRE sense, to wax is to increase gradually, or to become a certain way, as in waxing eloquent; it is the opposite of wane.",
 		"pos": "verb",
@@ -11761,7 +11761,7 @@
 	},
 	"Wont": {
 		"definition": "accustomed",
-		"alts": ["inclined", "habit", "given to"],
+		"alts": ["inclined", "given to", "used to"],
 		"example": "As he was wont to do, the professor began the lecture with a question he refused to answer.",
 		"fullDefinition": "Wont describes a person's customary behavior, as in being wont to do something; as a noun it means a habit.",
 		"pos": "adjective",
@@ -11777,7 +11777,7 @@
 	},
 	"Wry": {
 		"definition": "dryly humorous",
-		"alts": ["ironic", "droll", "dry"],
+		"alts": ["ironic", "droll", "mildly sardonic"],
 		"example": "Her wry account of the failed expedition had the audience laughing at disasters that were not funny at the time.",
 		"fullDefinition": "Wry describes humor that is understated and ironic, or a facial expression that shows mild amusement or displeasure.",
 		"pos": "adjective",
@@ -11801,7 +11801,7 @@
 	},
 	"Zeitgeist": {
 		"definition": "cultural climate",
-		"alts": ["spirit of the age", "spirit of the times", "cultural climate"],
+		"alts": ["spirit of the age", "spirit of the times"],
 		"example": "Few novels captured the zeitgeist of the postwar decade as precisely as hers.",
 		"fullDefinition": "The zeitgeist is the general intellectual, moral and cultural climate that characterizes a particular period.",
 		"pos": "noun",

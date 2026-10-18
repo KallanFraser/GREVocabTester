@@ -168,7 +168,7 @@ test("when every unretired word is cooling down, the soonest one is drawn early"
 		shown.push(k);
 	}
 	// a, b, c all missed; then nothing is eligible, so a (soonest) goes early,
-	// then b — never the card just shown.
+	// then b, never the card just shown.
 	assert.deepEqual(shown, ["a", "b", "c", "a", "b"]);
 });
 

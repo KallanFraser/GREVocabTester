@@ -188,6 +188,46 @@ test("d2w near-duplicates on the real data, through lib/distractors.js", async (
 	}
 });
 
+test("d2w: a fuzzy match loses to a closer headword that is not an accepted synonym", () => {
+	const vocab = {
+		Impermeable: { definition: "impenetrable", pos: "adjective" },
+		Permeable: { definition: "penetrable", pos: "adjective" },
+		Exculpate: { definition: "to clear from blame", pos: "verb" },
+		Exonerate: { definition: "to clear from blame", pos: "verb" },
+	};
+	// "permeabl" passes Dice against Impermeable but is closer to Permeable.
+	assert.ok(gradeHeadword("Impermeable", "Permeabl").correct, "plain rule alone would pass it");
+	assert.equal(gradeHeadwordWithNearDuplicates("Impermeable", "Permeabl", vocab).correct, false);
+	assert.equal(gradeHeadwordWithNearDuplicates("Impermeable", "permeabl", vocab).acceptedKey, null);
+	// A misspelling of the target itself still passes.
+	assert.equal(gradeHeadwordWithNearDuplicates("Impermeable", "Impermeabel", vocab).acceptedKey, "Impermeable");
+	assert.equal(gradeHeadwordWithNearDuplicates("Permeable", "Permeabel", vocab).acceptedKey, "Permeable");
+	// A closer headword that is an accepted synonym does not block the answer.
+	assert.equal(gradeHeadwordWithNearDuplicates("Exculpate", "exonerat", vocab).acceptedKey, "Exonerate");
+	// Same on the real data.
+	if (VOCAB.Impermeable && VOCAB.Permeable) {
+		assert.equal(gradeHeadwordWithNearDuplicates("Impermeable", "Permeabl", VOCAB).correct, false);
+		assert.equal(gradeHeadwordWithNearDuplicates("Impermeable", "Impermeabl", VOCAB).correct, true);
+	}
+});
+
+test("w2d: a fuzzy answer that adds a negation the target lacks is wrong", () => {
+	const auspicious = { definition: "promising", alts: ["favorable", "propitious", "fortunate"] };
+	assert.equal(gradeDefinition(auspicious, "favorable").correct, true);
+	assert.equal(gradeDefinition(auspicious, "favourable").correct, true);
+	assert.equal(gradeDefinition(auspicious, "unfavorable").correct, false);
+	assert.equal(gradeDefinition(auspicious, "not favorable").correct, false);
+	assert.equal(gradeDefinition(auspicious, "non-favorable").correct, false);
+	assert.equal(gradeDefinition(auspicious, "unfortunate").correct, false);
+	assert.equal(gradeDefinition({ definition: "honest and fair" }, "dishonest and fair").correct, false);
+	// A target that already carries the prefix, or the negation, still accepts typos.
+	assert.equal(gradeDefinition({ definition: "independent" }, "independant").correct, true);
+	assert.equal(gradeDefinition({ definition: "to inform" }, "to informm").correct, true);
+	assert.equal(gradeDefinition({ definition: "not favorable" }, "not favourable").correct, true);
+	assert.equal(gradeDefinition({ definition: "unfavorable" }, "unfavourable").correct, true);
+	if (VOCAB.Auspicious) assert.equal(gradeAnswer("Auspicious", VOCAB.Auspicious, "unfavorable", "w2d").correct, false);
+});
+
 test("w2d: best score across definition and alts; short targets need an exact match; trailing periods ignored", () => {
 	const entry = { definition: "to lessen in intensity.", alts: ["subside", "wane", "die down."] };
 	assert.equal(gradeDefinition(entry, "to lessen in intensity").correct, true);

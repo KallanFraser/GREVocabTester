@@ -18,7 +18,7 @@ import { useSearchParams } from "next/navigation";
 import PlayHeader from "./PlayHeader";
 import ConfirmDialog from "./ConfirmDialog";
 import { WORDS, getWord } from "../lib/words";
-import { cryptoRng } from "../lib/distractors";
+import { cryptoRng, meaningGroupsReady } from "../lib/distractors";
 import {
 	loadSettings,
 	saveSettings,
@@ -194,10 +194,12 @@ export default function ContextMode() {
 			startScope(usePack ? keys : ALL_KEYS, packId, usePack ? ctx.title : null);
 			setHydrated(true);
 		}
-		// A failed resolve behaves as no context: all words.
-		resolvePackContext(search)
-			.then(apply)
-			.catch(() => apply(null));
+		// A failed resolve behaves as no context: all words. The first question
+		// waits for the meaning groups (at most MEANING_GROUPS_TIMEOUT_MS) so its
+		// options follow the same rules as every later card.
+		Promise.all([resolvePackContext(search), meaningGroupsReady])
+			.then(([ctx]) => apply(ctx))
+			.catch(() => meaningGroupsReady.then(() => apply(null)));
 		return () => {
 			alive = false;
 		};

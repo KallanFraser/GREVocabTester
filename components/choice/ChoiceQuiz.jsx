@@ -27,7 +27,9 @@ import {
 	cryptoRng,
 	isConfusable,
 	isNearDuplicateDefinition,
+	isSameMeaningGroup,
 	isSameRoot,
+	meaningGroupsReady,
 } from "../../lib/distractors";
 import {
 	loadSettings,
@@ -103,6 +105,7 @@ function clashes(a, b) {
 		a.word === b.word ||
 		isSameRoot(a.word, b.word) ||
 		isConfusable(a.word, b.word) ||
+		isSameMeaningGroup(a.word, b.word) ||
 		isNearDuplicateDefinition(a.definition, b.definition)
 	);
 }
@@ -277,10 +280,12 @@ export default function ChoiceQuiz({ variant = "practice" }) {
 			startScope(usePack ? keys : ALL_KEYS, packId, usePack ? ctx.title : null);
 			setHydrated(true);
 		}
-		// A failed resolve behaves as no context: all words.
-		resolvePackContext(search)
-			.then(apply)
-			.catch(() => apply(null));
+		// A failed resolve behaves as no context: all words. The first question
+		// waits for the meaning groups (at most MEANING_GROUPS_TIMEOUT_MS) so its
+		// distractors follow the same rules as every later card.
+		Promise.all([resolvePackContext(search), meaningGroupsReady])
+			.then(([ctx]) => apply(ctx))
+			.catch(() => meaningGroupsReady.then(() => apply(null)));
 		return () => {
 			alive = false;
 		};

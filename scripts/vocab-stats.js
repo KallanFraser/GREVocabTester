@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// vocab-stats.js — dataset overview for src/data/gre_combined.json.
+// vocab-stats.js: dataset overview for src/data/gre_combined.json.
 // Prints the entry count, then counts by tier, by pos, tier x pos, and by
 // first letter.
 //
