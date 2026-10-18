@@ -249,6 +249,22 @@ test("w2d: a negation that agrees with a negated target, or a non-negating prefi
 	assert.equal(gradeDefinition({ definition: "happy" }, "not happy").correct, false);
 });
 
+test("w2d: a fuzzy answer that drops a negation the target has is wrong", () => {
+	const averse = { definition: "unwilling", alts: ["reluctant", "opposed", "disinclined"] };
+	assert.equal(gradeDefinition(averse, "willing").correct, false);
+	assert.equal(gradeDefinition(averse, "unwiling").correct, true);
+	assert.equal(gradeDefinition(averse, "not willing").correct, true);
+	const spurious = { definition: "not genuine", alts: ["false", "bogus", "counterfeit"] };
+	assert.equal(gradeDefinition(spurious, "genuine").correct, false);
+	assert.equal(gradeDefinition(spurious, "not genuin").correct, true);
+	const tenacious = { definition: "persistent", alts: ["dogged", "determined", "unyielding"] };
+	assert.equal(gradeDefinition(tenacious, "yielding").correct, false);
+	assert.equal(gradeDefinition(tenacious, "unyeilding").correct, true);
+	for (const [key, answer] of [["Averse", "willing"], ["Spurious", "genuine"], ["Tenacious", "yielding"]]) {
+		if (VOCAB[key]) assert.equal(gradeAnswer(key, VOCAB[key], answer, "w2d").correct, false, `${key} (data): "${answer}"`);
+	}
+});
+
 test("w2d: best score across definition and alts; short targets need an exact match; trailing periods ignored", () => {
 	const entry = { definition: "to lessen in intensity.", alts: ["subside", "wane", "die down."] };
 	assert.equal(gradeDefinition(entry, "to lessen in intensity").correct, true);
