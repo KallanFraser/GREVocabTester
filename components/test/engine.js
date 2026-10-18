@@ -2,35 +2,57 @@
 // covers, one Normal answer, grading in either direction, and the labels the
 // screen shows. No React and no randomness of its own (lib/pool.js draws, with
 // an injectable rng), so tests can drive a whole run. The one storage touch is
-// the Normal | Harder choice, which lib/settings.js does not hold.
+// the Normal | Harder choice, through lib/settings.js.
 
-import * as storage from "../../lib/storage.js";
+import {
+	DIFFICULTY_HARDER,
+	DIFFICULTY_NORMAL,
+	difficultyFromParam,
+	loadSettings,
+	normalizeDifficulty,
+	saveSettings,
+} from "../../lib/settings.js";
 import { ALL_SCOPE, scopeIdFor, selectionTarget } from "../../lib/progress.js";
-import { POOL_SIZE, WORD_STREAK_TO_MASTER, pickNext, replaceMastered } from "../../lib/pool.js";
+import { POOL_SIZE, WORD_STREAK_TO_MASTER, buildPool, drawPoolRefill, pickNext, replaceMastered } from "../../lib/pool.js";
 import { gradeDefinition, gradeHeadwordWithNearDuplicates } from "../../lib/matching.js";
 
 // ---------------------------------------------------------------------------
-// Difficulty: gv_test_difficulty = "normal" | "harder"
+// Difficulty: gv_settings.testDifficulty = "normal" | "harder"
 // ---------------------------------------------------------------------------
-// Its own key because normalizeSettings drops fields it does not know. Coerced
-// on read, so a corrupt value is Normal.
+// Held in lib/settings.js, which migrates the old gv_test_difficulty key once.
+// Coerced on read, so a corrupt value is Normal. A ?mode=normal|harder in the
+// URL overrides it and is saved (resolveDifficulty).
 
-export const DIFFICULTY_NORMAL = "normal";
-export const DIFFICULTY_HARDER = "harder";
-export const DIFFICULTIES = [DIFFICULTY_NORMAL, DIFFICULTY_HARDER];
-export const DIFFICULTY_KEY = "gv_test_difficulty";
+export {
+	DIFFICULTIES,
+	DIFFICULTY_HARDER,
+	DIFFICULTY_NORMAL,
+	LEGACY_DIFFICULTY_KEY as DIFFICULTY_KEY,
+	normalizeDifficulty,
+} from "../../lib/settings.js";
 export const DIFFICULTY_LABEL = { [DIFFICULTY_NORMAL]: "Normal", [DIFFICULTY_HARDER]: "Harder" };
 
-export function normalizeDifficulty(d) {
-	return d === DIFFICULTY_HARDER ? DIFFICULTY_HARDER : DIFFICULTY_NORMAL;
-}
-
 export function loadDifficulty() {
-	return normalizeDifficulty(storage.get(DIFFICULTY_KEY, null));
+	return loadSettings().testDifficulty;
 }
 
 export function saveDifficulty(d) {
-	storage.set(DIFFICULTY_KEY, normalizeDifficulty(d));
+	return saveSettings({ testDifficulty: normalizeDifficulty(d) }).testDifficulty;
+}
+
+// The difficulty a page load runs at: the query's `mode` when it is
+// "normal" or "harder" (saved, so it sticks), else the stored one. `query` is
+// a URLSearchParams, a query string, or null.
+export function resolveDifficulty(query) {
+	let mode = null;
+	try {
+		const p = query instanceof URLSearchParams ? query : new URLSearchParams(typeof query === "string" ? query : "");
+		mode = difficultyFromParam(p.get("mode"));
+	} catch {
+		mode = null;
+	}
+	if (mode && mode !== loadDifficulty()) return saveDifficulty(mode);
+	return mode || loadDifficulty();
 }
 
 // ---------------------------------------------------------------------------
@@ -142,6 +164,41 @@ export function normalAnswer(state, key, correct, opts) {
 		added: swapped.added,
 		nextKey: pickNext(swapped.pool, key, opts),
 	};
+}
+
+// The scope's saved streaks that still apply to this run: a word in `keys`,
+// not mastered, with a streak above 0. Anything else (a word outside a subset,
+// a stale entry) is left out, so it shows 0.
+export function runStreaks(keys, streaks, mastered) {
+	const m = mastered instanceof Set ? mastered : new Set(mastered || []);
+	const inRun = new Set(keys || []);
+	const out = {};
+	for (const [k, v] of Object.entries(streaks || {})) {
+		const n = Number(v);
+		if (inRun.has(k) && !m.has(k) && Number.isInteger(n) && n > 0) out[k] = Math.min(n, WORD_STREAK_TO_MASTER - 1);
+	}
+	return out;
+}
+
+// The opening pool of a Normal session. Words with a saved streak go in first,
+// longest streak first, so a reload shows them where they were; the rest is a
+// random draw (lib/pool.js). With no streaks this is buildPool. `opts` is
+// lib/pool.js's { rng | seed }.
+export function resumePool(keys, mastered, streaks, opts) {
+	const live = runStreaks(keys, streaks, mastered);
+	const order = new Map((keys || []).map((k, i) => [k, i]));
+	const started = Object.keys(live)
+		.sort((a, b) => live[b] - live[a] || order.get(a) - order.get(b))
+		.slice(0, POOL_SIZE);
+	if (!started.length) return buildPool(keys, mastered, opts);
+	const m = mastered instanceof Set ? mastered : new Set(mastered || []);
+	const pool = started.slice();
+	while (pool.length < POOL_SIZE) {
+		const k = drawPoolRefill(keys, new Set([...m, ...pool]), opts);
+		if (k === null) break;
+		pool.push(k);
+	}
+	return pool;
 }
 
 export function countIn(keys, set) {

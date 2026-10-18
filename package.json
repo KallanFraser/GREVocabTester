@@ -5,6 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"dev": "next dev -p 3010",
+		"prebuild": "npm run packs:build && npm run vocab:validate",
 		"build": "next build",
 		"start": "next start",
 		"sort:vocab": "node scripts/sort-gre-combined.js",

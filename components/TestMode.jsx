@@ -39,14 +39,16 @@ import {
 	allWordsRun,
 	countIn,
 	gradeFor,
-	loadDifficulty,
 	minSelection,
 	missedRows,
 	normalAnswer,
 	poolLabel,
 	promptFor,
+	resolveDifficulty,
+	resumePool,
 	runFromContext,
 	runSignature,
+	runStreaks,
 	saveDifficulty,
 	selectionRun,
 	winNames,
@@ -67,7 +69,6 @@ import {
 	allMastered,
 	clearScopeKeys,
 	clearScopeProgress,
-	clearScopeStreaks,
 	enrollReview,
 	hardBestPct,
 	hardRunScope,
@@ -85,7 +86,6 @@ import {
 } from "../lib/progress";
 import { wordReviewOpts } from "../lib/review";
 import { resolvePackContext } from "../lib/packs";
-import { buildPool } from "../lib/pool";
 import {
 	HARD_RELEARN_CORRECT,
 	WORD_LEARNING,
@@ -129,12 +129,15 @@ const EMPTY_SESSION = { answers: 0, firstTries: 0, firstTryCorrect: 0 };
 
 // Bring the address bar in line with what is running, so a reload or Back
 // reopens it: a pack is always ?pack=<id>; a one-time handoff becomes ?words=;
-// a link that resolved to nothing loses its pack parameters. Never fatal.
+// a link that resolved to nothing loses its pack parameters. A ?mode= has
+// already been applied and saved, so it goes too: a reload after switching in
+// the header keeps the switch. Never fatal.
 function tidyUrl(ctx, run) {
 	try {
 		const url = new URL(window.location.href);
 		const p = url.searchParams;
 		const before = p.toString();
+		p.delete("mode");
 		if (run.packId) {
 			p.set("pack", run.packId);
 			p.delete("id");
@@ -249,17 +252,21 @@ export default function TestMode() {
 		setFreshKey(null);
 	}
 
-	// Start a selection session over `keys` (default run.keys). Normal zeroes
-	// the scope's stored streaks (they belong to one run, Wortschatz L8) and
-	// draws a fresh pool; Harder resumes the run saved for this scope, or
-	// starts one. Returns the first key, or null when there is nothing to ask.
+	// Start a selection session over `keys` (default run.keys). Normal resumes
+	// the scope's saved streaks for the current round (a reload keeps 2 / 4;
+	// a reset or a new round clears them in storage first), with the words
+	// part-way to mastery back in the pool; Harder resumes the run saved for this
+	// scope, or starts one. Returns the first key, or null when there is nothing
+	// to ask.
 	function startSelectionSession(r, masteredSet, d, dir, opts = {}) {
 		clearTimeout(hardWrongTimer.current);
 		setHardLocked(false);
 		setHardSessionDone(false);
 		setHardSummary(null);
-		setStreaks({});
 		const keys = opts.keys || r.keys;
+		// The whole scope's streaks, since every Normal save writes them back.
+		const saved = d === DIFFICULTY_HARDER ? {} : opts.streaks || {};
+		setStreaks(saved);
 		setRunKeys(keys);
 		if (d === DIFFICULTY_HARDER) {
 			setPool([]);
@@ -274,8 +281,7 @@ export default function TestMode() {
 		hardSchedRef.current = null;
 		hardSaveRef.current = null;
 		setHardTemp(false);
-		clearScopeStreaks(dir, r.scopeId);
-		const p = buildPool(keys, masteredSet);
+		const p = resumePool(keys, masteredSet, saved);
 		setPool(p);
 		return p.length ? p[0] : null;
 	}
@@ -329,10 +335,11 @@ export default function TestMode() {
 	function startRun(r, s, d, opts = {}) {
 		clearTransient();
 		resetSession();
-		const m = new Set(loadProgress(s.direction, r.scopeId).mastered);
+		const saved = loadProgress(s.direction, r.scopeId);
+		const m = new Set(saved.mastered);
 		setRun(r);
 		setMastered(m);
-		advanceTo(startSelectionSession(r, m, d, s.direction, opts));
+		advanceTo(startSelectionSession(r, m, d, s.direction, { streaks: saved.streaks, ...opts }));
 	}
 
 	// ---- Hydrate: settings, difficulty and the pack from the URL ----
@@ -354,10 +361,11 @@ export default function TestMode() {
 			const next = runFromContext(ctx, ALL_KEYS, canonicalWord);
 			tidyUrl(ctx, next);
 			const sig = runSignature(next);
-			if (hydratedRef.current && sig === runSigRef.current) return;
+			// ?mode=normal|harder overrides the saved difficulty and is saved.
+			const d = resolveDifficulty(query);
+			if (hydratedRef.current && sig === runSigRef.current && d === difficultyRef.current) return;
 			runSigRef.current = sig;
 			const s = hydratedRef.current ? settingsRef.current : loadSettings();
-			const d = hydratedRef.current ? difficultyRef.current : loadDifficulty();
 			if (next.packId) saveLastPack({ id: next.packId, title: next.title, words: next.parentKeys });
 			setSettings(s);
 			setDifficulty(d);
@@ -489,7 +497,10 @@ export default function TestMode() {
 
 	const canReset = isHarder
 		? !hardTemp && (hardStats.retired > 0 || hardStats.missed.length > 0)
-		: hasProgress({ mastered: run.subset ? run.keys.filter((k) => mastered.has(k)) : [...mastered], streaks });
+		: hasProgress({
+				mastered: run.subset ? run.keys.filter((k) => mastered.has(k)) : [...mastered],
+				streaks: runStreaks(run.keys, streaks, mastered),
+			});
 
 	// ---- Sound ----
 	function playSound(ref) {

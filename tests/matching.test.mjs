@@ -1,13 +1,8 @@
 // Unit tests for lib/matching.js. Run with `node --test tests/`.
-//
-// The w2d tests check the new matcher against the string-similarity package
-// the original TestMode used, while that package is still installed; they
-// are skipped once it is removed.
-
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { createRequire, registerHooks } from "node:module";
+import { registerHooks } from "node:module";
 
 // lib/matching.js -> lib/distractors.js -> lib/words.js imports JSON the way
 // the Next bundler expects (no import attributes); plain Node insists on
@@ -23,7 +18,6 @@ const {
 	WORD_DICE_THRESHOLD,
 	EXACT_MATCH_MAX_LEN,
 	diceCoefficient,
-	legacyCompare,
 	normalize,
 	stripTrailingPunctuation,
 	gradeDefinition,
@@ -34,46 +28,6 @@ const {
 
 const VOCAB = JSON.parse(readFileSync(new URL("../src/data/gre_combined.json", import.meta.url), "utf8"));
 const KEYS = Object.keys(VOCAB);
-
-let stringSimilarity = null;
-try {
-	stringSimilarity = createRequire(import.meta.url)("string-similarity");
-} catch {
-	stringSimilarity = null;
-}
-
-// The original TestMode isMatch, verbatim apart from the injected compare.
-function originalIsMatch(compare, input, target, threshold = 0.6) {
-	return compare(input.trim().toLowerCase(), target.trim().toLowerCase()) >= threshold;
-}
-
-// Deterministic answer variants for one definition: the right answer, typos,
-// truncations, extra words, case and spacing changes, and other definitions.
-function variants(def, i) {
-	const other = VOCAB[KEYS[(i * 7 + 3) % KEYS.length]].definition;
-	const words = def.split(" ");
-	return [
-		def,
-		def.toUpperCase(),
-		`  ${def}  `,
-		def.replace(/\.$/, ""),
-		def.replace(/\s+/g, ""),
-		def.replace(/ /g, "  "),
-		def.slice(0, Math.ceil(def.length / 2)),
-		def.slice(0, Math.ceil(def.length * 0.7)),
-		def.slice(Math.floor(def.length / 3)),
-		words.slice(1).join(" "),
-		words.slice(0, -1).join(" "),
-		`${def} and more`,
-		def.replace(/[aeiou]/, ""),
-		def.replace(/[aeiou]/g, "e"),
-		words.reverse().join(" "),
-		other,
-		"",
-		"x",
-		"to",
-	];
-}
 
 test("constants", () => {
 	assert.equal(WORD_DICE_THRESHOLD, 0.6);
@@ -87,44 +41,6 @@ test("diceCoefficient basics", () => {
 	assert.equal(diceCoefficient("night", "nacht"), 0.25);
 	// Repeated bigrams are counted as a multiset.
 	assert.equal(diceCoefficient("aaaa", "aa"), 0.5);
-});
-
-test("legacyCompare equals string-similarity's compareTwoStrings", { skip: !stringSimilarity && "string-similarity not installed" }, () => {
-	const pairs = [
-		["", ""],
-		["a", "a"],
-		["a", "b"],
-		["ab", "ab"],
-		["to lessen severity.", "to lessen severity"],
-		["to lessen severity.", "tolessenseverity."],
-		["  spaced   out ", "spaced out"],
-		["aaaa", "aa"],
-		["night", "nacht"],
-	];
-	KEYS.forEach((k, i) => {
-		const def = VOCAB[k].definition.toLowerCase();
-		for (const v of variants(VOCAB[k].definition, i)) pairs.push([v.toLowerCase(), def]);
-	});
-	for (const [a, b] of pairs) {
-		assert.equal(legacyCompare(a, b), stringSimilarity.compareTwoStrings(a, b), `${JSON.stringify(a)} vs ${JSON.stringify(b)}`);
-	}
-});
-
-test("w2d accepts exactly what the original TestMode accepted, for every word", { skip: !stringSimilarity && "string-similarity not installed" }, () => {
-	const original = (a, b) => stringSimilarity.compareTwoStrings(a, b);
-	let accepted = 0;
-	let rejected = 0;
-	KEYS.forEach((k, i) => {
-		const entry = VOCAB[k];
-		for (const answer of variants(entry.definition, i)) {
-			const want = originalIsMatch(original, answer, entry.definition);
-			const got = gradeDefinition(entry, answer).correct;
-			assert.equal(got, want, `${k}: ${JSON.stringify(answer)}`);
-			if (want) accepted += 1;
-			else rejected += 1;
-		}
-	});
-	assert.ok(accepted > 0 && rejected > 0, "the variants exercise both outcomes");
 });
 
 test("w2d grades against `definition`, not fullDefinition or example", () => {
@@ -234,6 +150,18 @@ test("d2w near-duplicates: a negated definition never accepts its antonym", () =
 	const always = () => true;
 	assert.equal(gradeHeadwordWithNearDuplicates("Impermeable", "Permeable", vocab, { isNearDuplicate: always }).correct, false);
 	assert.equal(gradeHeadwordWithNearDuplicates("Permeable", "Impermeable", vocab, { isNearDuplicate: always }).correct, false);
+});
+
+test("d2w near-duplicates: the default rule rejects a negated antonym, keeps real synonyms", () => {
+	const vocab = {
+		Impermeable: { definition: "not allowing passage." },
+		Permeable: { definition: "allowing passage." },
+		Exculpate: { definition: "to clear from blame." },
+		Exonerate: { definition: "to clear from blame." },
+	};
+	assert.equal(gradeHeadwordWithNearDuplicates("Impermeable", "Permeable", vocab).correct, false);
+	assert.equal(gradeHeadwordWithNearDuplicates("Permeable", "Impermeable", vocab).correct, false);
+	assert.equal(gradeHeadwordWithNearDuplicates("Exculpate", "Exonerate", vocab).acceptedKey, "Exonerate");
 });
 
 test("d2w near-duplicates on the real data, through lib/distractors.js", async () => {

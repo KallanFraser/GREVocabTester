@@ -1,6 +1,7 @@
 // Unit tests for Test mode's pure engine (components/test/engine.js), plus the
-// Wortschatz Test-mode tests that apply to GRE: run-streaks.test.mjs (a new
-// Normal run starts every word at streak 0) and choose-words-subset.test.mjs
+// Wortschatz Test-mode tests that apply to GRE: streaks (GRE keeps them for
+// the current round, where Wortschatz's run-streaks.test.mjs zeroed them per
+// run; a fresh scope still starts at 0) and choose-words-subset.test.mjs
 // (a Choose Words subset runs in its pack's scope and credits the pack only
 // when every pack word is mastered; Harder subsets save in their own slot).
 // Run with `node --test tests/`.
@@ -62,14 +63,48 @@ const canonical = (w) => ALL.find((k) => k.toLowerCase() === String(w).trim().to
 // Difficulty storage
 // ---------------------------------------------------------------------------
 
-test("difficulty: Normal by default, persisted, coerced on read", () => {
+test("difficulty: Normal by default, persisted in gv_settings, coerced on read", () => {
 	assert.equal(E.loadDifficulty(), "normal");
 	E.saveDifficulty("harder");
 	assert.equal(E.loadDifficulty(), "harder");
-	storage.setItem(E.DIFFICULTY_KEY, JSON.stringify("impossible"));
+	assert.equal(JSON.parse(storage.getItem("gv_settings")).testDifficulty, "harder");
+	assert.equal(storage.getItem(E.DIFFICULTY_KEY), null, "the old key is never written");
+	storage.setItem("gv_settings", JSON.stringify({ testDifficulty: "impossible" }));
 	assert.equal(E.loadDifficulty(), "normal");
+});
+
+test("difficulty: the old gv_test_difficulty value migrates once", () => {
+	storage.setItem(E.DIFFICULTY_KEY, JSON.stringify("harder"));
+	storage.setItem("gv_settings", JSON.stringify({ direction: "d2w" }));
+	assert.equal(E.loadDifficulty(), "harder");
+	assert.equal(storage.getItem(E.DIFFICULTY_KEY), null, "removed after the move");
+	const saved = JSON.parse(storage.getItem("gv_settings"));
+	assert.equal(saved.testDifficulty, "harder");
+	assert.equal(saved.direction, "d2w", "other settings kept");
+	E.saveDifficulty("normal");
+	assert.equal(E.loadDifficulty(), "normal", "and it never comes back");
+
+	// A value already in gv_settings wins; a corrupt old value is just dropped.
+	storage.clear();
+	storage.setItem("gv_settings", JSON.stringify({ testDifficulty: "normal" }));
+	storage.setItem(E.DIFFICULTY_KEY, JSON.stringify("harder"));
+	assert.equal(E.loadDifficulty(), "normal");
+	assert.equal(storage.getItem(E.DIFFICULTY_KEY), null);
+	storage.clear();
 	storage.setItem(E.DIFFICULTY_KEY, "{not json");
 	assert.equal(E.loadDifficulty(), "normal");
+	assert.equal(storage.getItem(E.DIFFICULTY_KEY), null);
+});
+
+test("difficulty: ?mode=harder|normal overrides and saves; anything else is ignored", () => {
+	assert.equal(E.resolveDifficulty("pack=argument-verbs&mode=harder"), "harder");
+	assert.equal(E.loadDifficulty(), "harder", "saved");
+	assert.equal(E.resolveDifficulty("pack=argument-verbs"), "harder", "no mode: the saved one");
+	assert.equal(E.resolveDifficulty(new URLSearchParams("mode=normal")), "normal");
+	assert.equal(E.loadDifficulty(), "normal");
+	for (const q of ["mode=HARDER", "mode=hard", "mode=", null, undefined, ""]) {
+		assert.equal(E.resolveDifficulty(q), "normal", String(q));
+	}
 });
 
 // ---------------------------------------------------------------------------
@@ -243,21 +278,94 @@ test("the prompt and pool never show the answer side", () => {
 });
 
 // ---------------------------------------------------------------------------
-// Ported: run-streaks.test.mjs
+// Streaks last for the current round (replaces Wortschatz's run-streaks, which
+// zeroed them at every run start)
 // ---------------------------------------------------------------------------
 
-test("a new run drops stored streaks and keeps mastery and completions", () => {
-	P.saveProgress("w2d", "p", { mastered: ["Abate"], streaks: {} });
-	P.markScopeComplete("w2d", "p", { accuracy: 1, answered: 4 });
-	P.saveProgress("w2d", "p", { mastered: ["Abate"], streaks: { Cogent: 3, Deride: 1 } });
-	P.saveProgress("d2w", "p", { mastered: [], streaks: { Cogent: 2 } });
-	const before = P.loadCompletions("w2d", "p");
-	P.clearScopeStreaks("w2d", "p"); // what every Normal run start does
-	assert.deepEqual(P.loadProgress("w2d", "p"), { mastered: ["Abate"], streaks: {} });
-	assert.equal(P.loadCompletions("w2d", "p").count, before.count);
-	assert.deepEqual(P.loadProgress("d2w", "p").streaks, { Cogent: 2 }, "the other direction is untouched");
-	P.clearScopeStreaks("w2d", "none");
-	assert.equal(P.packSummary("w2d", "none", 3).hasProgress, false);
+// What TestMode's startRun does for Normal: load the scope, resume the pool.
+function reopen(dir, scopeId, keys, seed = 1) {
+	const saved = P.loadProgress(dir, scopeId);
+	const mastered = new Set(saved.mastered);
+	const pool = E.resumePool(keys, mastered, saved.streaks, { seed });
+	return { saved, mastered, pool, shown: (k) => E.runStreaks(keys, saved.streaks, mastered)[k] || 0 };
+}
+
+test("a reload keeps a word at 2 / 4, in the pool, per direction and scope", () => {
+	const keys = ALL;
+	let s = { pool: E.resumePool(keys, new Set(), {}, { seed: 3 }), streaks: {}, mastered: new Set(), keys };
+	const word = s.pool[0];
+	for (let i = 0; i < 2; i++) {
+		s = { ...s, ...E.normalAnswer(s, word, true, { seed: i }) };
+		P.saveProgress("w2d", "p", { mastered: [...s.mastered], streaks: s.streaks });
+	}
+	const r = reopen("w2d", "p", keys, 99);
+	assert.equal(r.shown(word), 2);
+	assert.ok(r.pool.includes(word), "the part-way word is back in the pool");
+	assert.equal(r.pool[0], word, "and asked first");
+	assert.equal(r.pool.length, 5);
+	// Same scope, other direction; other scope, same direction: untouched.
+	assert.equal(reopen("d2w", "p", keys).shown(word), 0);
+	assert.equal(reopen("w2d", "q", keys).shown(word), 0);
+	// A miss after the reload still resets it.
+	const miss = E.normalAnswer({ pool: r.pool, streaks: r.saved.streaks, mastered: r.mastered, keys }, word, false);
+	P.saveProgress("w2d", "p", { mastered: [], streaks: miss.streaks });
+	assert.equal(reopen("w2d", "p", keys).shown(word), 0);
+});
+
+test("a fresh scope starts every unattempted word at 0", () => {
+	// Progress elsewhere must never leak into a fresh run (Wortschatz once showed
+	// partial progress at the start of fresh runs).
+	P.saveProgress("w2d", "all", { mastered: ["Abate"], streaks: { Cogent: 3, Deride: 2 } });
+	P.saveProgress("d2w", "fresh", { mastered: [], streaks: { Cogent: 3 } });
+	P.saveProgress("w2d", "other", { mastered: [], streaks: { Mitigate: 1 } });
+	for (let seed = 0; seed < 20; seed++) {
+		const r = reopen("w2d", "fresh", ALL, seed);
+		assert.deepEqual(r.saved, { mastered: [], streaks: {} });
+		for (const k of ALL) assert.equal(r.shown(k), 0, `${k} at seed ${seed}`);
+		assert.deepEqual(r.pool, buildPool(ALL, new Set(), { seed }), "a plain random draw");
+	}
+	assert.equal(P.packSummary("w2d", "fresh", ALL).hasProgress, false);
+	// A pack's streaks never show in a run of different words.
+	const sub = ["Exculpate", "Exonerate", "Mitigate", "Bolster", "Aberrant"];
+	const r = reopen("w2d", "all", sub);
+	for (const k of sub) assert.equal(r.shown(k), 0);
+});
+
+test("reset, re-test and a new round clear streaks; mastery and completions behave as before", () => {
+	P.saveProgress("w2d", "p", { mastered: ["Abate"], streaks: { Cogent: 2 } });
+	P.clearScopeProgress("w2d", "p"); // Reset progress
+	assert.deepEqual(P.loadProgress("w2d", "p"), { mastered: [], streaks: {} });
+
+	// A finished round, then "Start round 2": streaks gone, completions kept.
+	const keys = ["Abate", "Cogent", "Deride"];
+	P.saveProgress("w2d", "p", { mastered: keys, streaks: {} });
+	P.markScopeComplete("w2d", "p", { keys });
+	P.saveProgress("w2d", "p", { mastered: keys, streaks: { Mitigate: 2 } }); // stale
+	P.clearScopeProgress("w2d", "p");
+	assert.deepEqual(P.loadProgress("w2d", "p"), { mastered: [], streaks: {} });
+	assert.equal(P.loadCompletions("w2d", "p").count, 1);
+	assert.equal(P.loadCompletions("w2d", "p").round, 2);
+
+	// A subset reset (Choose Words) clears only its own words' streaks.
+	P.saveProgress("w2d", "p", { mastered: [], streaks: { Abate: 1, Cogent: 2 } });
+	P.clearScopeKeys("w2d", "p", ["Abate"]);
+	assert.deepEqual(P.loadProgress("w2d", "p").streaks, { Cogent: 2 });
+});
+
+test("runStreaks and resumePool ignore stale, mastered and out-of-run entries", () => {
+	const keys = ["Abate", "Bolster", "Cogent", "Deride", "Mitigate", "Exculpate", "Exonerate"];
+	const streaks = { Abate: 3, Bolster: 1, Cogent: 9, Zealot: 2, Deride: 0, Mitigate: "x" };
+	const live = E.runStreaks(keys, streaks, new Set(["Bolster"]));
+	assert.deepEqual(live, { Abate: 3, Cogent: 3 });
+	const pool = E.resumePool(keys, new Set(["Bolster"]), streaks, { seed: 5 });
+	assert.deepEqual(pool.slice(0, 2).sort(), ["Abate", "Cogent"]);
+	assert.equal(new Set(pool).size, pool.length);
+	assert.ok(!pool.includes("Bolster") && !pool.includes("Zealot"));
+	// With nothing saved it is the plain random draw.
+	assert.deepEqual(E.resumePool(keys, new Set(), {}, { seed: 5 }), buildPool(keys, new Set(), { seed: 5 }));
+	// More part-way words than slots: the longest streaks win, ties in run order.
+	const many = Object.fromEntries(keys.map((k, i) => [k, (i % 3) + 1]));
+	assert.deepEqual(E.resumePool(keys, new Set(), many, { seed: 1 }), ["Cogent", "Exculpate", "Bolster", "Mitigate", "Abate"]);
 });
 
 // ---------------------------------------------------------------------------

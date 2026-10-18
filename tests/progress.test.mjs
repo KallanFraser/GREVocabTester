@@ -128,6 +128,7 @@ test("storage get/set round-trips JSON and tolerates junk", () => {
 test("settings defaults", () => {
 	assert.deepEqual(settingsLib.loadSettings(), {
 		direction: "w2d",
+		testDifficulty: "normal",
 		advanceDelay: 1.5,
 		feedbackSounds: true,
 		playBackground: "warp",
@@ -153,6 +154,7 @@ test("settings: save merges a patch, coerces it, and fires the event", () => {
 	settingsLib.saveSettings({ pagesBackground: "bogus" });
 	assert.deepEqual(settingsLib.loadSettings(), {
 		direction: "d2w",
+		testDifficulty: "normal",
 		advanceDelay: "manual",
 		feedbackSounds: false,
 		playBackground: "plain",

@@ -110,22 +110,26 @@ export function groupSections(packs, favoriteIds, comparator) {
 // ---------------------------------------------------------------------------
 
 // The six ways to start a pack, in the order every row offers them. Test and
-// Harder are the same route: Test mode reads its difficulty from
-// gv_test_difficulty (components/test/engine.js, "normal" | "harder"), which
-// the page writes before following the link. engine.js itself is not imported
-// because it pulls the whole vocabulary into this page's bundle.
+// Harder are the same route; the link's &mode=normal|harder sets Test mode's
+// difficulty (components/test/engine.js resolveDifficulty saves it), so
+// nothing is written to storage before following the link. Daily Review is
+// cross-pack, so it is not offered per pack.
+//
+// DIFFICULTY_KEY is the pre-overhaul key, kept only so existing imports
+// resolve; lib/settings.js migrates it into gv_settings.testDifficulty.
 export const DIFFICULTY_KEY = "gv_test_difficulty";
 export const DRILL_MODES = [
-	{ id: "test", route: "/play/test", difficulty: "normal", label: "Test", title: "Type the definition. Four in a row masters a word." },
-	{ id: "hard", route: "/play/test", difficulty: "harder", label: "Harder", title: "Words right on the first try are retired." },
+	{ id: "test", route: "/play/test", mode: "normal", label: "Test", title: "Type the definition. Four in a row masters a word." },
+	{ id: "hard", route: "/play/test", mode: "harder", label: "Harder", title: "Words right on the first try are retired." },
 	{ id: "practice", route: "/play/practice", label: "Practice", title: "Multiple choice, in order" },
 	{ id: "learn", route: "/play/learn", label: "Random", title: "Multiple choice, shuffled" },
 	{ id: "cards", route: "/play/cards", label: "Flashcards", title: "Flip through the pack" },
-	{ id: "review", route: "/play/review", label: "Review", title: "Daily review of words you have mastered" },
+	{ id: "context", route: "/play/context", label: "In Context", title: "Each word in an example sentence" },
 ];
 
 export function modeHref(mode, packId) {
-	return `${mode.route}?pack=${encodeURIComponent(packId)}`;
+	const q = `pack=${encodeURIComponent(packId)}`;
+	return `${mode.route}?${q}${mode.mode ? `&mode=${encodeURIComponent(mode.mode)}` : ""}`;
 }
 
 // ---------------------------------------------------------------------------

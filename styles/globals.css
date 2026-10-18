@@ -57,7 +57,9 @@ body {
 	overflow-x: clip;
 }
 /* The body colour propagates to the viewport. Do not give html a background of
-   its own: a later animated background layer sits at z-index -1 under it. */
+   its own, and do not give page-level containers an opaque one: the animated
+   background (components/Background.jsx, styles/backgrounds.css) is a fixed
+   layer at z-index -1, painted over this colour and under all page content. */
 body {
 	background: var(--bg);
 	color: var(--text);

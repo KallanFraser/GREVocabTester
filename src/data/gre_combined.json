@@ -5277,13 +5277,6 @@
 		"pos": "adjective",
 		"tier": 1
 	},
-	"Intractible": {
-		"definition": "hard to control or deal with.",
-		"example": "The software bug proved intractible despite multiple patches.",
-		"fullDefinition": "Intractible (more commonly spelled intractable) denotes problems, materials, or personalities that resist management, solution, or reform.",
-		"pos": "adjective",
-		"tier": 2
-	},
 	"Intransigence": {
 		"definition": "refusal to compromise.",
 		"example": "Her intransigence on payment terms forced us to seek a different supplier.",

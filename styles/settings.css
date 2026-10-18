@@ -214,3 +214,85 @@
 #settings .status.err {
 	color: var(--bad);
 }
+
+/* ---------- Background pickers ----------
+   The option list and one live preview of the selected background. The preview
+   is a contained engine instance (styles/backgrounds.css supplies its layers). */
+#settings .set-row.set-row-stack .bg-picker {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 18rem);
+	gap: 1rem;
+	align-items: start;
+}
+#settings .bg-options {
+	display: grid;
+	gap: 0.4rem;
+}
+#settings .bg-option {
+	display: grid;
+	gap: 0.15rem;
+	text-align: left;
+	padding: 0.6rem 0.8rem;
+	border: 1px solid var(--line);
+	border-radius: 12px;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
+	transition: background 0.15s, border-color 0.15s;
+}
+#settings .bg-option:hover {
+	background: rgba(255, 255, 255, 0.03);
+}
+#settings .bg-option[aria-checked="true"] {
+	border-color: var(--coral);
+	background: rgba(234, 87, 70, 0.08);
+}
+#settings .bg-option:focus-visible {
+	outline: 2px solid rgba(100, 181, 255, 0.8);
+	outline-offset: 2px;
+}
+#settings .bg-option-name {
+	font-size: 0.9rem;
+	font-weight: 600;
+}
+#settings .bg-option-desc {
+	color: var(--muted);
+	font-size: 0.8rem;
+	line-height: 1.45;
+}
+#settings .bg-preview {
+	position: sticky;
+	top: 5rem;
+	aspect-ratio: 16 / 10;
+	border: 1px solid var(--line);
+	border-radius: 14px;
+	overflow: hidden;
+	background: var(--bg);
+	isolation: isolate;
+}
+#settings .bg-preview-host {
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+}
+#settings .bg-preview-note {
+	position: absolute;
+	inset: 0;
+	display: grid;
+	place-items: center;
+	padding: 0 1rem;
+	text-align: center;
+	color: var(--muted);
+	font-size: 0.8rem;
+	pointer-events: none;
+}
+@media (max-width: 640px) {
+	#settings .set-row.set-row-stack .bg-picker {
+		grid-template-columns: minmax(0, 1fr);
+	}
+	#settings .bg-preview {
+		order: -1;
+		position: static;
+	}
+}

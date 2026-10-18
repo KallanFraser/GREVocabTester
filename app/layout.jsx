@@ -5,6 +5,7 @@ import "../styles/globals.css";
 import "../styles/ui.css";
 import "../styles/components.css";
 import Navbar from "../components/Navbar";
+import Background from "../components/Background";
 
 export const metadata = {
 	metadataBase: new URL("https://grevocabtester.com"),
@@ -74,6 +75,7 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body>
+				<Background />
 				<Navbar />
 				{children}
 			</body>

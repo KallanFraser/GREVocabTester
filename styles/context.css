@@ -1,0 +1,81 @@
+/** @format */
+/* In Context (components/ContextMode.jsx). Builds on styles/choice.css, which
+   supplies the stage, options, feedback and card; everything here is scoped
+   under .cx-page. Tokens from styles/globals.css. */
+
+/* ---- Sentence ---- */
+.cx-page .cx-sentence {
+	max-width: 40rem;
+	margin: 0 auto;
+	font-size: clamp(1.25rem, 3.6vw, 1.75rem);
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	line-height: 1.55;
+	text-align: center;
+	overflow-wrap: break-word;
+	hyphens: manual;
+}
+@media (max-width: 480px) {
+	.cx-page .cx-sentence {
+		font-size: 1.15rem;
+		text-align: left;
+	}
+}
+
+/* The gap stays inline so a long sentence wraps around it naturally. */
+.cx-page .cx-blank {
+	display: inline-block;
+	width: 5.5em;
+	max-width: 40%;
+	height: 1em;
+	margin: 0 0.1em;
+	vertical-align: -0.12em;
+	border-bottom: 2px solid var(--coral, #ea5746);
+}
+
+.cx-page .cx-form {
+	padding: 0 0.2em;
+	border-radius: 4px;
+	color: var(--text);
+	background: rgba(95, 211, 154, 0.16);
+	box-shadow: inset 0 -2px 0 var(--ok);
+}
+.cx-page .cx-form.bad {
+	background: rgba(234, 87, 70, 0.16);
+	box-shadow: inset 0 -2px 0 var(--coral, #ea5746);
+}
+
+/* ---- Feedback card extras ---- */
+.cx-page .ch-card .gloss:last-child {
+	margin-bottom: 0;
+}
+.cx-page .cx-picked {
+	margin-top: 0.7rem;
+	border-top: 1px solid var(--line);
+	padding-top: 0.7rem;
+}
+.cx-page .cx-picked-label {
+	display: block;
+	color: var(--muted);
+	font-size: 0.78rem;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+.cx-page .cx-picked-word {
+	font-size: 1.1rem;
+	font-weight: 700;
+}
+.cx-page .cx-picked .gloss {
+	margin-bottom: 0;
+}
+
+/* ---- Nothing to ask ---- */
+.cx-page .cx-empty {
+	max-width: 32rem;
+	margin: 0 auto;
+	text-align: center;
+	color: var(--soft);
+}
+.cx-page .cx-empty .pill {
+	margin-top: 0.6rem;
+}

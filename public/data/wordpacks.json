@@ -245,11 +245,11 @@
 	{
 		"id": "path-common-09",
 		"title": "Common Set 9",
-		"desc": "Common tier, set 9 of 32: 25 frequently tested words.",
+		"desc": "Common tier, set 9 of 32: 24 frequently tested words.",
 		"category": "path",
 		"tier": 2,
 		"order": 9,
-		"words": ["Truncate", "Juggernaut", "Eulogy", "Largesse", "Pathological", "Posit", "Beholden", "Incontrovertible", "Plaintive", "Acme", "Imbue", "Misconstrue", "Tyro", "Requisite", "Halcyon", "Contention", "Anathema", "Acquisitive", "Convivial", "Table", "Intractible", "Malcontent", "Vignette", "Quip", "Extraneous"]
+		"words": ["Truncate", "Juggernaut", "Eulogy", "Largesse", "Pathological", "Posit", "Beholden", "Incontrovertible", "Plaintive", "Acme", "Imbue", "Misconstrue", "Tyro", "Requisite", "Halcyon", "Contention", "Anathema", "Acquisitive", "Convivial", "Table", "Malcontent", "Vignette", "Quip", "Extraneous"]
 	},
 	{
 		"id": "path-common-10",
@@ -796,8 +796,8 @@
 		"desc": "Unfavorable words for describing character.",
 		"category": "classic",
 		"likes": 101,
-		"indices": [12, 46, 84, 91, 92, 141, 149, 150, 208, 288, 292, 293, 296, 326, 367, 397, 423, 488, 533, 544, 657, 668],
-		"words": ["Acerbic", "Apathetic", "Bellicose", "Bombastic", "Boorish", "Contumacious", "Craven", "Credulous", "Dogmatic", "Garrulous", "Grandiloquent", "Gregarious", "Gullible", "Implacable", "Irascible", "Mendacious", "Obdurate", "Polemical", "Querulous", "Recalcitrant", "Venal", "Vituperative"]
+		"indices": [12, 46, 84, 91, 92, 141, 149, 150, 208, 288, 292, 296, 326, 367, 397, 423, 488, 533, 544, 657, 668],
+		"words": ["Acerbic", "Apathetic", "Bellicose", "Bombastic", "Boorish", "Contumacious", "Craven", "Credulous", "Dogmatic", "Garrulous", "Grandiloquent", "Gullible", "Implacable", "Irascible", "Mendacious", "Obdurate", "Polemical", "Querulous", "Recalcitrant", "Venal", "Vituperative"]
 	},
 	{
 		"id": "style-register",

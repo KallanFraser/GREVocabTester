@@ -37,7 +37,7 @@
 		"desc": "Unfavorable words for describing character.",
 		"category": "classic",
 		"likes": 101,
-		"words": ["Acerbic", "Apathetic", "Bellicose", "Bombastic", "Boorish", "Contumacious", "Craven", "Credulous", "Dogmatic", "Garrulous", "Grandiloquent", "Gregarious", "Gullible", "Implacable", "Irascible", "Mendacious", "Obdurate", "Polemical", "Querulous", "Recalcitrant", "Venal", "Vituperative"]
+		"words": ["Acerbic", "Apathetic", "Bellicose", "Bombastic", "Boorish", "Contumacious", "Craven", "Credulous", "Dogmatic", "Garrulous", "Grandiloquent", "Gullible", "Implacable", "Irascible", "Mendacious", "Obdurate", "Polemical", "Querulous", "Recalcitrant", "Venal", "Vituperative"]
 	},
 	{
 		"id": "style-register",

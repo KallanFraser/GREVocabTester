@@ -13,10 +13,95 @@ import {
 } from "../../lib/settings";
 import { exportProgress, prepareImport, applyImport, resetAll } from "../../lib/progress";
 import ConfirmDialog from "../../components/ConfirmDialog";
+import { resolveBackgroundId } from "../../components/Background";
+import { BACKGROUND_DESC, BACKGROUND_IDS, BACKGROUND_LABEL } from "../../lib/backgrounds/ids";
+import { mountBackground } from "../../lib/backgrounds/engine";
+import { loadPageWords } from "../../lib/backgrounds/sources";
+import "../../styles/backgrounds.css";
 
 // Imports are read into memory whole. A progress export is a small text file,
 // so anything this large is not one, and it is refused before it is read.
 const MAX_IMPORT_BYTES = 2 * 1024 * 1024;
+
+// One live preview of the selected background, in a small contained box. It is
+// a separate engine instance with `bus: false`: it never subscribes to answer
+// events or bus words, so it cannot replace or detach the main background's
+// subscription (Wortschatz L20). A background that fails here follows the same
+// fallback chain as the real one (liquid to fireflies, anything else to plain).
+function BackgroundPreview({ id, direction }) {
+	const hostRef = useRef(null);
+	const [failed, setFailed] = useState({});
+	const shown = resolveBackgroundId(id, failed);
+
+	useEffect(() => {
+		const host = hostRef.current;
+		if (!host || shown === "plain") return undefined;
+		let alive = true;
+		let handle = null;
+		const onFail = (err) => {
+			if (!alive) return;
+			const next = BACKGROUND_IDS.includes(err?.fallback) ? err.fallback : "plain";
+			setFailed((f) => (f[shown] ? f : { ...f, [shown]: next }));
+		};
+		const start = (words) => {
+			if (!alive) return;
+			try {
+				handle = mountBackground(host, shown, { contained: true, bus: false, words: words || [], onFail });
+			} catch (err) {
+				onFail(err);
+			}
+		};
+		if (shown === "constellation" || shown === "rain") {
+			loadPageWords(shown, direction).then(start, () => start([]));
+		} else {
+			start([]);
+		}
+		return () => {
+			alive = false;
+			try {
+				handle?.destroy();
+			} catch {
+				/* already torn down */
+			}
+		};
+	}, [shown, direction]);
+
+	let note = null;
+	if (shown !== id) note = `${BACKGROUND_LABEL[id]} is not available in this browser. ${BACKGROUND_LABEL[shown]} is used instead.`;
+	else if (shown === "plain") note = "No animation";
+
+	return (
+		<div className="bg-preview" role="img" aria-label={`Preview of the ${BACKGROUND_LABEL[shown]} background`}>
+			<div ref={hostRef} className="bg-preview-host" />
+			{note && <span className="bg-preview-note">{note}</span>}
+		</div>
+	);
+}
+
+// Every option with its name and a one-line description, plus a single preview
+// of the selected one.
+function BackgroundPicker({ labelId, value, onChange, direction }) {
+	return (
+		<div className="bg-picker">
+			<div className="bg-options" role="radiogroup" aria-labelledby={labelId}>
+				{BACKGROUND_IDS.map((id) => (
+					<button
+						key={id}
+						type="button"
+						role="radio"
+						aria-checked={value === id}
+						className="bg-option"
+						onClick={() => onChange(id)}
+					>
+						<span className="bg-option-name">{BACKGROUND_LABEL[id]}</span>
+						<span className="bg-option-desc">{BACKGROUND_DESC[id]}</span>
+					</button>
+				))}
+			</div>
+			<BackgroundPreview id={value} direction={direction} />
+		</div>
+	);
+}
 
 function Switch({ checked, onChange, labelledBy }) {
 	return (
@@ -155,7 +240,7 @@ export default function Page() {
 							<h3 id="set-direction">Default direction</h3>
 							<p>
 								Which side you are shown and which you answer in. Progress is kept separately for each.{" "}
-								<span className="where">Test, Practice and Learn.</span>
+								<span className="where">Test, Practice, Random Practice, Flashcards and Daily Review.</span>
 							</p>
 						</div>
 						<div className="seg big" role="group" aria-labelledby="set-direction">
@@ -176,7 +261,8 @@ export default function Page() {
 							<h3 id="set-delay">Time before the next question</h3>
 							<p>
 								How long a correct answer stays on screen. Manual waits for Enter, Space or a click. Wrong
-								answers always keep their own pause. <span className="where">Test, Practice and Learn.</span>
+								answers always keep their own pause.{" "}
+								<span className="where">Test, Practice, Random Practice, Daily Review and In Context.</span>
 							</p>
 						</div>
 						<div className="seg" role="group" aria-labelledby="set-delay">
@@ -193,13 +279,51 @@ export default function Page() {
 							<h3 id="set-sound">Feedback sounds</h3>
 							<p>
 								Play a short tone after each answer, one for correct and one for incorrect.{" "}
-								<span className="where">Test, Practice and Learn.</span>
+								<span className="where">Test, Practice, Random Practice, Daily Review and In Context.</span>
 							</p>
 						</div>
 						<Switch
 							checked={settings.feedbackSounds}
 							onChange={(v) => update({ feedbackSounds: v })}
 							labelledBy="set-sound"
+						/>
+					</div>
+				</section>
+
+				<section className="set-group" aria-labelledby="set-appearance">
+					<h2 id="set-appearance">Background</h2>
+
+					<div className="set-row set-row-stack">
+						<div>
+							<h3 id="set-play-bg">Play background</h3>
+							<p>
+								The animated background behind questions. Some react to your answers.{" "}
+								<span className="where">
+									Test, Practice, Random Practice, Flashcards, Daily Review and In Context.
+								</span>
+							</p>
+						</div>
+						<BackgroundPicker
+							labelId="set-play-bg"
+							value={settings.playBackground}
+							onChange={(id) => update({ playBackground: id })}
+							direction={settings.direction}
+						/>
+					</div>
+
+					<div className="set-row set-row-stack">
+						<div>
+							<h3 id="set-pages-bg">Pages background</h3>
+							<p>
+								The background everywhere else. Changes apply to this page immediately.{" "}
+								<span className="where">Home, Word Packs, Settings and every other page outside the study modes.</span>
+							</p>
+						</div>
+						<BackgroundPicker
+							labelId="set-pages-bg"
+							value={settings.pagesBackground}
+							onChange={(id) => update({ pagesBackground: id })}
+							direction={settings.direction}
 						/>
 					</div>
 				</section>

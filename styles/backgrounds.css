@@ -1,0 +1,216 @@
+/* App-wide animated background (components/Background.jsx, lib/backgrounds/).
+   One fixed layer behind everything: z-index -1 in the root stacking context
+   paints above the body colour and below all page content, takes no pointer
+   events and never affects layout or scroll. Pages must not paint an opaque
+   background of their own over it; cards and panels keep their surfaces. */
+
+.bgx {
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	overflow: hidden;
+	contain: strict;
+}
+.bgx-layer,
+.bgx-fill,
+.bgx-canvas {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+}
+.bgx-canvas {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+/* ---------- shared grain ---------- */
+.bgx-grain {
+	opacity: 0.05;
+	mix-blend-mode: overlay;
+	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* ---------- answer flash (DOM backgrounds: aurora, rain, grid) ---------- */
+.bgx-flash {
+	opacity: 0;
+	--ox: 50vw;
+	--oy: 45vh;
+}
+.bgx-flash.pulse-ok {
+	background: radial-gradient(640px circle at var(--ox) var(--oy), rgba(95, 211, 154, 0.15), transparent 70%);
+	animation: bgx-flash 0.8s ease-out;
+}
+.bgx-flash.pulse-bad {
+	background: radial-gradient(640px circle at var(--ox) var(--oy), rgba(234, 87, 70, 0.13), transparent 70%);
+	animation: bgx-flash 0.8s ease-out;
+}
+.bgx-flash.pulse-master {
+	background: radial-gradient(1200px circle at var(--ox) var(--oy), rgba(95, 211, 154, 0.26), transparent 70%);
+	animation: bgx-flash 1.6s ease-out;
+}
+@keyframes bgx-flash {
+	0% {
+		opacity: 0;
+	}
+	18% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+/* ---------- ember: a static coral and blue glow ---------- */
+.bgx-ember {
+	background: radial-gradient(50vw 50vh at 15% 10%, rgba(234, 87, 70, 0.1), transparent 70%),
+		radial-gradient(60vw 60vh at 90% 90%, rgba(100, 181, 255, 0.06), transparent 70%);
+}
+
+/* ---------- aurora ---------- */
+.bgx-aurora .blob {
+	position: absolute;
+	width: 62vmax;
+	height: 62vmax;
+	border-radius: 50%;
+	filter: blur(110px);
+	opacity: 0.2;
+}
+.bgx-aurora .b1 {
+	background: #ea5746;
+	left: -18vmax;
+	top: -22vmax;
+	animation: bgx-drift1 34s ease-in-out infinite alternate;
+}
+.bgx-aurora .b2 {
+	background: #4a35b0;
+	right: -24vmax;
+	top: 6vmax;
+	opacity: 0.16;
+	animation: bgx-drift2 41s ease-in-out infinite alternate;
+}
+.bgx-aurora .b3 {
+	background: #1d7a72;
+	left: 12vmax;
+	bottom: -34vmax;
+	opacity: 0.15;
+	animation: bgx-drift3 38s ease-in-out infinite alternate;
+}
+@keyframes bgx-drift1 {
+	to {
+		transform: translate(22vmax, 14vmax) scale(1.15);
+	}
+}
+@keyframes bgx-drift2 {
+	to {
+		transform: translate(-18vmax, 18vmax) scale(0.9);
+	}
+}
+@keyframes bgx-drift3 {
+	to {
+		transform: translate(16vmax, -14vmax) scale(1.1);
+	}
+}
+
+/* ---------- spotlight grid ---------- */
+.bgx-grid {
+	--mx: 50vw;
+	--my: 40vh;
+	background-image: radial-gradient(circle, rgba(255, 255, 255, 0.13) 1px, transparent 1.6px);
+	background-size: 30px 30px;
+	-webkit-mask-image: radial-gradient(520px circle at var(--mx) var(--my), #000, rgba(0, 0, 0, 0.28) 50%, rgba(0, 0, 0, 0.1));
+	mask-image: radial-gradient(520px circle at var(--mx) var(--my), #000, rgba(0, 0, 0, 0.28) 50%, rgba(0, 0, 0, 0.1));
+}
+.bgx-ripple {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	margin: -10px 0 0 -10px;
+	border-radius: 50%;
+	border: 1.5px solid #5fd39a;
+	pointer-events: none;
+	animation: bgx-ripple 1.3s cubic-bezier(0.2, 0.6, 0.3, 1) forwards;
+}
+.bgx-ripple.bad {
+	border-color: #ea5746;
+	animation: bgx-ripple-s 0.8s cubic-bezier(0.2, 0.6, 0.3, 1) forwards;
+}
+.bgx-ripple.big {
+	border-width: 2px;
+	animation-duration: 1.8s;
+}
+@keyframes bgx-ripple {
+	from {
+		transform: scale(1);
+		opacity: 0.9;
+	}
+	to {
+		transform: scale(90);
+		opacity: 0;
+	}
+}
+@keyframes bgx-ripple-s {
+	from {
+		transform: scale(1);
+		opacity: 0.7;
+	}
+	to {
+		transform: scale(40);
+		opacity: 0;
+	}
+}
+
+/* ---------- word rain ---------- */
+.bgx-rain {
+	-webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+	mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+}
+.bgx-rain-row {
+	position: absolute;
+	left: 0;
+	white-space: nowrap;
+	font-weight: 800;
+	font-size: clamp(70px, 9vw, 140px);
+	letter-spacing: -0.03em;
+	line-height: 1;
+}
+.bgx-rain-track {
+	display: inline-block;
+	animation: bgx-marquee linear infinite;
+}
+.bgx-rain-row.rev .bgx-rain-track {
+	animation-direction: reverse;
+}
+.bgx-rain span {
+	color: rgba(255, 255, 255, 0.03);
+	margin-right: 0.5em;
+	transition: color 1.2s;
+}
+.bgx-rain span.won {
+	color: rgba(95, 211, 154, 0.11);
+}
+@keyframes bgx-marquee {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+/* ---------- settings previews (app/settings/page.jsx) ----------
+   A contained host: the same layers, sized to the preview box instead of the
+   viewport. Word rain scales its type down to fit. */
+.bg-preview-host .bgx-rain-row {
+	font-size: 34px;
+}
+
+/* globals.css already stops every animation under reduced motion; this keeps
+   the intent explicit for the background's own loops. */
+@media (prefers-reduced-motion: reduce) {
+	.bgx-aurora .blob,
+	.bgx-rain-track {
+		animation: none;
+	}
+}

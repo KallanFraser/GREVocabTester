@@ -36,6 +36,18 @@ test("isNearDuplicateDefinition: normalized equality", () => {
 	assert.ok(!isNearDuplicateDefinition("wordy.", undefined));
 });
 
+test("isNearDuplicateDefinition: a definition and its negation are never near-duplicates", () => {
+	assert.ok(!isNearDuplicateDefinition("allowing passage.", "not allowing passage."));
+	assert.ok(!isNearDuplicateDefinition("not allowing passage.", "allowing passage."));
+	assert.ok(!isNearDuplicateDefinition("full of hope.", "without hope."));
+	assert.ok(!isNearDuplicateDefinition("Never yielding", "yielding"));
+	// Negated on both sides is still compared on overlap.
+	assert.ok(isNearDuplicateDefinition("not allowing passage.", "not allowing passage"));
+	assert.ok(isNearDuplicateDefinition("not easily calmed.", "not calmed easily."));
+	// "non" counts only as a whole word.
+	assert.ok(isNearDuplicateDefinition("nonchalant manner.", "nonchalant manner"));
+});
+
 test("isNearDuplicateDefinition: Jaccard >= 0.5 on content words", () => {
 	assert.ok(isNearDuplicateDefinition("to calm or pacify.", "to calm; pacify."));
 	assert.ok(isNearDuplicateDefinition("a scarcity or lack.", "scarcity; lack."));
