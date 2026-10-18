@@ -83,9 +83,10 @@ test("resolveLegacyIndices maps old positions through the frozen order", () => {
 });
 
 test("every pack's indices resolve to its words", () => {
-	assert.equal(packs.length, 12);
+	// Only the 12 classic packs carry legacy indices; generated packs are word-keyed.
+	assert.equal(packs.filter((p) => p.indices).length, 12);
 	for (const p of packs) {
-		assert.deepEqual(resolveLegacyIndices(p.indices), p.words, p.id);
+		if (p.indices) assert.deepEqual(resolveLegacyIndices(p.indices), p.words, p.id);
 		for (const w of p.words) assert.equal(getWord(w)?.word, w, `${p.id}: ${w}`);
 	}
 });
