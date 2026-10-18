@@ -226,6 +226,27 @@ test("w2d: a fuzzy answer that adds a negation the target lacks is wrong", () =>
 	assert.equal(gradeDefinition({ definition: "not favorable" }, "not favourable").correct, true);
 	assert.equal(gradeDefinition({ definition: "unfavorable" }, "unfavourable").correct, true);
 	if (VOCAB.Auspicious) assert.equal(gradeAnswer("Auspicious", VOCAB.Auspicious, "unfavorable", "w2d").correct, false);
+	assert.equal(gradeDefinition({ definition: "happy" }, "not happy").correct, false);
+});
+
+test("w2d: a negation that agrees with a negated target, or a non-negating prefix, is right", () => {
+	// Entries as in gre_combined.json, so the tests hold even if the data moves.
+	const cases = [
+		["Averse", { definition: "unwilling", alts: ["reluctant", "opposed", "disinclined"] }, "not willing"],
+		["Adverse", { definition: "unfavorable", alts: ["harmful", "hostile", "detrimental"] }, "not favorable"],
+		["Callous", { definition: "unfeeling", alts: ["heartless", "insensitive", "cold"] }, "not feeling"],
+		["Cumbersome", { definition: "unwieldy", alts: ["awkward", "clumsy", "bulky"] }, "not wieldy"],
+		["Ambiguous", { definition: "of unclear meaning", alts: ["equivocal", "unclear", "open to interpretation"] }, "not clear in meaning"],
+		["Ardent", { definition: "passionate", alts: ["fervent", "zealous", "devoted"] }, "impassioned"],
+	];
+	for (const [key, entry, answer] of cases) {
+		assert.equal(gradeDefinition(entry, answer).correct, true, `${key}: "${answer}"`);
+		if (VOCAB[key]) assert.equal(gradeAnswer(key, VOCAB[key], answer, "w2d").correct, true, `${key} (data): "${answer}"`);
+	}
+	// Still rejected: the negation flips the meaning.
+	const auspicious = { definition: "promising", alts: ["favorable", "propitious", "fortunate"] };
+	assert.equal(gradeDefinition(auspicious, "unfavorable").correct, false);
+	assert.equal(gradeDefinition({ definition: "happy" }, "not happy").correct, false);
 });
 
 test("w2d: best score across definition and alts; short targets need an exact match; trailing periods ignored", () => {

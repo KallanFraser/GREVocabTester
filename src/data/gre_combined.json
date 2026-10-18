@@ -1089,7 +1089,7 @@
 	},
 	"Availed": {
 		"definition": "made use of",
-		"alts": ["to use", "to benefit from", "to take advantage of"],
+		"alts": ["used", "benefited"],
 		"example": "She availed herself of the library’s vast digital collection.",
 		"fullDefinition": "Availed (past of ‘avail’) refers to taking advantage of a resource or opportunity so as to gain benefit.",
 		"pos": "verb",
@@ -1281,7 +1281,7 @@
 	},
 	"Belies": {
 		"definition": "contradicts",
-		"alts": ["to contradict", "to misrepresent", "to disguise"],
+		"alts": ["misrepresents", "disguises"],
 		"example": "Her calm smile belies the stress she feels inside.",
 		"fullDefinition": "To belie is to disguise or misrepresent the true nature of something, creating a discrepancy between appearance and reality.",
 		"pos": "verb",
@@ -2785,7 +2785,7 @@
 	},
 	"Cursory": {
 		"definition": "superficial",
-		"alts": ["hasty", "perfunctory", "hurried"],
+		"alts": ["hasty", "perfunctory", "quick"],
 		"example": "Even a cursory reading of the contract reveals several contradictions.",
 		"fullDefinition": "A cursory examination is done quickly, without attention to detail.",
 		"pos": "adjective",
@@ -4257,7 +4257,7 @@
 	},
 	"Facetious": {
 		"definition": "inappropriately joking",
-		"alts": ["flippant", "tongue-in-cheek", "jesting"],
+		"alts": ["flippant", "tongue-in-cheek", "joking"],
 		"example": "His facetious joke about layoffs fell flat in the tense room.",
 		"fullDefinition": "Facetious describes remarks or behavior meant as humorous or playful but regarded as ill-timed, flippant, or lacking seriousness.",
 		"pos": "adjective",
@@ -5441,7 +5441,7 @@
 	},
 	"Immured": {
 		"definition": "confined",
-		"alts": ["to imprison", "to wall in", "to shut in"],
+		"alts": ["imprisoned", "walled in", "shut in"],
 		"example": "The prisoners were immured behind the thick walls.",
 		"fullDefinition": "Immured means to be locked in or confined within a space, often against one’s will.",
 		"pos": "verb",
@@ -6449,7 +6449,7 @@
 	},
 	"Lionized": {
 		"definition": "celebrated",
-		"alts": ["to idolize", "to fete", "to glorify"],
+		"alts": ["idolized", "feted", "glorified"],
 		"example": "After the discovery, he was lionized by the scientific community.",
 		"fullDefinition": "To lionize is to give someone public attention and approval, elevating them to celebrity status.",
 		"pos": "verb",
@@ -8425,7 +8425,7 @@
 	},
 	"Preceded": {
 		"definition": "came before",
-		"alts": ["to go before", "to predate", "to come before"],
+		"alts": ["went before", "predated"],
 		"example": "A brief introduction preceded the lecture.",
 		"fullDefinition": "Preceded describes an event, statement, or entity that occurs earlier in sequence or ranking.",
 		"pos": "verb",
@@ -11073,7 +11073,7 @@
 	},
 	"Underscores": {
 		"definition": "emphasizes",
-		"alts": ["to emphasize", "to highlight", "to stress"],
+		"alts": ["highlights", "stresses"],
 		"example": "Her success underscores the value of perseverance.",
 		"fullDefinition": "To underscore is to draw special attention to a point, highlighting its significance.",
 		"pos": "verb",
