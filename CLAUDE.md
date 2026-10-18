@@ -1,181 +1,244 @@
-# GRE Vocab Tester — CLAUDE.md
+# GRE Vocab Tester: CLAUDE.md
 
-> Adaptive GRE vocabulary study app at **grevocabtester.com**. Solo-built, free, ~8k MAU.
+Adaptive GRE vocabulary study app at grevocabtester.com. Free, solo-built, static site. This file describes the code as it stands on the `overhaul` branch. When code and this file disagree, the code wins; fix this file.
 
-## Overview
+## Stack
 
-Web app that drills GRE-frequency vocabulary in three study modes (free-type with typo tolerance, sequential multiple choice, randomized multiple choice). Words come from a curated, deduplicated JSON dataset assembled from past papers and prep sources. Community-curated "Word Packs" let users study focused subsets via shareable URLs. The whole app ships as a static export — no database, no auth.
+- Next.js `^15.3.4` App Router with `output: "export"` (static site, no server). React `^19.1.0`.
+- Components and pages are JSX. `lib/` is plain ES modules (`.js`). Build scripts in `scripts/` are CommonJS or ESM Node scripts. `tsconfig.json` exists (`allowJs`, not strict) but there is no TypeScript source to maintain.
+- Runtime dependencies: `next`, `react`, `react-dom` only. Answer matching is in-house (`lib/matching.js`). There are no API routes, no middleware, no database, no auth.
+- Styling: plain CSS files in `styles/`. No Tailwind, no CSS-in-JS, no CSS Modules.
+- Dev dependencies include `sharp` and `png-to-ico` (image scripts), `typescript` and type packages.
+- Dev server: `npm run dev` (port 3010). Do not start it or run `npm run build` casually; both write to `.next/`.
 
-## Tech Stack (verified from `package.json`)
-
-- **Framework:** Next.js `^15.3.4` — App Router, `output: "export"` (static site)
-- **React:** `^19.1.0` / react-dom `^19.1.0`
-- **Language:** JSX components (no TS in components); two API routes are `.ts`/`.js`; `tsconfig.json` present with `strict: false`, `allowJs: true`
-- **Validation:** `zod ^4.1.12` (feedback endpoint only)
-- **HTTP:** `axios ^1.10.0` declared, **not used anywhere in source** (only `fetch` is) — likely dead dep
-- **Answer matching:** `string-similarity ^4.0.4` (Dice coefficient, 0.6 threshold)
-- **Styling:** Plain CSS files in [styles/](styles/) — no Tailwind, no CSS-in-JS, no CSS Modules
-- **Font:** Inter named as first entry in [styles/globals.css:47](styles/globals.css#L47) `font-family` stack with system fallbacks. **Not** loaded via `next/font` or `@font-face` — relies on user having Inter installed locally
-- **Node tooling:** TypeScript `5.9.3` (dev), `@types/node 24.8.1`, `@types/react 19.2.2`
-
-## Project Structure
+## Project layout
 
 ```
-app/                         — App Router root
-  layout.jsx                 — Global layout + metadata; mounts <Navbar/>
-  page.jsx                   — Home/landing (coral theme), keyboard shortcuts 1/2/3
-  wordpacks/page.jsx         — Word Packs marketplace (lists, upvotes, opens packs)
-  play/
-    test/page.jsx            — Wrapper that renders <TestMode/>
-    practice/page.jsx        — Wrapper that renders <PracticeMode/>
-    learn/page.jsx           — Wrapper that renders <LearnMode/>
-  api/
-    feedback/route.ts        — POST feedback (Zod validation, 20 KB cap)
-    wordpacks/create/route.js — POST new pack (size, profanity, IP-hash rate limit)
-
-components/
-  Navbar.jsx                 — Fixed top nav; hidden on /play/* routes
-  TestMode.jsx               — Core free-type mode (5-word rotating subset, mastery=4)
-  PracticeMode.jsx           — Sequential multiple choice
-  LearnMode.jsx              — Randomized multiple choice (uses crypto.getRandomValues)
-
-styles/
-  globals.css                — Tokens, base, font stack
-  components.css             — TestMode + answer buttons + tracker bars
-  home.css                   — Landing (coral theme)
-  navbar.css                 — Top nav
-  menu.css                   — "Choose Words" overlay
-  wordpacks.css              — Word Packs grid + cards
-
-src/data/
-  gre_combined.json          — 679 vocab entries (verified count) — object keyed
-                               by word with { definition, example, fullDefinition }
-
-public/
-  data/wordpacks.json        — 12 community packs (id, title, desc, indices,
-                               likes, createdAt, authorIpHash)
-  images/                    — 2 PNGs (see Assets)
-  sounds/                    — yesmp3.mp3 / nomp3.mp3 (correct/incorrect SFX, 10% vol)
-
-scripts/sort-gre-combined.js — A→Z sorter for the vocab JSON (`npm run sort:vocab`)
-
-middleware.ts                — In-memory token-bucket rate limiter
-                               (60 req/min default, 10 req/min on /api/*)
-next.config.mjs              — output: "export", images.unoptimized: true,
-                               dev-only security headers + CSP
-out/                         — Build artifact (committed; emitted by `next build`)
-globals.css                  — Stray file at repo root containing 3 Stripe URLs.
-                               NOT a stylesheet; looks like a paste accident.
-                               The real global stylesheet is styles/globals.css.
+app/                  routes (see Routes), layout.jsx, not-found.jsx, robots.js, sitemap.js
+components/           mode components, Navbar, Background, PlayHeader, ConfirmDialog
+  test/               Test mode pieces + engine.js (pure helpers)
+  choice/ChoiceQuiz   shared engine behind Practice and Learn
+  home/               ModeTiles, TryIt, ContinueCard, HomeShortcuts, modes.js (the mode list)
+  packs/              PackList, PackRow, UpNext, PackBuilder, SharedPackOffer, packUtils.js
+lib/                  all logic that is not UI (storage, settings, progress, packs, matching,
+                      pool, hard-scheduler, review, context, distractors, words, backgrounds/)
+src/data/             gre_combined.json, legacy-index.json, packs-manual.json, home.json
+public/               data/wordpacks.json (generated), _headers, manifest.webmanifest,
+                      images/, sounds/ (yesmp3.mp3, nomp3.mp3), favicon.ico
+scripts/              build-packs.js, validate-vocab.js, vocab-stats.js, sort-gre-combined.js,
+                      generate-images.js, render-assets.mjs
+styles/               globals, ui, components, testmode, choice, cards, context, review, home,
+                      navbar, menu, wordpacks, settings, dialog, backgrounds
+tests/                *.test.mjs, run with node:test
+design/overhaul/      working notes from the overhaul (CONTEXT, gre-data, gre-current,
+                      wortschatz-inventory). Background reading, not the source of truth.
 ```
 
-## Data Layer
+`out/` is the export target and is git-ignored. The sister app Wortschatz (German) is the origin of most of the ported modules; comments in `lib/` cite its lessons as `Wortschatz L<n>`.
 
-- **Words live in [src/data/gre_combined.json](src/data/gre_combined.json):** an *object* (not array) where each key is the headword and each value is `{ definition, example, fullDefinition }`. Imported directly into components — bundled at build time, no network fetch. **679 entries today** (homepage copy says "800+"; that figure is aspirational, not the actual count).
-- **Word Packs live in [public/data/wordpacks.json](public/data/wordpacks.json):** an *array* of packs. Each pack stores `indices` — integer positions into `Object.keys(gre_combined.json)`, **not the words themselves**. This means re-sorting, adding, or removing a vocab key silently re-maps every pack to different words. `npm run sort:vocab` is therefore a footgun.
-- **No spaced-repetition algorithm in code.** What [`TestMode`](components/TestMode.jsx) actually implements is *short-rotation mastery*: a 5-word subset, each word needs 4 consecutive correct answers (counter resets to 0 on any wrong answer), then is swapped out for a fresh word from outside the current pool ([TestMode.jsx:76-93](components/TestMode.jsx#L76-L93), [TestMode.jsx:220-236](components/TestMode.jsx#L220-L236)). Practice and Learn modes do not track mastery at all. *(The "spaced repetition" framing used in marketing is not implemented — flag this if asked to extend it.)*
-- **Persistence:** `localStorage` only. Keys:
-  - `marketplaceWordpack` — selected pack's indices, consumed once by `TestMode` then deleted
-  - `wp_upvote_ledger_v2` — one like per pack per client
+## Routes and modes
 
-## Key Features / Pages
+All study routes live under `/play/*`. Navbar hides itself there. Mode list and shortcut order come from `components/home/modes.js`; the home page keys 1 to 6 open them in that order.
 
-| Route | Component | Behavior |
+| Route | Key | Component | Mechanics |
+|---|---|---|---|
+| `/` | | `app/page.jsx` | Hero, playable try-it card, "Continue" card (last pack), mode tiles. Counts shown come from `src/data/home.json`. |
+| `/wordpacks` | | `app/wordpacks/page.jsx` | Learning path with an "Up next" panel, sticky toolbar, collapsible categories, favorites, and a pack builder for custom packs. |
+| `/play/test` | 1 | `TestMode` | Typed recall, Normal or Harder. See below. |
+| `/play/practice` | 2 | `ChoiceQuiz` (practice) | Four-option multiple choice, sequential through the scope in file order. Position saved per scope in `gv_practice_pos`. No mastery recorded. |
+| `/play/learn` | 3 | `ChoiceQuiz` (learn) | Same questions, crypto-shuffled deck, no repeats until the deck runs out, then a fresh shuffle. Deck lives in component state only. Titled "Random Practice". |
+| `/play/cards` | 4 | `Flashcards` | Flip cards, no typing, no grading, no progress writes. Reads durable mastery only for a Mastered/Unmastered filter. |
+| `/play/review` | 5 | `ReviewMode` | Typed recall over words due today across all packs (see Daily review). |
+| `/play/context` | 6 | `ContextMode` | Sentence completion: the headword is blanked out of its example sentence (`lib/context.js` `blankSentence`, whole-word, inflections allowed) and the learner picks from four options. Words whose sentence cannot be blanked are skipped. No mastery recorded. |
+| `/settings` | | `app/settings/page.jsx` | Settings, backgrounds, progress export/import, Reset all. |
+
+Other: `app/not-found.jsx` (noindex), `app/robots.js`, `app/sitemap.js`, `public/manifest.webmanifest`.
+
+### Pack context in play pages
+
+`lib/packs.js` `resolvePackContext(searchParams)` decides which words a mode runs over. In order: `?pack=<id>` (built-in or custom pack), `?pack=12,45,...` (old digits-only index list, resolved through `legacy-index.json`), `?words=a,b,c` (share link, headwords), `?id=<packId>` (old link format), then the legacy `marketplaceWordpack` handoff. Test, Practice, Learn, Cards and Context rewrite the address bar to the stable form (`?pack=<id>` or `?words=...`) so reload and shared links keep the same words. No match means the full word list (`ALL_SCOPE = "all"`). Hydration is guarded to run once (StrictMode double mount). Static export needs a Suspense boundary around `useSearchParams`; the route files provide it.
+
+### Test mode
+
+Grading directions (`lib/settings.js`): `w2d` shows the word and the learner types the definition; `d2w` shows the definition and the learner types the headword. Default is `w2d`.
+
+Normal (`lib/pool.js`, `components/test/engine.js`):
+- Visible pool of 5 unmastered words drawn at random without repeats (`crypto.getRandomValues`, injectable rng for tests). Constants: `POOL_SIZE = 5`, `WORD_STREAK_TO_MASTER = 4`. Do not change them.
+- Four correct answers in a row masters a word. It leaves the pool and a random unmastered word outside the pool replaces it. A miss resets the streak, shows the full answer card, and asks the same word again.
+- Streaks are zeroed at every session start (`clearScopeStreaks`); mastery and completions are kept.
+- A scope with every word mastered shows the completion screen and counts one completion. A reset of a finished scope starts the next round; the pack row keeps showing its best mastery.
+- Choose Words picks a subset of the pack and runs it inside the pack's own scope; the pack is credited only when all its words are mastered.
+
+Harder (`lib/hard-scheduler.js`): the whole selection is in play at once. A word right on its first draw is retired. A miss needs `HARD_RELEARN_CORRECT = 2` more correct answers. An unretired word sits out `HARD_COOLDOWN_CARDS = 3` other cards. Runs are saved after every answer in `gv_hard_<dir>` and can be resumed. Harder never reads or writes `gv_progress_*`. Words it retires are enrolled in Daily review. A `?mode=normal|harder` query overrides the stored difficulty and is saved.
+
+Grading (`lib/matching.js`, threshold `WORD_DICE_THRESHOLD = 0.6`):
+- `w2d`: Dice coefficient over character bigrams, whitespace removed, lowercased, compared to the short `definition` (not `fullDefinition`). This is the original grading and must not loosen.
+- `d2w`: trailing punctuation dropped, case and spacing folded; headwords of 4 characters or fewer need an exact match, longer ones need Dice >= 0.6. A typed answer that is exactly another headword is accepted only if that word's definition is a near-duplicate of the target's (`gradeHeadwordWithNearDuplicates`, negation guard in `lib/distractors.js`).
+
+### Multiple choice (Practice, Learn)
+
+Four options, keys 1 to 4. Distractors come from the scope first (`lib/distractors.js` `pickDistractors`), topped up from the full list, and never include a near-duplicate definition, a shared root, or a listed confusable pair. A wrong answer's automatic advance waits at least 3 seconds (`WRONG_MIN_SECONDS`) regardless of the delay setting.
+
+### Daily review
+
+`lib/review.js`, stored in `gv_review_<dir>`. A word enrolls the first time it is mastered anywhere (Normal or Harder, any pack or selection). Ladder in days: `[1, 3, 7, 14, 30, 60, 120]`. A first-try correct answer in a session moves one step up (top step repeats); a miss returns to 1 day and the word must be answered correctly before the session ends, after `REVIEW_RETRY_GAP = 3` other cards. Only a word's first answer in a session moves the schedule. Cap is 50 words per day per direction by default (`DEFAULT_REVIEW_CAP`). Days are local calendar days (`YYYY-MM-DD`). Existing mastery is seeded once across 14 days. Review never touches pack mastery.
+
+## Data schema
+
+`src/data/gre_combined.json` is an object keyed by headword (capitalized, e.g. `"Abate"`), tab-indented, in A to Z order. Every entry has exactly:
+
+```json
+"Abate": {
+  "definition": "to become less intense.",
+  "example": "Once the antibiotics kicked in, her fever began to abate ...",
+  "fullDefinition": "Abate means to diminish in intensity, degree, or amount ...",
+  "pos": "verb",
+  "tier": 1
+}
+```
+
+- `definition`: short lowercase gloss; the multiple-choice option text and the `w2d` typed answer.
+- `example`: one sentence containing the headword or an inflection (used by In Context, so it must stay blankable).
+- `fullDefinition`: longer explanation shown on the answer card.
+- `pos`: `noun | verb | adjective | adverb`.
+- `tier`: `1` core (high frequency), `2` common, `3` advanced.
+
+`lib/words.js` exposes frozen entries `{ word, definition, fullDefinition, example, pos, tier }` in file order. Entry count at the last check was 1,476 (tier 1: 481, tier 2: 788, tier 3: 207). Never hardcode a count in copy; take it from `src/data/home.json` or from the data.
+
+`npm run vocab:validate` enforces: no missing or empty fields, valid `pos` and `tier`, no case-insensitive or raw duplicate keys, no identical definitions, every legacy-index entry exists, every pack word exists. It warns on near-duplicate definitions and on examples missing the headword.
+
+### Frozen legacy index
+
+`src/data/legacy-index.json` is the pre-overhaul key order (679 headwords). **It is frozen. Never regenerate, re-sort, edit or append to it**, and never derive it from the current `gre_combined.json`. It exists only so old `?pack=12,45,...` links, the `marketplaceWordpack` handoff and the `indices` field on the 12 classic packs keep resolving to the same words they always did (`resolveLegacyIndices` in `lib/words.js`). `validate-vocab` fails if an entry in it is missing from the data, so removing a word from `gre_combined.json` that is in the legacy index is a build failure by design.
+
+## Packs pipeline
+
+Source of truth: `src/data/packs-manual.json` (hand-written themed packs and the 12 classic packs). Generator: `scripts/build-packs.js`. Outputs, both generated, **never hand-edit**:
+- `public/data/wordpacks.json` (served at `/data/wordpacks.json`)
+- `src/data/home.json` (word count, pack counts by category, five sample entries for the home try-it card)
+
+`npm run build` runs `prebuild` first: `npm run packs:build && npm run vocab:validate`. Either failing stops the build. Run `npm run packs:build` yourself after changing `packs-manual.json` or the vocabulary.
+
+Pack shape: `{ id, title, desc, category, tier?, order?, likes?, indices?, words }`. `words` are headwords. Categories: `path`, `theme`, `classic`.
+- `path`: generated learning path, about 25 words per pack, grouped by tier (Core, Common, Advanced), ids like `path-core-01`. Membership is stable: a word already in a path pack stays there, new words fill the tier's last pack then open new ones, removed words just leave. Ids never change, because progress is keyed by pack id.
+- `theme`: curated, 15 to 30 words each, from `packs-manual.json`.
+- `classic`: the 12 pre-overhaul packs. They keep their ids and likes and gain `indices` computed against the frozen legacy index.
+- Limits: at least 5 words per pack, title at most 48 characters, description at most 100. The build fails on unknown or repeated pack words, duplicate ids, a bad category, and a classic word missing from the legacy order.
+- Keep `lib/packs.js` constants (`PACK_CATEGORIES`, `MIN_PACK_WORDS`, `MAX_TITLE_LENGTH`, `MAX_DESC_LENGTH`) in step with the script.
+
+Current output: 99 packs (59 path, 28 theme, 12 classic), per `home.json`. Custom packs are created in the browser (`PackBuilder`), stored in `gv_custom_packs`, and are not part of the build.
+
+`npm run sort:vocab` is safe for packs now because they use headwords, but it rewrites the vocab file; run `packs:build` and `vocab:validate` after it. It must never touch `legacy-index.json`.
+
+## Storage
+
+All persistence is `localStorage` through `lib/storage.js`, the only file that touches it. It is SSR-safe, wraps every access in try/catch (blocked or full storage reads as empty and writes as no-ops), and stores JSON. Every key this app writes starts with `gv_`. Read storage in effects after mount, never during render, so the static HTML and first client render match. `<dir>` is `w2d` or `d2w`; progress is kept per direction.
+
+| Key | Shape |
+|---|---|
+| `gv_settings` | `{ direction, testDifficulty, advanceDelay, feedbackSounds, playBackground, pagesBackground }`. See Settings. |
+| `gv_progress_<dir>` | `{ scopes: { <scopeId>: { mastered: [headword], streaks: { headword: 1..3 }, completions: { count, records: [{ at, accuracy, answered, size, backfilled }], credited }, round: 1.., known: [headword] } } }`. `mastered` is the current round; `known` is mastery from earlier rounds; `best` shown on pack rows persists across rounds. Records are capped at 50, the count is not. |
+| `gv_hard_<dir>` | `{ scopes: { <scopeId> or <scopeId>#subset: { run, count, runs } } }`. `run` is the scheduler's saved state (resumable) or null; `runs` are finished-run records (capped at 50); `count` is completed runs. A subset run resumes only for the exact same word set. |
+| `gv_review_<dir>` | `{ seeded: bool, words: { headword: { interval, due: "YYYY-MM-DD" } }, day: { date, reviewed } }` |
+| `gv_last_pack` | `{ id, title, words: [headword] }`. Drives the home Continue card. Ad-hoc selections are never stored. |
+| `gv_custom_packs` | `[{ id: "custom-...", title, desc, words, category: "custom", createdAt, updatedAt }]` |
+| `gv_favorites` | `{ version: 1, ids: [packId] }`. Replaces the old like counts. |
+| `gv_practice_pos` | `{ <scopeId>: index }`. Practice mode's saved position, a non-negative integer per scope. |
+
+A scope id is a built-in pack id, a `custom-` id, or `all`. Pack ids are stable; progress never refers to a pack by position.
+
+Test difficulty is not a key of its own any more: it is `gv_settings.testDifficulty` (`"normal"` or `"harder"`, anything else reads as `"normal"`).
+
+### Legacy keys (migrated or cleared)
+
+| Legacy key | Handling |
+|---|---|
+| `gv_test_difficulty` | Moved once into `gv_settings.testDifficulty` by `loadSettings` (an existing value in `gv_settings` wins), then removed. |
+| `wp_upvote_ledger_v2` (`{ packId: true }`) and `wp_likes:<packId>` (count) | Copied into `gv_favorites` on the first `loadFavorites()` when `gv_favorites` does not exist. Left in place; the existence of `gv_favorites` marks the migration done. |
+| `marketplaceWordpack` (array of integer indices) | One-time handoff from the old Word Packs page. `resolvePackContext` always reads and deletes it, resolves it through the frozen legacy index, and accepts it only on the first resolve of a page load. |
+
+Reset all (`resetAll` in `lib/progress.js`) clears every `gv_` key and the legacy keys `wp_upvote_ledger_v2` and `marketplaceWordpack`, so nothing can be migrated back in.
+
+Backup file (`exportProgress` / `prepareImport` / `applyImport`): `{ app: "grevocabtester", version: 1, exportedAt, data: { <gv_ key>: value } }`. Import validates and normalizes before writing, writes only keys in the file, and ignores foreign or unknown content.
+
+## Settings
+
+`lib/settings.js`, edited on `/settings` and from mode headers. Every value is coerced on read, so a corrupt store can never select an option that does not exist. `saveSettings(patch)` is read-merge-write of a patch and dispatches `gv-settings-change` on `window`, which the background layer and open modes listen for.
+
+| Field | Values | Default |
 |---|---|---|
-| `/` | [app/page.jsx](app/page.jsx) | Hero, mode tiles, feature grid, footer. Keys `1`/`2`/`3` jump to modes. |
-| `/wordpacks` | [app/wordpacks/page.jsx](app/wordpacks/page.jsx) | Fetches `/data/wordpacks.json`, sorted by likes. Click → stashes `indices` in `localStorage["marketplaceWordpack"]` and navigates to `/play/test?id=<packId>`. |
-| `/play/test` | [components/TestMode.jsx](components/TestMode.jsx) | Free-type. 5-word rotating subset, mastery=4, 60% string-similarity threshold ([line 58](components/TestMode.jsx#L58)). Hydrates from `?pack=1,5,9` (CSV indices), `?id=<packId>` (fetches wordpacks.json), or `localStorage["marketplaceWordpack"]`. "Choose Words" overlay lists every word with checkboxes. |
-| `/play/practice` | [components/PracticeMode.jsx](components/PracticeMode.jsx) | Multiple choice (4 options), sequential A→Z through all words. Distractors = random other definitions. |
-| `/play/learn` | [components/LearnMode.jsx](components/LearnMode.jsx) | Multiple choice (4 options), fully randomized order. Uses `window.crypto.getRandomValues` for shuffle. |
-| `POST /api/feedback` | [route.ts](app/api/feedback/route.ts) | Zod-validates `{ message, email? }`, 20 KB cap, logs to stdout (no persistence). |
-| `POST /api/wordpacks/create` | [route.js](app/api/wordpacks/create/route.js) | Writes a new pack into `public/data/wordpacks.json` on disk. Profanity filter, per-IP cap of 5 (in-memory + hashed-IP), title ≤ 48, desc ≤ 100, min 5 indices. **No UI in the repo calls this endpoint.** |
+| `direction` | `w2d`, `d2w` | `w2d` |
+| `testDifficulty` | `normal`, `harder` | `normal` |
+| `advanceDelay` | `0.5`, `1.5`, `3`, `5` seconds, or `"manual"` | `1.5` |
+| `feedbackSounds` | boolean (`public/sounds/yesmp3.mp3`, `nomp3.mp3`) | `true` |
+| `playBackground` | background id, used on `/play/*` | `warp` |
+| `pagesBackground` | background id, used everywhere else | `fireflies-red` |
 
-## Design System
+Background ids: `warp`, `constellation`, `liquid` (WebGL), `fireflies`, `fireflies-red`, `halftone`, `grid`, `rain`, `aurora`, `ember`, `plain`.
 
-- **Colors:** `--coral: #ea5746`, `--coral-light: #ff8a7a`, `--accent: #64b5ff`, deep dark bg (`#000` / `#050505`)
-- **Font:** Inter, with system fallbacks (no actual font file loaded — see Tech Stack note)
-- **Theme:** Dark with coral/red accent — professional, premium, dark-SaaS aesthetic
-- **Responsive:** mobile-first, CSS grid breakpoints at 640 / 800 / 900 / 1000 / 1100 px
+## Background layer and bus API
 
-## UI Philosophy (CRITICAL — preserved from prior CLAUDE.md)
+`components/Background.jsx` is mounted once in `app/layout.jsx`. It renders nothing on the server or first render, honors reduced motion (one static frame), pauses on a hidden tab, and falls back on failure (`liquid` to `fireflies`, anything else to `plain`) behind an error boundary. It is a fixed layer at `z-index: -1`; pages must not paint their own full-page background. Modules live in `lib/backgrounds/`, the engine in `engine.js`.
 
-**This must look like a real, professional GRE prep company** (think Magoosh, Princeton Review).
-- **No emoji icons** in UI chrome (mode tiles, nav, feature sections). Letter glyphs (T/F/R) with gradient backgrounds are used in `.tile-icon-styled`.
-- **No slang copy** ("built to grind", "vibe", "No fluff", "Support the grind", etc.).
-- Professional copywriting throughout.
-- Persistent navigation bar on non-`/play` pages (Navbar hides itself on `/play/*` to remove distractions during study).
-- Stats, social proof, and trust signals on homepage.
-- Clean, premium feel — dark SaaS.
+Components talk to it only through `lib/backgrounds/bus.js`. Every call is a safe no-op when nothing is mounted or on the server.
 
-## Build & Deployment
+- `bgEvent("ok" | "bad" | "master")`: answer reaction. Anything else is ignored.
+- `setBgHeat(value)`: 0 to 1, clamped; the current word's streak. Non-numbers become 0.
+- `setBgOrigin(x, y)`: viewport pixels effects radiate from. Non-numbers reset to the default (centre, 45% down).
+- `getBgWords()`: read-only copy of the current word list.
+- `setBgWords(list)`: strings or `{ word, mastered, current }` objects, deduplicated, at most 200. `mastered` lights a word green, `current` marks the word being asked.
 
-```bash
-npm run dev        # next dev on port 3010
-npm run build      # next build → emits /out (static)
-npm run start      # next start (only meaningful for non-export verification)
-npm run sort:vocab # node scripts/sort-gre-combined.js (A→Z keys)
-```
+## Scripts and testing
 
-**Static-export caveats this codebase is subject to:**
+| Command | Purpose |
+|---|---|
+| `npm run dev` | Dev server on port 3010. |
+| `npm run build` | `prebuild` (packs:build, vocab:validate) then `next build` into `out/`. |
+| `npm run packs:build` | Regenerate `public/data/wordpacks.json` and `src/data/home.json`. |
+| `npm run vocab:validate` | Dataset and pack integrity checks (exit 1 on errors). |
+| `npm run vocab:stats` | Counts by tier, pos, tier by pos, first letter. |
+| `npm run sort:vocab` | A to Z sort of `gre_combined.json`. Re-run packs:build and vocab:validate after. |
+| `npm run generate:images` | Resize source PNGs in `public/images` into icons and banners (uses `sharp`). |
+| `npm run assets:render` | Render OG image and PWA icons with headless Edge via Playwright (`npx`). |
+| `npm test` | `node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test "tests/**/*.test.mjs"` |
 
-- `output: "export"` + `images.unoptimized: true` in [next.config.mjs:46-49](next.config.mjs#L46-L49). The [`next/image`](https://nextjs.org/docs/app/api-reference/components/image) component would do **no** server-side optimization even if adopted; image sizing must be done at build/disk time.
-- API routes (`/api/feedback`, `/api/wordpacks/create`) **cannot run** on a pure static-export host. `wordpacks/create` additionally writes to the project filesystem, which is non-functional on serverless or static hosting.
-- `headers()` in `next.config.mjs` is **dev-only** (gated on `NODE_ENV !== "production"`). The comment claims prod headers come from `/public/_headers`, **but no `_headers` file exists** in `public/`. Net effect: no security headers in production unless the host injects them.
-- `middleware.ts` does not execute on a static-export host. The token bucket is also in-memory (per-process), so it would not work across instances even on a dynamic host.
-- OG metadata `url` is `https://grevocabtester.onrender.com` (a historical/redirect host). Live site is grevocabtester.com.
+**Node 22.15 or later is required.** `scripts/validate-vocab.js` uses `module.registerHooks` (added in Node 22.15) to load `lib/` modules, and `npm test` relies on `node --test` accepting a glob pattern. The `package.json` has no `engines` field, so this is not enforced by npm. The quoted glob is deliberate: the shell must not expand it.
 
-## Assets
+Tests (`tests/*.test.mjs`, `node:test`, no browser) cover matching, distractors, pool, hard scheduler, review ladder, progress and storage (including migration, export/import, reset), packs and pack context, word lookup, In Context blanking, and Test mode helpers. They use an in-memory storage stub. Logic that matters belongs in `lib/` so it can be tested there; add a test with any change to grading, scheduling, storage shapes or migration.
 
-### Images — [public/images/](public/images/)
+## Deploy
 
-| File | Format | Disk size | Pixel dims | Where referenced |
-|---|---|---|---|---|
-| `GREWebsiteLogo.png` | PNG | **1,215,671 B (~1.16 MiB)** | **1024 × 1024** | 5 `<link>` tags + 1 `<img>` — see image audit below |
-| `GRETesterBanner.png` | PNG | 273,790 B (~267 KiB) | 1200 × 300 | Single `<img>` on `/` ([app/page.jsx:52](app/page.jsx#L52)) |
+- Static export: `next build` writes the whole site to `out/` (git-ignored). `images.unoptimized: true`. API routes, middleware, `headers()` and rewrites cannot run in a static export and must not be added.
+- `public/_headers` carries the security headers (nosniff, referrer policy, `X-Frame-Options: DENY`, permissions policy, and a CSP allowing only same-origin resources plus inline script and style). It is honored by hosts that read the Netlify/Cloudflare `_headers` format. Any new external origin (fonts, analytics, images) must be added to the CSP or it will be blocked.
+- Host: the `.gitignore` comment says Cloudflare Pages rebuilds `out/` on every push, but there is no wrangler config or CI file in the repo, so Cloudflare Pages is **unconfirmed**. Do not write host-specific claims into code or copy.
+- SEO: `metadataBase` is `https://grevocabtester.com`; per-route canonicals are set in route layouts; `robots.js` and `sitemap.js` are static. The sitemap lists the play routes.
 
-**No `next/image` is used anywhere in source.** Both images are plain `<img>` tags. (Only hit for `next/image` is the type reference in `next-env.d.ts`.)
+## Design and copy rules
 
-### Audio — [public/sounds/](public/sounds/)
+The product must read as a professional GRE prep service.
+- Dark theme, `--bg: #050505`, coral `#ea5746` accent, blue `#64b5ff` focus/accent. Tokens are in `styles/globals.css`; shared buttons, pills, segmented controls and bars are in `styles/ui.css`.
+- No emoji anywhere in the UI or copy. No em dashes in copy or comments; use a comma, colon, period or parentheses.
+- Professional tone. No slang ("grind", "vibe", "no fluff"). Plain, direct sentences.
+- Every claim in copy must be true of the app: derive counts from data, and do not say "spaced repetition" about Test mode (only Daily review schedules by interval). Do not claim accounts, sync across devices, or server-side saving: progress is local to the browser.
+- Destructive actions use the red dialog tone and a focused Cancel button; neutral actions (restart, start next round) do not. Never use `window.confirm()`.
+- Do not add Tailwind. Do not change mastery 4, the pool of 5, or the 0.6 Dice threshold.
 
-| File | Size | Used in |
-|---|---|---|
-| `yesmp3.mp3` | 11,559 B | TestMode correct-answer SFX (vol 0.1) |
-| `nomp3.mp3` | 5,659 B | TestMode wrong-answer SFX (vol 0.1) |
+## Lessons learned
 
-### Image audit — `GREWebsiteLogo.png`
-
-The rendered static HTML (`out/index.html`) emits **five** `<link>` references plus the in-page `<img>`, all pointing at the same 1.16 MiB file:
-
-1. `<link rel="preload" as="image" href="/images/GREWebsiteLogo.png">` — auto-emitted by Next because the same URL is in `metadata.openGraph.images[0]` ([app/layout.jsx:28-37](app/layout.jsx#L28-L37))
-2. `<link rel="icon">` — from `metadata.icons.icon` ([app/layout.jsx:46](app/layout.jsx#L46))
-3. `<link rel="shortcut icon">` — from `metadata.icons.shortcut` ([app/layout.jsx:47](app/layout.jsx#L47))
-4. `<link rel="icon">` — manual duplicate in `<head>` ([app/layout.jsx:56](app/layout.jsx#L56))
-5. `<link rel="apple-touch-icon">` — from `metadata.icons.apple` ([app/layout.jsx:48](app/layout.jsx#L48))
-6. `<img class="footer-logo">` in the home page footer, **CSS-sized to 40 px wide** ([styles/home.css:441-444](styles/home.css#L441-L444))
-
-Additional discrepancy: `openGraph.images[0]` declares `width: 1200, height: 630` but the actual PNG is 1024 × 1024 (square). The declared dims are wrong; social cards will letterbox.
-
-## Known Issues / Tech Debt
-
-- **`GREWebsiteLogo.png` is 1.16 MiB used as a favicon AND a 40 px footer logo** — biggest perf problem on the home page. Fetched multiple times because it's referenced as preload + icon + shortcut icon + apple-touch-icon + duplicate icon + footer `<img>`. See image audit above.
-- **`GRETesterBanner.png` is ~267 KiB at 1200 × 300** — banner renders at ~500 px wide on desktop and full-width on mobile; could be a fraction of the size as WebP.
-- **Vocab count overstated.** Code says 679; homepage / prior CLAUDE.md say "800+". Pick one source of truth.
-- **No spaced-repetition algorithm.** TestMode is short-rotation mastery (5-word subset, 4-streak → swap). Marketing language uses "spaced repetition" — code does not.
-- **`axios` is a declared dependency but unused** — source only uses `fetch`.
-- **`POST /api/wordpacks/create` writes to `public/data/wordpacks.json` at runtime** — incompatible with the static export deployment and with serverless filesystems. No UI currently invokes it.
-- **No production security headers.** `next.config.mjs` gates `headers()` on dev only and points to `/public/_headers`, which does not exist.
-- **Middleware rate limiter is in-memory only.** Buckets reset per process/instance — and middleware doesn't execute on a pure static-export host anyway.
-- **Wordpack `indices` are array positions, not stable IDs.** Re-sorting `gre_combined.json` silently re-maps every pack. `npm run sort:vocab` is destructive in that sense.
-- **Stray non-CSS `globals.css` at repo root** contains 3 Stripe URLs with a `/** @format */` header. Looks like a paste accident. The real global stylesheet is [styles/globals.css](styles/globals.css).
-- **`metadataBase` is not set** in [app/layout.jsx](app/layout.jsx). OG/Twitter image URLs resolve relative to whatever Next infers as the base.
-- **OG image dimensions are misdeclared** (1200×630 in metadata vs. 1024×1024 on disk).
-- **`<head>` duplicates the favicon link** that `metadata.icons.icon` already emits ([app/layout.jsx:55-57](app/layout.jsx#L55-L57)).
-
-## What NOT to do
-
-- Don't add Tailwind (plain CSS is intentional).
-- Don't break static export — no server-side features beyond the existing API routes (which already don't run on the live host).
-- Don't change core game logic (mastery=4, 0.6 string-similarity threshold, 5-word subset).
-- Don't add emoji to UI chrome.
-- Don't use informal / slang copy.
-- Don't run `npm run sort:vocab` without re-mapping every wordpack's `indices` — it will silently scramble packs.
+Carried over from `design/overhaul/wortschatz-inventory.md` and still applicable here.
+- Reference words by headword, never by array position, and give every pack a stable id. Progress is keyed by pack id, so renaming or re-cutting a published pack drops learners' progress.
+- Give Harder its own storage. Letting it write Normal's streaks and mastery corrupted both.
+- Streaks are per run. Restoring saved streaks into a fresh random pool shows words at 2/4 before they are asked.
+- Count a completion once. Credit only when not already credited, so reloads and re-renders cannot double count; mark migrated records as backfilled rather than inventing timestamps.
+- Decide one rule per displayed number (per direction or combined) before building UI. Mixing the two made rows contradict each other.
+- Draw pools and refills at random through an injectable rng, never in render. A deterministic pool always taught the same first word.
+- Animations are overlays and never delay the advance. The last "Mastered" feedback must still show before the completion screen.
+- Guard held and double Enter (`e.repeat` plus a synchronous lock), or an autorepeating key grades a blank answer in the next prompt.
+- Guard every consume-once read with a run-once ref. StrictMode's second mount otherwise finds nothing and drops the pack.
+- Coerce every setting enum on read, and save settings as a read-merge-write patch so a stale component copy cannot overwrite a setting it never changed.
+- Hide header parts that depend on storage until after hydration; the static HTML is built with defaults and would flash them.
+- Use `overflow-x: clip` (with `hidden` only as fallback) on `html`/`body`; `hidden` turns the body into the scroll container and breaks scroll restore and sticky toolbars.
+- A background mounted on every page must never crash the app: guard canvas and DOM calls, fall back to a simpler background, render nothing on the server. The bus holds one global sink, so a contained settings preview can unseat the page background's sink; verify answer reactions still fire after navigating from `/settings` into a mode.
+- Detect duplicate keys on the raw JSON text; `JSON.parse` silently keeps the last one.
+- Content collisions are grading bugs: two entries with identical or near-identical definitions make one word's answer accept for another. Run `vocab:validate` on every content change.
+- Anchor `.gitignore` patterns (`/review/`, not `review/`) so they cannot shadow a route directory.
