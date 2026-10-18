@@ -89,7 +89,8 @@ Four options, keys 1 to 4. Distractors come from the scope first (`lib/distracto
 
 ```json
 "Abate": {
-  "definition": "to become less intense.",
+  "definition": "to lessen",
+  "alts": ["to diminish", "to subside", "to decrease"],
   "example": "Once the antibiotics kicked in, her fever began to abate ...",
   "fullDefinition": "Abate means to diminish in intensity, degree, or amount ...",
   "pos": "verb",
@@ -97,7 +98,8 @@ Four options, keys 1 to 4. Distractors come from the scope first (`lib/distracto
 }
 ```
 
-- `definition`: short lowercase gloss; the multiple-choice option text and the `w2d` typed answer.
+- `definition`: short lowercase gloss of 1 to 3 words, no trailing period, never using the headword or its root; the multiple-choice option text and the `w2d` typed answer.
+- `alts`: 1 to 3 alternative answers of 1 to 4 words each (same root rule), also accepted in `w2d`.
 - `example`: one sentence containing the headword or an inflection (used by In Context, so it must stay blankable).
 - `fullDefinition`: longer explanation shown on the answer card.
 - `pos`: `noun | verb | adjective | adverb`.
@@ -105,7 +107,7 @@ Four options, keys 1 to 4. Distractors come from the scope first (`lib/distracto
 
 `lib/words.js` exposes frozen entries `{ word, definition, fullDefinition, example, pos, tier }` in file order. Entry count at the last check was 1,476 (tier 1: 481, tier 2: 788, tier 3: 207). Never hardcode a count in copy; take it from `src/data/home.json` or from the data.
 
-`npm run vocab:validate` enforces: no missing or empty fields, valid `pos` and `tier`, no case-insensitive or raw duplicate keys, no identical definitions, every legacy-index entry exists, every pack word exists. It warns on near-duplicate definitions and on examples missing the headword.
+`npm run vocab:validate` enforces: no missing or empty fields, valid `pos` and `tier`, the `definition` and `alts` rules above, no case-insensitive or raw duplicate keys, meaning groups (`src/data/meaning-groups.json`) whose words all exist, share one `pos`, and belong to no other group, no identical definitions outside a common meaning group, every legacy-index entry exists, every pack word exists. It warns on near-duplicate definitions outside a common group and on examples missing the headword.
 
 ### Frozen legacy index
 

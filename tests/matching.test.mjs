@@ -45,11 +45,11 @@ test("diceCoefficient basics", () => {
 
 test("w2d grades against `definition`, not fullDefinition or example", () => {
 	const entry = VOCAB.Mitigate;
-	assert.equal(gradeDefinition(entry, "to lessen severity.").correct, true);
-	assert.equal(gradeDefinition(entry, "to lessen severity").correct, true);
+	assert.equal(gradeDefinition(entry, "to alleviate.").correct, true);
+	assert.equal(gradeDefinition(entry, "to alleviate").correct, true);
 	assert.equal(gradeDefinition(entry, entry.fullDefinition).correct, false);
 	assert.equal(gradeDefinition(entry, entry.example).correct, false);
-	const r = gradeDefinition(entry, "TO LESSEN SEVERITY.");
+	const r = gradeDefinition(entry, "TO ALLEVIATE.");
 	assert.equal(r.correct, true);
 	assert.equal(r.exact, true);
 	assert.equal(r.display, entry.definition);
@@ -86,10 +86,10 @@ test("d2w: exact for headwords of 4 characters or fewer, Dice 0.6 above that", (
 });
 
 test("gradeAnswer dispatches on direction", () => {
-	assert.equal(gradeAnswer("Mitigate", VOCAB.Mitigate, "to lessen severity.", "w2d").correct, true);
+	assert.equal(gradeAnswer("Mitigate", VOCAB.Mitigate, "to alleviate.", "w2d").correct, true);
 	assert.equal(gradeAnswer("Mitigate", VOCAB.Mitigate, "mitigate", "w2d").correct, false);
 	assert.equal(gradeAnswer("Mitigate", VOCAB.Mitigate, "mitigate", "d2w").correct, true);
-	assert.equal(gradeAnswer("Mitigate", VOCAB.Mitigate, "to lessen severity.", "d2w").correct, false);
+	assert.equal(gradeAnswer("Mitigate", VOCAB.Mitigate, "to alleviate.", "d2w").correct, false);
 });
 
 // An injected near-duplicate rule, so these tests do not depend on the exact
@@ -217,11 +217,11 @@ test("d2w: another headword needs the same pos and a shared meaning group or a n
 	const { setMeaningGroups, meaningGroupsReady } = await import("../lib/distractors.js");
 	await meaningGroupsReady;
 	const vocab = {
-		Laconic: { definition: "using few words.", pos: "adjective" },
-		Terse: { definition: "brief and abrupt.", pos: "adjective" },
-		Taciturn: { definition: "reserved in speech.", pos: "adjective" },
-		Brevity: { definition: "using few words.", pos: "noun" },
-		Curt: { definition: "rudely brief.", pos: "adjective" },
+		Laconic: { definition: "using few words", pos: "adjective" },
+		Terse: { definition: "brief and abrupt", pos: "adjective" },
+		Taciturn: { definition: "reserved in speech", pos: "adjective" },
+		Brevity: { definition: "using few words", pos: "noun" },
+		Curt: { definition: "rudely brief", pos: "adjective" },
 	};
 	setMeaningGroups({ groups: { brief: ["Laconic", "Terse", "Curt"], quiet: ["Taciturn"] } });
 	try {

@@ -9,31 +9,31 @@
 	"sample": [
 		{
 			"headword": "Laconic",
-			"definition": "using very few words.",
+			"definition": "terse",
 			"pos": "adjective",
 			"example": "When asked about the merger, the CEO’s laconic reply was simply, “It’s done.”"
 		},
 		{
 			"headword": "Placate",
-			"definition": "to calm; pacify.",
+			"definition": "to appease",
 			"pos": "verb",
 			"example": "Free dessert helped placate diners upset by the long wait."
 		},
 		{
 			"headword": "Ephemeral",
-			"definition": "short-lived.",
+			"definition": "short-lived",
 			"pos": "adjective",
 			"example": "Morning fog is beautiful but ephemeral, vanishing as soon as the sun appears."
 		},
 		{
 			"headword": "Obdurate",
-			"definition": "stubbornly inflexible.",
+			"definition": "unyielding",
 			"pos": "adjective",
 			"example": "The obdurate landlord refused to reduce the rent even during the recession."
 		},
 		{
 			"headword": "Garrulous",
-			"definition": "excessively talkative.",
+			"definition": "talkative",
 			"pos": "adjective",
 			"example": "The garrulous taxi driver narrated his life story during a ten-minute ride."
 		}

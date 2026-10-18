@@ -4,11 +4,16 @@
 //
 // Errors (exit 1): missing or empty fields, bad pos or tier, case-insensitive
 // duplicate headwords (also raw duplicate keys JSON.parse would collapse),
-// identical definitions, a legacy-index entry missing from the data, a pack
-// word that does not exist, or pack indices that no longer resolve to the
-// pack's words.
-// Warnings: near-duplicate definitions (same rule the distractor picker uses)
-// and examples that do not contain the headword or an inflection of it.
+// a definition over 3 words or ending in a period, alts that are not an array
+// of 1 to 3 strings of 1 to 4 words, the headword or its root inside its own
+// definition or alts, a meaning group (src/data/meaning-groups.json) with an
+// unknown word, mixed pos or a word shared with another group, identical
+// definitions on words outside a common meaning group, a legacy-index entry
+// missing from the data, a pack word that does not exist, or pack indices that
+// no longer resolve to the pack's words.
+// Warnings: near-duplicate definitions outside a common meaning group (same
+// rule the distractor picker uses) and examples that do not contain the
+// headword or an inflection of it.
 //
 //   node scripts/validate-vocab.js
 const fs = require("fs");
@@ -20,8 +25,13 @@ const ROOT = path.join(__dirname, "..");
 const VOCAB_PATH = path.join(ROOT, "src", "data", "gre_combined.json");
 const LEGACY_PATH = path.join(ROOT, "src", "data", "legacy-index.json");
 const PACKS_PATH = path.join(ROOT, "public", "data", "wordpacks.json");
+const GROUPS_PATH = path.join(ROOT, "src", "data", "meaning-groups.json");
 
 const FIELDS = ["definition", "fullDefinition", "example"];
+const MAX_DEFINITION_WORDS = 3;
+const MIN_ALTS = 1;
+const MAX_ALTS = 3;
+const MAX_ALT_WORDS = 4;
 const POS = ["noun", "verb", "adjective", "adverb"];
 const TIERS = [1, 2, 3];
 // The legacy table is a snapshot of the pre-overhaul key order; it never grows.
@@ -51,10 +61,21 @@ function exampleUsesWord(word, example) {
 		});
 }
 
+function wordCount(text) {
+	return text.trim().split(/\s+/).length;
+}
+
 async function main() {
-	const { isNearDuplicateDefinition, normalizeDefinition } = await import(
+	const { isNearDuplicateDefinition, normalizeDefinition, isSameRoot } = await import(
 		pathToFileURL(path.join(ROOT, "lib", "distractors.js")).href
 	);
+
+	// Does the text contain the headword or a word of its family? Tokens under
+	// three letters ("to", "of") are skipped.
+	const usesOwnRoot = (word, text) =>
+		normalizeDefinition(text)
+			.split(" ")
+			.some((t) => t.length >= 3 && isSameRoot(t, word));
 	const errors = [];
 	const warnings = [];
 
@@ -85,22 +106,70 @@ async function main() {
 		}
 		if (!POS.includes(e.pos)) errors.push(`${k}: bad pos ${JSON.stringify(e.pos)}`);
 		if (!TIERS.includes(e.tier)) errors.push(`${k}: bad tier ${JSON.stringify(e.tier)}`);
+		if (typeof e.definition === "string" && e.definition.trim()) {
+			const d = e.definition;
+			if (wordCount(d) > MAX_DEFINITION_WORDS) errors.push(`${k}: definition over ${MAX_DEFINITION_WORDS} words: "${d}"`);
+			if (/\.\s*$/.test(d)) errors.push(`${k}: definition ends in a period: "${d}"`);
+			if (usesOwnRoot(k, d)) errors.push(`${k}: definition uses the headword or its root: "${d}"`);
+		}
+		const alts = e.alts;
+		if (!Array.isArray(alts) || alts.length < MIN_ALTS || alts.length > MAX_ALTS) {
+			errors.push(`${k}: alts must be an array of ${MIN_ALTS} to ${MAX_ALTS} strings`);
+		} else {
+			for (const a of alts) {
+				if (typeof a !== "string" || !a.trim()) {
+					errors.push(`${k}: alt ${JSON.stringify(a)} is not a non-empty string`);
+					continue;
+				}
+				if (wordCount(a) > MAX_ALT_WORDS) errors.push(`${k}: alt over ${MAX_ALT_WORDS} words: "${a}"`);
+				if (usesOwnRoot(k, a)) errors.push(`${k}: alt uses the headword or its root: "${a}"`);
+			}
+		}
 		if (typeof e.example === "string" && !exampleUsesWord(k, e.example)) {
 			warnings.push(`${k}: example lacks the headword: "${e.example}"`);
 		}
 	}
 
-	// Definition collisions.
+	// Meaning groups: every word real, one pos per group, no word in two groups.
+	const groupOf = new Map(); // headword -> group key
+	const groupsRaw = JSON.parse(fs.readFileSync(GROUPS_PATH, "utf8"));
+	const groups = groupsRaw && groupsRaw.groups;
+	if (!groups || typeof groups !== "object" || Array.isArray(groups)) {
+		errors.push(`meaning-groups.json must be { "groups": { key: [headword] } }`);
+	} else {
+		for (const [g, list] of Object.entries(groups)) {
+			if (!Array.isArray(list) || list.length < 2) {
+				errors.push(`group ${g}: must list at least two headwords`);
+				continue;
+			}
+			const pos = new Set();
+			for (const w of list) {
+				if (typeof w !== "string" || !Object.prototype.hasOwnProperty.call(vocab, w)) {
+					errors.push(`group ${g}: word ${JSON.stringify(w)} does not exist`);
+					continue;
+				}
+				pos.add(vocab[w].pos);
+				if (groupOf.has(w)) errors.push(`group ${g}: "${w}" is also in group ${groupOf.get(w)}`);
+				else groupOf.set(w, g);
+			}
+			if (pos.size > 1) errors.push(`group ${g}: mixed pos (${list.map((w) => `${w} ${vocab[w] && vocab[w].pos}`).join(", ")})`);
+		}
+	}
+	const sameGroup = (a, b) => groupOf.has(a) && groupOf.get(a) === groupOf.get(b);
+
+	// Definition collisions. Identical or near-identical definitions are fine
+	// inside one meaning group: those words are accepted for each other.
 	const defined = keys.filter((k) => typeof vocab[k].definition === "string");
 	let near = 0;
 	for (let i = 0; i < defined.length; i++) {
 		const a = defined[i];
 		for (let j = i + 1; j < defined.length; j++) {
 			const b = defined[j];
+			if (sameGroup(a, b)) continue;
 			const da = vocab[a].definition;
 			const db = vocab[b].definition;
 			if (normalizeDefinition(da) === normalizeDefinition(db)) {
-				errors.push(`${a} / ${b}: identical definition "${da}"`);
+				errors.push(`${a} / ${b}: identical definition "${da}" outside a common meaning group`);
 			} else if (isNearDuplicateDefinition(da, db)) {
 				near++;
 				warnings.push(`${a} / ${b}: near-duplicate definitions "${da}" / "${db}"`);

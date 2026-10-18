@@ -239,18 +239,18 @@ test("a full Normal run terminates with every word mastered exactly once", () =>
 // ---------------------------------------------------------------------------
 
 const VOCAB = {
-	Exculpate: { word: "Exculpate", definition: "to clear from blame.", pos: "verb" },
-	Exonerate: { word: "Exonerate", definition: "to clear from blame.", pos: "verb" },
-	Impermeable: { word: "Impermeable", definition: "not allowing passage.", pos: "adjective" },
-	Permeable: { word: "Permeable", definition: "allowing passage.", pos: "adjective" },
-	Mitigate: { word: "Mitigate", definition: "to lessen severity.", pos: "verb" },
+	Exculpate: { word: "Exculpate", definition: "to clear from blame", pos: "verb" },
+	Exonerate: { word: "Exonerate", definition: "to clear from blame", pos: "verb" },
+	Impermeable: { word: "Impermeable", definition: "not allowing passage", pos: "adjective" },
+	Permeable: { word: "Permeable", definition: "allowing passage", pos: "adjective" },
+	Mitigate: { word: "Mitigate", definition: "to alleviate", pos: "verb" },
 };
 
 test("w2d grades the typed definition", () => {
-	const ok = E.gradeFor("Mitigate", VOCAB.Mitigate, "to lessen severity", "w2d", VOCAB);
+	const ok = E.gradeFor("Mitigate", VOCAB.Mitigate, "To alleviate.", "w2d", VOCAB);
 	assert.equal(ok.correct, true);
 	assert.equal(ok.alsoAccepted, null);
-	assert.equal(ok.display, "to lessen severity.");
+	assert.equal(ok.display, "to alleviate");
 	assert.equal(E.gradeFor("Mitigate", VOCAB.Mitigate, "to make worse", "w2d", VOCAB).correct, false);
 });
 
@@ -268,12 +268,12 @@ test("d2w accepts a near-duplicate headword and names the target", () => {
 test("the prompt and pool never show the answer side", () => {
 	const e = VOCAB.Mitigate;
 	assert.deepEqual(E.promptFor(e, "w2d"), { text: "Mitigate", hint: "verb", isWord: true });
-	assert.deepEqual(E.promptFor(e, "d2w"), { text: "to lessen severity.", hint: "(verb)", isWord: false });
+	assert.deepEqual(E.promptFor(e, "d2w"), { text: "to alleviate", hint: "(verb)", isWord: false });
 	assert.equal(E.poolLabel(e, "w2d"), "Mitigate");
-	assert.equal(E.poolLabel(e, "d2w"), "to lessen severity.");
-	assert.deepEqual(E.winNames(e), { word: "Mitigate", meaning: "to lessen severity." });
+	assert.equal(E.poolLabel(e, "d2w"), "to alleviate");
+	assert.deepEqual(E.winNames(e), { word: "Mitigate", meaning: "to alleviate" });
 	const rows = E.missedRows([{ key: "Mitigate", misses: 2 }], (k) => VOCAB[k], "w2d");
-	assert.deepEqual(rows, [{ key: "Mitigate", primary: "to lessen severity.", secondary: "Mitigate", misses: 2 }]);
+	assert.deepEqual(rows, [{ key: "Mitigate", primary: "to alleviate", secondary: "Mitigate", misses: 2 }]);
 	assert.equal(E.missedRows([{ key: "Mitigate", misses: 1 }], (k) => VOCAB[k], "d2w")[0].primary, "Mitigate");
 });
 
