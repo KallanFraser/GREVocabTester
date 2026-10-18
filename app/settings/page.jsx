@@ -11,7 +11,14 @@ import {
 	loadSettings,
 	saveSettings,
 } from "../../lib/settings";
-import { exportProgress, prepareImport, applyImport, resetAll } from "../../lib/progress";
+import {
+	MAX_IMPORT_BYTES,
+	applyImport,
+	exportProgress,
+	parseBackupText,
+	prepareImport,
+	resetAll,
+} from "../../lib/progress";
 import ConfirmDialog from "../../components/ConfirmDialog";
 import { resolveBackgroundId } from "../../components/Background";
 import { BACKGROUND_DESC, BACKGROUND_IDS, BACKGROUND_LABEL } from "../../lib/backgrounds/ids";
@@ -20,8 +27,18 @@ import { loadPageWords } from "../../lib/backgrounds/sources";
 import "../../styles/backgrounds.css";
 
 // Imports are read into memory whole. A progress export is a small text file,
-// so anything this large is not one, and it is refused before it is read.
-const MAX_IMPORT_BYTES = 2 * 1024 * 1024;
+// so a file over MAX_IMPORT_BYTES is refused before it is read; pasted text is
+// held to the same limit by parseBackupText.
+
+// The keys a prepared import leaves out (unknown or unusable), as one sentence,
+// or "" when every key is imported.
+function skippedText(prepared) {
+	const keys = prepared && Array.isArray(prepared.skipped) ? prepared.skipped : [];
+	if (!keys.length) return "";
+	const shown = keys.slice(0, 8).join(", ");
+	const more = keys.length > 8 ? ` and ${keys.length - 8} more` : "";
+	return `Not imported (not recognized): ${shown}${more}.`;
+}
 
 // One live preview of the selected background, in a small contained box. It is
 // a separate engine instance with `bus: false`: it never subscribes to answer
@@ -161,9 +178,10 @@ export default function Page() {
 	function stageImport(text) {
 		let parsed;
 		try {
-			parsed = JSON.parse(text);
-		} catch {
-			setMsg({ type: "err", text: "That isn’t valid JSON. Nothing was imported." });
+			// Size limit and JSON check, the same for a file and for pasted text.
+			parsed = parseBackupText(text);
+		} catch (e) {
+			setMsg({ type: "err", text: e?.message || "That isn’t valid JSON. Nothing was imported." });
 			return;
 		}
 		try {
@@ -181,7 +199,8 @@ export default function Page() {
 			applyImport(prepared);
 			setPasteText("");
 			setSettings(loadSettings());
-			setMsg({ type: "ok", text: "Progress imported. Open a mode to see it." });
+			const skipped = skippedText(prepared);
+			setMsg({ type: "ok", text: `Progress imported. Open a mode to see it.${skipped ? ` ${skipped}` : ""}` });
 		} catch (e) {
 			setMsg({ type: "err", text: e?.message || "Import failed." });
 		}
@@ -404,14 +423,17 @@ export default function Page() {
 			{pending && (
 				<ConfirmDialog
 					tone="danger"
-					title="Replace progress on this device?"
-					body={
-						pending.summary
-							.map((s) => `${DIRECTION_LABEL[s.direction] || s.direction}: ${s.file} learned in the file, ${s.device} on this device.`)
-							.join(" ") +
-						" Importing overwrites the progress stored here and cannot be undone. Export first if you want to keep it."
-					}
-					confirmLabel="Overwrite and import"
+					title="Import this backup?"
+					body={[
+						...pending.summary.map(
+							(s) => `${DIRECTION_LABEL[s.direction] || s.direction}: ${s.file} learned in the file, ${s.device} in this browser.`
+						),
+						"The import merges into this browser: each kind of data in the backup (for example a direction's progress, settings or custom packs) replaces the same data stored here, and everything else stored here is kept. Replaced data cannot be recovered, so export first if you want a copy.",
+						skippedText(pending),
+					]
+						.filter(Boolean)
+						.join(" ")}
+					confirmLabel="Import"
 					onConfirm={onConfirmImport}
 					onCancel={() => setPending(null)}
 				/>

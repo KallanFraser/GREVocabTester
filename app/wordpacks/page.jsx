@@ -20,7 +20,6 @@ import {
 	CATEGORY_CUSTOM,
 	CATEGORY_FAVORITES,
 	COLLAPSED_AT_START,
-	DIFFICULTY_KEY,
 	FILTERS,
 	SORT_OPTIONS,
 	computeStats,
@@ -38,7 +37,6 @@ import {
 import { loadCustomPacks, loadFavorites, loadPacks, setFavorite } from "../../lib/packs";
 import { clearLastPack, clearScopeProgress, loadLastPack, saveLastPack, scopeIdFor } from "../../lib/progress";
 import { DIRECTION_LABEL, SETTINGS_EVENT, loadSettings } from "../../lib/settings";
-import * as storage from "../../lib/storage";
 
 // The builder carries the whole vocabulary, so it loads only when opened.
 const PackBuilder = dynamic(() => import("../../components/packs/PackBuilder"), { ssr: false, loading: () => null });
@@ -175,12 +173,11 @@ export default function WordPacksPage() {
 		return () => ro.disconnect();
 	}, [builtIn, error]);
 
-	// Links into the modes carry ?pack=<id>; this records the pack for the
-	// home page's Continue card, and Test or Harder for Test mode, before the
-	// browser follows the link.
-	function openPack(pack, mode) {
+	// Links into the modes carry ?pack=<id> (and ?mode= for Test, which Test
+	// mode applies and saves itself); this records the pack for the home page's
+	// Continue card before the browser follows the link.
+	function openPack(pack) {
 		saveLastPack({ id: pack.id, title: pack.title, words: pack.words });
-		if (mode && mode.difficulty) storage.set(DIFFICULTY_KEY, mode.difficulty);
 	}
 
 	function toggleFavorite(pack) {

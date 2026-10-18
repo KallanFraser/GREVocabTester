@@ -413,3 +413,16 @@ test("a word retired in Harder is enrolled in daily review", () => {
 	assert.ok(raw.words.Cogent);
 	assert.equal(storage.getItem("gv_progress_w2d"), null);
 });
+
+test("a blank or whitespace-only submit is not an answer", () => {
+	for (const v of ["", " ", "\t\n  ", null, undefined, 5]) assert.equal(E.isBlankAnswer(v), true, JSON.stringify(v));
+	for (const v of ["a", " abate ", "0"]) assert.equal(E.isBlankAnswer(v), false, v);
+});
+
+test("w2d gradeFor picks up alts from the raw vocabulary record", () => {
+	const entry = { word: "Zzz", definition: "to lessen in intensity." };
+	const vocab = { Zzz: { definition: "to lessen in intensity.", alts: ["subside"] } };
+	assert.equal(E.gradeFor("Zzz", entry, "subside", "w2d", vocab).correct, true);
+	assert.equal(E.gradeFor("Zzz", entry, "subside", "w2d", {}).correct, false);
+	assert.equal(E.gradeFor("Zzz", entry, "subside", "w2d", { __proto__: null }).correct, false);
+});

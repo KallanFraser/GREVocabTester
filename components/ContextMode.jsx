@@ -28,7 +28,7 @@ import {
 	ADVANCE_DELAY_OPTIONS,
 	ADVANCE_DELAY_LABEL,
 } from "../lib/settings";
-import { resolvePackContext } from "../lib/packs";
+import { MISSING_PACK_NOTICE, isMissingPack, resolvePackContext } from "../lib/packs";
 import { buildContextQuestion, usableKeys } from "../lib/context";
 import { bgEvent, setBgOrigin, setBgWords } from "../lib/backgrounds/bus";
 import "../styles/choice.css";
@@ -104,6 +104,8 @@ export default function ContextMode() {
 	const [question, setQuestion] = useState(null);
 	const [answer, setAnswer] = useState(null); // { picked, correct } once answered
 	const [confirmReset, setConfirmReset] = useState(false);
+	// A ?pack= or ?id= that named no pack; the quiz falls back to all words.
+	const [missingPack, setMissingPack] = useState(false);
 
 	const settingsRef = useRef(settings);
 	settingsRef.current = settings;
@@ -161,14 +163,18 @@ export default function ContextMode() {
 	// ---- Pack context from the URL ----
 	useEffect(() => {
 		let alive = true;
-		resolvePackContext(search).then((ctx) => {
+		function apply(ctx) {
 			if (!alive) return;
 			const first = !resolvedOnceRef.current;
 			resolvedOnceRef.current = true;
 			// The legacy handoff is cached for the page load; honour it only once.
 			if (ctx && ctx.source === "handoff" && !first) ctx = null;
+			// A pack that no longer exists runs as all words, with a notice; the
+			// rewrite below drops its parameters.
+			const missing = isMissingPack(ctx);
+			if (missing) ctx = null;
 
-			const keys = ctx ? [...new Set(ctx.words.map(getWord).filter(Boolean).map((e) => e.word))] : [];
+			const keys = ctx && Array.isArray(ctx.words) ? [...new Set(ctx.words.map(getWord).filter(Boolean).map((e) => e.word))] : [];
 			const usePack = keys.length > 0;
 			const packId = usePack ? ctx.id : null;
 
@@ -181,11 +187,17 @@ export default function ContextMode() {
 			}
 
 			const sig = usePack ? `${packId || ""}|${keys.join(",")}` : "all";
+			if (missing) setMissingPack(true);
+			else if (sig !== sigRef.current) setMissingPack(false);
 			if (sig === sigRef.current) return;
 			sigRef.current = sig;
 			startScope(usePack ? keys : ALL_KEYS, packId, usePack ? ctx.title : null);
 			setHydrated(true);
-		});
+		}
+		// A failed resolve behaves as no context: all words.
+		resolvePackContext(search)
+			.then(apply)
+			.catch(() => apply(null));
 		return () => {
 			alive = false;
 		};
@@ -489,6 +501,14 @@ export default function ContextMode() {
 					</select>
 				</label>
 			</PlayHeader>
+			{hydrated && missingPack && (
+				<div className="notice" role="status">
+					<p>{MISSING_PACK_NOTICE}</p>
+					<button type="button" className="btn-q" onClick={() => setMissingPack(false)}>
+						Dismiss
+					</button>
+				</div>
+			)}
 
 			<main className="ch-stage">
 				<div className="ch-wrap">{body}</div>

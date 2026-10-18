@@ -211,6 +211,12 @@ export function countIn(keys, set) {
 // Grading and display
 // ---------------------------------------------------------------------------
 
+// An empty or whitespace-only submit is not an answer: it is ignored, with no
+// miss, no streak change and no Harder state change.
+export function isBlankAnswer(answer) {
+	return typeof answer !== "string" || answer.trim() === "";
+}
+
 // Grade `answer` for headword `key` (entry = its vocabulary record) in
 // `direction`. Returns { correct, exact, display, alsoAccepted } where
 // `display` is the expected answer and `alsoAccepted` names the target when a
@@ -225,7 +231,10 @@ export function gradeFor(key, entry, answer, direction, vocab) {
 			alsoAccepted: r.correct && r.acceptedKey && r.acceptedKey !== key ? key : null,
 		};
 	}
-	const r = gradeDefinition(entry, answer);
+	// The raw vocabulary record may carry `alts` that the entry passed in lacks.
+	const raw = vocab && Object.prototype.hasOwnProperty.call(vocab, key) ? vocab[key] : null;
+	const withAlts = entry && !Array.isArray(entry.alts) && raw && Array.isArray(raw.alts) ? { ...entry, alts: raw.alts } : entry;
+	const r = gradeDefinition(withAlts, answer);
 	return { correct: r.correct, exact: r.exact, display: r.display, alsoAccepted: null };
 }
 

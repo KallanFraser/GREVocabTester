@@ -39,7 +39,7 @@ import {
 	ADVANCE_DELAY_OPTIONS,
 	ADVANCE_DELAY_LABEL,
 } from "../../lib/settings";
-import { resolvePackContext } from "../../lib/packs";
+import { MISSING_PACK_NOTICE, isMissingPack, resolvePackContext } from "../../lib/packs";
 import { scopeIdFor } from "../../lib/progress";
 import * as storage from "../../lib/storage";
 import { bgEvent, setBgOrigin, setBgWords } from "../../lib/backgrounds/bus";
@@ -74,6 +74,15 @@ function loadPracticePos(scopeId) {
 function savePracticePos(scopeId, index) {
 	const all = storage.get(PRACTICE_POS_KEY, null);
 	storage.set(PRACTICE_POS_KEY, { ...(isPlainObject(all) ? all : {}), [scopeId]: index });
+}
+
+// The key a position is saved under: the pack id, "all" for the full list, or
+// for an ad-hoc selection (?words=) the word list itself, so two different
+// selections never share a place.
+function practiceScopeId(packId, keys) {
+	if (packId) return scopeIdFor(packId);
+	if (keys === ALL_KEYS) return scopeIdFor(null);
+	return scopeIdFor(`words:${keys.join(",")}`);
 }
 
 // ---- Questions ----
@@ -175,6 +184,8 @@ export default function ChoiceQuiz({ variant = "practice" }) {
 	const [question, setQuestion] = useState(null);
 	const [answer, setAnswer] = useState(null); // { picked, correct } once answered
 	const [confirmReset, setConfirmReset] = useState(false);
+	// A ?pack= or ?id= that named no pack; the quiz falls back to all words.
+	const [missingPack, setMissingPack] = useState(false);
 
 	const settingsRef = useRef(settings);
 	settingsRef.current = settings;
@@ -187,7 +198,7 @@ export default function ChoiceQuiz({ variant = "practice" }) {
 	const noSound = useRef(null);
 
 	const inPack = !!scope.packId || scope.keys !== ALL_KEYS;
-	const scopeId = scopeIdFor(scope.packId || (inPack ? "custom" : null));
+	const scopeId = practiceScopeId(scope.packId, scope.keys);
 	const direction = settings.direction;
 	const manual = settings.advanceDelay === ADVANCE_DELAY_MANUAL;
 
@@ -209,7 +220,7 @@ export default function ChoiceQuiz({ variant = "practice" }) {
 		setConfirmReset(false);
 		setScope({ keys, packId, title });
 		if (isPractice) {
-			const sid = scopeIdFor(packId || (keys !== ALL_KEYS ? "custom" : null));
+			const sid = practiceScopeId(packId, keys);
 			let pos = loadPracticePos(sid);
 			if (pos >= keys.length) pos = 0;
 			setPosition(pos);
@@ -235,14 +246,18 @@ export default function ChoiceQuiz({ variant = "practice" }) {
 	// ---- Pack context from the URL ----
 	useEffect(() => {
 		let alive = true;
-		resolvePackContext(search).then((ctx) => {
+		function apply(ctx) {
 			if (!alive) return;
 			const first = !resolvedOnceRef.current;
 			resolvedOnceRef.current = true;
 			// The legacy handoff is cached for the page load; honour it only once.
 			if (ctx && ctx.source === "handoff" && !first) ctx = null;
+			// A pack that no longer exists runs as all words, with a notice; the
+			// rewrite below drops its parameters.
+			const missing = isMissingPack(ctx);
+			if (missing) ctx = null;
 
-			const keys = ctx ? [...new Set(ctx.words.map(getWord).filter(Boolean).map((e) => e.word))] : [];
+			const keys = ctx && Array.isArray(ctx.words) ? [...new Set(ctx.words.map(getWord).filter(Boolean).map((e) => e.word))] : [];
 			const usePack = keys.length > 0;
 			const packId = usePack ? ctx.id : null;
 
@@ -255,11 +270,17 @@ export default function ChoiceQuiz({ variant = "practice" }) {
 			}
 
 			const sig = usePack ? `${packId || ""}|${keys.join(",")}` : "all";
+			if (missing) setMissingPack(true);
+			else if (sig !== sigRef.current) setMissingPack(false);
 			if (sig === sigRef.current) return;
 			sigRef.current = sig;
 			startScope(usePack ? keys : ALL_KEYS, packId, usePack ? ctx.title : null);
 			setHydrated(true);
-		});
+		}
+		// A failed resolve behaves as no context: all words.
+		resolvePackContext(search)
+			.then(apply)
+			.catch(() => apply(null));
 		return () => {
 			alive = false;
 		};
@@ -494,6 +515,14 @@ export default function ChoiceQuiz({ variant = "practice" }) {
 					</select>
 				</label>
 			</PlayHeader>
+			{hydrated && missingPack && (
+				<div className="notice" role="status">
+					<p>{MISSING_PACK_NOTICE}</p>
+					<button type="button" className="btn-q" onClick={() => setMissingPack(false)}>
+						Dismiss
+					</button>
+				</div>
+			)}
 
 			<main className="ch-stage">
 				<div className="ch-wrap">

@@ -19,7 +19,7 @@ import { useSearchParams } from "next/navigation";
 import "../styles/cards.css";
 import PlayHeader from "./PlayHeader";
 import { WORDS, getWord } from "../lib/words";
-import { resolvePackContext } from "../lib/packs";
+import { MISSING_PACK_NOTICE, isMissingPack, resolvePackContext } from "../lib/packs";
 import { loadKnown, scopeIdFor } from "../lib/progress";
 import { loadSettings, saveSettings, DEFAULT_DIRECTION, DIRECTION_D2W } from "../lib/settings";
 import { cryptoRng } from "../lib/hard-scheduler";
@@ -74,6 +74,8 @@ export default function Flashcards() {
 	const [deck, setDeck] = useState([]);
 	const [position, setPosition] = useState(0);
 	const [flipped, setFlipped] = useState(false);
+	// A ?pack= or ?id= that named no pack; the cards fall back to all words.
+	const [missingPack, setMissingPack] = useState(false);
 
 	const currentKey = deck.length ? deck[position] : null;
 
@@ -98,7 +100,23 @@ export default function Flashcards() {
 				ctx = null;
 			}
 			if (!alive) return;
+			// A pack that no longer exists: all words, a notice, and the address bar
+			// loses the dead ?pack= / ?id= so a reload does not repeat it.
+			if (isMissingPack(ctx)) {
+				ctx = null;
+				setMissingPack(true);
+				try {
+					const url = new URL(window.location.href);
+					url.searchParams.delete("pack");
+					url.searchParams.delete("id");
+					const q = url.searchParams.toString();
+					window.history.replaceState(window.history.state, "", url.pathname + (q ? `?${q}` : "") + url.hash);
+				} catch {
+					/* the URL is a convenience; the cards still work */
+				}
+			}
 			const words = ctx ? canonicalWords(ctx.words) : [];
+			if (words.length) setMissingPack(false);
 			const scopeKeys = words.length ? words : ALL_KEYS;
 			const packInfo = words.length ? { id: ctx.id || null, title: ctx.title || "Word pack" } : null;
 			const m = loadKnown(s.direction, scopeIdFor(packInfo && packInfo.id), scopeKeys);
@@ -301,6 +319,14 @@ export default function Flashcards() {
 					{shuffleOn ? "Shuffled" : "In order"}
 				</button>
 			</PlayHeader>
+			{hydrated && missingPack && (
+				<div className="notice" role="status">
+					<p>{MISSING_PACK_NOTICE}</p>
+					<button type="button" className="btn-q" onClick={() => setMissingPack(false)}>
+						Dismiss
+					</button>
+				</div>
+			)}
 
 			<main className="fc-stage">
 				<div className="fc-wrap">

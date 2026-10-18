@@ -176,7 +176,7 @@ test("constants unchanged: pool 5, streak 4", () => {
 });
 
 test("streaks: 4 in a row masters, any miss resets to 0", () => {
-	assert.deepEqual(P.recordAnswer(W, "all", "Abate", true), { streak: 1, masteredNow: false, mastered: [] });
+	assert.deepEqual(P.recordAnswer(W, "all", "Abate", true), { streak: 1, masteredNow: false, mastered: [], saved: true });
 	P.recordAnswer(W, "all", "Abate", true);
 	P.recordAnswer(W, "all", "Abate", true);
 	assert.equal(P.loadProgress(W, "all").streaks.Abate, 3);
@@ -555,4 +555,144 @@ test("a failed import write rolls back every key", () => {
 		delete storage.setItem;
 	}
 	assert.deepEqual(new Map(storage.map), before);
+});
+
+test("import takes only known gv_ keys, each through its normalizer, and lists the rest", () => {
+	const prepared = P.prepareImport({
+		version: 1,
+		data: {
+			gv_custom_packs: [{ id: "custom-a", title: " A ", words: ["Abate", 3, "Abate", "Guy"] }, "junk", { id: "x", words: ["Y"] }],
+			gv_favorites: { version: 1, ids: ["p", 5, "p"] },
+			gv_practice_pos: { p: 3, q: -1, r: "2", __proto__: 4 },
+			gv_future_feature: { anything: true },
+			gv_hard_w2d: { scopes: { p: { run: null, count: 2, runs: [] } } },
+			gv_review_d2w: { seeded: true, words: { Abate: { interval: 3, due: "2026-10-20" } } },
+			gv_settings: { direction: "d2w" },
+			gv_last_pack: { id: "p", title: "P", words: ["Abate"] },
+		},
+	});
+	const writes = Object.fromEntries(prepared.writes);
+	assert.deepEqual(writes.gv_custom_packs.map((p) => [p.id, p.title, p.words]), [["custom-a", "A", ["Abate", "Guy"]]]);
+	assert.deepEqual(writes.gv_favorites, { version: 1, ids: ["p"] });
+	assert.deepEqual(writes.gv_practice_pos, { p: 3 });
+	assert.deepEqual(prepared.skipped, ["gv_future_feature"]);
+	assert.ok(!("gv_future_feature" in writes));
+	assert.equal(writes.gv_hard_w2d.scopes.p.count, 2);
+	assert.equal(writes.gv_review_d2w.words.Abate.interval, 3);
+	// A known key with the wrong shape fails the whole import.
+	assert.throws(() => P.prepareImport({ version: 1, data: { gv_custom_packs: { a: 1 } } }), /Invalid value/);
+	assert.throws(() => P.prepareImport({ version: 1, data: { gv_favorites: [1] } }), /Invalid value/);
+});
+
+test("__proto__, constructor and prototype keys are never copied from stored or imported data", () => {
+	const text =
+		'{"version":1,"data":{' +
+		'"__proto__":{"polluted":true},' +
+		'"gv_progress_w2d":{"scopes":{"__proto__":{"mastered":["X"],"streaks":{}},"constructor":{"mastered":[],"streaks":{}},' +
+		'"p":{"mastered":["Abate"],"streaks":{"__proto__":2,"prototype":1,"Bolster":2}}}},' +
+		'"gv_hard_w2d":{"scopes":{"__proto__":{"run":null},"p":{"run":{"words":{"__proto__":{"status":"x"},"Abate":{"status":"active"}}}}}},' +
+		'"gv_review_w2d":{"seeded":true,"words":{"__proto__":{"interval":1,"due":"2026-10-20"},"Abate":{"interval":1,"due":"2026-10-20"}}},' +
+		'"gv_practice_pos":{"__proto__":1,"p":2}}}';
+	const prepared = P.prepareImport(P.parseBackupText(text));
+	const writes = Object.fromEntries(prepared.writes);
+	assert.deepEqual(Object.keys(writes.gv_progress_w2d.scopes), ["p"]);
+	assert.deepEqual(writes.gv_progress_w2d.scopes.p.streaks, { Bolster: 2 });
+	assert.equal(Object.getPrototypeOf(writes.gv_progress_w2d.scopes.p.streaks), Object.prototype);
+	assert.deepEqual(Object.keys(writes.gv_hard_w2d.scopes), ["p"]);
+	assert.deepEqual(Object.keys(writes.gv_hard_w2d.scopes.p.run.words), ["Abate"]);
+	assert.deepEqual(Object.keys(writes.gv_review_w2d.words), ["Abate"]);
+	assert.equal(Object.getPrototypeOf(writes.gv_review_w2d.words), Object.prototype);
+	assert.deepEqual(writes.gv_practice_pos, { p: 2 });
+	assert.ok(prepared.skipped.includes("__proto__"));
+	assert.equal({}.polluted, undefined);
+	// The same holds for what is already in storage.
+	storage.setItem("gv_progress_d2w", '{"scopes":{"__proto__":{"mastered":["X"],"streaks":{}},"p":{"mastered":[],"streaks":{"__proto__":2}}}}');
+	assert.deepEqual(P.loadProgress(D, "p").streaks, {});
+	assert.deepEqual(P.loadProgress(D, "__proto__").mastered, []);
+});
+
+test("parseBackupText: 2 MB limit for pasted text, clear JSON errors", () => {
+	assert.equal(P.MAX_IMPORT_BYTES, 2 * 1024 * 1024);
+	assert.deepEqual(P.parseBackupText('{"version":1}'), { version: 1 });
+	assert.throws(() => P.parseBackupText("{not json"), /not valid JSON/);
+	assert.throws(() => P.parseBackupText("   "), /nothing to import/);
+	assert.throws(() => P.parseBackupText(null), /nothing to import/);
+	const big = JSON.stringify({ version: 1, data: { gv_x: "a".repeat(P.MAX_IMPORT_BYTES) } });
+	assert.throws(() => P.parseBackupText(big), /larger than 2 MB/);
+	// Multi-byte characters count by bytes, not string length.
+	const wide = "é".repeat(P.MAX_IMPORT_BYTES / 2 + 10);
+	assert.throws(() => P.parseBackupText(`"${wide}"`), /larger than 2 MB/);
+});
+
+test("a failed import removes touched keys and restores snapshots, including keys that did not exist", () => {
+	seedEverything();
+	storage.removeItem("gv_practice_pos");
+	const before = new Map(storage.map);
+	const prepared = P.prepareImport({
+		version: 1,
+		data: { gv_practice_pos: { p: 1 }, gv_settings: { direction: "w2d" }, gv_favorites: { ids: [] } },
+	});
+	let n = 0;
+	const real = storage.setItem.bind(storage);
+	storage.setItem = (k, v) => {
+		if (++n === 3) throw new Error("QuotaExceededError");
+		real(k, v);
+	};
+	try {
+		assert.throws(() => P.applyImport(prepared), /Nothing was imported, and your existing progress is unchanged/);
+	} finally {
+		delete storage.setItem;
+	}
+	assert.deepEqual(new Map(storage.map), before);
+	assert.equal(storage.getItem("gv_practice_pos"), null);
+});
+
+test("a failed import says so when a restore also fails", () => {
+	seedEverything();
+	const prepared = P.prepareImport({ version: 1, data: { gv_settings: { direction: "w2d" }, gv_favorites: { ids: [] } } });
+	let n = 0;
+	const real = storage.setItem.bind(storage);
+	storage.setItem = (k, v) => {
+		if (++n >= 2) throw new Error("QuotaExceededError");
+		real(k, v);
+	};
+	let caught = null;
+	try {
+		P.applyImport(prepared);
+	} catch (e) {
+		caught = e;
+	} finally {
+		delete storage.setItem;
+	}
+	assert.ok(caught);
+	assert.match(caught.message, /could not be put back/);
+	// Both touched keys held data before, and neither could be written back.
+	assert.deepEqual(caught.restoreFailed, ["gv_settings", "gv_favorites"]);
+});
+
+test("a write that silently does not stick counts as a failure", () => {
+	const prepared = P.prepareImport({ version: 1, data: { gv_settings: { direction: "d2w" } } });
+	const real = storage.setItem.bind(storage);
+	storage.setItem = (k, v) => real(k, k === "gv_settings" ? "{}" : v);
+	try {
+		assert.throws(() => P.applyImport(prepared), /Storage is full or blocked/);
+	} finally {
+		delete storage.setItem;
+	}
+});
+
+test("failed progress and Harder saves are reported, not thrown", () => {
+	P.resetSaveFailed();
+	assert.equal(P.saveHasFailed(), false);
+	assert.equal(P.recordAnswer(W, "p", "Abate", true).saved, true);
+	storage.failWrites = true;
+	assert.equal(P.recordAnswer(W, "p", "Abate", true).saved, false);
+	assert.equal(P.saveHasFailed(), true);
+	assert.ok(events.includes(P.SAVE_FAILED_EVENT));
+	assert.equal(P.saveProgress(W, "p", { mastered: [], streaks: {} }), false);
+	assert.equal(P.saveHardRun(W, "p", { words: {} }), false);
+	assert.equal(P.recordHardRun(W, "p", { firstTryPct: 50, totalWords: 5 }).saved, false);
+	storage.failWrites = false;
+	assert.equal(P.saveHardRun(W, "p", { words: {} }), true);
+	P.resetSaveFailed();
 });

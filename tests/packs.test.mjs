@@ -233,11 +233,31 @@ test("?pack=<id> resolves a custom pack without fetching", async () => {
 	assert.equal(fetchCalls, 0);
 });
 
-test("unknown pack ids resolve to null", async () => {
-	assert.equal(await K.resolvePackContext("?pack=nope", opts), null);
-	assert.equal(await K.resolvePackContext("?pack=custom-nope", opts), null);
+test("unknown or deleted pack ids resolve to { missingId }", async () => {
+	assert.deepEqual(await K.resolvePackContext("?pack=nope", opts), { missingId: "nope" });
+	assert.deepEqual(await K.resolvePackContext("?pack=custom-nope", opts), { missingId: "custom-nope" });
+	assert.deepEqual(await K.resolvePackContext("?id=gone", opts), { missingId: "gone" });
+	assert.equal(K.isMissingPack({ missingId: "nope" }), true);
+	assert.equal(K.isMissingPack(null), false);
+	assert.equal(K.isMissingPack({ id: "a", words: ["Abate"] }), false);
+	assert.match(K.MISSING_PACK_NOTICE, /no longer exists, showing all words/);
+	// Another valid source in the URL still wins.
+	assert.deepEqual((await K.resolvePackContext("?pack=nope&words=Abate,Guy", opts)).words, ["Abate", "Guy"]);
+	// No pack named: the full list.
 	assert.equal(await K.resolvePackContext("", opts), null);
 	assert.equal(await K.resolvePackContext(null, opts), null);
+});
+
+test("a deleted custom pack resolves to { missingId }", async () => {
+	const p = K.createCustomPack({ title: "Mine", words: ["Abate", "Bolster", "Cajole", "Deride", "Enervate"] });
+	assert.equal((await K.resolvePackContext(`?pack=${p.id}`, opts)).id, p.id);
+	K.deleteCustomPack(p.id);
+	assert.deepEqual(await K.resolvePackContext(`?pack=${p.id}`, opts), { missingId: p.id });
+});
+
+test("a failed pack list load is not reported as a missing pack", async () => {
+	const down = { ...opts, fetch: fakeFetch(null, false) };
+	assert.equal(await K.resolvePackContext("?pack=argument-verbs", down), null);
 });
 
 test("?words=a,b,c is the share-link format", async () => {
@@ -280,11 +300,58 @@ test("the marketplaceWordpack handoff is read once and deleted", async () => {
 	const ctx = await K.resolvePackContext("", opts);
 	assert.deepEqual(ctx, { id: null, title: "Selected pack", words: ["Bolster", "Deride", "Fervid"], source: "handoff" });
 	assert.equal(storage.getItem("marketplaceWordpack"), null);
-	// StrictMode double mount within the same page load sees the same handoff.
-	assert.deepEqual((await K.resolvePackContext("", opts)).words, ["Bolster", "Deride", "Fervid"]);
-	// A new page load (cache reset) finds nothing.
+	// Once the page has used it, the cached copy is cleared: a play page opened
+	// later in the same page load (client navigation) finds nothing.
+	await new Promise((r) => setTimeout(r, 5));
+	assert.equal(await K.resolvePackContext("", opts), null);
+	// A new page load (cache reset) finds nothing either.
 	K.resetPacksCache();
 	assert.equal(await K.resolvePackContext("", opts), null);
+});
+
+test("StrictMode's double mount (same tick) sees the same handoff", async () => {
+	storage.setItem("marketplaceWordpack", JSON.stringify([0, 2]));
+	const [a, b] = await Promise.all([K.resolvePackContext("", opts), K.resolvePackContext("", opts)]);
+	assert.deepEqual(a.words, ["Abate", "Cajole"]);
+	assert.deepEqual(b.words, ["Abate", "Cajole"]);
+	await new Promise((r) => setTimeout(r, 5));
+	assert.equal(await K.resolvePackContext("", opts), null);
+});
+
+test("malformed gv_custom_packs and gv_favorites read as empty", () => {
+	for (const raw of ['{"a":1}', "42", '"text"', "true", "{bad"]) {
+		storage.setItem("gv_custom_packs", raw);
+		assert.deepEqual(K.loadCustomPacks(), [], raw);
+		assert.equal(K.getCustomPack("custom-x"), null);
+		storage.setItem("gv_favorites", raw);
+		assert.deepEqual(K.loadFavorites(), [], raw);
+	}
+	// Bad entries in an array are dropped, good ones kept and repaired.
+	storage.setItem(
+		"gv_custom_packs",
+		JSON.stringify([null, 7, { id: "custom-a", title: "  A  ", words: ["Abate", 3, "Abate", "Guy"] }, { id: "nope", words: ["X"] }]),
+	);
+	const list = K.loadCustomPacks();
+	assert.equal(list.length, 1);
+	assert.deepEqual(list[0].words, ["Abate", "Guy"]);
+	assert.equal(list[0].title, "A");
+	assert.deepEqual(K.normalizeFavoritesValue({ ids: ["a", 1, "a", "b"] }), { version: 1, ids: ["a", "b"] });
+});
+
+test("deleting a custom pack removes its progress, Harder runs and practice position", () => {
+	const p = K.createCustomPack({ title: "Mine", words: ["Abate", "Bolster", "Cajole", "Deride", "Enervate"] });
+	const scopes = (extra) => ({ scopes: { [p.id]: { mastered: ["Abate"], streaks: {} }, other: { mastered: [], streaks: {} }, ...extra } });
+	storage.setItem("gv_progress_w2d", JSON.stringify(scopes()));
+	storage.setItem("gv_progress_d2w", JSON.stringify(scopes()));
+	storage.setItem("gv_hard_w2d", JSON.stringify(scopes({ [`${p.id}#subset`]: { run: null, count: 1, runs: [] } })));
+	storage.setItem("gv_practice_pos", JSON.stringify({ [p.id]: 3, all: 2 }));
+	storage.setItem("gv_last_pack", JSON.stringify({ id: p.id, title: "Mine", words: ["Abate"] }));
+	assert.equal(K.deleteCustomPack(p.id), true);
+	for (const key of ["gv_progress_w2d", "gv_progress_d2w", "gv_hard_w2d"]) {
+		assert.deepEqual(Object.keys(JSON.parse(storage.getItem(key)).scopes), ["other"], key);
+	}
+	assert.deepEqual(JSON.parse(storage.getItem("gv_practice_pos")), { all: 2 });
+	assert.equal(storage.getItem("gv_last_pack"), null);
 });
 
 test("the URL wins over the handoff, and the handoff is deleted anyway", async () => {

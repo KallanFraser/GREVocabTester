@@ -98,9 +98,9 @@ const sameText = (a, b) => normalize(a) === normalize(b);
 
 test("d2w near-duplicates: another headword with the same definition is accepted", () => {
 	const vocab = {
-		Exculpate: { definition: "to clear from blame." },
-		Exonerate: { definition: "to clear from blame." },
-		Exacerbate: { definition: "to make worse." },
+		Exculpate: { definition: "to clear from blame.", pos: "verb" },
+		Exonerate: { definition: "to clear from blame.", pos: "verb" },
+		Exacerbate: { definition: "to make worse.", pos: "verb" },
 	};
 	const opts = { isNearDuplicate: sameText };
 	assert.deepEqual(gradeHeadwordWithNearDuplicates("Exculpate", "exculpate", vocab, opts), {
@@ -127,10 +127,10 @@ test("d2w near-duplicates: another headword with the same definition is accepted
 
 test("d2w near-duplicates: an exact synonym match wins over a fuzzy one", () => {
 	const vocab = {
-		Fervent: { definition: "intensely passionate." },
-		Fervid: { definition: "intensely passionate." },
-		Ferventer: { definition: "intensely passionate." },
-		Target: { definition: "intensely passionate." },
+		Fervent: { definition: "intensely passionate.", pos: "adjective" },
+		Fervid: { definition: "intensely passionate.", pos: "adjective" },
+		Ferventer: { definition: "intensely passionate.", pos: "adjective" },
+		Target: { definition: "intensely passionate.", pos: "adjective" },
 	};
 	const r = gradeHeadwordWithNearDuplicates("Target", "fervent", vocab, { isNearDuplicate: sameText });
 	assert.equal(r.acceptedKey, "Fervent");
@@ -138,8 +138,8 @@ test("d2w near-duplicates: an exact synonym match wins over a fuzzy one", () => 
 
 test("d2w near-duplicates: a negated definition never accepts its antonym", () => {
 	const vocab = {
-		Impermeable: { definition: "not allowing passage." },
-		Permeable: { definition: "allowing passage." },
+		Impermeable: { definition: "not allowing passage.", pos: "adjective" },
+		Permeable: { definition: "allowing passage.", pos: "adjective" },
 	};
 	// The plain word rule cannot tell them apart: Dice 0.89.
 	assert.equal(gradeHeadword("Impermeable", "Permeable").correct, true);
@@ -154,10 +154,10 @@ test("d2w near-duplicates: a negated definition never accepts its antonym", () =
 
 test("d2w near-duplicates: the default rule rejects a negated antonym, keeps real synonyms", () => {
 	const vocab = {
-		Impermeable: { definition: "not allowing passage." },
-		Permeable: { definition: "allowing passage." },
-		Exculpate: { definition: "to clear from blame." },
-		Exonerate: { definition: "to clear from blame." },
+		Impermeable: { definition: "not allowing passage.", pos: "adjective" },
+		Permeable: { definition: "allowing passage.", pos: "adjective" },
+		Exculpate: { definition: "to clear from blame.", pos: "verb" },
+		Exonerate: { definition: "to clear from blame.", pos: "verb" },
 	};
 	assert.equal(gradeHeadwordWithNearDuplicates("Impermeable", "Permeable", vocab).correct, false);
 	assert.equal(gradeHeadwordWithNearDuplicates("Permeable", "Impermeable", vocab).correct, false);
@@ -167,7 +167,7 @@ test("d2w near-duplicates: the default rule rejects a negated antonym, keeps rea
 test("d2w near-duplicates on the real data, through lib/distractors.js", async () => {
 	const { isNearDuplicateDefinition } = await import("../lib/distractors.js");
 	// Identical definitions must count under any reasonable rule.
-	const same = { A1: { definition: "to clear from blame." }, B1: { definition: "to clear from blame." } };
+	const same = { A1: { definition: "to clear from blame.", pos: "verb" }, B1: { definition: "to clear from blame.", pos: "verb" } };
 	assert.equal(gradeHeadwordWithNearDuplicates("A1", "B1", same).acceptedKey, "B1");
 	// A pair from the real list, if the data still has one.
 	let pair = null;
@@ -175,7 +175,7 @@ test("d2w near-duplicates on the real data, through lib/distractors.js", async (
 		for (let j = 0; j < KEYS.length && !pair; j++) {
 			const a = VOCAB[KEYS[i]].definition;
 			const b = VOCAB[KEYS[j]].definition;
-			if (i !== j && isNearDuplicateDefinition(a, b) && !/\bnot\b/i.test(a + b)) pair = [KEYS[i], KEYS[j]];
+			if (i !== j && VOCAB[KEYS[i]].pos === VOCAB[KEYS[j]].pos && isNearDuplicateDefinition(a, b) && !/\bnot\b/i.test(a + b)) pair = [KEYS[i], KEYS[j]];
 		}
 	}
 	if (pair) {
@@ -186,4 +186,65 @@ test("d2w near-duplicates on the real data, through lib/distractors.js", async (
 	if (VOCAB.Impermeable && VOCAB.Permeable) {
 		assert.equal(gradeHeadwordWithNearDuplicates("Impermeable", "Permeable", VOCAB).correct, false);
 	}
+});
+
+test("w2d: best score across definition and alts; short targets need an exact match; trailing periods ignored", () => {
+	const entry = { definition: "to lessen in intensity.", alts: ["subside", "wane", "die down."] };
+	assert.equal(gradeDefinition(entry, "to lessen in intensity").correct, true);
+	assert.equal(gradeDefinition(entry, "to lessen in intensity...").correct, true);
+	assert.equal(gradeDefinition(entry, "Subside.").correct, true);
+	assert.equal(gradeDefinition(entry, "Subside.").exact, true);
+	assert.equal(gradeDefinition(entry, "subsid").correct, true, "fuzzy match on a longer alt");
+	assert.equal(gradeDefinition(entry, "die down").correct, true);
+	// "wane" is 4 characters: exact only.
+	assert.equal(gradeDefinition(entry, "wane").correct, true);
+	assert.equal(gradeDefinition(entry, "WANE.").correct, true);
+	assert.equal(gradeDefinition(entry, "wan").correct, false);
+	assert.equal(gradeDefinition(entry, "wanes").correct, false);
+	assert.equal(gradeDefinition(entry, "").correct, false);
+	assert.equal(gradeDefinition(entry, "   ").correct, false);
+	// display is always the main definition.
+	assert.equal(gradeDefinition(entry, "subside").display, "to lessen in intensity.");
+	// A short main definition is exact-only too.
+	assert.equal(gradeDefinition({ definition: "sad." }, "sad").correct, true);
+	assert.equal(gradeDefinition({ definition: "sad." }, "sap").correct, false);
+	// Malformed alts are ignored.
+	assert.equal(gradeDefinition({ definition: "to lessen.", alts: "reduce" }, "reduce").correct, false);
+	assert.equal(gradeDefinition({ definition: "to lessen.", alts: [null, 4] }, "to lessen").correct, true);
+});
+
+test("d2w: another headword needs the same pos and a shared meaning group or a near-duplicate definition", async () => {
+	const { setMeaningGroups, meaningGroupsReady } = await import("../lib/distractors.js");
+	await meaningGroupsReady;
+	const vocab = {
+		Laconic: { definition: "using few words.", pos: "adjective" },
+		Terse: { definition: "brief and abrupt.", pos: "adjective" },
+		Taciturn: { definition: "reserved in speech.", pos: "adjective" },
+		Brevity: { definition: "using few words.", pos: "noun" },
+		Curt: { definition: "rudely brief.", pos: "adjective" },
+	};
+	setMeaningGroups({ groups: { brief: ["Laconic", "Terse", "Curt"], quiet: ["Taciturn"] } });
+	try {
+		const r = gradeHeadwordWithNearDuplicates("Laconic", "terse", vocab);
+		assert.equal(r.correct, true);
+		assert.equal(r.acceptedKey, "Terse");
+		// A typo of a group member is accepted as that member.
+		assert.equal(gradeHeadwordWithNearDuplicates("Laconic", "tersse", vocab).acceptedKey, "Terse");
+		// Not in the group and a different definition: wrong.
+		assert.equal(gradeHeadwordWithNearDuplicates("Laconic", "Taciturn", vocab).correct, false);
+		// Identical definition but a different part of speech: wrong.
+		assert.equal(gradeHeadwordWithNearDuplicates("Laconic", "Brevity", vocab).correct, false);
+		// Same group but different pos: wrong.
+		setMeaningGroups({ groups: { brief: ["Laconic", "Brevity"] } });
+		assert.equal(gradeHeadwordWithNearDuplicates("Laconic", "Brevity", vocab).correct, false);
+		// Injectable group rule.
+		assert.equal(gradeHeadwordWithNearDuplicates("Laconic", "Curt", vocab, { isSameGroup: () => true }).correct, true);
+		assert.equal(gradeHeadwordWithNearDuplicates("Laconic", "Curt", vocab, { isSameGroup: () => false }).correct, false);
+		// The target itself is always right.
+		assert.equal(gradeHeadwordWithNearDuplicates("Laconic", "laconic.", vocab).correct, true);
+	} finally {
+		setMeaningGroups(null);
+	}
+	// A missing groups file means no groups: only near-duplicates count.
+	assert.equal(gradeHeadwordWithNearDuplicates("Laconic", "Terse", vocab).correct, false);
 });

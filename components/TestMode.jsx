@@ -39,6 +39,7 @@ import {
 	allWordsRun,
 	countIn,
 	gradeFor,
+	isBlankAnswer,
 	minSelection,
 	missedRows,
 	normalAnswer,
@@ -65,6 +66,7 @@ import {
 } from "../lib/settings";
 import {
 	POOL_SIZE,
+	SAVE_FAILED_EVENT,
 	WORD_STREAK_TO_MASTER,
 	allMastered,
 	clearScopeKeys,
@@ -81,11 +83,12 @@ import {
 	recordHardRun,
 	restartHardRun,
 	saveHardRun,
+	saveHasFailed,
 	saveLastPack,
 	saveProgress,
 } from "../lib/progress";
 import { wordReviewOpts } from "../lib/review";
-import { resolvePackContext } from "../lib/packs";
+import { MISSING_PACK_NOTICE, isMissingPack, resolvePackContext } from "../lib/packs";
 import {
 	HARD_RELEARN_CORRECT,
 	WORD_LEARNING,
@@ -124,6 +127,8 @@ const TOAST_GAP_PX = 12;
 // fades over CAPTION_FADE_MS (the CSS transition has the same length).
 const CAPTION_SHOW_MS = 5000;
 const CAPTION_FADE_MS = 1000;
+const SAVE_FAILED_NOTICE =
+	"Progress can't be saved in this browser. Storage may be full or blocked (for example in private browsing).";
 
 const EMPTY_SESSION = { answers: 0, firstTries: 0, firstTryCorrect: 0 };
 
@@ -198,6 +203,11 @@ export default function TestMode() {
 	const [winOn, setWinOn] = useState(false);
 	const [wordGone, setWordGone] = useState(false);
 	const [toast, setToast] = useState(null);
+	// A ?pack= or ?id= that named no pack; the run falls back to all words.
+	const [missingPack, setMissingPack] = useState(false);
+	// Shown the first time a progress or Harder write fails, once per page load.
+	const [saveWarn, setSaveWarn] = useState(false);
+	const saveWarnShownRef = useRef(false);
 
 	const triedRef = useRef(false);
 	// Synchronous double-submit guard, set the instant an answer is accepted.
@@ -325,9 +335,22 @@ export default function TestMode() {
 			const scope = recordHardRun(target.direction, target.scopeId, s.stats());
 			setHardBest(hardBestPct(scope));
 			hardSaveRef.current = null;
-		} else {
-			saveHardRun(target.direction, target.scopeId, s.serialize());
+			if (scope && scope.saved === false) noteSaveFailed();
+		} else if (saveHardRun(target.direction, target.scopeId, s.serialize()) === false) {
+			noteSaveFailed();
 		}
+	}
+
+	// The save-failed notice: at most once per page load, never back after Dismiss.
+	function noteSaveFailed() {
+		if (saveWarnShownRef.current) return;
+		saveWarnShownRef.current = true;
+		setSaveWarn(true);
+	}
+
+	// Normal writes report through the shared flag.
+	function checkSaved() {
+		if (saveHasFailed()) noteSaveFailed();
 	}
 
 	// (Re)start `r` from storage: every switch of direction, difficulty, pack or
@@ -358,9 +381,15 @@ export default function TestMode() {
 				ctx = null;
 			}
 			if (!alive) return;
+			// A pack that no longer exists runs as all words, with a notice; the
+			// tidied URL drops its parameters.
+			const missing = isMissingPack(ctx);
+			if (missing) ctx = null;
 			const next = runFromContext(ctx, ALL_KEYS, canonicalWord);
 			tidyUrl(ctx, next);
 			const sig = runSignature(next);
+			if (missing) setMissingPack(true);
+			else if (sig !== runSigRef.current) setMissingPack(false);
 			// ?mode=normal|harder overrides the saved difficulty and is saved.
 			const d = resolveDifficulty(query);
 			if (hydratedRef.current && sig === runSigRef.current && d === difficultyRef.current) return;
@@ -385,6 +414,14 @@ export default function TestMode() {
 		const known = loadKnown(direction, run.scopeId, run.parentKeys);
 		setBgWords(runKeys.map((k) => ({ word: k, mastered: known.has(k) || mastered.has(k) })));
 	}, [hydrated, runKeys, run, direction, mastered]);
+
+	// ---- A failed progress write anywhere on the page shows the notice ----
+	useEffect(() => {
+		if (saveHasFailed()) noteSaveFailed();
+		window.addEventListener(SAVE_FAILED_EVENT, noteSaveFailed);
+		return () => window.removeEventListener(SAVE_FAILED_EVENT, noteSaveFailed);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	// ---- Audio (client only), 10% volume ----
 	useEffect(() => {
@@ -664,6 +701,9 @@ export default function TestMode() {
 	function handleSubmit(e) {
 		e.preventDefault();
 		if (!currentEntry || advancing || complete || hardLocked || hardSessionDone || submitLockRef.current) return;
+		// An empty or whitespace-only submit is not an answer: no grade, no miss,
+		// no streak or scheduler change. Checked before the lock is taken.
+		if (isBlankAnswer(inputValue)) return;
 		submitLockRef.current = true;
 
 		const answered = inputValue;
@@ -714,6 +754,7 @@ export default function TestMode() {
 			}
 			setStreaks(step.streaks);
 			saveProgress(direction, run.scopeId, { mastered: [...step.mastered], streaks: step.streaks });
+			checkSaved();
 			const win = step.masteredNow
 				? { ...winNames(currentEntry), label: "Mastered", count: countIn(run.keys, step.mastered), total: run.keys.length }
 				: null;
@@ -734,6 +775,7 @@ export default function TestMode() {
 				const step = normalAnswer({ pool, streaks, mastered, keys: run.keys }, currentKey, false);
 				setStreaks(step.streaks);
 				saveProgress(direction, run.scopeId, { mastered: [...mastered], streaks: step.streaks });
+				checkSaved();
 			}
 			setFeedback({ ...base, masteredNow: false });
 			setInputValue("");
@@ -1205,6 +1247,22 @@ export default function TestMode() {
 						))}
 					</select>
 				</PlayHeader>
+				{hydrated && missingPack && (
+					<div className="notice" role="status">
+						<p>{MISSING_PACK_NOTICE}</p>
+						<button type="button" className="btn-q" onClick={() => setMissingPack(false)}>
+							Dismiss
+						</button>
+					</div>
+				)}
+				{saveWarn && (
+					<div className="notice warn" role="alert">
+						<p>{SAVE_FAILED_NOTICE}</p>
+						<button type="button" className="btn-q" onClick={() => setSaveWarn(false)}>
+							Dismiss
+						</button>
+					</div>
+				)}
 				{isHarder && captionPhase && (
 					<p className={`tm-difficulty-desc${captionPhase === "fade" ? " fade" : ""}`}>
 						<strong>{DIFFICULTY_LABEL[DIFFICULTY_HARDER]}:</strong> {HARDER_DESC}

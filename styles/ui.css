@@ -207,6 +207,34 @@ button.pill:hover {
 	border-color: rgba(95, 211, 154, 0.35);
 }
 
+/* ============== Notice ============== */
+/* A small message under a play header (a missing pack, a failed save), with
+   an optional quiet Dismiss button. .warn is the coral variant. */
+.notice {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem;
+	max-width: 720px;
+	margin: 0.6rem auto 0;
+	padding: 0.45rem 0.5rem 0.45rem 0.85rem;
+	border: 1px solid rgba(100, 181, 255, 0.35);
+	background: rgba(100, 181, 255, 0.08);
+	border-radius: 10px;
+	font-size: 0.85rem;
+	color: var(--soft);
+}
+.notice.warn {
+	border-color: rgba(234, 87, 70, 0.45);
+	background: rgba(234, 87, 70, 0.08);
+}
+.notice p {
+	margin: 0;
+}
+.notice .btn-q {
+	flex: none;
+}
+
 /* ============== Compact select ============== */
 .select {
 	appearance: none;

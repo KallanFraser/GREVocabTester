@@ -149,3 +149,36 @@ test("pack words are preferred as distractors", () => {
 test("an unblankable word yields no question", () => {
 	assert.equal(buildContextQuestion("Not a real headword", []), null);
 });
+
+test("blankSentence blanks every occurrence of the headword and its inflections", async () => {
+	const { BLANK } = await import("../lib/context.js");
+	const vain = blank("Vain", "He was too vain to admit his mistake, and his efforts were in vain.");
+	assert.equal(vain.form, "vain");
+	assert.equal(vain.before, "He was too ");
+	assert.equal(vain.after, ` to admit his mistake, and his efforts were in ${BLANK}.`);
+	assert.ok(!/vain/i.test(vain.before + vain.after));
+	// Inflections count too, before and after the first hit.
+	const abate = blank("Abate", "The storm abated, though we waited for it to abate fully before abating our watch.");
+	assert.equal(abate.form, "abated");
+	assert.ok(!/abat/i.test(abate.before + abate.after), abate.before + "|" + abate.after);
+	assert.equal(abate.after.split(BLANK).length - 1, 2);
+	// Whole words only: a different word sharing a prefix is left alone.
+	const novel = blank("Novel", "A novel idea, not a nova or a nove.");
+	assert.equal(novel.after.includes(BLANK), false);
+	// The real data: the Vain sentence no longer gives the answer away.
+	const real = getWord("Vain");
+	if (real) {
+		const b = blankSentence(real);
+		assert.ok(b);
+		assert.ok(!/\bvain\b/i.test(b.before + b.after));
+	}
+	// No example in the data keeps the headword visible after blanking.
+	for (const e of WORDS) {
+		const b = blankSentence(e);
+		if (!b) continue;
+		const forms = new Set(inflections(e.word));
+		for (const m of (b.before + " " + b.after).matchAll(/[A-Za-z]+(?:-[A-Za-z]+)*/g)) {
+			assert.ok(!forms.has(m[0].toLowerCase()), `${e.word}: "${m[0]}" left in the sentence`);
+		}
+	}
+});

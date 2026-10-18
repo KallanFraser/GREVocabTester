@@ -3,22 +3,37 @@
 
 import { useEffect, useState } from "react";
 import { loadLastPack, packSummary, scopeIdFor } from "../../lib/progress";
+import { findPack } from "../../lib/packs";
 import { loadSettings } from "../../lib/settings";
 
 // The last pack the learner opened (gv_last_pack), with its mastered count in
 // the current direction. It reads localStorage, so it renders nothing on the
 // server and on the first client render, and fills in after mount. With no
-// pack opened yet it stays empty.
+// pack opened yet it stays empty. The count is taken against the pack's
+// current words (findPack), never the list saved in gv_last_pack, so a pack
+// that changed since cannot show a stale total. A pack that no longer exists,
+// or a pack list that fails to load, hides the card.
 export default function ContinueCard() {
 	const [info, setInfo] = useState(null);
 
 	useEffect(() => {
-		const pack = loadLastPack();
-		if (!pack) return;
+		let alive = true;
+		const last = loadLastPack();
+		if (!last) return undefined;
 		const { direction } = loadSettings();
-		// Best mastery, as on the Word Packs page: a finished pack stays N / N in later rounds.
-		const summary = packSummary(direction, scopeIdFor(pack.id), pack.words);
-		setInfo({ pack, count: summary.best, total: summary.total });
+		findPack(last.id)
+			.then((pack) => {
+				if (!alive || !pack || !Array.isArray(pack.words) || !pack.words.length) return;
+				// Best mastery, as on the Word Packs page: a finished pack stays N / N in later rounds.
+				const summary = packSummary(direction, scopeIdFor(pack.id), pack.words);
+				setInfo({ pack: { id: pack.id, title: pack.title || last.title }, count: summary.best, total: summary.total });
+			})
+			.catch(() => {
+				/* no pack list: no card */
+			});
+		return () => {
+			alive = false;
+		};
 	}, []);
 
 	if (!info) return null;

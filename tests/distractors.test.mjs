@@ -151,16 +151,63 @@ test("defaults to crypto.getRandomValues", () => {
 	assert.equal(pickDistractors(getWord("Mitigate"), 2).length, 2);
 });
 
-test("pool, k and bad targets", () => {
+test("pool, k and bad targets", async () => {
+	const { isSameMeaningGroup, meaningGroupsReady } = await import("../lib/distractors.js");
+	await meaningGroupsReady;
 	const pool = ["Abate", "Mitigate", "Alleviate", "Zealot", "zealot", "Laconic", "not-a-word"];
 	const picks = pickDistractors("Mitigate", 10, { pool, rng: seededRng(5) }).map((e) => e.word);
-	// Alleviate ("to ease or reduce pain or trouble.") does not overlap enough to be excluded.
-	assert.deepEqual([...picks].sort(), ["Abate", "Alleviate", "Laconic", "Zealot"]);
+	// Alleviate ("to ease or reduce pain or trouble.") does not overlap enough
+	// to be excluded as a near-duplicate, but src/data/meaning-groups.json may
+	// put it in Mitigate's group, which does exclude it.
+	const expected = ["Abate", "Alleviate", "Laconic", "Zealot"].filter((w) => !isSameMeaningGroup(w, "Mitigate"));
+	assert.deepEqual([...picks].sort(), expected);
+	const verbs = expected.filter((w) => getWord(w).pos === "verb").length;
 	assert.deepEqual(
-		picks.slice(0, 2).map((w) => getWord(w).pos),
-		["verb", "verb"],
+		picks.slice(0, verbs).map((w) => getWord(w).pos),
+		Array(verbs).fill("verb"),
 		"same pos comes first",
 	);
 	assert.deepEqual(pickDistractors("not-a-word"), []);
 	assert.deepEqual(pickDistractors("Mitigate", 0), []);
+});
+
+test("meaning groups: no option from the target's group, and no two options from one group", async () => {
+	const { setMeaningGroups, isSameMeaningGroup, meaningGroupsReady, clashes } = await import("../lib/distractors.js");
+	await meaningGroupsReady;
+	const target = getWord("Abate");
+	// Five words that are fine distractors for Abate and for each other today.
+	const free = [];
+	for (const e of WORDS) {
+		if (free.length >= 5) break;
+		if (e.pos !== target.pos || clashes(e, target) || free.some((f) => clashes(e, f))) continue;
+		free.push(e);
+	}
+	assert.equal(free.length, 5);
+	const [x, y, z, a, b] = free.map((e) => e.word);
+	setMeaningGroups({ groups: { lessen: [target.word, x], pair: [y, z], __proto__: [a, b] } });
+	try {
+		assert.equal(isSameMeaningGroup(target.word, x), true);
+		assert.equal(isSameMeaningGroup(x.toLowerCase(), ` ${target.word} `), true);
+		assert.equal(isSameMeaningGroup(y, z), true);
+		assert.equal(isSameMeaningGroup(target.word, y), false);
+		for (let seed = 0; seed < 40; seed++) {
+			let s = seed + 1;
+			const rng = () => ((s = (s * 16807) % 2147483647) - 1) / 2147483646;
+			const picked = pickDistractors(target, 3, { pool: [x, y, z, a, b], rng }).map((e) => e.word);
+			assert.ok(!picked.includes(x), `group member ${x} offered for ${target.word}`);
+			assert.ok(!(picked.includes(y) && picked.includes(z)), "two options from one group");
+			assert.equal(picked.length, 3);
+		}
+		// Existing rules still apply alongside groups.
+		assert.equal(isNearDuplicateDefinition("to clear from blame.", "to clear of blame."), true);
+		assert.equal(isNearDuplicateDefinition("not allowing passage.", "allowing passage."), false);
+	} finally {
+		setMeaningGroups(null);
+	}
+	assert.equal(isSameMeaningGroup(target.word, x), false);
+	// Malformed files mean no groups, never a crash.
+	for (const bad of [undefined, 7, "x", [], { groups: [] }, { groups: { g: "Abate" } }]) {
+		setMeaningGroups(bad);
+		assert.equal(isSameMeaningGroup(target.word, x), false);
+	}
 });
