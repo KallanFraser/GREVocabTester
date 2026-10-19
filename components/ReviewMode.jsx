@@ -21,7 +21,7 @@ import { gradeDefinition, gradeHeadwordWithNearDuplicates } from "../lib/matchin
 import { meaningGroupsReady } from "../lib/distractors";
 import { createReviewSession, wordReviewOpts, DEFAULT_REVIEW_CAP } from "../lib/review";
 import { loadReviewQueue, recordReviewAnswer } from "../lib/progress";
-import { isBlankAnswer } from "./test/engine";
+import { blankMiss, isBlankAnswer } from "./test/engine";
 import {
 	loadSettings,
 	saveSettings,
@@ -193,16 +193,16 @@ export default function ReviewMode() {
 		e.preventDefault();
 		const session = sessionRef.current;
 		if (!session || !currentEntry || waiting || submitLockRef.current) return;
-		// An empty or whitespace-only submit is not an answer; checked before the lock.
-		if (isBlankAnswer(inputValue)) return;
 		submitLockRef.current = true;
 
 		// w2d also accepts the entry's alternative short definitions, which only the
-		// raw vocabulary carries.
+		// raw vocabulary carries. An empty submit is "I don't know": a miss.
 		const raw = vocab && vocab[currentKey];
-		const result = d2w
-			? gradeHeadwordWithNearDuplicates(currentKey, inputValue, vocab)
-			: gradeDefinition({ ...currentEntry, alts: raw ? raw.alts : undefined }, inputValue);
+		const result = isBlankAnswer(inputValue)
+			? blankMiss(currentKey, currentEntry, d2w ? "d2w" : "w2d")
+			: d2w
+				? gradeHeadwordWithNearDuplicates(currentKey, inputValue, vocab)
+				: gradeDefinition({ ...currentEntry, alts: raw ? raw.alts : undefined }, inputValue);
 		const { firstAnswer } = session.record(currentKey, result.correct);
 		// Only the first answer of the session moves the schedule; a retry after
 		// a miss is practice, and the word already went back to one day.

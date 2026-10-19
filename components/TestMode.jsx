@@ -706,9 +706,10 @@ export default function TestMode() {
 	function handleSubmit(e) {
 		e.preventDefault();
 		if (!currentEntry || advancing || complete || hardLocked || hardSessionDone || submitLockRef.current) return;
-		// An empty or whitespace-only submit is not an answer: no grade, no miss,
-		// no streak or scheduler change. Checked before the lock is taken.
-		if (isBlankAnswer(inputValue)) return;
+		// An empty submit is "I don't know" and grades as a miss (gradeFor). While a
+		// Normal miss is still showing, another blank submit would only grade the
+		// same word twice, so it does nothing.
+		if (isBlankAnswer(inputValue) && feedback && !feedback.correct) return;
 		submitLockRef.current = true;
 
 		const answered = inputValue;

@@ -211,10 +211,21 @@ export function countIn(keys, set) {
 // Grading and display
 // ---------------------------------------------------------------------------
 
-// An empty or whitespace-only submit is not an answer: it is ignored, with no
-// miss, no streak change and no Harder state change.
+// An empty or whitespace-only submit is "I don't know": it is graded as a miss
+// (see gradeFor), never as a match.
 export function isBlankAnswer(answer) {
 	return typeof answer !== "string" || answer.trim() === "";
+}
+
+// The grade of a blank submit: always a miss, showing the expected answer.
+export function blankMiss(key, entry, direction) {
+	return {
+		correct: false,
+		exact: false,
+		display: direction === "d2w" ? key : (entry && entry.definition) || "",
+		alsoAccepted: null,
+		acceptedKey: null,
+	};
 }
 
 // Grade `answer` for headword `key` (entry = its vocabulary record) in
@@ -223,6 +234,7 @@ export function isBlankAnswer(answer) {
 // a d2w answer was a different headword with a near-duplicate definition, and
 // `acceptedKey` is that other headword (null otherwise).
 export function gradeFor(key, entry, answer, direction, vocab) {
+	if (isBlankAnswer(answer)) return blankMiss(key, entry, direction);
 	if (direction === "d2w") {
 		const r = gradeHeadwordWithNearDuplicates(key, answer, vocab);
 		const other = r.correct && r.acceptedKey && r.acceptedKey !== key;

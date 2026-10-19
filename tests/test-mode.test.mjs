@@ -414,9 +414,22 @@ test("a word retired in Harder is enrolled in daily review", () => {
 	assert.equal(storage.getItem("gv_progress_w2d"), null);
 });
 
-test("a blank or whitespace-only submit is not an answer", () => {
+test("a blank or whitespace-only submit is detected", () => {
 	for (const v of ["", " ", "\t\n  ", null, undefined, 5]) assert.equal(E.isBlankAnswer(v), true, JSON.stringify(v));
 	for (const v of ["a", " abate ", "0"]) assert.equal(E.isBlankAnswer(v), false, v);
+});
+
+test("a blank submit grades as a miss and shows the expected answer", () => {
+	const entry = { word: "Abate", definition: "to lessen" };
+	const vocab = { Abate: { definition: "to lessen", alts: ["to diminish"] } };
+	for (const v of ["", "   ", "\t"]) {
+		const w = E.gradeFor("Abate", entry, v, "w2d", vocab);
+		assert.equal(w.correct, false);
+		assert.equal(w.display, "to lessen");
+		const d = E.gradeFor("Abate", entry, v, "d2w", vocab);
+		assert.equal(d.correct, false);
+		assert.equal(d.display, "Abate");
+	}
 });
 
 test("w2d gradeFor picks up alts from the raw vocabulary record", () => {

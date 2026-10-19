@@ -157,7 +157,7 @@ export function TestScreen({ label, streakToMaster = 4 }) {
 
 const PRACTICE = [
 	{ q: "Mitigate", o: ["to revere", "to alleviate", "to hedge", "to absolve"], a: 1 },
-	{ q: "Equivocate", o: ["to hedge", "to improve", "to waver", "to appease"], a: 0 },
+	{ q: "Equivocate", o: ["to hedge", "to improve", "to soak", "to appease"], a: 0 },
 	{ q: "Disparage", o: ["to strengthen", "to revere", "to speak slightingly", "to exhaust"], a: 2 },
 ];
 

@@ -4,8 +4,8 @@
 // One row in the /wordpacks list, ported from Wortschatz's PackRow: completion
 // medals, a favorite toggle and the title over a one-line description, size,
 // a Normal rail, a Harder rail, then the six ways to start the pack. Titles
-// and descriptions truncate to one line, so rows stay the same height whatever
-// the text says. All progress comes from `stat` (packSummary in lib/progress.js) and
+// wrap to 2 lines and descriptions to 3; rows grow with min-height instead of
+// a fixed height. All progress comes from `stat` (packSummary in lib/progress.js) and
 // every field of it is guarded: stats arrive after the first render
 // (Wortschatz L1).
 import { DRILL_MODES, isRetest, modeHref, nextRoundLabel, tierLabel, CATEGORY_CUSTOM, CATEGORY_PATH } from "./packUtils";
