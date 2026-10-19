@@ -6289,7 +6289,7 @@
 	},
 	"Laconic": {
 		"definition": "terse",
-		"alts": ["brief", "of few words", "succinct"],
+		"alts": ["brief", "succinct", "concise"],
 		"example": "When asked about the merger, the CEO’s laconic reply was simply, “It’s done.”",
 		"fullDefinition": "Laconic speech is terse and pithy, conveying meaning in a handful of carefully chosen words that create an effect of blunt efficiency or stoic restraint.",
 		"pos": "adjective",
@@ -11353,7 +11353,7 @@
 	},
 	"Venerate": {
 		"definition": "to revere",
-		"alts": ["to worship", "to honor", "to respect deeply"],
+		"alts": ["to worship", "to honor", "to respect"],
 		"example": "Many cultures venerate their elders as sources of wisdom and guidance.",
 		"fullDefinition": "To venerate is to regard or treat with profound respect, reverence, and often ritual honor.",
 		"pos": "verb",

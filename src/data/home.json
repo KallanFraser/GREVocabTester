@@ -6,36 +6,211 @@
 		"theme": 28,
 		"classic": 12
 	},
+	"tiers": [
+		{
+			"tier": 1,
+			"label": "Core",
+			"words": 481,
+			"packs": 19
+		},
+		{
+			"tier": 2,
+			"label": "Common",
+			"words": 788,
+			"packs": 32
+		},
+		{
+			"tier": 3,
+			"label": "Advanced",
+			"words": 207,
+			"packs": 8
+		}
+	],
 	"sample": [
 		{
 			"headword": "Laconic",
 			"definition": "terse",
+			"alts": [
+				"brief",
+				"succinct",
+				"concise"
+			],
 			"pos": "adjective",
 			"example": "When asked about the merger, the CEO’s laconic reply was simply, “It’s done.”"
 		},
 		{
 			"headword": "Placate",
 			"definition": "to appease",
+			"alts": [
+				"to pacify",
+				"to soothe",
+				"to mollify"
+			],
 			"pos": "verb",
 			"example": "Free dessert helped placate diners upset by the long wait."
 		},
 		{
 			"headword": "Ephemeral",
 			"definition": "short-lived",
+			"alts": [
+				"transient",
+				"fleeting",
+				"brief"
+			],
 			"pos": "adjective",
 			"example": "Morning fog is beautiful but ephemeral, vanishing as soon as the sun appears."
 		},
 		{
 			"headword": "Obdurate",
 			"definition": "unyielding",
+			"alts": [
+				"stubborn",
+				"obstinate",
+				"intransigent"
+			],
 			"pos": "adjective",
 			"example": "The obdurate landlord refused to reduce the rent even during the recession."
 		},
 		{
 			"headword": "Garrulous",
 			"definition": "talkative",
+			"alts": [
+				"chatty",
+				"loquacious",
+				"verbose"
+			],
 			"pos": "adjective",
 			"example": "The garrulous taxi driver narrated his life story during a ten-minute ride."
+		}
+	],
+	"marquee": [
+		{
+			"headword": "Pedestrian",
+			"definition": "commonplace"
+		},
+		{
+			"headword": "Codify",
+			"definition": "to systematize"
+		},
+		{
+			"headword": "Sanctimonious",
+			"definition": "self-righteous"
+		},
+		{
+			"headword": "Outstrip",
+			"definition": "to surpass"
+		},
+		{
+			"headword": "Strut",
+			"definition": "to prance proudly"
+		},
+		{
+			"headword": "Capacious",
+			"definition": "roomy"
+		},
+		{
+			"headword": "Supposition",
+			"definition": "assumption"
+		},
+		{
+			"headword": "Tractable",
+			"definition": "docile"
+		},
+		{
+			"headword": "Cajole",
+			"definition": "to coax"
+		},
+		{
+			"headword": "Canon",
+			"definition": "accepted works"
+		},
+		{
+			"headword": "Truism",
+			"definition": "trivially true statement"
+		},
+		{
+			"headword": "Pittance",
+			"definition": "tiny payment"
+		},
+		{
+			"headword": "Antithetical",
+			"definition": "directly opposed"
+		},
+		{
+			"headword": "Reprehensible",
+			"definition": "blameworthy"
+		},
+		{
+			"headword": "Unruly",
+			"definition": "disorderly"
+		},
+		{
+			"headword": "Vanguard",
+			"definition": "forefront"
+		},
+		{
+			"headword": "Neologism",
+			"definition": "coined term"
+		},
+		{
+			"headword": "Aloof",
+			"definition": "distant"
+		},
+		{
+			"headword": "Caricature",
+			"definition": "exaggerated portrayal"
+		},
+		{
+			"headword": "Bemoan",
+			"definition": "to lament"
+		},
+		{
+			"headword": "Histrionic",
+			"definition": "melodramatic"
+		},
+		{
+			"headword": "Coy",
+			"definition": "evasive"
+		},
+		{
+			"headword": "Coerce",
+			"definition": "to compel"
+		},
+		{
+			"headword": "Reactionary",
+			"definition": "ultraconservative"
+		},
+		{
+			"headword": "Lucid",
+			"definition": "clear"
+		},
+		{
+			"headword": "Stringent",
+			"definition": "strict"
+		},
+		{
+			"headword": "Ameliorate",
+			"definition": "to improve"
+		},
+		{
+			"headword": "Apocryphal",
+			"definition": "of doubtful authenticity"
+		},
+		{
+			"headword": "Preen",
+			"definition": "to primp"
+		},
+		{
+			"headword": "Antecedent",
+			"definition": "precursor"
+		},
+		{
+			"headword": "Accede",
+			"definition": "to consent"
+		},
+		{
+			"headword": "Putrefy",
+			"definition": "to rot"
 		}
 	]
 }

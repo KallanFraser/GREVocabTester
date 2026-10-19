@@ -5,8 +5,9 @@
 // collapsible section per category, each header carrying its pack count, the
 // best mastered / total across its rows and how many of its packs were
 // completed at least once.
+import { Fragment } from "react";
 import PackRow from "./PackRow";
-import { rowAnchor } from "./packUtils";
+import { CATEGORY_PATH, pathTiers, rowAnchor, tierHeading } from "./packUtils";
 
 // A pack with no stat yet counts as zeros of its own size, so totals never
 // undercount.
@@ -27,6 +28,7 @@ export default function PackList({ sections, stats, statsReady, favorites, isOpe
 		<div className="pl-cats">
 			{sections.map((section) => {
 				const open = forceOpen || isOpen(section.category);
+					const isPath = section.category === CATEGORY_PATH;
 				const bodyId = `${section.anchor}-body`;
 				const g = summarize(section.packs, stats);
 				const pct = g.total > 0 ? Math.round((g.best / g.total) * 100) : 0;
@@ -65,19 +67,24 @@ export default function PackList({ sections, stats, statsReady, favorites, isOpe
 						</h2>
 						{open && (
 							<div className="pl-cat-body" id={bodyId}>
-								<ul className="pl-rows">
-									{section.packs.map((p) => (
-										<PackRow
-											key={p.id}
-											pack={p}
-											stat={stats[p.id]}
-											ready={statsReady}
-											anchor={rowAnchor(section.category, p.id)}
-											favorite={favorites.has(p.id)}
-											{...rowProps}
-										/>
-									))}
-								</ul>
+								{(isPath ? pathTiers(section.packs) : [{ tier: null, packs: section.packs }]).map((group) => (
+									<Fragment key={group.tier === null ? "all" : `tier-${group.tier}`}>
+										{isPath && <h3 className="pl-tier-head">{tierHeading(group.tier)}</h3>}
+										<ul className="pl-rows">
+											{group.packs.map((p) => (
+												<PackRow
+													key={p.id}
+													pack={p}
+													stat={stats[p.id]}
+													ready={statsReady}
+													anchor={rowAnchor(section.category, p.id)}
+													favorite={favorites.has(p.id)}
+													{...rowProps}
+												/>
+											))}
+										</ul>
+									</Fragment>
+								))}
 							</div>
 						)}
 					</section>

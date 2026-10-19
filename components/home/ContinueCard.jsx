@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { loadLastPack, packSummary, scopeIdFor } from "../../lib/progress";
 import { findPack } from "../../lib/packs";
 import { loadSettings } from "../../lib/settings";
@@ -52,9 +53,9 @@ export default function ContinueCard() {
 						<i style={{ width: `${pct}%` }} />
 					</div>
 				</div>
-				<a className="btn btn-primary" href={`/play/test?pack=${encodeURIComponent(pack.id)}`}>
+				<Link className="btn btn-primary" href={`/play/test?pack=${encodeURIComponent(pack.id)}`}>
 					Resume
-				</a>
+				</Link>
 			</div>
 		</div>
 	);

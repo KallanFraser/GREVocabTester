@@ -11,7 +11,7 @@ const PACKS = fmt(home?.packs?.total);
 const PATH = fmt(home?.packs?.path);
 
 const TITLE = "Word Packs: Curated GRE Vocabulary Sets";
-const DESCRIPTION = `Browse ${PACKS} curated GRE word packs: a ${PATH}-set learning path that covers all ${WORDS} words, plus themed and classic sets. Make your own pack and share it by link.`;
+const DESCRIPTION = `Browse ${PACKS} curated GRE word packs: a ${PATH}-pack learning path that covers all ${WORDS} words, plus themed and classic sets. Make your own pack and share it by link.`;
 const SHORT = `${PACKS} curated GRE word packs, including a learning path through all ${WORDS} words. Make your own and share it by link.`;
 
 export const metadata = {

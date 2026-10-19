@@ -18,7 +18,11 @@ app/                  routes (see Routes), layout.jsx, not-found.jsx, robots.js,
 components/           mode components, Navbar, Background, PlayHeader, ConfirmDialog
   test/               Test mode pieces + engine.js (pure helpers)
   choice/ChoiceQuiz   shared engine behind Practice and Learn
-  home/               ModeTiles, TryIt, ContinueCard, HomeShortcuts, modes.js (the mode list)
+  home/               ModeTiles, TryIt, ContinueCard, HomeShortcuts, modes.js (the mode list),
+                      plus the home motion pieces: HeroCanvas (word field drawn from the marquee),
+                      HomeMotion (scroll/reveal effects for the landing root), CountUp (animated
+                      number), ScrambleWord (cycling word display), ReviewChart (Daily review
+                      ladder line, intervals passed in from lib/review.js)
   packs/              PackList, PackRow, UpNext, PackBuilder, SharedPackOffer, packUtils.js
 lib/                  all logic that is not UI (storage, settings, progress, packs, matching,
                       pool, hard-scheduler, review, context, distractors, words, backgrounds/)
@@ -117,12 +121,14 @@ Four options, keys 1 to 4. Distractors come from the scope first (`lib/distracto
 
 Source of truth: `src/data/packs-manual.json` (hand-written themed packs and the 12 classic packs). Generator: `scripts/build-packs.js`. Outputs, both generated, **never hand-edit**:
 - `public/data/wordpacks.json` (served at `/data/wordpacks.json`)
-- `src/data/home.json` (word count, pack counts by category, five sample entries for the home try-it card)
+- `src/data/home.json`: `words`; `packs` (total and counts by category); `tiers` (`[{ tier, label, words, packs }]` for Core, Common, Advanced); `sample` (five entries for the home try-it card, each carrying its `alts` so the card grades like Test mode); `marquee` (up to 32 `{ headword, definition }` pairs from tiers 1 and 2 in a fixed hash order, used by the home marquee and hero canvas).
+
+`scripts/build-packs.js` runs `main()` only when executed directly (`require.main === module`); it exports `buildHome` and `HOME_PATH` so tests can import it without regenerating files.
 
 `npm run build` runs `prebuild` first: `npm run packs:build && npm run vocab:validate`. Either failing stops the build. Run `npm run packs:build` yourself after changing `packs-manual.json` or the vocabulary.
 
 Pack shape: `{ id, title, desc, category, tier?, order?, likes?, indices?, words }`. `words` are headwords. Categories: `path`, `theme`, `classic`.
-- `path`: generated learning path, about 25 words per pack, grouped by tier (Core, Common, Advanced), ids like `path-core-01`. Membership is stable: a word already in a path pack stays there, new words fill the tier's last pack then open new ones, removed words just leave. Ids never change, because progress is keyed by pack id.
+- `path`: generated learning path, about 25 words per pack, grouped by tier (Core, Common, Advanced), ids like `path-core-01`. Titles read "Core 1 of 19" (tier label, position, number of packs in that tier), so they change when a tier gains or loses a pack; ids do not. On `/wordpacks` the Learning path section is split under tier headings ("Core Set", "Common Set", "Advanced Set", from `tierHeading` in `components/packs/packUtils.js`, grouped by `pathTiers`). Membership is stable: a word already in a path pack stays there, new words fill the tier's last pack then open new ones, removed words just leave. Ids never change, because progress is keyed by pack id.
 - `theme`: curated, 15 to 30 words each, from `packs-manual.json`.
 - `classic`: the 12 pre-overhaul packs. They keep their ids and likes and gain `indices` computed against the frozen legacy index.
 - Limits: at least 5 words per pack, title at most 48 characters, description at most 100. The build fails on unknown or repeated pack words, duplicate ids, a bad category, and a classic word missing from the legacy order.

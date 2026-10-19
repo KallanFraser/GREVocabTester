@@ -142,8 +142,8 @@ function buildPathPacks(vocab) {
 			const n = i + 1;
 			packs.push({
 				id: `path-${t.slug}-${String(n).padStart(2, "0")}`,
-				title: `${t.label} Set ${n}`,
-				desc: `${t.label} tier, set ${n} of ${groups.length}: ${group.length} ${t.blurb}.`,
+				title: `${t.label} ${n} of ${groups.length}`,
+				desc: `${t.label} tier, pack ${n} of ${groups.length}: ${group.length} ${t.blurb}.`,
 				category: "path",
 				tier: t.tier,
 				order: n,
@@ -176,12 +176,27 @@ function homeSample(vocab) {
 		}
 		if (word) chosen.push(word);
 	}
+	// alts ride along so the try-it card grades exactly as Test mode does.
 	return chosen.map((w) => ({
 		headword: w,
 		definition: vocab[w].definition || "",
+		alts: Array.isArray(vocab[w].alts) ? vocab[w].alts.filter((a) => typeof a === "string" && a) : [],
 		pos: vocab[w].pos || "",
 		example: vocab[w].example || "",
 	}));
+}
+
+// Headwords and short definitions for the home marquee and hero canvas: up to
+// HOME_MARQUEE_SIZE words from tiers 1 and 2, in the fixed hash order, so the
+// list is stable from build to build and changes only with the data.
+const HOME_MARQUEE_SIZE = 32;
+
+function homeMarquee(vocab) {
+	return Object.keys(vocab)
+		.filter((w) => vocab[w].tier === 1 || vocab[w].tier === 2)
+		.sort(byHash)
+		.slice(0, HOME_MARQUEE_SIZE)
+		.map((w) => ({ headword: w, definition: vocab[w].definition || "" }));
 }
 
 function buildHome(vocab, packs) {
@@ -189,7 +204,14 @@ function buildHome(vocab, packs) {
 	return {
 		words: Object.keys(vocab).length,
 		packs: { total: packs.length, path: count("path"), theme: count("theme"), classic: count("classic") },
+		tiers: TIERS.map((t) => ({
+			tier: t.tier,
+			label: t.label,
+			words: Object.keys(vocab).filter((w) => vocab[w].tier === t.tier).length,
+			packs: packs.filter((p) => p.category === "path" && p.tier === t.tier).length,
+		})),
 		sample: homeSample(vocab),
+		marquee: homeMarquee(vocab),
 	};
 }
 
@@ -279,4 +301,6 @@ function main() {
 	);
 }
 
-main();
+if (require.main === module) main();
+
+module.exports = { buildHome, HOME_PATH };

@@ -19,9 +19,10 @@ export const CATEGORY_LABELS = {
 	[CATEGORY_FAVORITES]: "Favorites",
 };
 
-// Section order. Categories the JSON carries beyond these render after
-// Classic and before Your packs, in first-seen order.
-const LEADING = [CATEGORY_PATH, CATEGORY_THEME, CATEGORY_CLASSIC];
+// Section order. The learning path sits below Themes and Classic (the Up next
+// panel above the list already covers it). Categories the JSON carries beyond
+// these render after the path and before Your packs, in first-seen order.
+const LEADING = [CATEGORY_THEME, CATEGORY_CLASSIC, CATEGORY_PATH];
 const TRAILING = [CATEGORY_CUSTOM, CATEGORY_FAVORITES];
 
 // The learning path is already in the Up next panel, so its section starts
@@ -31,6 +32,11 @@ export const COLLAPSED_AT_START = [CATEGORY_PATH];
 export const TIER_LABELS = { 1: "Core", 2: "Common", 3: "Advanced" };
 export function tierLabel(tier) {
 	return TIER_LABELS[tier] || (Number.isFinite(tier) ? `Tier ${tier}` : "Other");
+}
+
+// Headings over each tier's packs inside the Learning path section.
+export function tierHeading(tier) {
+	return Number.isFinite(tier) && TIER_LABELS[tier] ? `${TIER_LABELS[tier]} Set` : "Other";
 }
 
 export function categoryLabel(category) {

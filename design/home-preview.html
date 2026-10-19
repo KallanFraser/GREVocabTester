@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<title>GRE Vocab Tester: Home Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+@property --a { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+
+:root{
+  --bg:#050505; --text:#f0f0f2; --soft:#c4c4c8; --muted:#8a8a8e;
+  --coral:#ea5746; --coral-light:#ff8a7a; --coral-deep:#b8382b;
+  --ok:#5fd39a; --bad:#ff6b5e;
+  --line:rgba(255,255,255,.08); --line-strong:rgba(255,255,255,.16);
+  --surface:linear-gradient(180deg,rgba(24,24,27,.78),rgba(11,11,13,.9));
+  --r-lg:22px; --r-md:14px;
+  --serif:'Instrument Serif',Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit}
+:focus-visible{outline:2px solid rgba(100,181,255,.85);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1180px,100% - 2.5rem);margin-inline:auto}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.06;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.55rem;justify-content:center;padding:.9rem 1.45rem;border-radius:999px;font:600 .97rem/1.2 inherit;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.btn-primary{color:#fff;background:linear-gradient(180deg,#f36b5a,#d6483a);border-color:rgba(234,87,70,.75);box-shadow:inset 0 1px 0 rgba(255,210,200,.3),0 10px 30px rgba(234,87,70,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,210,200,.3),0 16px 40px rgba(234,87,70,.5)}
+.btn-primary .arr{transition:transform .2s}
+.btn-primary:hover .arr{transform:translateX(3px)}
+.btn-ghost{color:var(--text);background:rgba(255,255,255,.04);border-color:var(--line-strong);backdrop-filter:blur(10px)}
+.btn-ghost:hover{background:rgba(255,255,255,.09);transform:translateY(-2px)}
+kbd{font:600 .8em inherit;color:var(--text);border:1px solid var(--line-strong);border-bottom-width:2px;border-radius:6px;padding:.05rem .42rem;background:rgba(255,255,255,.03)}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,border-color .3s,backdrop-filter .3s;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(5,5,5,.62);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-color:var(--line)}
+.nav-in{height:68px;display:flex;align-items:center;gap:1.5rem}
+.logo{display:flex;align-items:center;text-decoration:none;font-weight:800;font-size:1.06rem;letter-spacing:-.02em}
+.logo b{color:var(--coral)} .logo i{font-style:normal;color:rgba(255,255,255,.22);margin:0 .4rem;font-weight:300} .logo span{color:rgba(255,255,255,.9)}
+.nav-links{display:flex;gap:.2rem;margin-left:auto}
+.nav-links a{text-decoration:none;color:var(--soft);font-size:.9rem;font-weight:500;padding:.45rem .75rem;border-radius:8px;transition:.15s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.05)}
+.nav .btn{padding:.5rem 1rem;font-size:.86rem}
+@media (max-width:760px){.nav-links{display:none}.nav .btn{margin-left:auto}}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:110px 0 70px;isolation:isolate}
+#field{position:absolute;inset:0;width:100%;height:100%;z-index:-1;
+  -webkit-mask-image:radial-gradient(ellipse 85% 75% at 50% 45%,#000 30%,transparent 80%);mask-image:radial-gradient(ellipse 85% 75% at 50% 45%,#000 30%,transparent 80%)}
+.glow{position:absolute;z-index:-2;border-radius:50%;filter:blur(90px);pointer-events:none}
+.glow.g1{width:52vmax;height:52vmax;left:-14vmax;top:-18vmax;background:radial-gradient(circle,rgba(234,87,70,.32),transparent 65%);animation:drift1 22s ease-in-out infinite alternate}
+.glow.g2{width:44vmax;height:44vmax;right:-16vmax;bottom:-20vmax;background:radial-gradient(circle,rgba(255,138,122,.18),transparent 65%);animation:drift2 26s ease-in-out infinite alternate}
+@keyframes drift1{to{transform:translate(10vmax,8vmax) scale(1.1)}}
+@keyframes drift2{to{transform:translate(-8vmax,-6vmax) scale(.92)}}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2.5rem,5vw,4.5rem);align-items:center}
+@media (max-width:960px){.hero-grid{grid-template-columns:1fr}}
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;color:var(--coral-light);font-size:.76rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:1.1rem}
+.eyebrow::before{content:"";width:22px;height:1px;background:currentColor;opacity:.7}
+.pill-live{display:inline-flex;align-items:center;gap:.55rem;border:1px solid var(--line-strong);background:rgba(255,255,255,.03);backdrop-filter:blur(8px);border-radius:999px;padding:.32rem .8rem .32rem .55rem;font-size:.8rem;color:var(--soft);margin-bottom:1.6rem}
+.pill-live .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(95,211,154,.6);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 8px rgba(95,211,154,0)}100%{box-shadow:0 0 0 0 rgba(95,211,154,0)}}
+h1{font-size:clamp(3.2rem,8.4vw,7rem);line-height:.92;letter-spacing:-.055em;font-weight:800;margin:0 0 1.6rem}
+h1 .l2{display:block}
+.rot{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.02em;padding-right:.08em;
+  background:linear-gradient(100deg,#ffb4a8 0%,var(--coral) 45%,#ff8a7a 70%,#ffd0c8 100%);background-size:200% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 6s linear infinite}
+@keyframes sheen{to{background-position:-200% 0}}
+.hero-sub{color:var(--soft);font-size:clamp(1.05rem,1.4vw,1.2rem);max-width:33rem;margin:0 0 2rem}
+.hero-sub strong{color:var(--text);font-weight:600}
+.actions{display:flex;gap:.75rem;flex-wrap:wrap}
+.facts{display:flex;gap:2.4rem;margin-top:2.8rem;flex-wrap:wrap}
+.facts div{display:flex;flex-direction:column}
+.facts strong{font-size:1.7rem;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1.1}
+.facts span{color:var(--muted);font-size:.85rem}
+
+/* try card */
+.try-stage{perspective:1200px}
+.try-shell{position:relative;border-radius:26px;padding:1px;transform-style:preserve-3d;transition:transform .25s ease-out;
+  background:conic-gradient(from var(--a),rgba(234,87,70,.0) 0deg,rgba(234,87,70,.9) 60deg,rgba(255,180,168,.6) 90deg,rgba(234,87,70,0) 150deg,rgba(255,255,255,.08) 220deg,rgba(234,87,70,0) 360deg);
+  animation:spin 7s linear infinite;box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 80px rgba(234,87,70,.12)}
+@keyframes spin{to{--a:360deg}}
+.try{position:relative;border-radius:25px;background:linear-gradient(180deg,rgba(22,22,25,.92),rgba(9,9,11,.96));backdrop-filter:blur(16px);padding:clamp(1.4rem,3vw,2.1rem);overflow:hidden}
+.try::before{content:"";position:absolute;inset:0;background:radial-gradient(500px circle at var(--mx,50%) var(--my,0%),rgba(234,87,70,.12),transparent 40%);pointer-events:none}
+.try-head{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.84rem;margin-bottom:1.7rem}
+.try-head .tag{display:flex;align-items:center;gap:.5rem}
+.try-head .tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--coral);box-shadow:0 0 10px var(--coral)}
+.chip{border:1px solid var(--line-strong);border-radius:999px;padding:.2rem .7rem;color:var(--soft);font-variant-numeric:tabular-nums;white-space:nowrap}
+.try-word{font-size:clamp(2.6rem,5.4vw,3.6rem);font-weight:800;letter-spacing:-.04em;line-height:1.05;min-height:1.1em;transition:opacity .25s,transform .25s,filter .25s}
+.try-word.swap{opacity:0;transform:translateY(10px);filter:blur(6px)}
+.try-pos{color:var(--muted);font-family:var(--serif);font-style:italic;font-size:1.15rem;margin:.25rem 0 1.5rem}
+.try-form{display:flex;gap:.5rem}
+.try-input{flex:1;min-width:0;font:inherit;font-size:1.05rem;color:var(--text);background:rgba(0,0,0,.5);border:1px solid var(--line-strong);border-radius:var(--r-md);padding:.95rem 1.05rem;transition:border-color .2s,box-shadow .2s}
+.try-input:focus{outline:none;border-color:rgba(234,87,70,.7);box-shadow:0 0 0 4px rgba(234,87,70,.12)}
+.try-input.good{border-color:var(--ok);box-shadow:0 0 0 4px rgba(95,211,154,.14)}
+.try-input.nope{border-color:var(--bad);box-shadow:0 0 0 4px rgba(255,107,94,.12);animation:shake .4s}
+@keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.try-check{border-radius:var(--r-md);padding-inline:1.2rem}
+.try-fb{min-height:1.7rem;margin-top:.9rem;font-size:.94rem;color:var(--soft)}
+.try-fb .y{color:var(--ok);font-weight:600} .try-fb .n{color:var(--bad);font-weight:600}
+.try-foot{display:flex;align-items:center;gap:.9rem;margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+.bars{display:flex;gap:6px}
+.bars i{width:30px;height:7px;border-radius:4px;background:rgba(255,255,255,.1);position:relative;overflow:hidden}
+.bars i::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--coral),var(--coral-light));transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.bars i.on::after{transform:scaleX(1)}
+.burst{position:absolute;width:8px;height:8px;border-radius:2px;pointer-events:none;z-index:5}
+.try-hint{margin-top:.9rem;color:var(--muted);font-size:.78rem}
+
+.scroll-cue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);color:var(--muted);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.scroll-cue i{width:1px;height:34px;background:linear-gradient(var(--coral),transparent);animation:cue 2s ease-in-out infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media (max-height:760px),(max-width:960px){.scroll-cue{display:none}}
+
+/* marquee */
+.marquee{border-block:1px solid var(--line);padding:1.1rem 0;overflow:hidden;position:relative;background:rgba(255,255,255,.012);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.mrow{display:flex;gap:2.8rem;width:max-content;animation:mq 60s linear infinite}
+.mrow.rev{animation-direction:reverse;animation-duration:75s;margin-top:.7rem}
+.mrow span{white-space:nowrap;font-size:1.05rem;color:var(--muted)}
+.mrow span b{color:var(--text);font-weight:700;margin-right:.55rem}
+.mrow span em{font-family:var(--serif);font-size:1.15rem;color:var(--soft)}
+.mrow span.hot b{color:var(--coral-light)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* sections */
+.sec{padding:clamp(5rem,11vw,8.5rem) 0 0}
+.head{max-width:46rem;margin-bottom:3rem}
+.head.center{margin-inline:auto;text-align:center}
+.head.center .eyebrow::after{content:"";width:22px;height:1px;background:currentColor;opacity:.7}
+h2{font-size:clamp(2.2rem,4.8vw,3.7rem);letter-spacing:-.045em;line-height:1.02;margin:0 0 1rem;font-weight:800}
+h2 em,h3 em{font-family:var(--serif);font-weight:400;font-style:italic;letter-spacing:-.015em;color:var(--coral-light)}
+.head p{color:var(--soft);font-size:1.08rem;margin:0}
+
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}.rv.d5{transition-delay:.4s}
+
+.spot{position:relative;isolation:isolate}
+.spot::before{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;opacity:0;transition:opacity .3s;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(234,87,70,.13),transparent 45%)}
+.spot:hover::before{opacity:1}
+
+/* loop */
+.loop{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;position:relative}
+@media (max-width:900px){.loop{grid-template-columns:1fr 1fr}}
+@media (max-width:540px){.loop{grid-template-columns:1fr}}
+.track{position:absolute;left:2rem;right:2rem;top:2.35rem;height:1px;background:var(--line-strong);z-index:0}
+.track i{position:absolute;inset:0;background:linear-gradient(90deg,var(--coral),var(--coral-light));transform:scaleX(0);transform-origin:left;transition:transform 1.8s cubic-bezier(.4,.1,.2,1) .3s}
+.loop.in .track i{transform:scaleX(1)}
+@media (max-width:900px){.track{display:none}}
+.step{position:relative;z-index:1;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.4rem 1.3rem 1.5rem}
+.step .num{width:2.2rem;height:2.2rem;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:.9rem;background:#0b0b0d;border:1px solid var(--line-strong);color:var(--soft);margin-bottom:1.1rem;transition:all .4s}
+.loop.in .step .num{border-color:rgba(234,87,70,.7);color:#fff;background:linear-gradient(180deg,#f06554,#c9402f);box-shadow:0 0 24px rgba(234,87,70,.45)}
+.loop.in .step:nth-child(3) .num{transition-delay:.5s}.loop.in .step:nth-child(4) .num{transition-delay:1s}.loop.in .step:nth-child(5) .num{transition-delay:1.5s}
+.step h3{margin:0 0 .4rem;font-size:1.15rem;letter-spacing:-.02em}
+.step p{margin:0;color:var(--soft);font-size:.93rem}
+
+/* modes bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem}
+.mode{grid-column:span 2;display:flex;flex-direction:column;text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:1rem;transition:border-color .25s,transform .25s;min-width:0}
+.mode:hover{border-color:rgba(234,87,70,.45);transform:translateY(-4px)}
+.mode.feat{grid-column:span 4;grid-row:span 2;border-color:rgba(234,87,70,.3)}
+@media (max-width:1000px){.mode,.mode.feat{grid-column:span 3;grid-row:auto}.mode.feat{grid-column:1/-1}}
+@media (max-width:680px){.mode,.mode.feat{grid-column:1/-1}}
+.screen{position:relative;border-radius:14px;overflow:hidden;background:linear-gradient(180deg,#0c0c0e,#060607);border:1px solid var(--line);display:flex;flex-direction:column;padding:.95rem 1.05rem;gap:.6rem;font-size:13px;line-height:1.4;aspect-ratio:16/11}
+.mode.feat .screen{flex:1;aspect-ratio:auto;min-height:330px;font-size:15px}
+@media (max-width:480px){.screen{aspect-ratio:auto;min-height:220px}}
+.screen::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 80% at 50% 0%,rgba(234,87,70,.07),transparent 60%)}
+.s-top{display:flex;justify-content:space-between;align-items:center;gap:.5rem;color:var(--muted);font-size:.82em}
+.s-pill{border:1px solid var(--line-strong);border-radius:999px;padding:.1rem .55rem;white-space:nowrap}
+.seg{display:inline-flex;border:1px solid var(--line-strong);border-radius:999px;overflow:hidden}
+.seg span{padding:.1rem .6rem}.seg span.on{background:rgba(234,87,70,.2);color:var(--text)}
+.s-mid{flex:1;display:flex;flex-direction:column;justify-content:center;gap:.6rem}
+.t-word{text-align:center;font-size:2.5em;font-weight:800;letter-spacing:-.035em;line-height:1.1}
+.t-input{align-self:center;width:min(82%,340px);border:1px solid var(--line-strong);border-radius:10px;background:rgba(0,0,0,.5);padding:.6em .85em;min-height:2.6em;display:flex;align-items:center;transition:border-color .3s}
+.t-input.ok{border-color:var(--ok)}
+.caret{display:inline-block;width:1.5px;height:1.1em;background:var(--text);margin-left:2px;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.t-verdict{align-self:center;color:var(--ok);font-weight:600;font-size:.92em;opacity:0;transform:translateY(4px);transition:.3s}
+.t-verdict.show{opacity:1;transform:none}
+.t-streak{display:flex;justify-content:center;gap:5px}
+.t-streak i{width:26px;height:5px;border-radius:3px;background:rgba(255,255,255,.1);transition:background .4s}
+.t-streak i.on{background:var(--coral);box-shadow:0 0 10px rgba(234,87,70,.5)}
+.mode-body{padding:1rem .4rem .3rem;display:flex;flex-direction:column;gap:.45rem}
+.mode-title{display:flex;align-items:center;gap:.6rem;margin:0;font-size:1.25rem;letter-spacing:-.02em}
+.mode.feat .mode-title{font-size:1.65rem}
+.mode-sub{margin:0;color:var(--soft);font-size:.93rem}
+.levels{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:.6rem 0 0}
+@media (max-width:600px){.levels{grid-template-columns:1fr}}
+.levels div{border-left:2px solid rgba(234,87,70,.5);padding-left:.85rem}
+.levels dt{font-weight:700;font-size:.95rem}.levels dd{margin:.15rem 0 0;color:var(--soft);font-size:.88rem}
+.cta{margin-top:auto;padding-top:.6rem;font-weight:600;font-size:.92rem;color:var(--coral-light);display:inline-flex;gap:.4rem;align-items:center}
+.mode:hover .cta{color:#fff}
+.mc-q{text-align:center;font-size:1.65em;font-weight:800;letter-spacing:-.02em}
+.mc-opts{display:grid;gap:.35rem}.mc-opts.two{grid-template-columns:1fr 1fr}
+.mc-opt{border:1px solid var(--line);border-radius:8px;padding:.4em .7em;color:var(--soft);background:rgba(255,255,255,.025);display:flex;gap:.5rem;align-items:center;transition:all .25s}
+.mc-opt b{color:var(--muted);font-weight:600;font-size:.85em}
+.mc-opt.hov{border-color:var(--line-strong);background:rgba(255,255,255,.06)}
+.mc-opt.ok{border-color:var(--ok);color:var(--text);background:rgba(95,211,154,.1)}
+.mc-opt.bad{border-color:var(--bad);color:var(--text);background:rgba(255,107,94,.08)}
+.prog{height:4px;border-radius:2px;background:rgba(255,255,255,.08)}
+.prog i{display:block;height:100%;border-radius:2px;background:var(--coral);transition:width .6s}
+.stack{position:relative;flex:1;display:flex}
+.stack::before,.stack::after{content:"";position:absolute;left:7%;right:7%;top:2%;bottom:6%;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.02)}
+.stack::before{transform:rotate(-4deg)}.stack::after{transform:rotate(3deg)}
+.stack-card{position:relative;z-index:1;flex:1;border:1px solid var(--line-strong);border-radius:10px;background:#0d0d10;padding:.75rem;display:flex;flex-direction:column;justify-content:center;gap:.5rem;transition:transform .45s cubic-bezier(.5,0,.3,1),opacity .45s}
+.stack-card.out{transform:translateX(115%) rotate(12deg);opacity:0}
+.stack-card.pre{transform:translateY(8px) scale(.96);opacity:0;transition:none}
+.stack-card .mc-q{font-size:1.4em}
+.filters{display:flex;gap:.35rem;flex-wrap:wrap}
+.filters span{border:1px solid var(--line);border-radius:999px;padding:.1rem .55rem;font-size:.8em;color:var(--muted)}
+.filters span.on{border-color:var(--line-strong);color:var(--text);background:rgba(255,255,255,.06)}
+.fc-scene{flex:1;perspective:900px;display:flex}
+.fc-card{position:relative;flex:1;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.fc-card.flip{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:10px;border:1px solid var(--line-strong);background:#0d0d10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25rem;padding:0 .8rem;text-align:center}
+.fc-face .w{font-size:1.8em;font-weight:800;letter-spacing:-.02em}
+.fc-face small{color:var(--muted)}
+.fc-back{transform:rotateY(180deg);background:linear-gradient(180deg,#1a0f0d,#0d0d10)}
+.fc-back .w{font-size:1.3em;color:var(--coral-light)}
+.ladder{display:flex;justify-content:center;gap:.3rem;flex-wrap:wrap}
+.ladder span{border:1px solid var(--line);border-radius:999px;padding:.05rem .55rem;font-size:.8em;color:var(--muted);font-variant-numeric:tabular-nums;transition:all .35s}
+.ladder span.on{border-color:rgba(234,87,70,.45);color:var(--soft)}
+.ladder span.now{background:rgba(234,87,70,.25);color:#fff;border-color:var(--coral);box-shadow:0 0 14px rgba(234,87,70,.4)}
+.cx{margin:0;text-align:center;font-size:1.1em;line-height:1.65;color:var(--soft);padding-inline:.4rem}
+.cx-blank{display:inline-block;min-width:5.5em;color:var(--text);font-weight:700;border-bottom:2px solid var(--line-strong);padding:0 .15em;transition:border-color .3s}
+.cx-blank.ok{border-color:var(--ok)}
+
+/* retention */
+.split{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+@media (max-width:900px){.split{grid-template-columns:1fr}}
+.chart-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.4rem 1.4rem 1rem}
+.chart-legend{display:flex;gap:1.2rem;font-size:.82rem;color:var(--muted);margin-bottom:.8rem;flex-wrap:wrap}
+.chart-legend span{display:flex;align-items:center;gap:.45rem}
+.chart-legend i{width:16px;height:3px;border-radius:2px;display:inline-block}
+#chart{width:100%;height:auto;display:block;overflow:visible}
+#chart .draw{stroke-dasharray:var(--len);stroke-dashoffset:var(--len);transition:stroke-dashoffset 2.6s cubic-bezier(.4,.1,.2,1)}
+.chart-card.in #chart .draw{stroke-dashoffset:0}
+#chart .mk{opacity:0;transition:opacity .4s}
+.chart-card.in #chart .mk{opacity:1}
+.chart-note{color:var(--muted);font-size:.76rem;margin-top:.4rem}
+.bullets{list-style:none;margin:1.8rem 0 0;padding:0;display:grid;gap:1rem}
+.bullets li{display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start;color:var(--soft)}
+.bullets li b{color:var(--text)}
+.bullets .ic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:rgba(234,87,70,.12);border:1px solid rgba(234,87,70,.3);color:var(--coral-light);font-weight:700;font-size:.8rem}
+
+/* compare */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media (max-width:800px){.compare{grid-template-columns:1fr}}
+.col{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(1.5rem,3vw,2.2rem)}
+.col.sol{border-color:rgba(234,87,70,.35);background:linear-gradient(180deg,rgba(40,20,17,.7),rgba(12,9,9,.9))}
+.col h3{margin:0 0 1.2rem;font-size:1.2rem;letter-spacing:-.01em;color:var(--muted)}
+.col.sol h3{color:var(--coral-light)}
+.col ul{list-style:none;margin:0;padding:0;display:grid;gap:.95rem}
+.col li{position:relative;padding-left:1.7rem;color:var(--muted)}
+.col li::before{content:"";position:absolute;left:0;top:.7em;width:10px;height:1.5px;background:var(--muted);opacity:.6}
+.col li s{text-decoration-color:rgba(255,255,255,.25)}
+.col.sol li{color:var(--text)}
+.col.sol li::before{width:16px;height:16px;top:.2em;border-radius:50%;opacity:1;background:rgba(234,87,70,.18) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='%23ff8a7a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/14px no-repeat;border:1px solid rgba(234,87,70,.45)}
+
+/* story */
+.story{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(2rem,5vw,4rem);align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:clamp(1.8rem,5vw,3.4rem);position:relative;overflow:hidden}
+@media (max-width:900px){.story{grid-template-columns:1fr}}
+.story::after{content:"\201C";position:absolute;top:-3.5rem;right:2rem;font-family:var(--serif);font-size:18rem;line-height:1;color:rgba(234,87,70,.07);pointer-events:none}
+.prose p{color:var(--soft);font-size:1.06rem;line-height:1.75;margin:0 0 1.1rem}
+.prose p:last-child{margin:0}
+.prose strong{color:var(--coral-light);font-weight:600}
+.lede{font-family:var(--serif);font-size:clamp(1.6rem,2.8vw,2.2rem)!important;line-height:1.25!important;color:var(--text)!important;letter-spacing:-.01em}
+.sig{margin-top:1.6rem;display:flex;align-items:center;gap:.8rem;color:var(--muted);font-size:.9rem}
+.sig .av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:700;background:linear-gradient(135deg,#f06554,#8f2a20);color:#fff}
+.sig b{color:var(--text);display:block;font-weight:600}
+.gauge{text-align:center}
+.gauge svg{width:100%;max-width:340px;height:auto;overflow:visible}
+.gauge .val{font-size:clamp(3.5rem,8vw,5rem);font-weight:800;letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums;margin-top:-4.3rem}
+.gauge .lbl{color:var(--muted);font-size:.85rem;margin-top:.4rem}
+.gauge .lbl b{color:var(--text);font-weight:600}
+#garc{transition:stroke-dashoffset 2.2s cubic-bezier(.3,.1,.2,1)}
+#needle{transform-origin:170px 170px;transform:rotate(-90deg);transition:transform 2.2s cubic-bezier(.3,.1,.2,1)}
+
+/* word list */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media (max-width:800px){.tiers{grid-template-columns:1fr}}
+.tier{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.6rem;position:relative;overflow:hidden}
+.tier .lv{display:flex;gap:4px;margin-bottom:1.3rem}
+.tier .lv i{width:22px;height:6px;border-radius:3px;background:rgba(255,255,255,.1)}
+.tier .lv i.on{background:var(--coral)}
+.tier h3{margin:0 0 .3rem;font-size:1.4rem;letter-spacing:-.025em}
+.tier p{margin:0 0 1.2rem;color:var(--soft);font-size:.94rem}
+.tier .ex{display:flex;flex-wrap:wrap;gap:.4rem}
+.tier .ex span{font-size:.82rem;border:1px solid var(--line);border-radius:999px;padding:.15rem .6rem;color:var(--soft)}
+.packstats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+@media (max-width:700px){.packstats{grid-template-columns:1fr}}
+.packstats div{border:1px solid var(--line);border-radius:var(--r-md);padding:1.1rem 1.2rem;background:rgba(0,0,0,.25);display:flex;align-items:baseline;gap:.8rem}
+.packstats strong{font-size:1.9rem;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.packstats span{color:var(--muted);font-size:.9rem}
+
+/* stats band */
+.band{position:relative;border-radius:28px;overflow:hidden;border:1px solid rgba(234,87,70,.28);padding:clamp(2.2rem,5vw,3.4rem) clamp(1.4rem,4vw,2.8rem);
+  background:radial-gradient(120% 140% at 0% 0%,rgba(234,87,70,.22),transparent 50%),radial-gradient(120% 140% at 100% 100%,rgba(234,87,70,.14),transparent 50%),linear-gradient(180deg,#140c0b,#0a0808)}
+.band ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+@media (max-width:800px){.band ul{grid-template-columns:1fr 1fr}}
+.band li{display:flex;flex-direction:column;gap:.25rem}
+.band strong{font-size:clamp(2rem,4.4vw,3.2rem);letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums}
+.band span{color:var(--muted);font-size:.9rem}
+.band p{margin:2rem 0 0;color:var(--soft);font-family:var(--serif);font-style:italic;font-size:1.35rem}
+
+/* final */
+.final{text-align:center;padding:clamp(5rem,12vw,9rem) 0 0;position:relative}
+.final h2{font-size:clamp(2.8rem,8vw,6.2rem);letter-spacing:-.055em;line-height:.95;margin-bottom:1.4rem}
+.final p{color:var(--soft);font-size:1.1rem;margin:0 0 2.2rem}
+.final .actions{justify-content:center}
+.final .halo{position:absolute;left:50%;top:55%;width:min(900px,120vw);height:420px;transform:translate(-50%,-50%);background:radial-gradient(ellipse at center,rgba(234,87,70,.22),transparent 65%);filter:blur(30px);z-index:-1;pointer-events:none}
+
+footer{margin-top:clamp(5rem,10vw,8rem);border-top:1px solid var(--line);padding:2.4rem 0 3rem;color:var(--muted);font-size:.9rem}
+.foot{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.foot nav{display:flex;gap:.6rem 1.2rem;flex-wrap:wrap;max-width:40rem}
+.foot nav a{text-decoration:none}.foot nav a:hover{color:#fff}
+.copy{margin-top:1.6rem;font-size:.82rem}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#"><b>GRE</b><i>|</i><span>Vocab Tester</span></a>
+    <nav class="nav-links" aria-label="Main"><a href="#">Word Packs</a><a href="#">Daily Review</a><a href="#">Settings</a></nav>
+    <a class="btn btn-primary" href="#">Start Studying</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="glow g1"></div><div class="glow g2"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="pill-live rv"><span class="dot"></span>Free for 8,000+ test-takers every month</div>
+      <h1 class="rv d1">Master every<span class="l2"><span class="rot" id="rot">word.</span></span></h1>
+      <p class="hero-sub rv d2">GRE vocabulary practice built on <strong>active recall</strong>. Type the definition from memory, get it right 4 times in a row, and the word is yours. No account, no paywall.</p>
+      <div class="actions rv d3">
+        <a class="btn btn-primary" href="#">Start studying <span class="arr">&rarr;</span></a>
+        <a class="btn btn-ghost" href="#">Browse word packs</a>
+      </div>
+      <div class="facts rv d4">
+        <div><strong data-count="1476">0</strong><span>high-frequency words</span></div>
+        <div><strong data-count="99">0</strong><span>word packs</span></div>
+        <div><strong data-count="6">0</strong><span>study modes</span></div>
+      </div>
+    </div>
+
+    <div class="try-stage rv d2">
+      <div class="try-shell" id="tilt">
+        <div class="try" id="try">
+          <div class="try-head"><span class="tag">Try it right here</span><span class="chip" id="tryCount">0 / 5 correct</span></div>
+          <div class="try-word" id="tryWord">Laconic</div>
+          <div class="try-pos" id="tryPos">adjective</div>
+          <form class="try-form" id="tryForm" autocomplete="off">
+            <label for="tryIn" class="sr-only">Type the definition</label>
+            <input id="tryIn" class="try-input" placeholder="Type the definition" spellcheck="false" autocapitalize="off" autocorrect="off">
+            <button class="btn btn-primary try-check" type="submit">Check</button>
+          </form>
+          <div class="try-fb" id="tryFb" aria-live="polite"></div>
+          <div class="try-foot">
+            <div class="bars" id="tryBars" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <span id="tryStreak">0 of 4 in a row</span>
+          </div>
+          <div class="try-hint">Small typos and different wording still count. Press <kbd>Enter</kbd> to check.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">Scroll<i></i></div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="mrow" id="mq1"></div>
+  <div class="mrow rev" id="mq2"></div>
+</div>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="head center rv"><div class="eyebrow">The Method</div><h2>Reading a word list <em>isn't</em> learning it.</h2><p>Every session runs the same loop: pull the word out of memory, prove it four times, then let the schedule bring it back before it fades.</p></div>
+    <div class="loop rv" id="loop">
+      <div class="track"><i></i></div>
+      <div class="step spot"><div class="num">1</div><h3>See the word</h3><p>One word, no definition on screen. Nothing to skim, nothing to lean on.</p></div>
+      <div class="step spot"><div class="num">2</div><h3>Recall it</h3><p>Type what it means from memory. Typos and your own phrasing still count.</p></div>
+      <div class="step spot"><div class="num">3</div><h3>Four in a row</h3><p>A word is mastered only after 4 correct answers in a row. One miss resets it.</p></div>
+      <div class="step spot"><div class="num">4</div><h3>Review on schedule</h3><p>Mastered words return after 1, 3, 7, 14 and 30 days, right before they slip.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="modes">
+  <div class="wrap">
+    <div class="head rv"><div class="eyebrow">The Modes</div><h2>Six ways to <em>work</em> every word.</h2><p>Each mode hits the same words from a different angle. Press <kbd>1</kbd> to <kbd>6</kbd> to jump straight in.</p></div>
+    <div class="bento">
+      <a class="mode feat spot rv" href="#">
+        <div class="screen" aria-hidden="true">
+          <div class="s-top"><span>Core, set 3</span><span class="seg"><span class="on">Normal</span><span>Harder</span></span></div>
+          <div class="s-mid">
+            <div class="t-word" id="tW">Alacrity</div>
+            <div class="t-input" id="tI"><span id="tT"></span><span class="caret"></span></div>
+            <div class="t-verdict" id="tV">Correct</div>
+            <div class="t-streak" id="tS"><i></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="mode-body">
+          <h3 class="mode-title"><kbd>1</kbd> Test</h3>
+          <p class="mode-sub">Type the definition from memory. You are graded on what you know, not on your spelling.</p>
+          <dl class="levels">
+            <div><dt>Normal</dt><dd>5 words in rotation. 4 in a row masters a word and makes room for the next.</dd></div>
+            <div><dt>Harder</dt><dd>The whole pack in one session. Missed words sit out a few cards, then come back.</dd></div>
+          </dl>
+          <span class="cta">Start typing &rarr;</span>
+        </div>
+      </a>
+
+      <a class="mode spot rv d1" href="#">
+        <div class="screen" aria-hidden="true">
+          <div class="s-top"><span>Argument &amp; Rhetoric</span><span>In order</span></div>
+          <div class="prog"><i id="pP" style="width:30%"></i></div>
+          <div class="s-mid">
+            <div class="mc-q" id="pQ">Mitigate</div>
+            <div class="mc-opts" id="pO"></div>
+          </div>
+        </div>
+        <div class="mode-body"><h3 class="mode-title"><kbd>2</kbd> Practice</h3><p class="mode-sub">Multiple choice through a pack in order. The fastest first pass.</p><span class="cta">Start practicing &rarr;</span></div>
+      </a>
+
+      <a class="mode spot rv d2" href="#">
+        <div class="screen" aria-hidden="true">
+          <div class="s-top"><span>Full word list</span><span>Shuffled</span></div>
+          <div class="stack"><div class="stack-card" id="rC"><div class="mc-q" id="rQ">Enervate</div><div class="mc-opts two" id="rO"></div></div></div>
+        </div>
+        <div class="mode-body"><h3 class="mode-title"><kbd>3</kbd> Random Practice</h3><p class="mode-sub">Shuffled multiple choice, so you can't lean on the order.</p><span class="cta">Start shuffling &rarr;</span></div>
+      </a>
+
+      <a class="mode spot rv" href="#">
+        <div class="screen" aria-hidden="true">
+          <div class="s-top"><div class="filters"><span class="on">All</span><span>Mastered</span><span>Unmastered</span></div></div>
+          <div class="fc-scene"><div class="fc-card" id="fC">
+            <div class="fc-face"><span class="w">Prodigal</span><small>Tap to flip</small></div>
+            <div class="fc-face fc-back"><span class="w">wastefully extravagant</span><small>His prodigal spending left him deep in debt.</small></div>
+          </div></div>
+        </div>
+        <div class="mode-body"><h3 class="mode-title"><kbd>4</kbd> Flashcards</h3><p class="mode-sub">Flip through with no grading. Filter to mastered or unmastered.</p><span class="cta">Start flipping &rarr;</span></div>
+      </a>
+
+      <a class="mode spot rv d1" href="#">
+        <div class="screen" aria-hidden="true">
+          <div class="s-top"><span>Due today</span><span class="s-pill">Daily Review</span></div>
+          <div class="s-mid">
+            <div class="t-word" style="font-size:1.9em">Venerate</div>
+            <div class="ladder" id="lad"><span>1d</span><span>3d</span><span>7d</span><span>14d</span><span>30d</span></div>
+            <div class="t-verdict show" id="ladV">Next review in 1 day</div>
+          </div>
+        </div>
+        <div class="mode-body"><h3 class="mode-title"><kbd>5</kbd> Daily Review</h3><p class="mode-sub">Every first-try answer pushes a word further out. A miss brings it back tomorrow.</p><span class="cta">Open Daily Review &rarr;</span></div>
+      </a>
+
+      <a class="mode spot rv d2" href="#">
+        <div class="screen" aria-hidden="true">
+          <div class="s-top"><span>In Context</span><span class="s-pill">Sentence</span></div>
+          <div class="s-mid">
+            <p class="cx" id="cxS"></p>
+            <div class="t-verdict" id="cxV">Correct</div>
+          </div>
+        </div>
+        <div class="mode-body"><h3 class="mode-title"><kbd>6</kbd> In Context</h3><p class="mode-sub">Fill the blank in a GRE-style sentence, the way the test uses the word.</p><span class="cta">Fill the blanks &rarr;</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap split">
+    <div class="rv">
+      <div class="eyebrow">Daily Review</div>
+      <h2>Words come back <em>right before</em> you forget them.</h2>
+      <p style="color:var(--soft);font-size:1.08rem;margin:0">Cramming fades within days. Each time you recall a mastered word on schedule, the gap before its next review grows, so your effort goes to the words that are slipping.</p>
+      <ul class="bullets">
+        <li><span class="ic">1</span><div><b>Mastered words join the schedule automatically.</b> Nothing to set up.</div></li>
+        <li><span class="ic">2</span><div><b>Right on the first try?</b> The next review moves out: 1, 3, 7, 14, 30 days and beyond.</div></li>
+        <li><span class="ic">3</span><div><b>Missed it?</b> It comes back tomorrow and climbs again.</div></li>
+      </ul>
+    </div>
+    <div class="chart-card rv d2" id="chartCard">
+      <div class="chart-legend"><span><i style="background:var(--coral)"></i>With Daily Review</span><span><i style="background:rgba(255,255,255,.3)"></i>Read once</span></div>
+      <svg id="chart" viewBox="0 0 640 290" role="img" aria-label="Illustration: memory strength stays high with spaced reviews and fades without them"></svg>
+      <div class="chart-note">Illustrative curve, not measured data.</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="head rv"><div class="eyebrow">The Problem</div><h2>Most vocab tools hand you a list and <em>walk away.</em></h2><p>The hard part isn't reading a definition once. It's getting the word to stick.</p></div>
+    <div class="compare">
+      <article class="col spot rv"><h3>What's out there</h3><ul>
+        <li>Static word lists you memorize on your own.</li>
+        <li>Reinforcement left entirely to you.</li>
+        <li>The useful tools locked behind paywalls.</li>
+        <li>Bloated apps that bury the words under features.</li>
+      </ul></article>
+      <article class="col sol spot rv d1"><h3>What GRE Vocab Tester does</h3><ul>
+        <li>Active recall built in. Typos and your own wording still count.</li>
+        <li>No word is mastered until you get it right 4 times in a row.</li>
+        <li>Missed words return a few cards later. Mastered words return over weeks.</li>
+        <li>Completely free, no account. Export and import progress in Settings.</li>
+        <li>One job: getting GRE vocabulary to stick.</li>
+      </ul></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="story rv" id="story">
+      <div class="prose">
+        <div class="eyebrow">Why I built this</div>
+        <p class="lede">I couldn't pass the verbal section with unlimited time. A few weeks later I scored a 160 under real test conditions.</p>
+        <p>I had to take the GRE on short notice, and the math wasn't the problem. The vocabulary was. The verbal section leans on a few hundred high-frequency words, and if you don't know them, no strategy saves you.</p>
+        <p>The good resources were behind paywalls. The free ones were static lists that left the reinforcing to you. So I built the tool I wished existed, one that drills words through <strong>active recall</strong> until they stick, used it for my own exam, and kept it free for everyone else.</p>
+        <div class="sig"><div class="av">KF</div><div><b>Kallan Fraser</b>Built GRE Vocab Tester to pass the GRE</div></div>
+      </div>
+      <div class="gauge">
+        <svg viewBox="0 0 340 190" aria-hidden="true">
+          <defs><linearGradient id="gg" x1="0" x2="1"><stop offset="0" stop-color="#8f2a20"/><stop offset="1" stop-color="#ff8a7a"/></linearGradient></defs>
+          <path d="M20 170 A150 150 0 0 1 320 170" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="14" stroke-linecap="round"/>
+          <path id="garc" d="M20 170 A150 150 0 0 1 320 170" fill="none" stroke="url(#gg)" stroke-width="14" stroke-linecap="round"/>
+          <g id="needle"><line x1="170" y1="170" x2="170" y2="44" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><circle cx="170" cy="170" r="7" fill="#fff"/></g>
+          <text x="20" y="188" fill="#8a8a8e" font-size="12" text-anchor="middle" font-family="Inter">130</text>
+          <text x="320" y="188" fill="#8a8a8e" font-size="12" text-anchor="middle" font-family="Inter">170</text>
+        </svg>
+        <div class="val" id="gval">130</div>
+        <div class="lbl"><b>GRE Verbal</b>, real test conditions</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="head rv"><div class="eyebrow">The Word List</div><h2>The words that <em>actually</em> show up.</h2><p>1,476 high-frequency GRE words, each with a short definition to recall, a fuller explanation and an example sentence, all written for this site.</p></div>
+    <div class="tiers">
+      <div class="tier spot rv"><div class="lv"><i class="on"></i><i></i><i></i></div><h3>Core</h3><p>High-frequency words to learn first.</p><div class="ex"><span>Laconic</span><span>Mitigate</span><span>Venerate</span></div></div>
+      <div class="tier spot rv d1"><div class="lv"><i class="on"></i><i class="on"></i><i></i></div><h3>Common</h3><p>Frequently tested words.</p><div class="ex"><span>Obdurate</span><span>Prodigal</span><span>Enervate</span></div></div>
+      <div class="tier spot rv d2"><div class="lv"><i class="on"></i><i class="on"></i><i class="on"></i></div><h3>Advanced</h3><p>Less common words for higher scores.</p><div class="ex"><span>Pusillanimous</span><span>Recondite</span><span>Sedulous</span></div></div>
+    </div>
+    <div class="packstats rv">
+      <div><strong data-count="59">0</strong><span>short sets across the three tiers</span></div>
+      <div><strong data-count="40">0</strong><span>themed packs, like argument and rhetoric</span></div>
+      <div><strong>&infin;</strong><span>custom packs you build and share by link</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="band rv">
+      <ul>
+        <li><strong data-count="8000" data-suffix="+">0</strong><span>monthly active users</span></li>
+        <li><strong>Global</strong><span>test-takers worldwide</span></li>
+        <li><strong>$0</strong><span>no account, no paywall</span></li>
+        <li><strong data-count="1476">0</strong><span>high-frequency GRE words</span></li>
+      </ul>
+      <p>Built by one person who needed it, and kept free for everyone who does too.</p>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="halo"></div>
+  <div class="wrap rv">
+    <h2>Start with<br><em style="font-family:var(--serif);font-weight:400;color:var(--coral-light)">one word.</em></h2>
+    <p>No signup. No paywall. Open a mode and go.</p>
+    <div class="actions"><a class="btn btn-primary" href="#">Start studying <span class="arr">&rarr;</span></a><a class="btn btn-ghost" href="#">Browse word packs</a></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div><a class="logo" href="#"><b>GRE</b><i>|</i><span>Vocab Tester</span></a><div style="margin-top:.4rem">Vocabulary preparation for serious test-takers.</div></div>
+    <nav aria-label="Footer"><a href="#">Test</a><a href="#">Practice</a><a href="#">Random Practice</a><a href="#">Flashcards</a><a href="#">Daily Review</a><a href="#">In Context</a><a href="#">Word Packs</a><a href="#">Settings</a></nav>
+  </div>
+  <div class="wrap copy">&copy; 2026 GRE Vocab Tester. 1,476 GRE words, free to use.</div>
+</footer>
+
+<script>
+(function(){
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = s => document.querySelector(s);
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+/* nav */
+const nav = $('#nav');
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 20), {passive:true});
+
+/* reveal + counters */
+function countUp(el){
+  const end = +el.dataset.count, suf = el.dataset.suffix || '';
+  if (RM){ el.textContent = end.toLocaleString('en-US') + suf; return; }
+  const t0 = performance.now(), dur = 1600;
+  (function f(t){ const p = Math.min(1,(t-t0)/dur), e = 1-Math.pow(1-p,4);
+    el.textContent = Math.round(end*e).toLocaleString('en-US') + suf; if (p<1) requestAnimationFrame(f); })(t0);
+}
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add('in');
+  e.target.querySelectorAll('[data-count]').forEach(countUp);
+  if (e.target.id === 'story') runGauge();
+  io.unobserve(e.target);
+}), {threshold:.18});
+document.querySelectorAll('.rv,#chartCard').forEach(el => io.observe(el));
+
+/* spotlight */
+document.querySelectorAll('.spot,.try').forEach(el => el.addEventListener('pointermove', e => {
+  const r = el.getBoundingClientRect();
+  el.style.setProperty('--mx', (e.clientX-r.left)+'px'); el.style.setProperty('--my', (e.clientY-r.top)+'px');
+}));
+
+/* tilt */
+const tilt = $('#tilt');
+if (!RM && matchMedia('(pointer:fine)').matches){
+  tilt.parentElement.addEventListener('pointermove', e => {
+    const r = tilt.getBoundingClientRect();
+    const x = (e.clientX-r.left)/r.width-.5, y = (e.clientY-r.top)/r.height-.5;
+    tilt.style.transform = `rotateY(${x*7}deg) rotateX(${-y*7}deg)`;
+  });
+  tilt.parentElement.addEventListener('pointerleave', () => tilt.style.transform = '');
+}
+
+/* word data */
+const WORDS = [
+ ['Laconic','using very few words'],['Alacrity','eager readiness'],['Obdurate','stubbornly unyielding'],['Prodigal','wastefully extravagant'],
+ ['Venerate','to deeply respect'],['Mitigate','to lessen severity'],['Enervate','to drain energy'],['Equivocate','to speak ambiguously'],
+ ['Garrulous','excessively talkative'],['Recondite','little known; obscure'],['Sedulous','diligent and careful'],['Pusillanimous','lacking courage'],
+ ['Ephemeral','lasting a short time'],['Obsequious','overly eager to please'],['Lucid','clear and easy to follow'],['Intransigent','refusing to compromise'],
+ ['Ameliorate','to make better'],['Perfunctory','done with little care'],['Esoteric','understood by few'],['Vacillate','to waver between options'],
+ ['Capricious','prone to sudden change'],['Zealot','a fanatical supporter'],['Taciturn','reserved in speech'],['Profligate','recklessly wasteful'],
+ ['Insipid','lacking flavor or interest'],['Placate','to calm or soothe'],['Torpor','sluggish inactivity'],['Anomaly','a deviation from the norm'],
+ ['Disparage','to belittle'],['Erudite','deeply learned'],['Quiescent','at rest; dormant'],['Bolster','to support'],['Cogent','clear and convincing'],
+ ['Fervid','intensely passionate'],['Hackneyed','overused; trite'],['Inimical','harmful; hostile'],['Loquacious','very talkative'],['Mendacious','dishonest'],
+ ['Pellucid','transparently clear'],['Reticent','not revealing thoughts'],['Sanguine','optimistic'],['Venal','open to bribery']
+];
+
+/* marquee */
+function fillRow(el, list){
+  const html = list.map((w,i) => `<span class="${i%7===2?'hot':''}"><b>${w[0]}</b><em>${w[1]}</em></span>`).join('');
+  el.innerHTML = html + html;
+}
+fillRow($('#mq1'), WORDS.slice(0,21)); fillRow($('#mq2'), WORDS.slice(21));
+
+/* hero word field */
+const cv = $('#field'), cx = cv.getContext('2d');
+let W=0,H=0,DPR=Math.min(devicePixelRatio||1,2), parts=[], mx=0, my=0, tmx=0, tmy=0;
+function resize(){ W=cv.clientWidth; H=cv.clientHeight; cv.width=W*DPR; cv.height=H*DPR; cx.setTransform(DPR,0,0,DPR,0,0);
+  const n = Math.round(Math.min(70, W*H/22000));
+  parts = Array.from({length:n}, () => mk(true)); }
+function mk(init){ const z = Math.random()*.9+.1;
+  return {t:WORDS[Math.random()*WORDS.length|0][0].toLowerCase(), x:Math.random()*W, y:init?Math.random()*H:H+30, z,
+    v:.08+z*.28, lit:Math.random()<.12, ph:Math.random()*6.28}; }
+addEventListener('pointermove', e => { tmx = e.clientX/innerWidth-.5; tmy = e.clientY/innerHeight-.5; }, {passive:true});
+let flare = 0;
+function frame(t){
+  mx += (tmx-mx)*.04; my += (tmy-my)*.04; flare *= .96;
+  cx.clearRect(0,0,W,H);
+  for (const p of parts){
+    if (!RM){ p.y -= p.v; p.x += Math.sin((t/4000)+p.ph)*.08; }
+    if (p.y < -30) Object.assign(p, mk(false));
+    const fs = 11 + p.z*26, px = p.x - mx*60*p.z, py = p.y - my*40*p.z;
+    cx.font = `${p.z>.7?700:500} ${fs}px Inter, sans-serif`;
+    if (p.lit){
+      const pulse = .5+.5*Math.sin(t/900+p.ph);
+      cx.shadowColor = 'rgba(234,87,70,.9)'; cx.shadowBlur = 18*pulse + flare*30;
+      cx.fillStyle = `rgba(255,138,122,${.18+.35*pulse*p.z + flare*.4})`;
+    } else { cx.shadowBlur = 0; cx.fillStyle = `rgba(240,240,242,${.03+p.z*.11})`; }
+    cx.fillText(p.t, px, py);
+  }
+  cx.shadowBlur = 0;
+  requestAnimationFrame(frame);
+}
+resize(); addEventListener('resize', resize); requestAnimationFrame(frame);
+
+/* rotating headline word */
+const rot = $('#rot'), ROT = ['word.','laconic.','alacrity.','obdurate.','sedulous.'];
+let ri = 0;
+async function scramble(to){
+  const ch='abcdefghijklmnopqrstuvwxyz', steps=18;
+  for (let s=0;s<=steps;s++){
+    const k = Math.floor(to.length*s/steps);
+    rot.textContent = to.slice(0,k) + Array.from({length:Math.max(0,to.length-k-1)},()=>ch[Math.random()*26|0]).join('') + (k<to.length?'.':'');
+    await sleep(34);
+  }
+  rot.textContent = to;
+}
+if (!RM) setInterval(() => { ri=(ri+1)%ROT.length; scramble(ROT[ri]); }, 2800);
+
+/* try it */
+const TRY = [
+ {w:'Laconic',pos:'adjective',def:'using very few words',keys:['few words','concise','terse','brief','succinct','short','curt','pithy','not talkative','economical']},
+ {w:'Alacrity',pos:'noun',def:'eager readiness',keys:['eager','eagerness','readiness','enthusiasm','willingness','quickness','promptness','speed','cheerful']},
+ {w:'Obdurate',pos:'adjective',def:'stubbornly unyielding',keys:['stubborn','unyielding','obstinate','inflexible','hardhearted','unmoved','headstrong','intransigent']},
+ {w:'Prodigal',pos:'adjective',def:'wastefully extravagant',keys:['wasteful','extravagant','spendthrift','lavish','reckless spending','profligate']},
+ {w:'Venerate',pos:'verb',def:'to deeply respect',keys:['respect','revere','honor','honour','worship','admire','esteem','adore']}
+];
+const norm = s => s.toLowerCase().replace(/[^a-z ]/g,' ').replace(/\s+/g,' ').trim();
+function lev(a,b){ const m=[...Array(b.length+1).keys()]; for(let i=1;i<=a.length;i++){ let p=m[0]; m[0]=i;
+  for(let j=1;j<=b.length;j++){ const t=m[j]; m[j]=Math.min(m[j]+1,m[j-1]+1,p+(a[i-1]===b[j-1]?0:1)); p=t; } } return m[b.length]; }
+function grade(input, item){
+  const n = norm(input); if (n.length < 3) return false;
+  if (/\b(not|never|no)\b/.test(n) && !item.keys.some(k=>k.startsWith('not'))) return false;
+  const toks = n.split(' ');
+  return item.keys.some(k => n.includes(k) || toks.some(t => t.length>3 && lev(t,k) <= Math.max(1,Math.floor(k.length/5))));
+}
+let ti=0, streak=0, correct=0, busy=false;
+const tw=$('#tryWord'), tp=$('#tryPos'), tin=$('#tryIn'), tfb=$('#tryFb'), tbars=[...document.querySelectorAll('#tryBars i')];
+function paintBars(){ tbars.forEach((b,i)=>b.classList.toggle('on', i<streak)); $('#tryStreak').textContent = streak>=4 ? 'Mastered. That is the whole idea.' : `${streak} of 4 in a row`; $('#tryCount').textContent = `${correct} / 5 correct`; }
+async function nextWord(){
+  tw.classList.add('swap'); await sleep(250);
+  ti=(ti+1)%TRY.length; tw.textContent=TRY[ti].w; tp.textContent=TRY[ti].pos;
+  tin.value=''; tin.className='try-input'; tfb.innerHTML=''; tw.classList.remove('swap'); busy=false;
+  if (streak>=4){ streak=0; correct=0; paintBars(); }
+}
+function burst(){
+  if (RM) return; const host=$('#try'), r=host.getBoundingClientRect();
+  for (let i=0;i<34;i++){
+    const s=document.createElement('span'); s.className='burst';
+    s.style.background=['#ea5746','#ff8a7a','#ffd0c8','#5fd39a'][i%4];
+    s.style.left=(r.width/2)+'px'; s.style.top=(r.height*.45)+'px'; host.appendChild(s);
+    const a=Math.random()*6.28, d=80+Math.random()*170;
+    s.animate([{transform:'translate(0,0) rotate(0)',opacity:1},{transform:`translate(${Math.cos(a)*d}px,${Math.sin(a)*d-40}px) rotate(${Math.random()*540}deg)`,opacity:0}],{duration:900+Math.random()*500,easing:'cubic-bezier(.2,.7,.3,1)'}).onfinish=()=>s.remove();
+  }
+  flare = 1;
+}
+$('#tryForm').addEventListener('submit', async e => {
+  e.preventDefault(); if (busy || !tin.value.trim()) return; busy=true;
+  const item = TRY[ti];
+  if (grade(tin.value, item)){
+    streak++; correct++; tin.className='try-input good';
+    tfb.innerHTML = `<span class="y">Correct.</span> ${item.w} means ${item.def}.`;
+    flare = .6; paintBars(); if (streak>=4) burst();
+    await sleep(streak>=4?1800:1100);
+  } else {
+    streak=0; tin.className='try-input nope';
+    tfb.innerHTML = `<span class="n">Not quite.</span> ${item.w} means ${item.def}.`;
+    paintBars(); await sleep(2100);
+  }
+  nextWord();
+});
+
+/* demo: test mode */
+const TD=[['Alacrity','eager readiness'],['Obdurate','stubborn'],['Venerate','to deeply respect'],['Laconic','concise']];
+(async function testLoop(){
+  let i=0, s=0; const tW=$('#tW'), tT=$('#tT'), tI=$('#tI'), tV=$('#tV'), tS=[...document.querySelectorAll('#tS i')];
+  while(true){
+    const [w,d]=TD[i%TD.length]; tW.textContent=w; tT.textContent=''; tI.classList.remove('ok'); tV.classList.remove('show');
+    await sleep(700);
+    for (const c of d){ tT.textContent+=c; await sleep(RM?0:55+Math.random()*60); }
+    await sleep(350); tI.classList.add('ok'); tV.classList.add('show'); s = s>=4?1:s+1;
+    tS.forEach((b,k)=>b.classList.toggle('on',k<s)); if (s===4) tV.textContent='Mastered'; else tV.textContent='Correct';
+    await sleep(1700); i++;
+    if (s===4){ await sleep(400); s=0; tS.forEach(b=>b.classList.remove('on')); }
+  }
+})();
+
+/* demo: practice */
+const PD=[{q:'Mitigate',o:['to deeply respect','to lessen severity','to speak ambiguously','to clear from blame'],a:1},
+          {q:'Equivocate',o:['to speak ambiguously','to make better','to waver','to calm or soothe'],a:0},
+          {q:'Disparage',o:['to support','to deeply respect','to belittle','to drain energy'],a:2}];
+(async function pracLoop(){
+  let i=0; const pQ=$('#pQ'), pO=$('#pO'), pP=$('#pP');
+  while(true){
+    const d=PD[i%PD.length]; pQ.textContent=d.q;
+    pO.innerHTML=d.o.map((t,k)=>`<div class="mc-opt"><b>${k+1}</b>${t}</div>`).join('');
+    pP.style.width=(30+(i%PD.length)*22)+'%';
+    const els=[...pO.children]; await sleep(800);
+    for (let k=0;k<=d.a;k++){ els.forEach(e=>e.classList.remove('hov')); els[k].classList.add('hov'); await sleep(380); }
+    els[d.a].classList.remove('hov'); els[d.a].classList.add('ok'); await sleep(1800); i++;
+  }
+})();
+
+/* demo: random */
+const RD=[{q:'Enervate',o:['to deeply respect','to drain energy','wastefully extravagant','to lessen severity'],a:1,b:0},
+          {q:'Garrulous',o:['excessively talkative','lacking courage','diligent','obscure'],a:0,b:3},
+          {q:'Torpor',o:['a fanatic','sluggish inactivity','clear speech','sudden change'],a:1,b:2}];
+(async function randLoop(){
+  let i=0; const rC=$('#rC'), rQ=$('#rQ'), rO=$('#rO');
+  while(true){
+    const d=RD[i%RD.length]; rQ.textContent=d.q; rO.innerHTML=d.o.map(t=>`<div class="mc-opt">${t}</div>`).join('');
+    rC.classList.add('pre'); await sleep(30); rC.classList.remove('pre'); await sleep(1100);
+    const els=[...rO.children];
+    if (i%2===0){ els[d.b].classList.add('bad'); await sleep(600); }
+    els[d.a].classList.add('ok'); await sleep(1500);
+    rC.classList.add('out'); await sleep(500); rC.classList.remove('out'); rC.classList.add('pre'); i++;
+  }
+})();
+
+/* demo: flashcards */
+const fC=$('#fC'); setInterval(()=>fC.classList.toggle('flip'), 2800);
+fC.closest('.mode').addEventListener('mouseenter',()=>fC.classList.add('flip'));
+
+/* demo: review ladder */
+(function(){ const L=[...document.querySelectorAll('#lad span')], v=$('#ladV'), days=[1,3,7,14,30]; let k=0;
+  function paint(){ L.forEach((s,j)=>{s.classList.toggle('on',j<k);s.classList.toggle('now',j===k);});
+    v.textContent=`Next review in ${days[k]} day${days[k]>1?'s':''}`; }
+  paint(); setInterval(()=>{k=(k+1)%5; paint();},1600); })();
+
+/* demo: context */
+const CD=[['Asked about higher taxes, the governor chose to ',' instead of saying yes or no.','equivocate'],
+          ['Her ',' reply, a single word, ended the interview.','laconic'],
+          ['The new policy did little to ',' the damage from the flood.','mitigate']];
+(async function cxLoop(){
+  let i=0; const S=$('#cxS'), V=$('#cxV');
+  while(true){
+    const [a,b,w]=CD[i%CD.length]; S.innerHTML=`${a}<span class="cx-blank" id="cxB">&nbsp;</span>${b}`; V.classList.remove('show');
+    const B=$('#cxB'); await sleep(900); B.textContent='';
+    for (const c of w){ B.textContent+=c; await sleep(RM?0:70); }
+    B.classList.add('ok'); V.classList.add('show'); await sleep(2000); i++;
+  }
+})();
+
+/* retention chart */
+(function(){
+  const svg=$('#chart'), W=640, H=290, L=40, R=20, T=20, B=40, days=40;
+  const X=d=>L+(W-L-R)*d/days, Y=r=>T+(H-T-B)*(1-r);
+  const reviews=[0,1,3,7,14,30];
+  let pts=[], S=.9, last=0, ri=1;
+  for (let d=0; d<=days; d+=.1){
+    if (ri<reviews.length && d>=reviews[ri]){ pts.push([X(d),Y(.25+.75*Math.exp(-(d-last)/S))]); last=reviews[ri]; S*=2.3; ri++; pts.push([X(d),Y(1)]); continue; }
+    pts.push([X(d),Y(.25+.75*Math.exp(-(d-last)/S))]);
+  }
+  const once=[]; for (let d=0; d<=days; d+=.2) once.push([X(d),Y(.12+.88*Math.exp(-d/1.3))]);
+  const p=a=>'M'+a.map(q=>q[0].toFixed(1)+' '+q[1].toFixed(1)).join(' L');
+  let g='';
+  [0,.25,.5,.75,1].forEach(r=>{ g+=`<line x1="${L}" x2="${W-R}" y1="${Y(r)}" y2="${Y(r)}" stroke="rgba(255,255,255,.06)"/>`; });
+  g+=`<text x="${L-8}" y="${Y(1)+4}" fill="#8a8a8e" font-size="11" text-anchor="end" font-family="Inter">100%</text><text x="${L-8}" y="${Y(0)+4}" fill="#8a8a8e" font-size="11" text-anchor="end" font-family="Inter">0</text>`;
+  g+=`<text x="${(W+L)/2}" y="${H-6}" fill="#8a8a8e" font-size="11" text-anchor="middle" font-family="Inter">days after mastering a word</text>`;
+  g+=`<defs><linearGradient id="fillg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(234,87,70,.25)"/><stop offset="1" stop-color="rgba(234,87,70,0)"/></linearGradient></defs>`;
+  g+=`<path class="draw" d="${p(once)}" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2" stroke-dasharray="4 5"/>`;
+  g+=`<path class="draw" id="spaced" d="${p(pts)}" fill="none" stroke="#ea5746" stroke-width="2.6" stroke-linejoin="round" style="filter:drop-shadow(0 0 8px rgba(234,87,70,.6))"/>`;
+  reviews.slice(1).forEach((d,i)=>{ g+=`<g class="mk" style="transition-delay:${.5+i*.35}s"><circle cx="${X(d)}" cy="${Y(1)}" r="4.5" fill="#fff" stroke="#ea5746" stroke-width="2"/><text x="${X(d)}" y="${Y(1)-11}" fill="#ff8a7a" font-size="11" font-weight="600" text-anchor="middle" font-family="Inter">${d}d</text></g>`; });
+  svg.innerHTML=g;
+  svg.querySelectorAll('.draw').forEach(el=>{ const l=el.getTotalLength(); el.style.setProperty('--len',l); if(el.getAttribute('stroke-dasharray')) { el.style.strokeDasharray='4 5'; el.style.strokeDashoffset='0'; el.style.opacity='0'; el.style.transition='opacity 1.2s .2s'; } });
+  new IntersectionObserver((es,o)=>es.forEach(e=>{ if(e.isIntersecting){ svg.querySelectorAll('.draw').forEach(el=>{ if(el.style.opacity==='0') el.style.opacity='1'; }); o.disconnect(); } }),{threshold:.3}).observe(svg);
+})();
+
+/* gauge */
+const garc=$('#garc'); const GL=garc.getTotalLength(); garc.style.strokeDasharray=GL; garc.style.strokeDashoffset=GL;
+function runGauge(){
+  const v=160, f=(v-130)/40;
+  garc.style.strokeDashoffset = GL*(1-f);
+  $('#needle').style.transform = `rotate(${-90+180*f}deg)`;
+  const el=$('#gval'), t0=performance.now();
+  (function s(t){ const p=Math.min(1,(t-t0)/2200), e=1-Math.pow(1-p,3); el.textContent=Math.round(130+30*e); if(p<1) requestAnimationFrame(s); })(t0);
+}
+})();
+</script>
+</body>
+</html>
