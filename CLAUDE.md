@@ -28,7 +28,7 @@ lib/                  all logic that is not UI (storage, settings, progress, pac
                       pool, hard-scheduler, review, context, distractors, words, backgrounds/)
 src/data/             gre_combined.json, legacy-index.json, packs-manual.json, home.json
 public/               data/wordpacks.json (generated), _headers, manifest.webmanifest,
-                      images/, sounds/ (yesmp3.mp3, nomp3.mp3), favicon.ico
+                      images/, sounds/ (correct.mp3, wrong.mp3), favicon.ico
 scripts/              build-packs.js, validate-vocab.js, vocab-stats.js, sort-gre-combined.js,
                       generate-images.js, render-assets.mjs
 styles/               globals, ui, components, testmode, choice, cards, context, review, home,
@@ -178,7 +178,7 @@ Backup file (`exportProgress` / `prepareImport` / `applyImport`): `{ app: "grevo
 | `direction` | `w2d`, `d2w` | `w2d` |
 | `testDifficulty` | `normal`, `harder` | `normal` |
 | `advanceDelay` | `0.5`, `1.5`, `3`, `5` seconds, or `"manual"` | `1.5` |
-| `feedbackSounds` | boolean (`public/sounds/yesmp3.mp3`, `nomp3.mp3`) | `true` |
+| `feedbackSounds` | boolean (`public/sounds/correct.mp3`, `wrong.mp3`, played by `lib/sounds.js`) | `true` |
 | `playBackground` | background id, used on `/play/*` | `warp` |
 | `pagesBackground` | background id, used everywhere else | `fireflies-red` |
 

@@ -22,6 +22,7 @@ import { useSearchParams } from "next/navigation";
 import PlayHeader from "../PlayHeader";
 import ConfirmDialog from "../ConfirmDialog";
 import { WORDS, getWord } from "../../lib/words";
+import { playAnswerSound, preloadAnswerSounds } from "../../lib/sounds";
 import {
 	pickDistractors,
 	cryptoRng,
@@ -197,8 +198,6 @@ export default function ChoiceQuiz({ variant = "practice" }) {
 	const sigRef = useRef(null); // identity of the scope in play
 	const resolvedOnceRef = useRef(false);
 	const promptRef = useRef(null);
-	const yesSound = useRef(null);
-	const noSound = useRef(null);
 
 	const inPack = !!scope.packId || scope.keys !== ALL_KEYS;
 	const scopeId = practiceScopeId(scope.packId, scope.keys);
@@ -306,12 +305,7 @@ export default function ChoiceQuiz({ variant = "practice" }) {
 
 	// ---- Audio (client only), 10% volume ----
 	useEffect(() => {
-		yesSound.current = new Audio("/sounds/yesmp3.mp3");
-		noSound.current = new Audio("/sounds/nomp3.mp3");
-		for (const a of [yesSound.current, noSound.current]) {
-			a.volume = 0.1;
-			a.preload = "auto";
-		}
+		preloadAnswerSounds();
 	}, []);
 
 	// ---- Unmount: no timer may fire into an unmounted page ----
@@ -337,14 +331,9 @@ export default function ChoiceQuiz({ variant = "practice" }) {
 		setBgWords(scope.keys.map((word) => ({ word, current: word === cur })));
 	}, [hydrated, scope, question]);
 
-	function playSound(ref) {
-		if (!settingsRef.current.feedbackSounds || !ref.current) return;
-		try {
-			ref.current.currentTime = 0;
-			ref.current.play().catch(() => {});
-		} catch {
-			/* autoplay rejections are fine */
-		}
+	function playSound(kind) {
+		if (!settingsRef.current.feedbackSounds) return;
+		playAnswerSound(kind);
 	}
 
 	function scheduleAdvance(correct) {
@@ -386,7 +375,7 @@ export default function ChoiceQuiz({ variant = "practice" }) {
 		if (!question || answer || confirmReset) return;
 		const correct = idx === question.correctIndex;
 		setAnswer({ picked: idx, correct });
-		playSound(correct ? yesSound : noSound);
+		playSound(correct ? "correct" : "wrong");
 		bgEvent(correct ? "ok" : "bad");
 		scheduleAdvance(correct);
 	}

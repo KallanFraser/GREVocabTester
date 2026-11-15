@@ -55,6 +55,7 @@ import {
 	winNames,
 } from "./test/engine";
 import { WORDS, getWord } from "../lib/words";
+import { playAnswerSound, preloadAnswerSounds } from "../lib/sounds";
 import {
 	ADVANCE_DELAY_LABEL,
 	ADVANCE_DELAY_MANUAL,
@@ -232,8 +233,6 @@ export default function TestMode() {
 	const barRef = useRef(null);
 	const formRef = useRef(null);
 	const inputRef = useRef(null);
-	const yesSound = useRef(null);
-	const noSound = useRef(null);
 	const fxTimers = useRef([]);
 	const cancelConfettiRef = useRef(null);
 	const cancelFlightRef = useRef(null);
@@ -431,12 +430,7 @@ export default function TestMode() {
 	// ---- Audio (client only), 10% volume ----
 	useEffect(() => {
 		try {
-			yesSound.current = new Audio("/sounds/yesmp3.mp3");
-			noSound.current = new Audio("/sounds/nomp3.mp3");
-			for (const a of [yesSound.current, noSound.current]) {
-				a.volume = 0.1;
-				a.preload = "auto";
-			}
+			preloadAnswerSounds();
 		} catch {
 			/* no audio support */
 		}
@@ -545,14 +539,9 @@ export default function TestMode() {
 			});
 
 	// ---- Sound ----
-	function playSound(ref) {
-		if (!settings.feedbackSounds || !ref.current) return;
-		try {
-			ref.current.currentTime = 0;
-			ref.current.play().catch(() => {});
-		} catch {
-			/* autoplay rejected */
-		}
+	function playSound(kind) {
+		if (!settings.feedbackSounds) return;
+		playAnswerSound(kind);
 	}
 
 	// ---- Answer motion ----
@@ -727,7 +716,7 @@ export default function TestMode() {
 		if (result.correct && isHarder) {
 			// Harder keeps its own progress; the one shared effect is that a word it
 			// retires goes on the daily review ladder.
-			playSound(yesSound);
+			playSound("correct");
 			const sched = hardSchedRef.current;
 			const relearning = sched.stateOf(currentKey)?.status === WORD_LEARNING;
 			const retiredBefore = sched.stats().retired;
@@ -750,7 +739,7 @@ export default function TestMode() {
 			}
 			scheduleAdvance(nextKey, settings.advanceDelay);
 		} else if (result.correct) {
-			playSound(yesSound);
+			playSound("correct");
 			const step = normalAnswer({ pool, streaks, mastered, keys: run.keys }, currentKey, true);
 			if (step.masteredNow) {
 				setMastered(step.mastered);
@@ -775,7 +764,7 @@ export default function TestMode() {
 			}
 			scheduleAdvance(step.nextKey, settings.advanceDelay);
 		} else {
-			playSound(noSound);
+			playSound("wrong");
 			bgEvent("bad");
 			if (!isHarder) {
 				const step = normalAnswer({ pool, streaks, mastered, keys: run.keys }, currentKey, false);

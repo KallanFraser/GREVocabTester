@@ -17,6 +17,7 @@ import vocab from "../src/data/gre_combined.json";
 import "../styles/review.css";
 import PlayHeader from "./PlayHeader";
 import { getWord } from "../lib/words";
+import { playAnswerSound, preloadAnswerSounds } from "../lib/sounds";
 import { gradeDefinition, gradeHeadwordWithNearDuplicates } from "../lib/matching";
 import { meaningGroupsReady } from "../lib/distractors";
 import { createReviewSession, wordReviewOpts, DEFAULT_REVIEW_CAP } from "../lib/review";
@@ -76,8 +77,6 @@ export default function ReviewMode() {
 	const submitLockRef = useRef(false);
 	const advanceTimer = useRef(null);
 	const inputRef = useRef(null);
-	const yesSound = useRef(null);
-	const noSound = useRef(null);
 
 	const direction = settings.direction;
 	const d2w = direction === DIRECTION_D2W;
@@ -130,13 +129,7 @@ export default function ReviewMode() {
 	}, []);
 
 	useEffect(() => {
-		if (typeof Audio === "undefined") return;
-		yesSound.current = new Audio("/sounds/yesmp3.mp3");
-		noSound.current = new Audio("/sounds/nomp3.mp3");
-		[yesSound.current, noSound.current].forEach((a) => {
-			a.volume = 0.1;
-			a.preload = "auto";
-		});
+		preloadAnswerSounds();
 	}, []);
 
 	// Background effects radiate from the centre of the prompt.
@@ -169,14 +162,9 @@ export default function ReviewMode() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [keyWait]);
 
-	function playSound(ref) {
-		if (!settings.feedbackSounds || !ref.current) return;
-		try {
-			ref.current.currentTime = 0;
-			ref.current.play().catch(() => {});
-		} catch {
-			/* ignore autoplay rejections */
-		}
+	function playSound(kind) {
+		if (!settings.feedbackSounds) return;
+		playAnswerSound(kind);
 	}
 
 	function advance() {
@@ -214,7 +202,7 @@ export default function ReviewMode() {
 		setInputValue("");
 		bgEvent(result.correct ? "ok" : "bad");
 		if (result.correct) {
-			playSound(yesSound);
+			playSound("correct");
 			setWaiting("correct");
 			if (settings.advanceDelay !== ADVANCE_DELAY_MANUAL) {
 				clearTimeout(advanceTimer.current);
@@ -223,7 +211,7 @@ export default function ReviewMode() {
 		} else {
 			// Held until the learner moves on. The word comes back later in this
 			// session and must be answered correctly.
-			playSound(noSound);
+			playSound("wrong");
 			setWaiting("miss");
 		}
 	}
